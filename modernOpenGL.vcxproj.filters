@@ -51,6 +51,12 @@
     <ClCompile Include="source\src\LowRenderer\Camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="third_party\Glad\glad.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\src\stb\stb_impl.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\include\Core\Debug\Log.hpp">
@@ -89,5 +95,8 @@
     <ClInclude Include="source\include\LowRenderer\Camera.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="third_party\libs\glfw3.lib" />
   </ItemGroup>
 </Project>
