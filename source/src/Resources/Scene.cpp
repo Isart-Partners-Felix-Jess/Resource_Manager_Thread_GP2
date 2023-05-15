@@ -1,1 +1,1 @@
-#include <Resources/Scene.hpp>
+#include <Scene.hpp>

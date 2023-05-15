@@ -21,9 +21,6 @@
     <ClCompile Include="source\src\Core\Debug\Log.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="source\src\Core\Debug\Assertion.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>

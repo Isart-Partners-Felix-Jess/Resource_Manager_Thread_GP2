@@ -2,10 +2,23 @@
 //
 
 #include <iostream>
+#include <Assertion.hpp>
+#include <GLFW/glfw3.h>
+#include <glad/glad.h> 
 
 int main()
 {
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    bool test = false;
+    ASSERT(test, "Test bool is false ! Congrats !");
     std::cout << "Hello World!\n";
+    
+    return 0;
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

@@ -71,10 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/source;$(SolutionDir)/source/include;include/LowRenderer;include/Maths;include/Physics;$(SolutionDir)include/Core/Debug;$(SolutionDir)/include/Core/DataStructure;$(SolutionDir)/include/Resources;$(SolutionDir)/include/Maths;$(SolutionDir)/include/LowRenderer;$(SolutionDir)/include/Physics</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source/include;include/LowRenderer;include/Maths;include/Physics;$(SolutionDir)include/Core/Debug;$(SolutionDir)/include/Core/DataStructure;$(SolutionDir)\include\Resources;$(SolutionDir)include\Maths;$(SolutionDir)include\LowRenderer;$(SolutionDir)\include\Physics;$(SolutionDir)\third_party\include</IncludePath>
+    <LibraryPath>$(SolutionDir)\third_party\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/source;$(SolutionDir)/source/include;include/LowRenderer;include/Maths;include/Physics;$(SolutionDir)include/Core/Debug;$(SolutionDir)/include/Core/DataStructure;$(SolutionDir)/include/Resources;$(SolutionDir)/include/Maths;$(SolutionDir)/include/LowRenderer;$(SolutionDir)/include/Physics</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source/include;include/LowRenderer;include/Maths;include/Physics;$(SolutionDir)include/Core/Debug;$(SolutionDir)/include/Core/DataStructure;$(SolutionDir)\include\Resources;$(SolutionDir)include\Maths;$(SolutionDir)include\LowRenderer;$(SolutionDir)\include\Physics;$(SolutionDir)\third_party\include</IncludePath>
+    <LibraryPath>$(SolutionDir)\third_party\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -141,7 +143,6 @@
     <ClCompile Include="source\src\Resources\Shader.cpp" />
     <ClCompile Include="source\src\Resources\ResourcesManager.cpp" />
     <ClCompile Include="source\src\Core\DataStructure\Graph.cpp" />
-    <ClCompile Include="source\src\Core\Debug\Assertion.cpp" />
     <ClCompile Include="source\src\Core\Debug\Log.cpp" />
     <ClCompile Include="modernOpenGL.cpp" />
     <ClCompile Include="source\src\Physics\Transform.cpp" />
