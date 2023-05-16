@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\Debug;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)source\include\Maths;$(SolutionDir)include\LowRenderer;$(SolutionDir)source\include\Physics;$(SolutionDir)\third_party\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\Debug;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)source\include\Maths;$(SolutionDir)include\LowRenderer;$(SolutionDir)source\include\Physics;$(SolutionDir)\third_party\include;;$(SolutionDir)\third_party\include\ImGui;</IncludePath>
     <LibraryPath>$(SolutionDir)\third_party\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\Debug;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)source\include\Maths;$(SolutionDir)include\LowRenderer;$(SolutionDir)source\include\Physics;$(SolutionDir)\third_party\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\Debug;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)source\include\Maths;$(SolutionDir)include\LowRenderer;$(SolutionDir)source\include\Physics;$(SolutionDir)\third_party\include;;$(SolutionDir)\third_party\include\ImGui;</IncludePath>
     <LibraryPath>$(SolutionDir)\third_party\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,6 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +153,12 @@
     <ClCompile Include="source\src\Physics\Transform.cpp" />
     <ClCompile Include="source\src\Resources\Texture.cpp" />
     <ClCompile Include="third_party\src\Glad\glad.c" />
+    <ClCompile Include="third_party\src\ImGui\imgui.cpp" />
+    <ClCompile Include="third_party\src\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="third_party\src\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="third_party\src\ImGui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="third_party\src\ImGui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="third_party\src\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="third_party\src\stb\stb_impl.cpp" />
   </ItemGroup>
   <ItemGroup>

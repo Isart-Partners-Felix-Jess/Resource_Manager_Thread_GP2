@@ -9,6 +9,8 @@
 
 int main()
 {
+	Log log;
+	log.OpenFile("source/include/Core/Debug/DebugLog.txt");
 	//In App ?
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -16,7 +18,13 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
+	float vertices[] = {
+	-0.5f, -0.5f, 0.0f,
+	 0.5f, -0.5f, 0.0f,
+	 0.0f,  0.5f, 0.0f
+	};
 
+		
 	Application app(800, 600);
 	app.Update();
 
