@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+#include <Log.hpp>
 
 class IResource
 {
@@ -45,11 +46,24 @@ inline R* ResourcesManager::CreateResource(std::string _name)
 	R* createdResource = new R();
 	createdResource->LoadResource();
 	m_Resources.insert(std::make_pair( _name, createdResource ));
+	DEBUG_LOG("Resource %s created", _name)
 	return createdResource;
 }
 
 template<typename R>
 inline R* ResourcesManager::GetResource(std::string _name)
 {
-	return nullptr;
+	auto it = m_Resources.find(_name);
+	if (it != m_Resources.end())
+	{
+		// Found the resource, return the raw pointer
+		DEBUG_LOG("Resource %s loaded", _name);
+		return it->second;
+	}
+	else
+	{
+		DEBUG_LOG("Resource %s not found", _name)
+		// Resource not found, return nullptr
+		return nullptr;
+	}
 }
