@@ -16,6 +16,6 @@ private:
 	std::vector<uint32_t> m_IndexBuffer;
 
 public:
-	void LoadResources(const char* _name);
+	void LoadResource(const char* _name) override;
 };
 

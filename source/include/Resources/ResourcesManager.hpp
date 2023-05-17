@@ -21,21 +21,22 @@ protected:
 	std::string m_ResourcePath;
 };
 
-//Trying static instead of singleton, both are relevant here
-static class ResourcesManager
+class ResourcesManager
 {
 	//Unused for now
 	void LoadResource(IResource* _toLoad);
-
-public:
+	static ResourcesManager* instance;
+	ResourcesManager();
+	~ResourcesManager();
 	void Destroy();
-
+public:
+	static ResourcesManager& GetInstance();
 	template<typename R>
 	//Maybe try to make the parameter a path...
-	R* CreateResource(std::string _name);
+	static R* CreateResource(std::string _name);
 	template<typename R>
-	R* GetResource(std::string _name);
-	void Delete(std::string _name);
+	static R* GetResource(std::string _name);
+	static void Delete(std::string _name);
 private:
 	std::unordered_map<std::string, IResource*> m_Resources;
 };

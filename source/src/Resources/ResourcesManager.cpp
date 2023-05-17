@@ -8,6 +8,15 @@ void ResourcesManager::LoadResource(IResource* _toLoad)
 	_toLoad->LoadResource("");
 }
 
+ResourcesManager::ResourcesManager()
+{
+}
+
+ResourcesManager::~ResourcesManager()
+{
+	Destroy();
+}
+
 void ResourcesManager::Destroy()
 {
 	for (std::pair<std::string, IResource*> pair : m_Resources)
@@ -17,6 +26,14 @@ void ResourcesManager::Destroy()
 	}
 	m_Resources.clear(); //Probably useless
 	DEBUG_LOG("Resource manager cleared successfully");
+}
+
+ResourcesManager& ResourcesManager::GetInstance()
+{
+	if (instance == nullptr) {
+		instance = new ResourcesManager();
+	}
+	return *instance;
 }
 
 void ResourcesManager::Delete(std::string _name)

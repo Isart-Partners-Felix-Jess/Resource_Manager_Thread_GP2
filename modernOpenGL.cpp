@@ -7,6 +7,8 @@
 #include <GLFW/glfw3.h>
 #include <Assertion.hpp>
 #include <Application.hpp>
+#include <ResourcesManager.hpp>
+#include <Model.hpp>
 
 int main()
 {
@@ -15,6 +17,7 @@ int main()
 	//_CrtSetBreakAlloc(822); // Debugger should stop alloc nb
 
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
+	ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
 	//In App ?
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
