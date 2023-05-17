@@ -36,7 +36,7 @@ public:
 	static R* CreateResource(std::string _name);
 	template<typename R>
 	static R* GetResource(std::string _name);
-	static void Delete(std::string _name);
+	void Delete(std::string _name);
 private:
 	std::unordered_map<std::string, IResource*> m_Resources;
 };
@@ -47,10 +47,10 @@ inline R* ResourcesManager::CreateResource(std::string _name)
 	IResource* createdResource = new R();
 	createdResource->SetResourcePath(_name);
 	createdResource->SetResourceId(m_Resources.size());
-	createdResource->LoadResource(_name);
+	createdResource->LoadResource(_name.c_str());
 	m_Resources.emplace(_name, createdResource);
 	DEBUG_LOG("Resource %s created, ID: %i", _name, createdResource->GetResourceId());
-	return createdResource;
+	return dynamic_cast<R*>(createdResource);
 }
 
 template<typename R>

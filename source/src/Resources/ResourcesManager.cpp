@@ -10,11 +10,13 @@ void ResourcesManager::LoadResource(IResource* _toLoad)
 
 ResourcesManager::ResourcesManager()
 {
+	GetInstance();
 }
 
 ResourcesManager::~ResourcesManager()
 {
 	Destroy();
+	delete instance;
 }
 
 void ResourcesManager::Destroy()
