@@ -78,3 +78,23 @@ void Log::InstancePrint(const char* format, va_list args)
 	m_Output << std::string(buffer) << "\n";
 	m_Output.flush();
 }
+void Log::ResetColor()
+{
+	SetConsoleTextAttribute(handle, 15); // texte in white (default)
+}
+void Log::WarningColor()
+{
+	ChangeColor(Color::YELLOWONBLACKBG);
+}
+void Log::ErrorColor()
+{
+	ChangeColor(Color::WHITEONREDBG);
+}
+void Log::ChangeColor(unsigned char _handleWindowsId)
+{
+	SetConsoleTextAttribute(handle, _handleWindowsId);
+}
+void Log::ChangeColor(Color _handleWindowsId)
+{
+	SetConsoleTextAttribute(handle, (WORD)_handleWindowsId);
+}

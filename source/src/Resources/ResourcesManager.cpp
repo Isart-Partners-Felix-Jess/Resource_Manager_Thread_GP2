@@ -24,7 +24,7 @@ void ResourcesManager::Delete(std::string _name)
 	auto it = m_Resources.find(_name);
 	if (it == m_Resources.end())
 	{
-		DEBUG_LOG("Resource %s not found; Could not delete %s", _name, _name);
+		DEBUG_ERROR("Resource %s not found; Could not delete %s", _name, _name);
 		return;
 	}
 	delete m_Resources.find(_name)->second;
@@ -41,7 +41,7 @@ size_t IResource::GetResourceId() const
 {
 	if (m_ResourceId)
 	{
-		DEBUG_LOG("Could not find id for %s ", m_ResourcePath.c_str());
+		DEBUG_WARNING("Could not find id for %s ", m_ResourcePath.c_str());
 	}
 	return m_ResourceId;
 }
@@ -55,7 +55,7 @@ std::string IResource::GetResourcePath() const
 {
 	if (m_ResourcePath.empty())
 	{
-		DEBUG_LOG("Could not find path for %i ", m_ResourceId);
+		DEBUG_WARNING("Could not find path for %i ", m_ResourceId);
 	}
 	return m_ResourcePath;
 }

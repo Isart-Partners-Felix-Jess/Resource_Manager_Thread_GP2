@@ -18,6 +18,18 @@ debugLogStream << buffer << std::endl; \
 Log::Print(format, ##__VA_ARGS__);\
 OutputDebugStringA(debugLogStream.str().c_str()); \
 }
+#define DEBUG_WARNING(format,...)\
+{Log::GetInstance()->WarningColor();\
+std::ostringstream WarningLogStream;\
+WarningLogStream <<"Warning: " << format ;\
+DEBUG_LOG(WarningLogStream.str().c_str(),##__VA_ARGS__)\
+Log::GetInstance()->ResetColor();}
+#define DEBUG_ERROR(format,...)\
+{Log::GetInstance()->ErrorColor();\
+std::ostringstream ERRORLogStream;\
+ERRORLogStream <<"ERROR: " << format ;\
+DEBUG_LOG(ERRORLogStream.str().c_str(),##__VA_ARGS__)\
+Log::GetInstance()->ResetColor();}
 
 void FormatString(char* buffer, size_t bufferSize, const char* format, ...);
 class Log
@@ -35,12 +47,24 @@ public:
 	void operator=(const Log&) = delete;
 	~Log();
 	//End of Singleton part
-	
+
 	//Shortcut to get the instance
 	static void OpenFile(std::filesystem::path const& filename, bool _erase = false);
 	//Shortcut to get the instance
 	static void Print(const char* format, ...);
-private :
+	void WarningColor();
+	void ErrorColor();
+	void ResetColor();
+private:
 	void InstanceOpenFile(std::filesystem::path const& filename, bool _erase = false);
 	void InstancePrint(const char* format, va_list args);
+	void ChangeColor(unsigned char _handleWindowsId);
+	enum class Color : unsigned char
+	{
+		DEFAULT = 15,
+		YELLOWONBLACKBG = 14,
+		// RED  BG   WHITE OFFSET
+		WHITEONREDBG = (12 * 16 + 15)
+	};
+	void ChangeColor(Color _handleWindowsId);
 };

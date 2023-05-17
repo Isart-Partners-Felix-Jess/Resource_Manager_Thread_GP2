@@ -64,7 +64,7 @@ inline R* ResourcesManager::GetResource(std::string _name)
 	}
 	else
 	{
-		DEBUG_LOG("Resource %s not found", _name)
+		DEBUG_WARNING("Resource %s not found", _name)
 		// Resource not found, return nullptr
 		return nullptr;
 	}
