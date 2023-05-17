@@ -43,10 +43,12 @@ private:
 template<typename R>
 inline R* ResourcesManager::CreateResource(std::string _name)
 {
-	R* createdResource = new R();
-	createdResource->LoadResource();
-	m_Resources.insert(std::make_pair( _name, createdResource ));
-	DEBUG_LOG("Resource %s created", _name)
+	IResource* createdResource = new R();
+	createdResource->SetResourcePath(_name);
+	createdResource->SetResourceId(m_Resources.size());
+	createdResource->LoadResource(_name);
+	m_Resources.emplace(_name, createdResource);
+	DEBUG_LOG("Resource %s created, ID: %i", _name, createdResource->GetResourceId());
 	return createdResource;
 }
 
@@ -58,7 +60,7 @@ inline R* ResourcesManager::GetResource(std::string _name)
 	{
 		// Found the resource, return the raw pointer
 		DEBUG_LOG("Resource %s loaded", _name);
-		return it->second;
+		return it->second; //No dynamic_cast, daring
 	}
 	else
 	{
