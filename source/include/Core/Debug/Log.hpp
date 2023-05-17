@@ -20,7 +20,7 @@ OutputDebugStringA(debugLogStream.str().c_str()); \
 }
 
 void FormatString(char* buffer, size_t bufferSize, const char* format, ...);
-static class Log
+class Log
 {
 private:
 	std::ofstream m_Output;

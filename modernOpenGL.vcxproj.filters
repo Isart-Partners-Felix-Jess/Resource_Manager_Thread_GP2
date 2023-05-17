@@ -13,27 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{4b471cba-c72d-4f56-9adc-419abdae3902}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Debug">
-      <UniqueIdentifier>{79a9872b-8a67-4d2d-b390-a0086d02608a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Maths">
-      <UniqueIdentifier>{cb8c7d32-cead-482a-a025-835324eb4fcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\DataStructure">
-      <UniqueIdentifier>{984a6493-5e68-47e5-8567-64eba1c19f49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{4ad1393d-589a-4e85-b253-41ace8b279ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="LowRenderer">
-      <UniqueIdentifier>{4d79bbb7-0ff7-42fe-9882-e660db4f2930}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Physics">
-      <UniqueIdentifier>{c1197ae7-82e6-493e-b219-ebea62cd389a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Third_party">
       <UniqueIdentifier>{1bf0c041-c195-43ad-837b-805f8d540a7c}</UniqueIdentifier>
     </Filter>
@@ -43,43 +22,64 @@
     <Filter Include="Third_party\lib">
       <UniqueIdentifier>{481ff585-37a6-4cce-9938-7418634872d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core">
+      <UniqueIdentifier>{4b471cba-c72d-4f56-9adc-419abdae3902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Debug">
+      <UniqueIdentifier>{79a9872b-8a67-4d2d-b390-a0086d02608a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Maths">
+      <UniqueIdentifier>{cb8c7d32-cead-482a-a025-835324eb4fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\DataStructure">
+      <UniqueIdentifier>{984a6493-5e68-47e5-8567-64eba1c19f49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\LowRenderer">
+      <UniqueIdentifier>{4d79bbb7-0ff7-42fe-9882-e660db4f2930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Physics">
+      <UniqueIdentifier>{c1197ae7-82e6-493e-b219-ebea62cd389a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Resources">
+      <UniqueIdentifier>{4ad1393d-589a-4e85-b253-41ace8b279ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\src\Core\Application.cpp">
-      <Filter>Core</Filter>
+      <Filter>Fichiers d%27en-tête\Core</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Physics\Transform.cpp">
-      <Filter>Physics</Filter>
+      <Filter>Fichiers d%27en-tête\Physics</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\Texture.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\Shader.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\Scene.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\ResourcesManager.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\Model.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\LowRenderer\Mesh.cpp">
-      <Filter>LowRenderer</Filter>
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
     </ClCompile>
     <ClCompile Include="source\src\LowRenderer\Light.cpp">
-      <Filter>LowRenderer</Filter>
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
     </ClCompile>
     <ClCompile Include="source\src\LowRenderer\Camera.cpp">
-      <Filter>LowRenderer</Filter>
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
-      <Filter>Core\DataStructure</Filter>
+      <Filter>Fichiers d%27en-tête\Core\DataStructure</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Core\Debug\Log.cpp">
-      <Filter>Core\Debug</Filter>
+      <Filter>Fichiers d%27en-tête\Core\Debug</Filter>
     </ClCompile>
     <ClCompile Include="modernOpenGL.cpp">
       <Filter>Third_party\impl</Filter>
@@ -113,5 +113,10 @@
     <Library Include="third_party\libs\glfw3.lib">
       <Filter>Third_party\lib</Filter>
     </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\include\Resources\ResourcesManager.hpp">
+      <Filter>Fichiers de ressources</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

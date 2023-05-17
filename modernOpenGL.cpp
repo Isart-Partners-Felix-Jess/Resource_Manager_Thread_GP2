@@ -2,6 +2,7 @@
 //
 
 //#include <iostream>
+#include <crtdbg.h>
 #include <glad/glad.h> 
 #include <GLFW/glfw3.h>
 #include <Assertion.hpp>
@@ -9,6 +10,10 @@
 
 int main()
 {
+	//Detect memory leaks
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetBreakAlloc(822); // Debugger should stop alloc nb
+
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	//In App ?
 	glfwInit();

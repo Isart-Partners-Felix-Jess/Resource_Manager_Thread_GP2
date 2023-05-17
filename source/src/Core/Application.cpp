@@ -28,6 +28,11 @@ Application::Application(int _width, int _height)
 
 Application::~Application()
 {
+	//IMGUI Destroy
+	ImGui_ImplGlfw_Shutdown();
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui::DestroyContext();
+
 	glfwDestroyWindow(window);
 }
 
@@ -44,6 +49,7 @@ void Application::Update()
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
 	}
+
 }
 
 void Application::ApplyChangeColor()
