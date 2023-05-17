@@ -7,7 +7,7 @@ class IResource
 {
 public:
 	virtual ~IResource() = default;
-	virtual void LoadResource(const char* _pathname) = 0;
+	virtual void LoadResource(const char* _name) = 0;
 	virtual void UnloadResource() = 0;
 
 	void SetResourceId(size_t _id);
@@ -24,7 +24,7 @@ protected:
 //Trying static instead of singleton, both are relevant here
 static class ResourcesManager
 {
-
+	//Unused for now
 	void LoadResource(IResource* _toLoad);
 
 public:

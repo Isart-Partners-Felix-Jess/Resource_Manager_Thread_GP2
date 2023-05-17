@@ -2,6 +2,7 @@
 #include <Model.hpp>
 
 
+//Unused for now
 void ResourcesManager::LoadResource(IResource* _toLoad)
 {
 	_toLoad->LoadResource("");

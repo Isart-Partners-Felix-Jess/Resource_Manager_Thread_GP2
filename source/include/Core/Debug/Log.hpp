@@ -24,6 +24,7 @@ class Log
 {
 private:
 	std::ofstream m_Output;
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	//Singleton part /!\ CARE: IT IS NOT THREAD SAFE
 	static Log* instance;
 	Log();

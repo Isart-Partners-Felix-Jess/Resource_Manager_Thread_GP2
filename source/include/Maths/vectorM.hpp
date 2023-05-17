@@ -3,6 +3,7 @@
 #include <cassert>
 #include <iostream>
 #include<math.h>
+#include <algorithm>
 
 template <typename T, size_t M = 3>
 class VectorM {
@@ -119,16 +120,17 @@ public:
 		return elements;
 	}
 		//Assignment
-		template<size_t N>
+	template<size_t N>
 	VectorM<T, M>& operator=(const VectorM<T, N>& other)
 	{
-		for (size_t i = 0; i < std::min(N, M); i++) {
+		//Stop condition is similar to a std::min
+		for (size_t i = 0; i < N && i<M; i++) {
 			this->elements[i] = other[i];
-			if (N < M) {
-				VectorM<T, M - N>zeros;
-				for (size_t i = N; i < M; i++) {
-					this->elements[i] = zeros[i - N];
-				}
+		}
+		if (N < M) {
+			VectorM<T, M - N>zeros;
+			for (size_t i = N; i < M; i++) {
+				this->elements[i] = zeros[i - N];
 			}
 		}
 		return *this;
