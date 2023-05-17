@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\DebugLog;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)include\LowRenderer;$(SolutionDir)\third_party\include;$(SolutionDir)\third_party\include\ImGui</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\Debug;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)include\LowRenderer;$(SolutionDir)\third_party\include;$(SolutionDir)\third_party\include\ImGui</IncludePath>
     <LibraryPath>$(SolutionDir)\third_party\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\DebugLog;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)include\LowRenderer;$(SolutionDir)\third_party\include;$(SolutionDir)\third_party\include\ImGui</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source;$(SolutionDir)source\include;$(SolutionDir)source\include\Core;$(SolutionDir)source\include\LowRenderer;$(SolutionDir)source\include\Maths;$(SolutionDir)source\include\Physics;$(SolutionDir)source\include\Core\Debug;$(SolutionDir)source\include\Core\DataStructure;$(SolutionDir)source\include\Resources;$(SolutionDir)include\LowRenderer;$(SolutionDir)\third_party\include;$(SolutionDir)\third_party\include\ImGui</IncludePath>
     <LibraryPath>$(SolutionDir)\third_party\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -171,8 +171,8 @@
     <ClInclude Include="source\include\Resources\Shader.hpp" />
     <ClInclude Include="source\include\Resources\ResourcesManager.hpp" />
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp" />
-    <ClInclude Include="source\include\Core\DebugLog\Assertion.hpp" />
-    <ClInclude Include="source\include\Core\DebugLog\Log.hpp" />
+    <ClInclude Include="source\include\Core\Debug\Assertion.hpp" />
+    <ClInclude Include="source\include\Core\Debug\Log.hpp" />
     <ClInclude Include="source\include\Physics\Transform.hpp" />
     <ClInclude Include="source\include\Resources\Texture.hpp" />
   </ItemGroup>

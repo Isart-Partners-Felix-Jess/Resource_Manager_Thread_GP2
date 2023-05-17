@@ -49,7 +49,7 @@ void Application::Update()
 void Application::ApplyChangeColor()
 {
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
-	DEBUG_LOG("New Color : %f,%f,%f"/*, m_ClearColor[0], m_ClearColor[1], m_ClearColor[2]*/);
+	DEBUG_LOG("New Clear Color : %i,%i,%i", (int)(255.f*m_ClearColor[0]), (int)(255.f*m_ClearColor[1]), (int)(255.f*m_ClearColor[2]));
 }
 void Application::ChangeColor(float _newcolor[4])
 {

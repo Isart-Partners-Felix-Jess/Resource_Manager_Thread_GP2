@@ -80,10 +80,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\include\Core\DebugLog\Log.hpp">
+    <ClInclude Include="source\include\Core\Debug\Log.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="source\include\Core\DebugLog\Assertion.hpp">
+    <ClInclude Include="source\include\Core\Debug\Assertion.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp">

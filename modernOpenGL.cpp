@@ -9,8 +9,7 @@
 
 int main()
 {
-	Log log;
-	log.OpenFile("source/include/Core/DebugLog/DebugLog.txt");
+	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	DEBUG_LOG("Test mOGL.cpp l14");
 	//In App ?
 	glfwInit();
@@ -24,8 +23,7 @@ int main()
 	 0.5f, -0.5f, 0.0f,
 	 0.0f,  0.5f, 0.0f
 	};
-
-		
+			
 	Application app(800, 600);
 	app.Update();
 
@@ -34,6 +32,7 @@ int main()
 
 	std::cout << "Program ended!\n";
 
+	Log::DeleteInstance();
 	return 0;
 }
 
