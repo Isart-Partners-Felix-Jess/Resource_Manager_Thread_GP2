@@ -10,7 +10,6 @@
 int main()
 {
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
-	DEBUG_LOG("Test mOGL.cpp l14");
 	//In App ?
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

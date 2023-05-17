@@ -1,6 +1,5 @@
 #pragma once
 #include <fstream>
-#include <string>
 #include <filesystem>
 #include <Windows.h>
 
@@ -11,7 +10,7 @@
 #define DEBUG_LOG(format,...)\
 { \
 std::ostringstream debugLogStream; \
-debugLogStream <<"DEBUG: "<< __FILENAME__ << "(" << __LINE__ << "): "; \
+debugLogStream /*<<"DEBUG: "*/<< __FILENAME__ << "(" << __LINE__ << "): "; \
 const int bufferSize = 1024;\
 char buffer[bufferSize];\
 FormatString(buffer, bufferSize, format, ##__VA_ARGS__);\
@@ -25,7 +24,7 @@ static class Log
 {
 private:
 	std::ofstream m_Output;
-	//Singleton part
+	//Singleton part /!\ CARE: IT IS NOT THREAD SAFE
 	static Log* instance;
 	Log();
 public:

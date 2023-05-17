@@ -1,0 +1,137 @@
+Log entry :Wed May 17 13:35:23 2023
+
+Test mOGL.cpp l14
+New Clear Color : 51,78,77
+New Clear Color : 51,84,77
+New Clear Color : 51,90,77
+New Clear Color : 51,102,77
+New Clear Color : 51,110,77
+New Clear Color : 51,121,77
+New Clear Color : 51,142,77
+New Clear Color : 51,158,77
+New Clear Color : 51,172,77
+New Clear Color : 51,176,77
+New Clear Color : 51,177,77
+New Clear Color : 51,178,77
+New Clear Color : 51,177,77
+New Clear Color : 51,176,77
+New Clear Color : 51,172,77
+New Clear Color : 51,166,77
+New Clear Color : 51,156,77
+New Clear Color : 51,141,77
+New Clear Color : 51,122,77
+New Clear Color : 51,96,77
+New Clear Color : 51,70,77
+New Clear Color : 51,48,77
+New Clear Color : 51,34,77
+New Clear Color : 51,28,77
+End of log entry at Wed May 17 13:35:30 2023
+
+Log entry :Wed May 17 13:42:45 2023
+
+Test mOGL.cpp l14
+End of log entry at Wed May 17 13:43:01 2023
+
+Log entry :Wed May 17 13:43:06 2023
+
+Test mOGL.cpp l14
+New Clear Color : 51,79,77
+New Clear Color : 51,91,77
+New Clear Color : 51,113,77
+New Clear Color : 51,139,77
+New Clear Color : 51,167,77
+New Clear Color : 51,187,77
+New Clear Color : 51,198,77
+New Clear Color : 51,200,77
+New Clear Color : 51,201,77
+New Clear Color : 51,199,77
+New Clear Color : 51,196,77
+New Clear Color : 51,190,77
+New Clear Color : 51,185,77
+New Clear Color : 51,178,77
+New Clear Color : 51,168,77
+New Clear Color : 51,154,77
+New Clear Color : 51,134,77
+New Clear Color : 51,108,77
+New Clear Color : 51,77,77
+New Clear Color : 51,53,77
+New Clear Color : 51,35,77
+New Clear Color : 51,25,77
+New Clear Color : 51,24,77
+New Clear Color : 51,27,77
+New Clear Color : 51,40,77
+New Clear Color : 51,63,77
+New Clear Color : 51,112,77
+New Clear Color : 51,240,77
+New Clear Color : 51,255,77
+End of log entry at Wed May 17 13:43:11 2023
+
+Log entry :Wed May 17 13:45:05 2023
+
+Test mOGL.cpp l14
+New Clear Color : 51,77,82
+New Clear Color : 51,77,90
+New Clear Color : 51,77,111
+New Clear Color : 51,77,131
+New Clear Color : 51,77,154
+New Clear Color : 51,77,175
+New Clear Color : 56,77,175
+New Clear Color : 62,77,175
+New Clear Color : 73,77,175
+New Clear Color : 82,77,175
+New Clear Color : 91,77,175
+New Clear Color : 98,77,175
+New Clear Color : 102,77,175
+New Clear Color : 103,77,175
+New Clear Color : 103,85,175
+New Clear Color : 103,105,175
+New Clear Color : 103,138,175
+New Clear Color : 103,179,175
+New Clear Color : 103,236,175
+New Clear Color : 103,255,175
+End of log entry at Wed May 17 13:45:22 2023
+
+Log entry :Wed May 17 13:51:33 2023
+
+Test mOGL.cpp l14
+End of log entry at Wed May 17 13:51:36 2023
+
+Log entry :Wed May 17 13:54:56 2023
+
+Test mOGL.cpp l14
+End of log entry at Wed May 17 13:54:59 2023
+
+Log entry :Wed May 17 13:58:15 2023
+
+Test mOGL.cpp l14
+New Clear Color : 51,77,92
+New Clear Color : 51,77,107
+New Clear Color : 51,77,123
+New Clear Color : 51,77,138
+New Clear Color : 51,77,152
+New Clear Color : 51,77,160
+New Clear Color : 51,77,167
+New Clear Color : 51,77,168
+New Clear Color : 51,77,169
+New Clear Color : 51,77,167
+New Clear Color : 51,77,155
+New Clear Color : 51,77,134
+New Clear Color : 51,77,105
+New Clear Color : 51,77,74
+New Clear Color : 51,77,42
+New Clear Color : 51,77,19
+New Clear Color : 51,77,16
+End of log entry at Wed May 17 13:58:18 2023
+
+Log entry :Wed May 17 13:58:58 2023
+
+Test mOGL.cpp l14
+New Clear Color : 51,83,77
+New Clear Color : 51,100,77
+New Clear Color : 51,117,77
+New Clear Color : 51,136,77
+New Clear Color : 51,147,77
+New Clear Color : 51,153,77
+New Clear Color : 51,156,77
+End of log entry at Wed May 17 13:59:03 2023
+
