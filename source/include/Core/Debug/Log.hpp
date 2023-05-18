@@ -19,17 +19,17 @@ Log::Print(format, ##__VA_ARGS__);\
 OutputDebugStringA(debugLogStream.str().c_str()); \
 }
 #define DEBUG_WARNING(format,...)\
-{Log::GetInstance()->WarningColor();\
+{Log::WarningColor();\
 std::ostringstream WarningLogStream;\
 WarningLogStream <<"Warning: " << format ;\
 DEBUG_LOG(WarningLogStream.str().c_str(),##__VA_ARGS__)\
-Log::GetInstance()->ResetColor();}
+Log::ResetColor();}
 #define DEBUG_ERROR(format,...)\
-{Log::GetInstance()->ErrorColor();\
+{Log::ErrorColor();\
 std::ostringstream ERRORLogStream;\
 ERRORLogStream <<"ERROR: " << format ;\
 DEBUG_LOG(ERRORLogStream.str().c_str(),##__VA_ARGS__)\
-Log::GetInstance()->ResetColor();}
+Log::ResetColor();}
 
 void FormatString(char* buffer, size_t bufferSize, const char* format, ...);
 class Log
@@ -52,9 +52,11 @@ public:
 	static void OpenFile(std::filesystem::path const& filename, bool _erase = false);
 	//Shortcut to get the instance
 	static void Print(const char* format, ...);
-	void WarningColor();
-	void ErrorColor();
-	void ResetColor();
+	static void WarningColor();
+	static void ErrorColor();
+	static void ResetColor();
+	static void SuccessColor();
+
 private:
 	void InstanceOpenFile(std::filesystem::path const& filename, bool _erase = false);
 	void InstancePrint(const char* format, va_list args);
@@ -63,6 +65,7 @@ private:
 	{
 		DEFAULT = 15,
 		YELLOWONBLACKBG = 14,
+		GREENONBLACKBG = 10,
 		// RED  BG   WHITE OFFSET
 		WHITEONREDBG = (12 * 16 + 15)
 	};

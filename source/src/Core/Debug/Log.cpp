@@ -80,15 +80,20 @@ void Log::InstancePrint(const char* format, va_list args)
 }
 void Log::ResetColor()
 {
-	SetConsoleTextAttribute(handle, 15); // texte in white (default)
+	SetConsoleTextAttribute(GetInstance()->handle, 15); // texte in white (default)
 }
+void Log::SuccessColor()
+{
+	GetInstance()->ChangeColor(Color::GREENONBLACKBG);
+}
+
 void Log::WarningColor()
 {
-	ChangeColor(Color::YELLOWONBLACKBG);
+	GetInstance()->ChangeColor(Color::YELLOWONBLACKBG);
 }
 void Log::ErrorColor()
 {
-	ChangeColor(Color::WHITEONREDBG);
+	GetInstance()->ChangeColor(Color::WHITEONREDBG);
 }
 void Log::ChangeColor(unsigned char _handleWindowsId)
 {

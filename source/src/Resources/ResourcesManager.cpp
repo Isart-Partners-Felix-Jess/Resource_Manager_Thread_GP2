@@ -1,7 +1,9 @@
 #include <ResourcesManager.hpp>
-#include <Model.hpp>
+//#include <Model.hpp>
 
-
+//Singleton
+ResourcesManager* ResourcesManager::instance = nullptr;
+	std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources;
 //Unused for now
 void ResourcesManager::LoadResource(IResource* _toLoad)
 {
@@ -10,7 +12,7 @@ void ResourcesManager::LoadResource(IResource* _toLoad)
 
 ResourcesManager::ResourcesManager()
 {
-	GetInstance();
+	instance = this->GetInstance();
 }
 
 ResourcesManager::~ResourcesManager()
@@ -30,25 +32,28 @@ void ResourcesManager::Destroy()
 	DEBUG_LOG("Resource manager cleared successfully");
 }
 
-ResourcesManager& ResourcesManager::GetInstance()
+ResourcesManager* ResourcesManager::GetInstance()
 {
 	if (instance == nullptr) {
 		instance = new ResourcesManager();
 	}
-	return *instance;
+	return instance;
 }
 
 void ResourcesManager::Delete(std::string _name)
 {
+	const char* name = _name.c_str();
 	auto it = m_Resources.find(_name);
 	if (it == m_Resources.end())
 	{
-		DEBUG_ERROR("Resource %s not found; Could not delete %s", _name, _name);
+		DEBUG_ERROR("Resource %s not found; Could not delete %s", name, name);
 		return;
 	}
 	delete m_Resources.find(_name)->second;
 	m_Resources.erase(_name);
-	DEBUG_LOG("Resource %s deleted successfully", _name);
+	Log::SuccessColor();
+	DEBUG_LOG("Resource %s deleted successfully", name);
+	Log::ResetColor();
 }
 
 void IResource::SetResourceId(size_t _id)

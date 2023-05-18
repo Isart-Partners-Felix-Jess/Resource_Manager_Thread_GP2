@@ -144,9 +144,9 @@
     <ClCompile Include="source\src\LowRenderer\Light.cpp" />
     <ClCompile Include="source\src\LowRenderer\Mesh.cpp" />
     <ClCompile Include="source\src\Resources\Model.cpp" />
+    <ClCompile Include="source\src\Resources\ResourcesManager.cpp" />
     <ClCompile Include="source\src\Resources\Scene.cpp" />
     <ClCompile Include="source\src\Resources\Shader.cpp" />
-    <ClCompile Include="source\src\Resources\ResourcesManager.cpp" />
     <ClCompile Include="source\src\Core\DataStructure\Graph.cpp" />
     <ClCompile Include="source\src\Core\Debug\Log.cpp" />
     <ClCompile Include="modernOpenGL.cpp" />

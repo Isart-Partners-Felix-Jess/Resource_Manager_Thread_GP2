@@ -14,8 +14,9 @@ class Model : public IResource
 private:
 	std::vector<Vertex> m_VertexBuffer;
 	std::vector<uint32_t> m_IndexBuffer;
-
+	~Model() override;
 public:
 	void LoadResource(const char* _name) override;
+	void UnloadResource() override;
 };
 

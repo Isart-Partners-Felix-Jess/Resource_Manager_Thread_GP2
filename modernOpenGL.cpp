@@ -18,6 +18,7 @@ int main()
 
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
+	ResourcesManager::Destroy();
 	//In App ?
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

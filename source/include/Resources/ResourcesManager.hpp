@@ -23,22 +23,23 @@ protected:
 
 class ResourcesManager
 {
+private:
 	//Unused for now
-	void LoadResource(IResource* _toLoad);
 	static ResourcesManager* instance;
+	static std::unordered_map<std::string, IResource*> m_Resources;
 	ResourcesManager();
 	~ResourcesManager();
-	void Destroy();
 public:
-	static ResourcesManager& GetInstance();
+	static ResourcesManager* GetInstance();
 	template<typename R>
 	//Maybe try to make the parameter a path...
 	static R* CreateResource(std::string _name);
 	template<typename R>
 	static R* GetResource(std::string _name);
+	static void Destroy();
 	void Delete(std::string _name);
 private:
-	std::unordered_map<std::string, IResource*> m_Resources;
+	void LoadResource(IResource* _toLoad);
 };
 
 template<typename R>
@@ -65,7 +66,7 @@ inline R* ResourcesManager::GetResource(std::string _name)
 	}
 	else
 	{
-		DEBUG_WARNING("Resource %s not found", _name)
+		DEBUG_WARNING("Resource %s not found", _name);
 		// Resource not found, return nullptr
 		return nullptr;
 	}

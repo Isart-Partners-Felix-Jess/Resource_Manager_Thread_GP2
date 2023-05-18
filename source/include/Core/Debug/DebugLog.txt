@@ -1,0 +1,140 @@
+Log entry :Fri May 19 00:03:13 2023
+
+New Clear Color : 51,77,71
+New Clear Color : 51,77,63
+New Clear Color : 51,77,55
+New Clear Color : 51,77,51
+New Clear Color : 51,77,45
+New Clear Color : 51,77,38
+New Clear Color : 51,77,34
+New Clear Color : 51,77,28
+New Clear Color : 51,77,24
+New Clear Color : 51,77,20
+New Clear Color : 51,77,17
+New Clear Color : 51,77,14
+New Clear Color : 51,77,11
+New Clear Color : 51,77,9
+New Clear Color : 51,77,7
+New Clear Color : 51,77,5
+New Clear Color : 51,77,4
+New Clear Color : 51,77,3
+New Clear Color : 51,77,2
+New Clear Color : 51,77,1
+End of log entry at Fri May 19 00:03:18 2023
+
+Log entry :Fri May 19 00:03:44 2023
+
+End of log entry at Fri May 19 00:03:48 2023
+
+Log entry :Fri May 19 00:34:08 2023
+
+Model File viking_room.obj has been opened
+Resource @Oé*‹ created, ID: 0
+End of log entry at Fri May 19 00:34:31 2023
+
+Log entry :Fri May 19 00:52:43 2023
+
+Model File viking_room.obj has been opened
+Resource p0»˝ì created, ID: 0
+Log entry :Fri May 19 00:53:27 2023
+
+Model File viking_room.obj has been opened
+Resource P-µæ created, ID: 0
+End of log entry at Fri May 19 00:53:29 2023
+
+Log entry :Fri May 19 00:55:11 2023
+
+Model File viking_room.obj has been opened
+Resource PQG…> created, ID: 0
+Resource pYG…> deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 00:55:18 2023
+
+Log entry :Fri May 19 00:57:58 2023
+
+Model File viking_room.obj has been opened
+Resource  0àE? created, ID: 0
+Resource `6àE? deleted successfully
+Resource manager cleared successfully
+Log entry :Fri May 19 01:10:02 2023
+
+Model File viking_room.obj has been opened
+Resource êVºo created, ID: 0
+Resource PUºo deleted successfully
+Resource manager cleared successfully
+Log entry :Fri May 19 01:10:45 2023
+
+Model File viking_room.obj has been opened
+Resource @.u—B created, ID: 0
+Resource ‡.u—B deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:10:49 2023
+
+Log entry :Fri May 19 01:11:17 2023
+
+ERROR: Model File lviking_room.obj opening has FAILED
+Resource 1O:Ó created, ID: 0
+Resource ê.O:Ó deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:11:19 2023
+
+Log entry :Fri May 19 01:12:35 2023
+
+Model File viking_room.obj has been opened
+Resource  5¯ﬂß created, ID: 0
+Resource  deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:12:39 2023
+
+Log entry :Fri May 19 01:12:55 2023
+
+Model File viking_room.obj has been opened
+Resource 0/ë≤/ created, ID: 0
+Resource  0ë≤/ deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:12:59 2023
+
+Log entry :Fri May 19 01:13:32 2023
+
+Model File viking_room.obj has been opened
+Resource †2Ïi¯ created, ID: 0
+Resource `1Ïi¯ deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:13:34 2023
+
+Log entry :Fri May 19 01:14:37 2023
+
+ERROR: Model File lviking_room.obj opening has FAILED
+Resource ∞i«zÍ created, ID: 0
+Resource @\«zÍ deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:14:40 2023
+
+Log entry :Fri May 19 01:16:43 2023
+
+ERROR: Model File lviking_room.obj opening has FAILED
+Resource †2/¸Ó created, ID: 0
+Resource `,/¸Ó deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:16:47 2023
+
+Log entry :Fri May 19 01:18:25 2023
+
+Model File viking_room.obj has been opened
+Resource 04Ì4 created, ID: 0
+Resource @.Ì4 deleted successfully
+Resource manager cleared successfully
+Log entry :Fri May 19 01:18:39 2023
+
+ERROR: Model File lviking_room.obj opening has FAILED
+Resource Ä/FG created, ID: 0
+Resource ∞1FG deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 19 01:18:41 2023
+
+Log entry :Fri May 19 01:21:13 2023
+
+Model File viking_room.obj has been opened
+Resource ∞6a;≥ created, ID: 0
+Resource †-a;≥ deleted successfully
+Resource manager cleared successfully

@@ -1,6 +1,11 @@
 #include <Model.hpp>
 #include <Log.hpp>
 
+Model::~Model() 
+{
+	UnloadResource();
+}
+
 void Model::LoadResource(const char* _name)
 {
 	std::fstream file;
@@ -23,4 +28,10 @@ void Model::LoadResource(const char* _name)
 	{
 		DEBUG_LOG("Model File %s has been opened",_name);
 	}
+}
+
+void Model::UnloadResource()
+{
+	m_VertexBuffer.clear();
+	m_IndexBuffer.clear();
 }
