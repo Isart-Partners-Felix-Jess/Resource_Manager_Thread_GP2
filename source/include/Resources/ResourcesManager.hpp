@@ -50,7 +50,7 @@ inline R* ResourcesManager::CreateResource(std::string _name)
 	createdResource->SetResourceId(m_Resources.size());
 	createdResource->LoadResource(_name.c_str());
 	m_Resources.emplace(_name, createdResource);
-	DEBUG_LOG("Resource %s created, ID: %i", _name, createdResource->GetResourceId());
+	DEBUG_LOG("Resource %s created, ID: %i", _name.c_str(), createdResource->GetResourceId());
 	return dynamic_cast<R*>(createdResource);
 }
 

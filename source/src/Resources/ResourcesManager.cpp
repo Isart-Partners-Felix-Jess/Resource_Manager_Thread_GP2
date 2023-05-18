@@ -25,11 +25,14 @@ void ResourcesManager::Destroy()
 {
 	for (std::pair<std::string, IResource*> pair : m_Resources)
 	{
-		DEBUG_LOG("Resource %s deleted successfully", pair.first);
+		Log::SuccessColor();
+		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
 		delete pair.second;
 	}
 	m_Resources.clear(); //Probably useless
 	DEBUG_LOG("Resource manager cleared successfully");
+	Log::ResetColor();
+
 }
 
 ResourcesManager* ResourcesManager::GetInstance()

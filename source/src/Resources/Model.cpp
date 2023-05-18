@@ -26,7 +26,9 @@ void Model::LoadResource(const char* _name)
 	}
 	if(file.is_open())
 	{
+		Log::SuccessColor();
 		DEBUG_LOG("Model File %s has been opened",_name);
+		Log::ResetColor();
 	}
 }
 
