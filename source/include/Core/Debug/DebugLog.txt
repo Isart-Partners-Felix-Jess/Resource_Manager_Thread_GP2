@@ -461,3 +461,11 @@ Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
 End of log entry at Sun May 21 20:56:43 2023
 
+Log entry :Sun May 21 21:01:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 21 21:01:09 2023
+

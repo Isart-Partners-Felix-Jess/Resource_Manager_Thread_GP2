@@ -74,6 +74,8 @@ void Model::LoadResource(const char* _name)
 				for (uint32_t idx = 0; idx < 9; idx++) //3coord x3 Vertices = 9
 				{
 					iss >> idx >> separator;
+					if (idx == '/')// ignore if no texture coord
+						continue;
 					m_IndexBuffer.push_back(idx - 1); // Vertex n°1 is at index 0
 				}
 				//Hard way:
@@ -82,7 +84,13 @@ void Model::LoadResource(const char* _name)
 				//indices.push_back(i1 - 1);  // Subtract 1 to convert to 0-based indexing
 				//indices.push_back(i2 - 1);
 				//indices.push_back(i3 - 1);
+
 			}
+			//Ask Erik : Records starting with the letter "l" (lowercase L) specify the order of the vertices which build a polyline.
+			//mtl ?
+			//o for obj name?
+			//g for groupe name?
+			//s shading
 		}
 		file.close();
 	}

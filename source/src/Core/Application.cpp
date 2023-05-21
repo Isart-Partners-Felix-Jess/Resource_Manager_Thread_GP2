@@ -130,6 +130,7 @@ void Application::StartImGuiFrame()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 }
+//same with mouse position
 void Application::NewFrame(bool mouseCaptured)
 {
 	glfwPollEvents();
