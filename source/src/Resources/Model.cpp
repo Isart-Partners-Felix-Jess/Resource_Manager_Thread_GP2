@@ -8,7 +8,7 @@ Model::~Model()
 
 void Model::LoadResource(const char* _name)
 {
-	std::fstream file;
+	std::ifstream file;
 	std::filesystem::path path = "assets/meshes/";
 	path += _name;
 	file.open(path);
@@ -16,13 +16,13 @@ void Model::LoadResource(const char* _name)
 	//m_ResourcePath = path.generic_string();
 	if (file.bad())
 	{
-		DEBUG_WARNING("Model File %s is BAD", _name);
+		DEBUG_ERROR("Model File %s is BAD", _name);
 		file.close();
 		return;
 	}
 	if (file.fail())
 	{
-		DEBUG_ERROR("Model File %s opening has FAILED", _name);
+		DEBUG_WARNING("Model File %s opening has FAILED", _name);
 		file.close();
 		return;
 	}

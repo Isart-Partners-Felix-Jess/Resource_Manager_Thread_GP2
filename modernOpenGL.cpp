@@ -20,17 +20,9 @@ int main()
 	ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
 	//In App ?
 
-
-	float vertices[] = {
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.0f,  0.5f, 0.0f
-	};
-			
 	Application app(800, 600);
 	app.Update();
 
-	//In App ?
 
 	std::cout << "Program ended!\n";
 

@@ -19,11 +19,14 @@ private:
 	void Render(GLFWwindow* window);
 	void ApplyChangeColor();
 
+	//LearnOpenGl
+	void VBOtest();
+
 public:
 	Application();
 	Application(int _width, int _height);
 	~Application();
-
+	
 	void Update();
 	//Not so useful function TBH, just use glClearColor
 	void ChangeColor(float _newcolor[4]);

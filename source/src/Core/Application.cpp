@@ -3,6 +3,7 @@
 #include <ImGui/imgui.h>
 #include <ImGui/imgui_impl_glfw.h>
 #include <ImGui/imgui_impl_opengl3.h>
+#include <Shader.hpp>
 
 Application::Application() :Application(800, 600)
 {
@@ -26,6 +27,7 @@ Application::Application(int _width, int _height)
 	glfwMakeContextCurrent(window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
 
+	VBOtest();
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -50,8 +52,8 @@ void Application::Update()
 		glfwPollEvents();
 		StartImGuiFrame();
 		processInput(window);
-		if(m_ShowControls)
-		ShowImGuiControls();
+		if (m_ShowControls)
+			ShowImGuiControls();
 		Render(window);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
@@ -62,7 +64,35 @@ void Application::Update()
 void Application::ApplyChangeColor()
 {
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
-	DEBUG_LOG("New Clear Color : %i,%i,%i", (int)(255.f*m_ClearColor[0]), (int)(255.f*m_ClearColor[1]), (int)(255.f*m_ClearColor[2]));
+	DEBUG_LOG("New Clear Color : %i,%i,%i", (int)(255.f * m_ClearColor[0]), (int)(255.f * m_ClearColor[1]), (int)(255.f * m_ClearColor[2]));
+}
+//VertexBufferOutput
+void Application::VBOtest()
+{
+	float vertices[] = {
+-0.5f, -0.5f, 0.0f,
+ 0.5f, -0.5f, 0.0f,
+ 0.0f,  0.5f, 0.0f
+	};
+
+	unsigned int VBO;
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	Shader shadtest;
+	shadtest.LoadResource("assets/shaders/basic");
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	// 0. copy our vertices array in a buffer for OpenGL to use
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	// 1. then set the vertex attributes pointers
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	// 2. use our shader program when we want to render an object
+	shadtest.Use();
+	// 3. now draw the object 
+	//someOpenGLFunctionThatDrawsOurTriangle();
 }
 void Application::ChangeColor(float _newcolor[4])
 {
@@ -75,10 +105,10 @@ void Application::ShowImGuiControls()
 {
 	if (ImGui::Begin("Config"))
 	{
-	ImGui::Text("'S' + 'C' Keys to hide/show controls");
+		ImGui::Text("'S' + 'C' Keys to hide/show controls");
 		if (ImGui::CollapsingHeader("Framebuffer", ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			if(ImGui::ColorEdit4("clearColor", m_ClearColor))
+			if (ImGui::ColorEdit4("clearColor", m_ClearColor))
 				ApplyChangeColor();
 
 		}
@@ -93,7 +123,7 @@ void Application::processInput(GLFWwindow* _window)
 
 	if (glfwGetKey(_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(_window, true);
-	if ((glfwGetKey(_window, GLFW_KEY_S) & glfwGetKey(_window, GLFW_KEY_C)) == GLFW_PRESS && (glfwGetTime() - s_LastPressed)> timeToApply)
+	if ((glfwGetKey(_window, GLFW_KEY_S) & glfwGetKey(_window, GLFW_KEY_C)) == GLFW_PRESS && (glfwGetTime() - s_LastPressed) > timeToApply)
 	{
 		s_LastPressed = glfwGetTime();
 		m_ShowControls = !m_ShowControls;

@@ -118,5 +118,12 @@
     <ClInclude Include="source\include\Resources\ResourcesManager.hpp">
       <Filter>Fichiers de ressources</Filter>
     </ClInclude>
+    <ClInclude Include="source\include\Core\Application\Application.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\basic.frag" />
+    <None Include="assets\shaders\basic.vert" />
   </ItemGroup>
 </Project>
