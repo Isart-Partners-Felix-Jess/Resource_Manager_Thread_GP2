@@ -150,3 +150,314 @@ Model File viking_room.obj has been opened
 Resource viking_room.obj created, ID: 0
 Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
+Log entry :Fri May 19 22:27:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+New Clear Color : 51,80,77
+New Clear Color : 51,100,77
+New Clear Color : 51,102,77
+New Clear Color : 51,107,77
+New Clear Color : 51,108,77
+New Clear Color : 51,112,77
+New Clear Color : 51,113,77
+New Clear Color : 51,116,77
+New Clear Color : 51,118,77
+New Clear Color : 51,119,77
+New Clear Color : 51,120,77
+New Clear Color : 51,122,77
+New Clear Color : 51,123,77
+New Clear Color : 51,124,77
+New Clear Color : 51,125,77
+New Clear Color : 51,126,77
+New Clear Color : 51,127,77
+New Clear Color : 51,128,77
+New Clear Color : 51,130,77
+New Clear Color : 51,131,77
+New Clear Color : 51,133,77
+New Clear Color : 51,135,77
+New Clear Color : 51,136,77
+New Clear Color : 51,137,77
+New Clear Color : 51,138,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 51,139,77
+New Clear Color : 59,139,77
+New Clear Color : 76,139,77
+New Clear Color : 84,139,77
+New Clear Color : 88,139,77
+New Clear Color : 94,139,77
+New Clear Color : 104,139,77
+New Clear Color : 111,139,77
+New Clear Color : 114,139,77
+New Clear Color : 116,139,77
+New Clear Color : 117,139,77
+New Clear Color : 119,139,77
+New Clear Color : 120,139,77
+New Clear Color : 121,139,77
+New Clear Color : 125,139,77
+New Clear Color : 127,139,77
+New Clear Color : 129,139,77
+New Clear Color : 130,139,77
+New Clear Color : 145,139,77
+New Clear Color : 159,139,77
+New Clear Color : 186,139,77
+New Clear Color : 210,139,77
+New Clear Color : 224,139,77
+New Clear Color : 238,139,77
+New Clear Color : 246,139,77
+New Clear Color : 246,138,76
+New Clear Color : 246,138,76
+New Clear Color : 245,137,75
+New Clear Color : 243,137,75
+New Clear Color : 242,136,74
+New Clear Color : 241,135,74
+New Clear Color : 240,134,74
+New Clear Color : 238,134,73
+New Clear Color : 238,134,73
+New Clear Color : 238,134,73
+New Clear Color : 238,134,73
+New Clear Color : 237,133,73
+New Clear Color : 236,132,72
+New Clear Color : 235,132,72
+New Clear Color : 233,131,72
+New Clear Color : 232,130,71
+New Clear Color : 231,130,71
+New Clear Color : 230,129,71
+New Clear Color : 228,128,70
+New Clear Color : 227,127,70
+New Clear Color : 226,127,69
+New Clear Color : 225,126,69
+New Clear Color : 223,125,69
+New Clear Color : 222,125,68
+New Clear Color : 221,124,68
+New Clear Color : 221,125,69
+New Clear Color : 220,124,69
+New Clear Color : 218,123,68
+New Clear Color : 217,122,68
+New Clear Color : 216,122,67
+New Clear Color : 215,121,67
+New Clear Color : 213,120,67
+New Clear Color : 212,120,66
+New Clear Color : 213,118,66
+New Clear Color : 213,114,66
+New Clear Color : 213,111,66
+New Clear Color : 213,108,66
+New Clear Color : 213,104,66
+New Clear Color : 213,108,66
+New Clear Color : 213,111,66
+New Clear Color : 213,114,66
+New Clear Color : 213,118,66
+New Clear Color : 213,121,66
+New Clear Color : 213,125,66
+New Clear Color : 213,128,66
+New Clear Color : 213,135,66
+New Clear Color : 213,132,66
+New Clear Color : 213,128,66
+New Clear Color : 213,125,66
+New Clear Color : 213,121,66
+New Clear Color : 213,125,66
+New Clear Color : 213,128,66
+New Clear Color : 213,132,66
+New Clear Color : 213,70,66
+New Clear Color : 213,108,66
+New Clear Color : 2,108,67
+New Clear Color : 25,108,67
+New Clear Color : 250,108,67
+New Clear Color : 250,108,66
+New Clear Color : 250,108,65
+New Clear Color : 250,108,64
+New Clear Color : 250,108,63
+New Clear Color : 250,108,62
+New Clear Color : 250,108,61
+New Clear Color : 250,108,60
+New Clear Color : 250,108,58
+New Clear Color : 250,108,57
+New Clear Color : 250,108,56
+New Clear Color : 250,108,54
+New Clear Color : 250,108,53
+New Clear Color : 250,108,52
+New Clear Color : 250,108,51
+New Clear Color : 250,108,50
+New Clear Color : 250,108,48
+New Clear Color : 250,108,47
+New Clear Color : 250,108,46
+New Clear Color : 250,108,45
+New Clear Color : 250,108,44
+New Clear Color : 250,108,43
+New Clear Color : 250,108,42
+New Clear Color : 250,108,40
+New Clear Color : 250,108,37
+New Clear Color : 250,108,35
+New Clear Color : 250,108,36
+New Clear Color : 250,108,37
+New Clear Color : 250,108,38
+New Clear Color : 250,108,39
+New Clear Color : 250,108,40
+New Clear Color : 250,108,41
+New Clear Color : 250,108,42
+New Clear Color : 250,108,43
+New Clear Color : 250,108,44
+New Clear Color : 250,108,45
+New Clear Color : 250,108,46
+New Clear Color : 250,108,52
+New Clear Color : 250,108,54
+New Clear Color : 250,108,56
+New Clear Color : 250,108,57
+New Clear Color : 250,108,58
+New Clear Color : 250,108,59
+New Clear Color : 250,108,60
+New Clear Color : 250,108,61
+New Clear Color : 250,108,62
+New Clear Color : 250,108,63
+New Clear Color : 250,108,64
+New Clear Color : 250,108,65
+New Clear Color : 250,108,66
+New Clear Color : 250,108,67
+New Clear Color : 250,108,71
+New Clear Color : 250,108,74
+New Clear Color : 250,108,75
+New Clear Color : 250,108,74
+New Clear Color : 250,108,72
+New Clear Color : 250,108,71
+New Clear Color : 250,108,69
+New Clear Color : 250,108,68
+New Clear Color : 250,108,67
+New Clear Color : 250,106,67
+New Clear Color : 250,103,67
+New Clear Color : 250,101,67
+New Clear Color : 250,100,67
+New Clear Color : 250,99,67
+New Clear Color : 250,98,67
+New Clear Color : 250,97,67
+New Clear Color : 250,96,67
+New Clear Color : 250,95,67
+New Clear Color : 250,91,67
+New Clear Color : 250,89,67
+New Clear Color : 250,90,67
+New Clear Color : 250,91,67
+New Clear Color : 250,92,67
+New Clear Color : 250,93,67
+New Clear Color : 250,94,67
+New Clear Color : 250,95,67
+New Clear Color : 250,97,67
+New Clear Color : 250,98,67
+New Clear Color : 250,99,67
+New Clear Color : 250,100,67
+New Clear Color : 250,101,67
+New Clear Color : 250,102,67
+New Clear Color : 250,103,67
+New Clear Color : 250,104,67
+New Clear Color : 250,105,67
+New Clear Color : 250,107,67
+New Clear Color : 250,108,67
+New Clear Color : 250,110,67
+New Clear Color : 250,111,67
+New Clear Color : 250,112,67
+New Clear Color : 250,111,67
+New Clear Color : 250,110,67
+New Clear Color : 250,108,67
+New Clear Color : 250,107,67
+New Clear Color : 250,106,67
+New Clear Color : 250,105,67
+New Clear Color : 250,104,67
+New Clear Color : 250,103,67
+New Clear Color : 250,102,67
+New Clear Color : 250,101,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+New Clear Color : 250,100,67
+End of log entry at Fri May 19 22:30:19 2023
+
+Log entry :Sun May 21 20:21:58 2023
+
+Model File viking_room.obj has been opened
+Log entry :Sun May 21 20:24:04 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 21 20:24:30 2023
+
+Log entry :Sun May 21 20:25:52 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Log entry :Sun May 21 20:25:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Log entry :Sun May 21 20:27:03 2023
+
+Model File viking_room.obj has been opened
+Log entry :Sun May 21 20:56:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+New Clear Color : 51,77,79
+New Clear Color : 51,77,85
+New Clear Color : 51,77,88
+New Clear Color : 51,77,90
+New Clear Color : 51,77,92
+New Clear Color : 51,77,93
+New Clear Color : 51,77,95
+New Clear Color : 51,77,96
+New Clear Color : 51,77,97
+New Clear Color : 51,77,98
+New Clear Color : 51,77,99
+New Clear Color : 51,77,100
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 21 20:56:43 2023
+

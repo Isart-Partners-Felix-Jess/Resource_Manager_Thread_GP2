@@ -10,6 +10,12 @@ Application::Application() :Application(800, 600)
 
 Application::Application(int _width, int _height)
 {
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
 	window = glfwCreateWindow(_width, _height, "Pipeline", NULL, NULL);
 	if (window == NULL)
 	{
@@ -34,6 +40,7 @@ Application::~Application()
 	ImGui::DestroyContext();
 
 	glfwDestroyWindow(window);
+	glfwTerminate();
 }
 
 void Application::Update()

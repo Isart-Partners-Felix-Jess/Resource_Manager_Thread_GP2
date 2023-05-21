@@ -18,13 +18,8 @@ int main()
 
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
-	ResourcesManager::Destroy();
 	//In App ?
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
 
 	float vertices[] = {
 	-0.5f, -0.5f, 0.0f,
@@ -36,10 +31,10 @@ int main()
 	app.Update();
 
 	//In App ?
-	glfwTerminate();
 
 	std::cout << "Program ended!\n";
 
+	ResourcesManager::Destroy();
 	Log::DeleteInstance();
 	return 0;
 }

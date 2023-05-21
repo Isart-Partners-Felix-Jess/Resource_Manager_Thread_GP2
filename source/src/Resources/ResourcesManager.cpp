@@ -3,7 +3,9 @@
 
 //Singleton
 ResourcesManager* ResourcesManager::instance = nullptr;
-	std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources;
+std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources; //Erik: Necessary ?
+
+
 //Unused for now
 void ResourcesManager::LoadResource(IResource* _toLoad)
 {
@@ -23,16 +25,16 @@ ResourcesManager::~ResourcesManager()
 
 void ResourcesManager::Destroy()
 {
+	Log::SuccessColor();
 	for (std::pair<std::string, IResource*> pair : m_Resources)
 	{
-		Log::SuccessColor();
 		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
+		pair.second->UnloadResource();
 		delete pair.second;
 	}
 	m_Resources.clear(); //Probably useless
 	DEBUG_LOG("Resource manager cleared successfully");
 	Log::ResetColor();
-
 }
 
 ResourcesManager* ResourcesManager::GetInstance()
