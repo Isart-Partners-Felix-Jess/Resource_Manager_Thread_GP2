@@ -2,6 +2,8 @@
 #include <glad/glad.h> 
 #include <GLFW/glfw3.h>
 #include <Assertion.hpp>
+class Shader;
+
 class Application
 {
 private:
@@ -20,7 +22,11 @@ private:
 	void ApplyChangeColor();
 
 	//LearnOpenGl
-	void VBOtest();
+	void Shadertest();
+	void EBOtest();
+	int VBOtest(unsigned int& _VBOid, Shader& _shader);
+	int VAOtest(unsigned int& _VBOid);
+
 
 public:
 	Application();

@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\src\Core\Application.cpp" />
+    <ClCompile Include="source\src\Core\Application\Application.cpp" />
     <ClCompile Include="source\src\LowRenderer\Camera.cpp" />
     <ClCompile Include="source\src\LowRenderer\Light.cpp" />
     <ClCompile Include="source\src\LowRenderer\Mesh.cpp" />
@@ -169,8 +169,11 @@
     <ClInclude Include="source\include\Resources\ResourcesManager.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\basic.frag" />
+    <None Include="assets\shaders\basic.frag">
+      <FileType>Document</FileType>
+    </None>
     <None Include="assets\shaders\basic.vert" />
+    <None Include="assets\shaders\yellow.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

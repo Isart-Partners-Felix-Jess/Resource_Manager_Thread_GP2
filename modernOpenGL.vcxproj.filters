@@ -45,7 +45,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\src\Core\Application.cpp">
+    <ClCompile Include="source\src\Core\Application\Application.cpp">
       <Filter>Fichiers d%27en-tête\Core</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Physics\Transform.cpp">
@@ -123,7 +123,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\basic.frag" />
     <None Include="assets\shaders\basic.vert" />
+    <None Include="assets\shaders\yellow.frag" />
+    <None Include="assets\shaders\basic.frag" />
   </ItemGroup>
 </Project>

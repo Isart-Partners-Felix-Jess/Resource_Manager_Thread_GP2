@@ -14,6 +14,7 @@ private:
 public:
 	Shader();
 	~Shader();
+	uint32_t GetShaderProgram();
 	bool SetVertexShader(std::filesystem::path const& filename);
 	bool SetFragmentShader(std::filesystem::path const& filename);
 	bool Link();

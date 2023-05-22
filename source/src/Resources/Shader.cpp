@@ -14,6 +14,10 @@ Shader::~Shader()
 {
 	UnloadResource();
 }
+uint32_t Shader::GetShaderProgram()
+{
+	return m_ShaderProgram;
+}
 bool Shader::SetVertexShader(std::filesystem::path const& filename)
 {
 	std::ifstream file;
@@ -84,7 +88,7 @@ bool Shader::SetFragmentShader(std::filesystem::path const& filename)
 bool Shader::Link()
 {
 	m_ShaderProgram = glCreateProgram();
-	glAttachShader(m_ShaderProgram, m_FragmentShader);
+	glAttachShader(m_ShaderProgram, m_VertexShader);
 	glAttachShader(m_ShaderProgram, m_FragmentShader);
 	glLinkProgram(m_ShaderProgram);
 	int success;
@@ -96,7 +100,7 @@ bool Shader::Link()
 		DEBUG_ERROR("SHADER::LINK::COMPILATION_FAILED\n" << infoLog);
 	}
 	else
-		UnloadResource(); //Maybe you delete in any case
+		//UnloadResource(); //Maybe you delete in any case
 	return success;
 }
 

@@ -5,6 +5,13 @@
 #include <ImGui/imgui_impl_opengl3.h>
 #include <Shader.hpp>
 
+//TODO: DELETE THIS !!!!!!
+unsigned int EBO;
+unsigned int VAO;
+unsigned int VBO;
+Shader shadbasic;
+Shader shadyellow;
+
 Application::Application() :Application(800, 600)
 {
 }
@@ -26,8 +33,7 @@ Application::Application(int _width, int _height)
 	}
 	glfwMakeContextCurrent(window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
-
-	VBOtest();
+	Shadertest();
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -36,6 +42,12 @@ Application::Application(int _width, int _height)
 
 Application::~Application()
 {
+	glDeleteVertexArrays(1, &VAO);
+glDeleteBuffers(1, &VBO);
+glDeleteBuffers(1, &EBO);
+glDeleteProgram(shadbasic.GetShaderProgram());
+glDeleteProgram(shadyellow.GetShaderProgram());
+
 	//IMGUI Destroy
 	ImGui_ImplGlfw_Shutdown();
 	ImGui_ImplOpenGL3_Shutdown();
@@ -58,7 +70,6 @@ void Application::Update()
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
 	}
-
 }
 
 void Application::ApplyChangeColor()
@@ -66,33 +77,96 @@ void Application::ApplyChangeColor()
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 	DEBUG_LOG("New Clear Color : %i,%i,%i", (int)(255.f * m_ClearColor[0]), (int)(255.f * m_ClearColor[1]), (int)(255.f * m_ClearColor[2]));
 }
-//VertexBufferOutput
-void Application::VBOtest()
+void Application::Shadertest()
 {
 	float vertices[] = {
--0.5f, -0.5f, 0.0f,
- 0.5f, -0.5f, 0.0f,
- 0.0f,  0.5f, 0.0f
+		// positions         // colors
+		 0.5f,  0.5f, 0.0f,	 1.0f, 0.0f, 1.0f,
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+		 0.0f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
+	};
+	unsigned int indices[] = {  // note that we start from 0!
+	0, 1, 3,   // first triangle
+	1, 2, 3    // second triangle
+	};
+	VAO = VAOtest(VBO);
+	VBOtest(VBO, shadbasic);
+	shadbasic.LoadResource("assets/shaders/basic");
+	shadyellow.SetFragmentShader("assets/shaders/yellow.frag");
+	shadyellow.SetVertexShader("assets/shaders/basic.vert");
+	shadyellow.Link();
+	//Render part
+	shadbasic.Use();
+	//shadyellow.Use();
+	glBindVertexArray(VAO);
+	
+}
+//ElementsBufferOutput
+void Application::EBOtest()
+{
+	unsigned int indices[] = {  // note that we start from 0!
+0, 1, 3,   // first triangle
+1, 2, 3    // second triangle
+	};
+	glGenBuffers(1, &EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+}
+//VertexBufferOutput
+int Application::VBOtest(unsigned int& _VBOid, Shader& _shader)
+{
+	float vertices[] = {
+		// positions         // colors
+		 0.5f,  0.5f, 0.0f,	 0.0f, 1.0f, 0.0f,
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f    // top 
+	};
+	unsigned int indices[] = {  // note that we start from 0!
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
 	};
 
-	unsigned int VBO;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glGenBuffers(1, &_VBOid);
+	glBindBuffer(GL_ARRAY_BUFFER, _VBOid);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	Shader shadtest;
-	shadtest.LoadResource("assets/shaders/basic");
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	//_shader.LoadResource("assets/shaders/basic");
+		// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	// color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(0);
-	// 0. copy our vertices array in a buffer for OpenGL to use
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glEnableVertexAttribArray(1);
+	return _VBOid;
+}
+//VertexArrayOutput
+int Application::VAOtest(unsigned int& _VBOid)
+{
+	float vertices[] = {
+		// positions         // colors
+		 0.5f,  0.5f, 0.0f,	 0.0f, 0.0f, 1.0f,
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f    // top 
+	};
+
+	unsigned int VAO;
+	glGenVertexArrays(1, &VAO);
+	// 1. bind Vertex Array Object
+	glBindVertexArray(VAO);
+	// 2. copy our vertices array in a buffer for OpenGL to use
+	glBindBuffer(GL_ARRAY_BUFFER, VAO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	// 1. then set the vertex attributes pointers
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	// 3. then set our vertex attributes pointers
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	// color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	EBOtest();
 	glEnableVertexAttribArray(0);
-	// 2. use our shader program when we want to render an object
-	shadtest.Use();
-	// 3. now draw the object 
-	//someOpenGLFunctionThatDrawsOurTriangle();
+	glEnableVertexAttribArray(1);
+	return VAO;
 }
 void Application::ChangeColor(float _newcolor[4])
 {
@@ -172,13 +246,29 @@ void Application::NewFrame(bool mouseCaptured)
 }
 void Application::Render(GLFWwindow* window)
 {
+
 	ImGui::Render();
 	//UpdateGlFrameBuffer(window);
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+	//OpenGL test part
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	float timeValue = glfwGetTime();
+	float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+	//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");
+	shadbasic.Use();
+	//glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	
+	//shadyellow.Use();
+	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+	//
+
 	GLFWwindow* ctxBackup = glfwGetCurrentContext();
 	ImGui::UpdatePlatformWindows();
 	ImGui::RenderPlatformWindowsDefault();
 	glfwMakeContextCurrent(ctxBackup);
+
 }
