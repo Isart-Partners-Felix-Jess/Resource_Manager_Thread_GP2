@@ -95,11 +95,11 @@ void Log::ErrorColor()
 {
 	GetInstance()->ChangeColor(Color::WHITEONREDBG);
 }
-void Log::ChangeColor(unsigned char _handleWindowsId)
+void Log::ChangeColor(unsigned char _handleWindowsId) const
 {
 	SetConsoleTextAttribute(handle, _handleWindowsId);
 }
-void Log::ChangeColor(Color _handleWindowsId)
+void Log::ChangeColor(Color _handleWindowsId) const
 {
 	SetConsoleTextAttribute(handle, (WORD)_handleWindowsId);
 }

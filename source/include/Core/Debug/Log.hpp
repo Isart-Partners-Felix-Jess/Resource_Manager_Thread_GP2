@@ -60,7 +60,7 @@ public:
 private:
 	void InstanceOpenFile(std::filesystem::path const& filename, bool _erase = false);
 	void InstancePrint(const char* format, va_list args);
-	void ChangeColor(unsigned char _handleWindowsId);
+	void ChangeColor(unsigned char _handleWindowsId) const;
 	enum class Color : unsigned char
 	{
 		DEFAULT = 15,
@@ -69,5 +69,5 @@ private:
 		// RED  BG   WHITE OFFSET
 		WHITEONREDBG = (12 * 16 + 15)
 	};
-	void ChangeColor(Color _handleWindowsId);
+	void ChangeColor(Color _handleWindowsId) const;
 };

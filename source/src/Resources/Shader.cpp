@@ -3,18 +3,25 @@
 #include <glad/glad.h>
 
 
-// Initializing the static member variable
-//unsigned int Shader::s_m_TotalShaderNumber = 0;
 Shader::Shader()
 {
 	s_m_TotalShaderNumber++;
 	m_ShaderProgram = s_m_TotalShaderNumber;
 }
+
+// Initializing the static member variable
+//unsigned int Shader::s_m_TotalShaderNumber = 0;
+Shader::Shader(const char* vertexPath, const char* fragmentPath) : Shader()
+{
+	SetVertexShader(vertexPath);
+	SetFragmentShader(fragmentPath);
+	Link();
+}
 Shader::~Shader()
 {
 	UnloadResource();
 }
-uint32_t Shader::GetShaderProgram()
+uint32_t Shader::GetShaderProgram() const
 {
 	return m_ShaderProgram;
 }
@@ -99,8 +106,7 @@ bool Shader::Link()
 		glGetProgramInfoLog(m_ShaderProgram, 512, NULL, infoLog);
 		DEBUG_ERROR("SHADER::LINK::COMPILATION_FAILED\n" << infoLog);
 	}
-	else
-		//UnloadResource(); //Maybe you delete in any case
+	UnloadResource(); //Maybe you delete in any case
 	return success;
 }
 
@@ -121,5 +127,24 @@ void Shader::UnloadResource()
 void Shader::Use()
 {
 	glUseProgram(m_ShaderProgram);
+}
+
+void Shader::setBool(const std::string& name, bool value) const
+{
+	//Should always work, if not change this to int
+	bool valueLocation = static_cast<bool>(glGetUniformLocation(m_ShaderProgram, name.c_str()));
+	glUniform1i(valueLocation, value);
+}
+
+void Shader::setInt(const std::string& name, int value) const
+{
+	int valueLocation = glGetUniformLocation(m_ShaderProgram, name.c_str());
+	glUniform1i(valueLocation, value);
+}
+
+void Shader::setFloat(const std::string& name, float value) const
+{
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, name.c_str());
+	glUniform1f(valueLocation, value);
 }
 
