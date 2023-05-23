@@ -822,3 +822,685 @@ Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
 End of log entry at Tue May 23 09:46:12 2023
 
+Log entry :Tue May 23 10:17:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 10:17:04 2023
+
+Log entry :Tue May 23 10:17:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 10:43:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 10:43:25 2023
+
+Log entry :Tue May 23 11:12:36 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:12:39 2023
+
+Log entry :Tue May 23 11:16:04 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:16:13 2023
+
+Log entry :Tue May 23 11:17:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:17:55 2023
+
+Log entry :Tue May 23 11:18:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:18:33 2023
+
+Log entry :Tue May 23 11:23:24 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:25:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:26:08 2023
+
+Log entry :Tue May 23 11:28:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:28:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:29:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:30:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:30:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:31:03 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:31:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:31:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:32:05 2023
+
+Log entry :Tue May 23 11:32:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:32:21 2023
+
+Log entry :Tue May 23 11:32:41 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:32:45 2023
+
+Log entry :Tue May 23 11:33:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:33:27 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 11:33:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:33:46 2023
+
+Log entry :Tue May 23 11:34:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:34:22 2023
+
+Log entry :Tue May 23 11:35:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 11:35:49 2023
+
+Log entry :Tue May 23 12:04:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 12:04:35 2023
+
+Log entry :Tue May 23 12:05:26 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 12:05:29 2023
+
+Log entry :Tue May 23 12:06:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 12:06:26 2023
+
+Log entry :Tue May 23 12:06:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 12:08:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 12:08:21 2023
+
+Log entry :Tue May 23 12:10:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Failed to load Texture container.jpg
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 12:10:59 2023
+
+Log entry :Tue May 23 12:11:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 12:12:35 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Failed to load Texture container.jpg
+Log entry :Tue May 23 12:13:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 12:14:02 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:04:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:05:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:05:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:06:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:07:43 2023
+
+Log entry :Tue May 23 13:09:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:10:11 2023
+
+Log entry :Tue May 23 13:10:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:10:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:11:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:11:17 2023
+
+Log entry :Tue May 23 13:12:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:13:02 2023
+
+Log entry :Tue May 23 13:13:13 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 13:14:13 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:14:16 2023
+
+Log entry :Tue May 23 13:33:21 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Failed to load Texture awesomeface.jpg
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:33:26 2023
+
+Log entry :Tue May 23 13:36:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Failed to load Texture awesomeface.jpg
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:36:14 2023
+
+Log entry :Tue May 23 13:43:11 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:45:50 2023
+
+Log entry :Tue May 23 13:46:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:46:55 2023
+
+Log entry :Tue May 23 13:47:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:47:19 2023
+
+Log entry :Tue May 23 13:47:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:48:01 2023
+
+Log entry :Tue May 23 13:49:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:49:49 2023
+
+Log entry :Tue May 23 13:50:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:50:14 2023
+
+Log entry :Tue May 23 13:50:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:50:56 2023
+
+Log entry :Tue May 23 13:51:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:51:17 2023
+
+Log entry :Tue May 23 13:51:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:52:23 2023
+
+Log entry :Tue May 23 13:53:26 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:53:32 2023
+
+Log entry :Tue May 23 13:54:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:54:26 2023
+
+Log entry :Tue May 23 13:54:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:55:00 2023
+
+Log entry :Tue May 23 13:59:36 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 13:59:40 2023
+
+Log entry :Tue May 23 14:01:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:01:42 2023
+
+Log entry :Tue May 23 14:03:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 14:05:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 14:06:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:06:58 2023
+
+Log entry :Tue May 23 14:07:08 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:07:27 2023
+
+Log entry :Tue May 23 14:15:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:33:41 2023
+
+Log entry :Tue May 23 14:43:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:43:05 2023
+
+Log entry :Tue May 23 14:43:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER::VERTEX::COMPILATION_FAILED
+0(9) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(13) : error C1020: invalid operands to "*"
+
+ERROR: SHADER::LINK::COMPILATION_FAILED
+Vertex info
+-----------
+0(9) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(13) : error C1020: invalid operands to "*"
+(0) : error C2003: incompatible options for link
+
+ERROR: SHADER::VERTEX::COMPILATION_FAILED
+0(9) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(13) : error C1020: invalid operands to "*"
+
+ERROR: SHADER::LINK::COMPILATION_FAILED
+Vertex info
+-----------
+0(9) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(13) : error C1020: invalid operands to "*"
+(0) : error C2003: incompatible options for link
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:43:39 2023
+
+Log entry :Tue May 23 14:43:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 14:44:00 2023
+
+Log entry :Tue May 23 14:55:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 15:04:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:04:27 2023
+
+Log entry :Tue May 23 15:04:35 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:04:43 2023
+
+Log entry :Tue May 23 15:05:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:05:24 2023
+
+Log entry :Tue May 23 15:09:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Tue May 23 15:09:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:09:49 2023
+
+Log entry :Tue May 23 15:10:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:10:55 2023
+
+Log entry :Tue May 23 15:11:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:11:05 2023
+
+Log entry :Tue May 23 15:11:30 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:11:47 2023
+
+Log entry :Tue May 23 15:14:24 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:14:27 2023
+
+Log entry :Tue May 23 15:16:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:16:29 2023
+
+Log entry :Tue May 23 15:21:35 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:22:13 2023
+
+Log entry :Tue May 23 15:22:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:22:51 2023
+
+Log entry :Tue May 23 15:23:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:23:14 2023
+
+Log entry :Tue May 23 15:23:30 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:23:34 2023
+
+Log entry :Tue May 23 15:23:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:24:21 2023
+
+Log entry :Tue May 23 15:24:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:24:54 2023
+
+Log entry :Tue May 23 15:25:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:25:47 2023
+
+Log entry :Tue May 23 15:26:06 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:26:14 2023
+
+Log entry :Tue May 23 15:26:26 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:26:31 2023
+
+Log entry :Tue May 23 15:26:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:27:06 2023
+
+Log entry :Tue May 23 15:28:08 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:28:13 2023
+
+Log entry :Tue May 23 15:28:24 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:28:43 2023
+
+Log entry :Tue May 23 15:32:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:32:24 2023
+
+Log entry :Tue May 23 15:32:41 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:32:54 2023
+
+Log entry :Tue May 23 15:33:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Tue May 23 15:34:06 2023
+

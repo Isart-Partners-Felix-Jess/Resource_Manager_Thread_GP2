@@ -366,5 +366,12 @@ public:
 	float& Y() { return elements[1]; };
 	float& Z() { return elements[2]; };
 	float& W() { return elements[3]; };
+	Vector4<T>& operator=(const VectorM<T, 4>& other)
+	{
+		for (size_t i = 0; i < 4; ++i) {
+			elements[i] = other[i];
+		}
+		return *this;
+	}
 };
 typedef Vector4<float> Vectorf4;

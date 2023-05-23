@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef MODEL_H
+#define MODEL_H
+
 #include <vectorM.hpp>
 #include <vector>
 #include <ResourcesManager.hpp>
@@ -19,4 +23,4 @@ public:
 	void LoadResource(const char* _name) override;
 	void UnloadResource() override;
 };
-
+#endif // MODEL_H

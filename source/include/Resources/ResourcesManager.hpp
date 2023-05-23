@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef RESSOURCESMANAGER_H
+#define RESSOURCESMANAGER_H
+
 #include <string>
 #include <unordered_map>
 #include <Log.hpp>
@@ -71,3 +75,4 @@ inline R* ResourcesManager::GetResource(std::string _name)
 		return nullptr;
 	}
 }
+#endif //RESSOURCESMANAGER_H

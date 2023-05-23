@@ -1,6 +1,11 @@
 #pragma once
+
+#ifndef LOG_H
+#define LOG_H
+
 #include <fstream>
 #include <filesystem>
+#define NOMINMAX
 #include <Windows.h>
 
 //Windows only
@@ -71,3 +76,4 @@ private:
 	};
 	void ChangeColor(Color _handleWindowsId) const;
 };
+#endif // Log_h

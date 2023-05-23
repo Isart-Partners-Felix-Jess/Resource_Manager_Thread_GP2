@@ -1,4 +1,7 @@
 #pragma once
+
+#ifndef APP_H
+#define APP_H
 #include <glad/glad.h> 
 #include <GLFW/glfw3.h>
 #include <Assertion.hpp>
@@ -21,12 +24,13 @@ private:
 	void Render(GLFWwindow* window);
 	void ApplyChangeColor();
 
-	//LearnOpenGl
+	//LearnOpenGl TODO: replace
 	void Shadertest();
+	void VBOtest();
+	void VAOtest();
 	void EBOtest();
-	int VBOtest(unsigned int& _VBOid, Shader& _shader);
-	int VAOtest(unsigned int& _VBOid);
-
+	void Texturetest();
+	void TransTest();
 
 public:
 	Application();
@@ -39,3 +43,4 @@ public:
 	void ShowImGuiControls();
 };
 
+#endif //App_h

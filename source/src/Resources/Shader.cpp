@@ -129,20 +129,20 @@ void Shader::Use()
 	glUseProgram(m_ShaderProgram);
 }
 
-void Shader::setBool(const std::string& name, bool value) const
+void Shader::SetBool(const std::string& name, bool value) const
 {
 	//Should always work, if not change this to int
 	bool valueLocation = static_cast<bool>(glGetUniformLocation(m_ShaderProgram, name.c_str()));
 	glUniform1i(valueLocation, value);
 }
 
-void Shader::setInt(const std::string& name, int value) const
+void Shader::SetInt(const std::string& name, int value) const
 {
 	int valueLocation = glGetUniformLocation(m_ShaderProgram, name.c_str());
 	glUniform1i(valueLocation, value);
 }
 
-void Shader::setFloat(const std::string& name, float value) const
+void Shader::SetFloat(const std::string& name, float value) const
 {
 	float valueLocation = glGetUniformLocation(m_ShaderProgram, name.c_str());
 	glUniform1f(valueLocation, value);

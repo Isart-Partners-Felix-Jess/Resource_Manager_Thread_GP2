@@ -1,8 +1,12 @@
 #pragma once
 
+#ifndef MATRIX_H
+#define MATRIX_H
+
 #include <vector>
 #include <utility>
 #include<cassert>
+#include<algorithm>
 //#include "float2.hpp"
 //#include "float3.hpp"
 #include "vectorM.hpp"
@@ -669,3 +673,4 @@ typedef MatrixMN<float, 4> Matrix4x4;
 //	float detMatrixf3(Matrixf3 matrix);
 //}
 #pragma endregion
+#endif // !MATRIX_H

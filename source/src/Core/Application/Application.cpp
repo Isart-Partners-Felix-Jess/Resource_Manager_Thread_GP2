@@ -4,6 +4,10 @@
 #include <ImGui/imgui_impl_glfw.h>
 #include <ImGui/imgui_impl_opengl3.h>
 #include <Shader.hpp>
+#include <Texture.hpp>
+#include <matrix.hpp>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 //TODO: DELETE THIS !!!!!!
 unsigned int EBO;
@@ -11,6 +15,7 @@ unsigned int VAO;
 unsigned int VBO;
 Shader shadbasic;
 Shader shadyellow;
+float mixValue =0.2f;
 
 Application::Application() :Application(800, 600)
 {
@@ -33,7 +38,12 @@ Application::Application(int _width, int _height)
 	}
 	glfwMakeContextCurrent(window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
+	
+	//LearnOpenGL tuto
 	Shadertest();
+	Texturetest();
+	TransTest();
+
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -42,11 +52,12 @@ Application::Application(int _width, int _height)
 
 Application::~Application()
 {
+	//LearnOpenGL Tuto
 	glDeleteVertexArrays(1, &VAO);
-glDeleteBuffers(1, &VBO);
-glDeleteBuffers(1, &EBO);
-glDeleteProgram(shadbasic.GetShaderProgram());
-glDeleteProgram(shadyellow.GetShaderProgram());
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+	glDeleteProgram(shadbasic.GetShaderProgram());
+	glDeleteProgram(shadyellow.GetShaderProgram());
 
 	//IMGUI Destroy
 	ImGui_ImplGlfw_Shutdown();
@@ -80,18 +91,18 @@ void Application::ApplyChangeColor()
 void Application::Shadertest()
 {
 	float vertices[] = {
-		// positions         // colors
-		 0.5f,  0.5f, 0.0f,	 1.0f, 0.0f, 1.0f,
-		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
-		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-		 0.0f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
+		// positions          // colors           // texture coords
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
 	};
 	unsigned int indices[] = {  // note that we start from 0!
 	0, 1, 3,   // first triangle
 	1, 2, 3    // second triangle
 	};
-	VAO = VAOtest(VBO);
-	VBOtest(VBO, shadbasic);
+	VAOtest();
+	VBOtest();
 	shadbasic.LoadResource("assets/shaders/basic");
 	shadyellow.SetFragmentShader("assets/shaders/yellow.frag");
 	shadyellow.SetVertexShader("assets/shaders/basic.vert");
@@ -100,7 +111,7 @@ void Application::Shadertest()
 	shadbasic.Use();
 	//shadyellow.Use();
 	glBindVertexArray(VAO);
-	
+
 }
 //ElementsBufferOutput
 void Application::EBOtest()
@@ -114,59 +125,61 @@ void Application::EBOtest()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 }
 //VertexBufferOutput
-int Application::VBOtest(unsigned int& _VBOid, Shader& _shader)
+void Application::VBOtest()
 {
 	float vertices[] = {
-		// positions         // colors
-		 0.5f,  0.5f, 0.0f,	 0.0f, 1.0f, 0.0f,
-		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
-		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f    // top 
-	};
-	unsigned int indices[] = {  // note that we start from 0!
-		0, 1, 3,   // first triangle
-		1, 2, 3    // second triangle
+		// positions          // colors           // texture coords
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
 	};
 
-	glGenBuffers(1, &_VBOid);
-	glBindBuffer(GL_ARRAY_BUFFER, _VBOid);
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	//_shader.LoadResource("assets/shaders/basic");
-		// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	// color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	// Texture attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
-	return _VBOid;
+	glEnableVertexAttribArray(2);
 }
 //VertexArrayOutput
-int Application::VAOtest(unsigned int& _VBOid)
+void Application::VAOtest()
 {
-	float vertices[] = {
-		// positions         // colors
-		 0.5f,  0.5f, 0.0f,	 0.0f, 0.0f, 1.0f,
-		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
-		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f    // top 
-	};
-
-	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
 	// 1. bind Vertex Array Object
 	glBindVertexArray(VAO);
 	// 2. copy our vertices array in a buffer for OpenGL to use
-	glBindBuffer(GL_ARRAY_BUFFER, VAO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	// 3. then set our vertex attributes pointers
-	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-	// color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	//glBindBuffer(GL_ARRAY_BUFFER, VAO);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	//// 3. then set our vertex attributes pointers
+	//// position attribute
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	//// color attribute
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	//// Texture attribute
+	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	EBOtest();
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-	return VAO;
+	//glEnableVertexAttribArray(0);
+	//glEnableVertexAttribArray(1);
+	//glEnableVertexAttribArray(2);
+}
+void Application::Texturetest()
+{
+	Texture container("container.jpg");
+	Texture awesomeface("awesomeface.png",true);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, container.GetID());
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, awesomeface.GetID());
+
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 void Application::ChangeColor(float _newcolor[4])
 {
@@ -175,11 +188,24 @@ void Application::ChangeColor(float _newcolor[4])
 	ApplyChangeColor();
 }
 
+void Application::TransTest()
+{
+	Matrix4x4 trans = matrix::MatrixTRS( 0.5f,-0.5f,0.f, 0.f ,0.f, (float)glfwGetTime(),1.f,1.f,1.f);
+	unsigned int transformLoc = glGetUniformLocation(shadbasic.GetShaderProgram(), "transform");
+
+	float elements[16];
+	for (int i = 0; i < 16; i++)
+	{
+		elements[i] = trans[i%4][i/4];
+	}
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, elements);
+}
+
 void Application::ShowImGuiControls()
 {
 	if (ImGui::Begin("Config"))
 	{
-		ImGui::Text("'S' + 'C' Keys to hide/show controls");
+		ImGui::Text("'S' + 'I' Keys to hide/show controls");
 		if (ImGui::CollapsingHeader("Framebuffer", ImGuiTreeNodeFlags_DefaultOpen))
 		{
 			if (ImGui::ColorEdit4("clearColor", m_ClearColor))
@@ -197,10 +223,22 @@ void Application::processInput(GLFWwindow* _window)
 
 	if (glfwGetKey(_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(_window, true);
-	if ((glfwGetKey(_window, GLFW_KEY_S) & glfwGetKey(_window, GLFW_KEY_C)) == GLFW_PRESS && (glfwGetTime() - s_LastPressed) > timeToApply)
+	if ((glfwGetKey(_window, GLFW_KEY_S) & glfwGetKey(_window, GLFW_KEY_I)) == GLFW_PRESS && (glfwGetTime() - s_LastPressed) > timeToApply)
 	{
 		s_LastPressed = glfwGetTime();
 		m_ShowControls = !m_ShowControls;
+	}
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		mixValue += 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
+		if (mixValue >= 1.0f)
+			mixValue = 1.0f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		mixValue -= 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
+		if (mixValue <= 0.0f)
+			mixValue = 0.0f;
 	}
 }
 void Application::framebuffer_size_callback(GLFWwindow* _window, int _width, int _height)
@@ -253,15 +291,16 @@ void Application::Render(GLFWwindow* window)
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 	//OpenGL test part
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	float timeValue = glfwGetTime();
 	float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
 	//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");
 	shadbasic.Use();
-	//glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+	shadbasic.SetInt("texture1", 0);
+	shadbasic.SetInt("texture2", 1);
+	shadbasic.SetFloat("mixValue", mixValue);
+	TransTest();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	
+
 	//shadyellow.Use();
 	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 	//
