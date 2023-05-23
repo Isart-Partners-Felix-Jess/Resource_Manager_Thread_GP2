@@ -69,9 +69,6 @@
     <ClCompile Include="source\src\LowRenderer\Light.cpp">
       <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
     </ClCompile>
-    <ClCompile Include="source\src\LowRenderer\Camera.cpp">
-      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
-    </ClCompile>
     <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
       <Filter>Fichiers d%27en-tête\Core\DataStructure</Filter>
     </ClCompile>
@@ -106,6 +103,9 @@
       <Filter>Third_party\impl</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\ResourcesManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="source\src\LowRenderer\Camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,10 +5,7 @@
 
 #include <vector>
 #include <utility>
-#include<cassert>
-#include<algorithm>
-//#include "float2.hpp"
-//#include "float3.hpp"
+#include <cassert>
 #include "vectorM.hpp"
 
 template <typename T, size_t M, size_t N = M>

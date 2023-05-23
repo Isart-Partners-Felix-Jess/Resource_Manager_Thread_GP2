@@ -15,13 +15,13 @@ unsigned int VAO;
 unsigned int VBO;
 Shader shadbasic;
 Shader shadyellow;
-float mixValue =0.2f;
+float mixValue = 0.2f;
 
 Application::Application() :Application(800, 600)
 {
 }
 
-Application::Application(int _width, int _height)
+Application::Application(int _width, int _height):camera(_width, _height)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -38,11 +38,11 @@ Application::Application(int _width, int _height)
 	}
 	glfwMakeContextCurrent(window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
-	
+
 	//LearnOpenGL tuto
 	Shadertest();
 	Texturetest();
-	TransTest();
+	//TransTest();
 
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
@@ -72,9 +72,40 @@ void Application::Update()
 {
 	while (!glfwWindowShouldClose(window))
 	{
+		//Camera, should clean
+		{
+			double newMouseX, newMouseY;
+			glfwGetCursorPos(window, &newMouseX, &newMouseY);
+			mouseDeltaX = (float)(newMouseX - mouseX);
+			mouseDeltaY = (float)(newMouseY - mouseY);
+			mouseX = newMouseX;
+			mouseY = newMouseY;
+		}
+
+		// Update camera
+		if (glfwGetKey(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+		{
+			mouseCaptured = true;
+		}
+		else
+		{	
+			mouseCaptured = false;
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+
+		if (mouseCaptured)
+		{
+			inputs.deltaX = mouseDeltaX;
+			inputs.deltaY = mouseDeltaY;
+			inputs.moveForward = ImGui::IsKeyDown(GLFW_KEY_UP);
+			inputs.moveBackward = ImGui::IsKeyDown(GLFW_KEY_DOWN);
+		}
+		//Cam end
+
 		glfwPollEvents();
 		StartImGuiFrame();
 		processInput(window);
+		camera.Update(ImGui::GetIO().DeltaTime, inputs);
 		if (m_ShowControls)
 			ShowImGuiControls();
 		Render(window);
@@ -172,7 +203,7 @@ void Application::VAOtest()
 void Application::Texturetest()
 {
 	Texture container("container.jpg");
-	Texture awesomeface("awesomeface.png",true);
+	Texture awesomeface("awesomeface.png", true);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, container.GetID());
 	glActiveTexture(GL_TEXTURE1);
@@ -190,13 +221,21 @@ void Application::ChangeColor(float _newcolor[4])
 
 void Application::TransTest()
 {
-	Matrix4x4 trans = matrix::MatrixTRS( 0.5f,-0.5f,0.f, 0.f ,0.f, (float)glfwGetTime(),1.f,1.f,1.f);
+	//Only on movement / Imgui
+	//camera.SetView();
+	//Only on Imgui
+	//camera.SetProjection();
+	Matrix4x4 viewProjection = camera.viewProjection;
+
+	Matrix4x4 modeltest = matrix::MatrixTRS(0.f, -0.f, 0.f, (float)glfwGetTime(), 0.f, 0.f, 1.f, 1.f, 1.f);
 	unsigned int transformLoc = glGetUniformLocation(shadbasic.GetShaderProgram(), "transform");
+
+	Matrix4x4 trans = viewProjection * modeltest;
 
 	float elements[16];
 	for (int i = 0; i < 16; i++)
 	{
-		elements[i] = trans[i%4][i/4];
+		elements[i] = trans[i % 4][i / 4];
 	}
 	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, elements);
 }
@@ -208,9 +247,14 @@ void Application::ShowImGuiControls()
 		ImGui::Text("'S' + 'I' Keys to hide/show controls");
 		if (ImGui::CollapsingHeader("Framebuffer", ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			ImGui::Text("FPS : %f", 1.f / ImGui::GetIO().DeltaTime);
 			if (ImGui::ColorEdit4("clearColor", m_ClearColor))
 				ApplyChangeColor();
 
+		}
+		if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen))
+		{
+			camera.ShowImGuiControls();
 		}
 		ImGui::End();
 	}

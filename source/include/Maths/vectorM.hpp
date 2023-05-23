@@ -2,7 +2,7 @@
 #include <vector>
 #include <cassert>
 #include <iostream>
-#include<math.h>
+#include <math.h>
 #include <algorithm>
 
 template <typename T, size_t M = 3>

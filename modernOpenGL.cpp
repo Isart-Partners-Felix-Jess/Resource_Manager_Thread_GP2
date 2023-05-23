@@ -18,8 +18,8 @@ int main()
 
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
-	//In App ?
 
+	//In App ?
 	Application app(800, 600);
 	app.Update();
 
