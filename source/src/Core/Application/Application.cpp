@@ -204,12 +204,7 @@ void Application::TransTest()
 
 		Matrix4x4 trans = camera.viewProjection * modeltest;
 
-		float elements[16];
-		for (int i = 0; i < 16; i++)
-		{
-			elements[i] = trans[i % 4][i / 4];
-		}
-		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, elements);
+		shadbasic.SetMat4("transform", trans);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }

@@ -11,10 +11,10 @@ Shader::Shader()
 
 // Initializing the static member variable
 //unsigned int Shader::s_m_TotalShaderNumber = 0;
-Shader::Shader(const char* vertexPath, const char* fragmentPath) : Shader()
+Shader::Shader(const char* _vertexPath, const char* _fragmentPath) : Shader()
 {
-	SetVertexShader(vertexPath);
-	SetFragmentShader(fragmentPath);
+	SetVertexShader(_vertexPath);
+	SetFragmentShader(_fragmentPath);
 	Link();
 }
 Shader::~Shader()
@@ -25,18 +25,18 @@ uint32_t Shader::GetShaderProgram() const
 {
 	return m_ShaderProgram;
 }
-bool Shader::SetVertexShader(std::filesystem::path const& filename)
+bool Shader::SetVertexShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
-	file.open(filename);
+	file.open(_filename);
 	int  success = 0; //false
 	if (file.bad())
 	{
-		DEBUG_ERROR("Shader file %s is BAD", filename);
+		DEBUG_ERROR("Shader file %s is BAD", _filename);
 	}
 	else if (file.fail())
 	{
-		DEBUG_WARNING("Shader file %s opening has FAILED", filename);
+		DEBUG_WARNING("Shader file %s opening has FAILED", _filename);
 	}
 	else if (file.is_open())
 	{
@@ -58,18 +58,18 @@ bool Shader::SetVertexShader(std::filesystem::path const& filename)
 	return static_cast<bool>(success);
 }
 
-bool Shader::SetFragmentShader(std::filesystem::path const& filename)
+bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
-	file.open(filename);
+	file.open(_filename);
 	int  success = 0; //false
 	if (file.bad())
 	{
-		DEBUG_ERROR("Shader file %s is BAD", filename);
+		DEBUG_ERROR("Shader file %s is BAD", _filename);
 	}
 	else if (file.fail())
 	{
-		DEBUG_WARNING("Shader file %s opening has FAILED", filename);
+		DEBUG_WARNING("Shader file %s opening has FAILED", _filename);
 	}
 	else if (file.is_open())
 	{
@@ -129,22 +129,34 @@ void Shader::Use()
 	glUseProgram(m_ShaderProgram);
 }
 
-void Shader::SetBool(const std::string& name, bool value) const
+void Shader::SetBool(const std::string& _name, bool _value) const
 {
 	//Should always work, if not change this to int
-	bool valueLocation = static_cast<bool>(glGetUniformLocation(m_ShaderProgram, name.c_str()));
-	glUniform1i(valueLocation, value);
+	bool valueLocation = static_cast<bool>(glGetUniformLocation(m_ShaderProgram, _name.c_str()));
+	glUniform1i(valueLocation, _value);
 }
 
-void Shader::SetInt(const std::string& name, int value) const
+void Shader::SetInt(const std::string& _name, int _value) const
 {
-	int valueLocation = glGetUniformLocation(m_ShaderProgram, name.c_str());
-	glUniform1i(valueLocation, value);
+	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	glUniform1i(valueLocation, _value);
 }
 
-void Shader::SetFloat(const std::string& name, float value) const
+void Shader::SetFloat(const std::string& _name, float _value) const
 {
-	float valueLocation = glGetUniformLocation(m_ShaderProgram, name.c_str());
-	glUniform1f(valueLocation, value);
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	glUniform1f(valueLocation, _value);
+}
+
+void Shader::SetMat4(const std::string& _name, Matrix4x4 _value) const
+{
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	float elements[16];
+	for (int i = 0; i < 16; i++)
+	{
+		elements[i] = _value[i % 4][i / 4];
+	}
+	glUniformMatrix4fv(valueLocation, 1, GL_FALSE, elements);
+
 }
 
