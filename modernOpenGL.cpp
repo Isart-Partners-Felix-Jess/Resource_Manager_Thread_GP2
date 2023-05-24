@@ -15,7 +15,6 @@ int main()
 	//Detect memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//_CrtSetBreakAlloc(822); // Debugger should stop alloc nb
-
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
 

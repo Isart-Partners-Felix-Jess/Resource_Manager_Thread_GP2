@@ -141,7 +141,13 @@ void Camera::LookAt(const Vectorf3& _target)
 
 void Camera::ShowImGuiControls()
 {
-	//Viewif 
+	//View
+	if (ImGui::CollapsingHeader("Controls", ImGuiTreeNodeFlags_DefaultOpen))
+	{
+		ImGui::Text("WASD Keys to move along XZ Axis");
+		ImGui::Text("Right click to capture mouse and");
+		
+	}
 	if (ImGui::CollapsingHeader("View", ImGuiTreeNodeFlags_DefaultOpen))
 	{
 		ImGui::SliderFloat("Camera Speed", &camSpeed, 0.f, 10.f);

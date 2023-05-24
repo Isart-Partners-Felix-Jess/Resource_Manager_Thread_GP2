@@ -7,6 +7,8 @@
 #include <vector>
 #include <ResourcesManager.hpp>
 
+class Texture;
+
 struct Vertex {
 	Vectorf3 Position;
 	Vectorf3 Normal;
@@ -18,6 +20,8 @@ class Model : public IResource
 private:
 	std::vector<Vertex> m_VertexBuffer;
 	std::vector<uint32_t> m_IndexBuffer;
+	std::vector<Texture> m_Textures;
+
 	~Model() override;
 public:
 	void LoadResource(const char* _name) override;

@@ -53,6 +53,11 @@ inline R* ResourcesManager::CreateResource(const std::string& _name)
 	createdResource->SetResourcePath(_name);
 	createdResource->SetResourceId(m_Resources.size());
 	createdResource->LoadResource(_name.c_str());
+	//Erase previous pointer if found
+	auto it = m_Resources.find(_name);
+	if (it != m_Resources.end())
+		delete it->second;
+
 	m_Resources.emplace(_name, createdResource);
 	DEBUG_LOG("Resource %s created, ID: %i", _name.c_str(), createdResource->GetResourceId());
 	return dynamic_cast<R*>(createdResource);
