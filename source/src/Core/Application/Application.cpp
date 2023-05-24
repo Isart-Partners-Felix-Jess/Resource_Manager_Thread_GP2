@@ -13,6 +13,7 @@
 unsigned int EBO;
 unsigned int VAO;
 unsigned int VBO;
+unsigned int VBO2;
 Shader shadbasic;
 Shader shadyellow;
 float mixValue = 0.2f;
@@ -28,7 +29,7 @@ Application::Application(int _width, int _height) :camera(_width, _height)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	window = glfwCreateWindow(_width, _height, "Pipeline", NULL, NULL);
 	if (window == NULL)
@@ -47,6 +48,7 @@ Application::Application(int _width, int _height) :camera(_width, _height)
 
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
+	glEnable(GL_DEPTH_TEST);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	SetupImGui(window);
 }
@@ -56,6 +58,7 @@ Application::~Application()
 	//LearnOpenGL Tuto
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &VBO2);
 	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shadbasic.GetShaderProgram());
 	glDeleteProgram(shadyellow.GetShaderProgram());
@@ -65,6 +68,7 @@ Application::~Application()
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui::DestroyContext();
 
+	glDisable(GL_DEPTH_TEST);
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -108,7 +112,9 @@ void Application::Shadertest()
 	1, 2, 3    // second triangle
 	};
 	VAOtest();
-	VBOtest();
+	EBOtest();
+	//VBOtest();
+	VBOCubetest();
 	shadbasic.LoadResource("assets/shaders/basic");
 	shadyellow.SetFragmentShader("assets/shaders/yellow.frag");
 	shadyellow.SetVertexShader("assets/shaders/basic.vert");
@@ -116,7 +122,7 @@ void Application::Shadertest()
 	//Render part
 	shadbasic.Use();
 	//shadyellow.Use();
-	glBindVertexArray(VAO);
+	//glBindVertexArray(VAO);
 
 }
 //ElementsBufferOutput
@@ -158,22 +164,7 @@ void Application::VBOtest()
 void Application::VAOtest()
 {
 	glGenVertexArrays(1, &VAO);
-	// 1. bind Vertex Array Object
 	glBindVertexArray(VAO);
-	// 2. copy our vertices array in a buffer for OpenGL to use
-	//glBindBuffer(GL_ARRAY_BUFFER, VAO);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	//// 3. then set our vertex attributes pointers
-	//// position attribute
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-	//// color attribute
-	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	//// Texture attribute
-	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	EBOtest();
-	//glEnableVertexAttribArray(0);
-	//glEnableVertexAttribArray(1);
-	//glEnableVertexAttribArray(2);
 }
 void Application::Texturetest()
 {
@@ -183,9 +174,6 @@ void Application::Texturetest()
 	glBindTexture(GL_TEXTURE_2D, container.GetID());
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, awesomeface.GetID());
-
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 void Application::ChangeColor(float _newcolor[4])
 {
@@ -196,23 +184,91 @@ void Application::ChangeColor(float _newcolor[4])
 
 void Application::TransTest()
 {
-	//Only on movement / Imgui
-	//camera.SetView();
-	//Only on Imgui
-	//camera.SetProjection();
-	Matrix4x4 viewProjection = camera.viewProjection;
-
-	Matrix4x4 modeltest = matrix::MatrixTRS(0.f, -0.f, 0.f, (float)glfwGetTime(), 0.f, 0.f, 1.f, 1.f, 1.f);
-	unsigned int transformLoc = glGetUniformLocation(shadbasic.GetShaderProgram(), "transform");
-
-	Matrix4x4 trans = viewProjection * modeltest;
-
-	float elements[16];
-	for (int i = 0; i < 16; i++)
+	Vectorf3 cubePositions[] = {
+	Vectorf3(0.0f,  0.0f,  0.0f),
+	Vectorf3(2.0f,  5.0f, -15.0f),
+	Vectorf3(-1.5f, -2.2f, -2.5f),
+	Vectorf3(-3.8f, -2.0f, -12.3f),
+	Vectorf3(2.4f, -0.4f, -3.5f),
+	Vectorf3(-1.7f,  3.0f, -7.5f),
+	Vectorf3(1.3f, -2.0f, -2.5f),
+	Vectorf3(1.5f,  2.0f, -2.5f),
+	Vectorf3(1.5f,  0.2f, -1.5f),
+	Vectorf3(-1.3f,  1.0f, -1.5f)
+	};
+	for (unsigned int i = 0; i < 10; i++)
 	{
-		elements[i] = trans[i % 4][i / 4];
+		float angle = 20.0f * i * M_PI_2 / 180;
+		Matrix4x4 modeltest = matrix::MatrixTRS(cubePositions[i].X(), cubePositions[i].Y(), cubePositions[i].Z(), angle, .3f*angle, .5f *angle,1.f,1.f,1.f);
+		unsigned int transformLoc = glGetUniformLocation(shadbasic.GetShaderProgram(), "transform");
+
+		Matrix4x4 trans = camera.viewProjection * modeltest;
+
+		float elements[16];
+		for (int i = 0; i < 16; i++)
+		{
+			elements[i] = trans[i % 4][i / 4];
+		}
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, elements);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
-	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, elements);
+}
+
+//VertexBufferOutput
+void Application::VBOCubetest()
+{
+	float vertices[] = {
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	};
+	glGenBuffers(1, &VBO2);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	// Texture attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(2);
 }
 
 void Application::ShowImGuiControls()
@@ -231,8 +287,8 @@ void Application::ShowImGuiControls()
 		{
 			camera.ShowImGuiControls();
 		}
-		ImGui::End();
 	}
+	ImGui::End();
 }
 
 void Application::ProcessInput(GLFWwindow* _window)
@@ -335,23 +391,20 @@ void Application::Render(GLFWwindow* window)
 {
 
 	ImGui::Render();
-	//UpdateGlFrameBuffer(window);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 	//OpenGL test part
-	float timeValue = glfwGetTime();
-	float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
 	//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");
-	shadbasic.Use();
+	//shadbasic.Use();//Only if forgotten before
 	shadbasic.SetInt("texture1", 0);
 	shadbasic.SetInt("texture2", 1);
 	shadbasic.SetFloat("mixValue", mixValue);
 	TransTest();
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	//shadyellow.Use();
-	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+	//glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 	//
 
 	GLFWwindow* ctxBackup = glfwGetCurrentContext();

@@ -6,8 +6,7 @@
 #include <vectorM.hpp>
 #include <vector>
 #include <ResourcesManager.hpp>
-
-class Texture;
+#include <Texture.hpp>
 
 struct Vertex {
 	Vectorf3 Position;

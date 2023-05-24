@@ -40,10 +40,12 @@ private:
 	//LearnOpenGl TODO: replace
 	void Shadertest();
 	void VBOtest();
+	//void VBOCubetest();
 	void VAOtest();
 	void EBOtest();
 	void Texturetest();
 	void TransTest();
+	void VBOCubetest();
 
 public:
 	Application();
