@@ -16,12 +16,13 @@ unsigned int VBO;
 Shader shadbasic;
 Shader shadyellow;
 float mixValue = 0.2f;
+float Application::s_MouseScrollOffset = 0.0f;
 
 Application::Application() :Application(800, 600)
 {
 }
 
-Application::Application(int _width, int _height):camera(_width, _height)
+Application::Application(int _width, int _height) :camera(_width, _height)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -70,42 +71,16 @@ Application::~Application()
 
 void Application::Update()
 {
+	float deltaTime = 0.f, lastFrame = 0.f;
 	while (!glfwWindowShouldClose(window))
 	{
-		//Camera, should clean
-		{
-			double newMouseX, newMouseY;
-			glfwGetCursorPos(window, &newMouseX, &newMouseY);
-			mouseDeltaX = (float)(newMouseX - mouseX);
-			mouseDeltaY = (float)(newMouseY - mouseY);
-			mouseX = newMouseX;
-			mouseY = newMouseY;
-		}
-
-		// Update camera
-		if (glfwGetKey(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
-		{
-			mouseCaptured = true;
-		}
-		else
-		{	
-			mouseCaptured = false;
-			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-		}
-
-		if (mouseCaptured)
-		{
-			inputs.deltaX = mouseDeltaX;
-			inputs.deltaY = mouseDeltaY;
-			inputs.moveForward = ImGui::IsKeyDown(GLFW_KEY_UP);
-			inputs.moveBackward = ImGui::IsKeyDown(GLFW_KEY_DOWN);
-		}
-		//Cam end
-
 		glfwPollEvents();
 		StartImGuiFrame();
-		processInput(window);
-		camera.Update(ImGui::GetIO().DeltaTime, inputs);
+		ProcessInput(window);
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		camera.Update(deltaTime, inputs);
 		if (m_ShowControls)
 			ShowImGuiControls();
 		Render(window);
@@ -260,11 +235,11 @@ void Application::ShowImGuiControls()
 	}
 }
 
-void Application::processInput(GLFWwindow* _window)
+void Application::ProcessInput(GLFWwindow* _window)
 {
 	static double s_LastPressed = glfwGetTime();
 	double timeToApply = .5;
-
+	//App
 	if (glfwGetKey(_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(_window, true);
 	if ((glfwGetKey(_window, GLFW_KEY_S) & glfwGetKey(_window, GLFW_KEY_I)) == GLFW_PRESS && (glfwGetTime() - s_LastPressed) > timeToApply)
@@ -272,6 +247,7 @@ void Application::processInput(GLFWwindow* _window)
 		s_LastPressed = glfwGetTime();
 		m_ShowControls = !m_ShowControls;
 	}
+	//LearnOpenGL
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 	{
 		mixValue += 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
@@ -284,7 +260,46 @@ void Application::processInput(GLFWwindow* _window)
 		if (mixValue <= 0.0f)
 			mixValue = 0.0f;
 	}
+
+	//Camera, should clean
+	{
+		double newMouseX, newMouseY;
+		glfwGetCursorPos(window, &newMouseX, &newMouseY);
+		mouseDeltaX = (float)(newMouseX - mouseX);
+		mouseDeltaY = (float)(newMouseY - mouseY);
+		mouseX = newMouseX;
+		mouseY = newMouseY;
+	}
+
+	// Update camera
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+	{
+		inputs.deltaX = mouseDeltaX;
+		inputs.deltaY = mouseDeltaY;
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	}
+	else
+	{
+		inputs.deltaX = 0.f;
+		inputs.deltaY = 0.f;
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+	inputs.moveForward = glfwGetKey(window, GLFW_KEY_W);
+	inputs.moveBackward = glfwGetKey(window, GLFW_KEY_S);
+	inputs.moveRight = glfwGetKey(window, GLFW_KEY_D);
+	inputs.moveLeft = glfwGetKey(window, GLFW_KEY_A);
+	glfwSetScrollCallback(window, Scroll_callback);
+	if (s_MouseScrollOffset)
+	{
+		camera.Zoom(s_MouseScrollOffset);
+		s_MouseScrollOffset = 0.f;
+	}
+	//Cam end
 }
+void Application::Scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	s_MouseScrollOffset = (float)yoffset;
+};
 void Application::framebuffer_size_callback(GLFWwindow* _window, int _width, int _height)
 {
 	glViewport(0, 0, _width, _height);
@@ -314,16 +329,6 @@ void Application::StartImGuiFrame()
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
-}
-//same with mouse position
-void Application::NewFrame(bool mouseCaptured)
-{
-	glfwPollEvents();
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	if (mouseCaptured)
-		ImGui::GetIO().MousePos = ImVec2(-FLT_MAX, -FLT_MAX);
 	ImGui::NewFrame();
 }
 void Application::Render(GLFWwindow* window)

@@ -20,14 +20,16 @@ private:
 	//Cam part
 	Camera camera;
 	CameraInputs inputs;
-	bool mouseCaptured = false;
 	double mouseX = 0.0;
 	double mouseY = 0.0;
 	float mouseDeltaX = 0.0;
 	float mouseDeltaY = 0.0;
+	static float s_MouseScrollOffset;
 
 	bool m_ShowControls = true;
-	void processInput(GLFWwindow* window);
+	void ProcessInput(GLFWwindow* window);
+	static void Scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 	void SetupImGui(GLFWwindow* window);
 	static void StartImGuiFrame();

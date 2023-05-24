@@ -45,7 +45,7 @@ ResourcesManager* ResourcesManager::GetInstance()
 	return instance;
 }
 
-void ResourcesManager::Delete(std::string _name)
+void ResourcesManager::Delete(const std::string& _name)
 {
 	const char* name = _name.c_str();
 	auto it = m_Resources.find(_name);

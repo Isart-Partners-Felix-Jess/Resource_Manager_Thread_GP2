@@ -37,17 +37,17 @@ public:
 	static ResourcesManager* GetInstance();
 	template<typename R>
 	//Maybe try to make the parameter a path...
-	static R* CreateResource(std::string _name);
+	static R* CreateResource(const std::string& _name);
 	template<typename R>
-	static R* GetResource(std::string _name);
+	static R* GetResource(const std::string& _name);
 	static void Destroy();
-	void Delete(std::string _name);
+	void Delete(const std::string& _name);
 private:
 	void LoadResource(IResource* _toLoad);
 };
 
 template<typename R>
-inline R* ResourcesManager::CreateResource(std::string _name)
+inline R* ResourcesManager::CreateResource(const std::string& _name)
 {
 	IResource* createdResource = new R();
 	createdResource->SetResourcePath(_name);
@@ -59,7 +59,7 @@ inline R* ResourcesManager::CreateResource(std::string _name)
 }
 
 template<typename R>
-inline R* ResourcesManager::GetResource(std::string _name)
+inline R* ResourcesManager::GetResource(const std::string& _name)
 {
 	auto it = m_Resources.find(_name);
 	if (it != m_Resources.end())
