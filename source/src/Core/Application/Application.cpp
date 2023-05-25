@@ -5,6 +5,7 @@
 #include <ImGui/imgui_impl_opengl3.h>
 #include <Shader.hpp>
 #include <Texture.hpp>
+#include <Light.hpp>
 #include <matrix.hpp>
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -18,7 +19,11 @@ unsigned int VBO2;
 Shader shadbasic;
 Shader shadlight;
 Shader shadlightCube;
-Vectorf3 lightPos(1.2f, 1.0f, 2.0f);
+Light light
+{ Vectorf3(1.2f, 1.0f, 2.0f),
+Vectorf3(1.0f, 0.0f, 0.0f), 
+Vectorf3(.0f, 1.0f, .0f), 
+Vectorf3(0.0f, 0.0f, 1.0f) };
 
 
 float mixValue = 0.2f;
@@ -227,15 +232,16 @@ void Application::TransTest()
 		shadbasic.SetMat4("MVP", MVP);
 		shadlight.SetMat4("MVP", MVP);
 		shadlight.SetMat4("model", modeltest);
-		shadlight.SetMat3("normalMatrix", rotation);
+		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
+		//shadlight.SetMat3("normalMatrix", rotation);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }
 void Application::LightTest()
 {
-	lightPos = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * lightPos;
+	light.position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * light.position;
 	shadlightCube.Use();
-	Matrix4x4 model = matrix::MatrixTRS(lightPos, {}, { 1.f,1.f,1.f });
+	Matrix4x4 model = matrix::MatrixTRS(light.position, {}, { 1.f,1.f,1.f });
 	model *= 0.2f;
 	Matrix4x4 MVP = camera.viewProjection * model;
 	unsigned int MVPLoc = glGetUniformLocation(shadlightCube.GetShaderProgram(), "MVP");
@@ -244,8 +250,7 @@ void Application::LightTest()
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	shadlight.Use();
 	shadlight.SetVec3("objectColor", 1.0f, 0.5f, 0.31f);
-	shadlight.SetVec3("lightColor", 1.0f, 1.0f, 1.0f);
-	shadlight.SetVec3("lightPos", lightPos);
+	light.InitShader(shadlight);
 	shadlight.SetVec3("viewPos", camera.eye);
 }
 

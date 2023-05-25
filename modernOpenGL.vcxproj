@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="source\include\Core\Application\Application.hpp" />
     <ClInclude Include="source\include\LowRenderer\Camera.hpp" />
+    <ClInclude Include="source\include\LowRenderer\Light.hpp" />
     <ClInclude Include="source\include\Resources\ResourcesManager.hpp" />
   </ItemGroup>
   <ItemGroup>
