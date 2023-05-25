@@ -5,6 +5,7 @@
 #include <ImGui/imgui_impl_opengl3.h>
 #include <Shader.hpp>
 #include <Texture.hpp>
+#include <Material.hpp>
 #include <Light.hpp>
 #include <matrix.hpp>
 #define _USE_MATH_DEFINES
@@ -20,10 +21,10 @@ Shader shadbasic;
 Shader shadlight;
 Shader shadlightCube;
 Light light
-{ Vectorf3(1.2f, 1.0f, 2.0f),
-Vectorf3(1.0f, 0.0f, 0.0f), 
-Vectorf3(.0f, 1.0f, .0f), 
-Vectorf3(0.0f, 0.0f, 1.0f) };
+{ Vectorf3(1.2f, 1.0f, 2.0f)/*,
+Vectorf3(1.0f, 0.0f, 0.0f),
+Vectorf3(.0f, 1.0f, .0f),
+Vectorf3(0.0f, 0.0f, 1.0f) */ };
 
 
 float mixValue = 0.2f;
@@ -209,19 +210,23 @@ void Application::ChangeColor(float _newcolor[4])
 
 void Application::TransTest()
 {
-	Vectorf3 cubePositions[] = {
-	Vectorf3(0.0f,  0.0f,  0.0f),
-	Vectorf3(2.0f,  5.0f, -15.0f),
-	Vectorf3(-1.5f, -2.2f, -2.5f),
-	Vectorf3(-3.8f, -2.0f, -12.3f),
-	Vectorf3(2.4f, -0.4f, -3.5f),
-	Vectorf3(-1.7f,  3.0f, -7.5f),
-	Vectorf3(1.3f, -2.0f, -2.5f),
-	Vectorf3(1.5f,  2.0f, -2.5f),
-	Vectorf3(1.5f,  0.2f, -1.5f),
-	Vectorf3(-1.3f,  1.0f, -1.5f)
-	};
-	for (unsigned int i = 0; i < 10; i++)
+	//Vectorf3 cubePositions[] = {
+	//Vectorf3(0.0f,  0.0f,  0.0f),
+	//Vectorf3(2.0f,  5.0f, -15.0f),
+	//Vectorf3(-1.5f, -2.2f, -2.5f),
+	//Vectorf3(-3.8f, -2.0f, -12.3f),
+	//Vectorf3(2.4f, -0.4f, -3.5f),
+	//Vectorf3(-1.7f,  3.0f, -7.5f),
+	//Vectorf3(1.3f, -2.0f, -2.5f),
+	//Vectorf3(1.5f,  2.0f, -2.5f),
+	//Vectorf3(1.5f,  0.2f, -1.5f),
+	//Vectorf3(-1.3f,  1.0f, -1.5f)
+	//};
+	Vectorf3 cubePositions[24];
+	for (int j = 0; j < 4; j++)
+		for (int i = 0; i < 6; i++)
+			cubePositions[j * 6 + i] = Vectorf3(2.f * i -+ 6, -2.f * j + 4, 0.0f);
+	for (unsigned int i = 0; i < 24; i++)
 	{
 		float angle = 20.0f * i * M_PI_2 / 180;
 		Matrix3x3 rotation = matrix::Rotate3dAllAxis(Vectorf3{ angle, .3f * angle, .5f * angle });
@@ -234,6 +239,7 @@ void Application::TransTest()
 		shadlight.SetMat4("model", modeltest);
 		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
 		//shadlight.SetMat3("normalMatrix", rotation);
+		material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }

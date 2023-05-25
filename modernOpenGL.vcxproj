@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\include\Resources\Material.cpp" />
     <ClCompile Include="source\src\Core\Application\Application.cpp" />
     <ClCompile Include="source\src\LowRenderer\Camera.cpp" />
     <ClCompile Include="source\src\LowRenderer\Light.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="source\include\Core\Application\Application.hpp" />
     <ClInclude Include="source\include\LowRenderer\Camera.hpp" />
     <ClInclude Include="source\include\LowRenderer\Light.hpp" />
+    <ClInclude Include="source\include\Resources\Material.hpp" />
     <ClInclude Include="source\include\Resources\ResourcesManager.hpp" />
   </ItemGroup>
   <ItemGroup>
