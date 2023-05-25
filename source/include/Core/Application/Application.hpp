@@ -42,10 +42,12 @@ private:
 	void VBOtest();
 	//void VBOCubetest();
 	void VAOtest();
+	void lightVAOtest();
 	void EBOtest();
 	void Texturetest();
 	void TransTest();
 	void VBOCubetest();
+	void LightTest();
 
 public:
 	Application();

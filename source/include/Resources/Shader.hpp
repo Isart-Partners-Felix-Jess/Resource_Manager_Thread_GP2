@@ -31,6 +31,13 @@ public:
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;
 	void SetFloat(const std::string& _name, float _value) const;
+	void SetVec2(const std::string& _name, Vectorf2 _value) const;
+	void SetVec2(const std::string& _name, float _valueX, float _valueY) const;
+	void SetVec3(const std::string& _name, Vectorf3 _value) const;
+	void SetVec3(const std::string& _name, float _valueX, float _valueY, float _valueZ) const;
+	void SetVec4(const std::string& _name, Vectorf4 _value) const;
+	void SetVec4(const std::string& _name, float _valueX, float _valueY, float _valueZ, float _valueW) const;
+	void SetMat3(const std::string& _name, Matrix3x3 _value) const;
 	void SetMat4(const std::string& _name, Matrix4x4 _value) const;
 
 	// Inherited from IResource

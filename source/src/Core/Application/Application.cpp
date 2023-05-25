@@ -11,12 +11,19 @@
 
 //TODO: DELETE THIS !!!!!!
 unsigned int EBO;
+unsigned int lightVAO;
 unsigned int VAO;
 unsigned int VBO;
 unsigned int VBO2;
 Shader shadbasic;
-Shader shadyellow;
+Shader shadlight;
+Shader shadlightCube;
+Vectorf3 lightPos(1.2f, 1.0f, 2.0f);
+
+
 float mixValue = 0.2f;
+
+//static declarations
 float Application::s_MouseScrollOffset = 0.0f;
 
 Application::Application() :Application(800, 600)
@@ -61,7 +68,7 @@ Application::~Application()
 	glDeleteBuffers(1, &VBO2);
 	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shadbasic.GetShaderProgram());
-	glDeleteProgram(shadyellow.GetShaderProgram());
+	glDeleteProgram(shadlight.GetShaderProgram());
 
 	//IMGUI Destroy
 	ImGui_ImplGlfw_Shutdown();
@@ -111,17 +118,20 @@ void Application::Shadertest()
 	0, 1, 3,   // first triangle
 	1, 2, 3    // second triangle
 	};
-	VAOtest();
+	lightVAOtest();
 	EBOtest();
 	//VBOtest();
 	VBOCubetest();
 	shadbasic.LoadResource("assets/shaders/basic");
-	shadyellow.SetFragmentShader("assets/shaders/yellow.frag");
-	shadyellow.SetVertexShader("assets/shaders/basic.vert");
-	shadyellow.Link();
+	shadlight.SetFragmentShader("assets/shaders/lighting.frag");
+	shadlight.SetVertexShader("assets/shaders/basic.vert");
+	shadlight.Link();
+	shadlightCube.SetFragmentShader("assets/shaders/white.frag");
+	shadlightCube.SetVertexShader("assets/shaders/basic.vert");
+	shadlightCube.Link();
+
 	//Render part
-	shadbasic.Use();
-	//shadyellow.Use();
+	//shadlight.Use();
 	//glBindVertexArray(VAO);
 
 }
@@ -165,6 +175,16 @@ void Application::VAOtest()
 {
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
+
+}
+void Application::lightVAOtest()
+{
+	glGenVertexArrays(1, &lightVAO);
+	glBindVertexArray(lightVAO);
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+	//// set the vertex attribute 
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	//glEnableVertexAttribArray(0);
 }
 void Application::Texturetest()
 {
@@ -199,71 +219,94 @@ void Application::TransTest()
 	for (unsigned int i = 0; i < 10; i++)
 	{
 		float angle = 20.0f * i * M_PI_2 / 180;
-		Matrix4x4 modeltest = matrix::MatrixTRS(cubePositions[i].X(), cubePositions[i].Y(), cubePositions[i].Z(), angle, .3f*angle, .5f *angle,1.f,1.f,1.f);
-		unsigned int transformLoc = glGetUniformLocation(shadbasic.GetShaderProgram(), "transform");
+		Matrix3x3 rotation = matrix::Rotate3dAllAxis(Vectorf3{ angle, .3f * angle, .5f * angle });
+		Matrix4x4 modeltest = matrix::MatrixTRS(cubePositions[i].X(), cubePositions[i].Y(), cubePositions[i].Z(), angle, .3f * angle, .5f * angle, 1.f, 1.f, 1.f);
 
-		Matrix4x4 trans = camera.viewProjection * modeltest;
+		Matrix4x4 MVP = camera.viewProjection * modeltest;
 
-		shadbasic.SetMat4("transform", trans);
+		shadbasic.SetMat4("MVP", MVP);
+		shadlight.SetMat4("MVP", MVP);
+		shadlight.SetMat4("model", modeltest);
+		shadlight.SetMat3("normalMatrix", rotation);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
+}
+void Application::LightTest()
+{
+	lightPos = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * lightPos;
+	shadlightCube.Use();
+	Matrix4x4 model = matrix::MatrixTRS(lightPos, {}, { 1.f,1.f,1.f });
+	model *= 0.2f;
+	Matrix4x4 MVP = camera.viewProjection * model;
+	unsigned int MVPLoc = glGetUniformLocation(shadlightCube.GetShaderProgram(), "MVP");
+	shadlightCube.SetMat4("MVP", MVP);
+	glBindVertexArray(lightVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	shadlight.Use();
+	shadlight.SetVec3("objectColor", 1.0f, 0.5f, 0.31f);
+	shadlight.SetVec3("lightColor", 1.0f, 1.0f, 1.0f);
+	shadlight.SetVec3("lightPos", lightPos);
+	shadlight.SetVec3("viewPos", camera.eye);
 }
 
 //VertexBufferOutput
 void Application::VBOCubetest()
 {
 	float vertices[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,  0.0f, 0.0f, -1.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,  0.0f, 0.0f, -1.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  0.0f, 0.0f, -1.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  0.0f, 0.0f, -1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,  0.0f, 0.0f, -1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,  0.0f, 0.0f, -1.0f,
 
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  0.0f, 0.0f,  1.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f, 0.0f,  1.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,  0.0f, 0.0f,  1.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,  0.0f, 0.0f,  1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,  0.0f, 0.0f,  1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  0.0f, 0.0f,  1.0f,
 
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  -1.0f, 0.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  -1.0f, 0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  -1.0f, 0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  -1.0f, 0.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  -1.0f, 0.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  -1.0f, 0.0f, 0.0f,
 
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  1.0f, 0.0f, 0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  1.0f, 0.0f, 0.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  1.0f, 0.0f, 0.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  1.0f, 0.0f, 0.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  1.0f, 0.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  1.0f, 0.0f, 0.0f,
 
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  0.0f, -1.0f,  0.0f,
 
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,  0.0f, 1.0f,  0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  0.0f, 1.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  0.0f, 1.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  0.0f, 1.0f,  0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,  0.0f, 1.0f,  0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,  0.0f, 1.0f,  0.0f
 	};
 	glGenBuffers(1, &VBO2);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO2);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	// Texture attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	// normal attribute
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(3);
 }
 
 void Application::ShowImGuiControls()
@@ -391,14 +434,20 @@ void Application::Render(GLFWwindow* window)
 
 	//OpenGL test part
 	//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");
+	LightTest();
 	//shadbasic.Use();//Only if forgotten before
-	shadbasic.SetInt("texture1", 0);
-	shadbasic.SetInt("texture2", 1);
-	shadbasic.SetFloat("mixValue", mixValue);
+	//shadbasic.SetInt("texture1", 0);
+	//shadbasic.SetInt("texture2", 1);
+	//shadbasic.SetFloat("mixValue", mixValue);
 	TransTest();
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	//shadlightCube.Use();
+	//glBindVertexArray(VAO);
+	//glDrawArrays(GL_TRIANGLES, 0, 36);
+
 	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-	//shadyellow.Use();
+	//shadlight.Use();
 	//glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 	//
 

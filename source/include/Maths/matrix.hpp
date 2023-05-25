@@ -382,7 +382,7 @@ public:
 		}
 		return result;
 	}
-	MatrixMN < T, M, N>& operator*=(const T& scalar) const {
+	MatrixMN < T, M, N> operator*=(const T& scalar) {
 		*this = (*this) * scalar;
 		return *this;
 	}

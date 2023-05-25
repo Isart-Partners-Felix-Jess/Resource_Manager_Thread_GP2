@@ -65,11 +65,11 @@ bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
 	int  success = 0; //false
 	if (file.bad())
 	{
-		DEBUG_ERROR("Shader file %s is BAD", _filename);
+		DEBUG_ERROR("Shader #%i file %s is BAD", m_ShaderProgram, _filename);
 	}
 	else if (file.fail())
 	{
-		DEBUG_WARNING("Shader file %s opening has FAILED", _filename);
+		DEBUG_WARNING("Shader #%i file %s opening has FAILED", m_ShaderProgram, _filename);
 	}
 	else if (file.is_open())
 	{
@@ -84,7 +84,7 @@ bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
 		if (!success)
 		{
 			glGetShaderInfoLog(m_FragmentShader, 512, NULL, infoLog);
-			DEBUG_ERROR("SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog);
+			DEBUG_ERROR("SHADER #"<< m_ShaderProgram <<"::FRAGMENT::COMPILATION_FAILED\n" << infoLog);
 		}
 	}
 	//safe if file isn't open
@@ -104,7 +104,7 @@ bool Shader::Link()
 	if (!success)
 	{
 		glGetProgramInfoLog(m_ShaderProgram, 512, NULL, infoLog);
-		DEBUG_ERROR("SHADER::LINK::COMPILATION_FAILED\n" << infoLog);
+		DEBUG_ERROR("SHADER #" << m_ShaderProgram << "::LINK::COMPILATION_FAILED\n" << infoLog);
 	}
 	UnloadResource(); //Maybe you delete in any case
 	return success;
@@ -146,6 +146,46 @@ void Shader::SetFloat(const std::string& _name, float _value) const
 {
 	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
 	glUniform1f(valueLocation, _value);
+}
+
+void Shader::SetVec2(const std::string& _name, Vectorf2 _value) const
+{
+	SetVec2(_name, _value.X(), _value.Y());
+}
+void Shader::SetVec2(const std::string& _name, float _valueX, float _valueY) const
+{
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	glUniform2f(valueLocation, _valueX, _valueY);
+}
+void Shader::SetVec3(const std::string& _name, Vectorf3 _value) const
+{
+	SetVec3(_name, _value.X(), _value.Y(), _value.Z());
+}
+void Shader::SetVec3(const std::string& _name, float _valueX, float _valueY, float _valueZ) const
+{
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	glUniform3f(valueLocation, _valueX, _valueY, _valueZ);
+}
+void Shader::SetVec4(const std::string& _name, Vectorf4 _value) const
+{
+	SetVec4(_name, _value.X(), _value.Y(), _value.Z(), _value.Z());
+}
+void Shader::SetVec4(const std::string& _name, float _valueX, float _valueY, float _valueZ, float _valueW) const
+{
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	glUniform4f(valueLocation, _valueX, _valueY, _valueZ, _valueZ);
+}
+
+void Shader::SetMat3(const std::string& _name, Matrix3x3 _value) const
+{
+	float valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	float elements[9];
+	for (int i = 0; i < 9; i++)
+	{
+		elements[i] = _value[i % 3][i / 3];
+	}
+	glUniformMatrix3fv(valueLocation, 1, GL_FALSE, elements);
+
 }
 
 void Shader::SetMat4(const std::string& _name, Matrix4x4 _value) const

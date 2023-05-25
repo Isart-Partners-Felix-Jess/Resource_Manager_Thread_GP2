@@ -38,11 +38,17 @@ void Camera::Update(float deltaTime, const CameraInputs& inputs)
 	viewChanged = true;
 	if (inputs.deltaX)
 	{
-		Turn(inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
+		//if (zCamera.Z() * zCamera.X() >  0.0f )
+		//Turn(inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
+		//else
+		Turn(-inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
 	}
 	if (inputs.deltaY)
 	{
-		Turn(inputs.deltaY * deltaTime * camRotationSpeed, matrix::Axis::X);
+		bool sign = zCamera.Z() < 0.f;
+		if((zCamera.Y() < 1 - 0.01f /*tol*/ || inputs.deltaY * zCamera.Z() > 0.f)
+			&&(zCamera.Y() > -1 + 0.01f /*tol*/ || inputs.deltaY * zCamera.Z() < 0.f))
+		Turn((sign?-1.f:1.f)*inputs.deltaY * deltaTime * camRotationSpeed, matrix::Axis::X);
 	}
 	if (inputs.moveForward)
 		Move(zCamera * deltaTime * camSpeed);
@@ -55,7 +61,7 @@ void Camera::Update(float deltaTime, const CameraInputs& inputs)
 	}
 	if (inputs.moveRight)
 	{
-		Vectorf3 left = zCamera.Cross_product(up).Normalize();
+		Vectorf3 left = -up.Cross_product(zCamera).Normalize();
 		Move(left * deltaTime * camSpeed);
 	}
 }
@@ -146,7 +152,7 @@ void Camera::ShowImGuiControls()
 	{
 		ImGui::Text("WASD Keys to move along XZ Axis");
 		ImGui::Text("Right click to capture mouse and");
-		
+		ImGui::Text("Move to turn around %s.", perspective?"camera":"object");
 	}
 	if (ImGui::CollapsingHeader("View", ImGuiTreeNodeFlags_DefaultOpen))
 	{
@@ -170,14 +176,14 @@ void Camera::ShowImGuiControls()
 	//Projection
 	if (ImGui::CollapsingHeader("Projection", ImGuiTreeNodeFlags_DefaultOpen))
 	{
-		if (ImGui::ListBoxHeader("Options"))
+		if (ImGui::ListBoxHeader("Options",ImVec2(100,36)))
 		{
-			if (ImGui::Selectable("Perspective"))
+			if (ImGui::Selectable("Perspective",perspective))
 			{
 				perspective = true;
 				projChanged = true;
 			}
-			if (ImGui::Selectable("Orthographic"))
+			if (ImGui::Selectable("Orthographic", !perspective))
 			{
 				perspective = false;
 				projChanged = true;
