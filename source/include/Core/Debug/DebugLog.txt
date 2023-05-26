@@ -5245,3 +5245,159 @@ Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
 End of log entry at Fri May 26 17:17:50 2023
 
+Log entry :Fri May 26 17:56:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(54) : error C0000: syntax error, unexpected ')', expecting "::" at token ")"
+0(56) : error C1503: undefined variable "_pointLight"
+0(57) : error C1503: undefined variable "_pointLight"
+0(57) : error C1503: undefined variable "_pointLight"
+0(58) : error C1503: undefined variable "_pointLight"
+0(60) : error C1503: undefined variable "_pointLight"
+0(60) : error C1503: undefined variable "_pointLight"
+0(64) : error C1503: undefined variable "_pointLight"
+0(66) : error C1503: undefined variable "_pointLight"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(54) : error C0000: syntax error, unexpected ')', expecting "::" at token ")"
+0(56) : error C1503: undefined variable "_pointLight"
+0(57) : error C1503: undefined variable "_pointLight"
+0(57) : error C1503: undefined variable "_pointLight"
+0(58) : error C1503: undefined variable "_pointLight"
+0(60) : error C1503: undefined variable "_pointLight"
+0(60) : error C1503: undefined variable "_pointLight"
+0(64) : error C1503: undefined variable "_pointLight"
+0(66) : error C1503: undef
+Log entry :Fri May 26 17:57:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(103) : error C1503: undefined variable "light"
+0(108) : error C1503: undefined variable "color"
+0(108) : error C1009: "ambient" is not member of struct "Light"
+0(108) : error C1503: undefined variable "TexCoords"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(103) : error C1503: undefined variable "light"
+0(108) : error C1503: undefined variable "color"
+0(108) : error C1009: "ambient" is not member of struct "Light"
+0(108) : error C1503: undefined variable "TexCoords"
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 18:00:03 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(103) : error C1503: undefined variable "light"
+0(108) : error C1503: undefined variable "color"
+0(108) : error C1009: "ambient" is not member of struct "Light"
+0(108) : error C1503: undefined variable "TexCoords"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(103) : error C1503: undefined variable "light"
+0(108) : error C1503: undefined variable "color"
+0(108) : error C1009: "ambient" is not member of struct "Light"
+0(108) : error C1503: undefined variable "TexCoords"
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 18:09:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(104) : error C1009: "cutOff" is not member of struct "SpotLight"
+0(109) : error C1009: "ambient" is not member of struct "Light"
+0(109) : error C1115: unable to find compatible overloaded function "texture(vec3, vec2)"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(104) : error C1009: "cutOff" is not member of struct "SpotLight"
+0(109) : error C1009: "ambient" is not member of struct "Light"
+0(109) : error C1115: unable to find compatible overloaded function "texture(vec3, vec2)"
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 18:11:58 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(109) : error C1033: cast not allowed
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(109) : error C1033: cast not allowed
+(0) : error C2003: incompatible options for link
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 18:12:04 2023
+
+Log entry :Fri May 26 18:13:25 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 18:13:32 2023
+
+Log entry :Fri May 26 18:21:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(71) : error C1503: undefined variable "result"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(71) : error C1503: undefined variable "result"
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 18:21:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(71) : error C1503: undefined variable "result"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(71) : error C1503: undefined variable "result"
+(0) : error C2003: incompatible options for link
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 18:21:48 2023
+
+Log entry :Fri May 26 18:22:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(71) : error C0000: syntax error, unexpected identifier, expecting '(' at token "result"
+0(54) : error C1110: function "processLight" has no return statement
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(71) : error C0000: syntax error, unexpected identifier, expecting '(' at token "result"
+0(54) : error C1110: function "processLight" has no return statement
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 18:22:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
