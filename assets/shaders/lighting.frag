@@ -32,6 +32,15 @@ uniform DirectionalLight directionalLight;
 //camera ref needed
 uniform vec3 viewPos;
 
+struct SpotLight
+{
+    vec3 direction;
+    float cutoff;
+    PointLight point;
+};
+uniform SpotLight spotLight;
+
+
 //material members
 struct Material {
     vec3 ambient;
@@ -86,7 +95,9 @@ void processDirectionalLight()
     vec3 result = (ambient + diffuse + specular) * objectColor;
     FragColor = vec4(result, 1.0);
 }
-
+void processSpotLight()
+{
+}
 void main()
 {
     processDirectionalLight();

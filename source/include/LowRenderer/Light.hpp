@@ -23,13 +23,20 @@ struct PointLight
 	float linear = 0.09f;
 	float quadratic = 0.032f;
 	Light light{};
-	void InitShader(Shader& _lightShader);
+	void InitShader(Shader& _lightShader, std::string _structType = "");
 };
 struct DirectionalLight
 {
 	Vectorf3 direction;
 	Light light{};
 
+	void InitShader(Shader& _lightShader);
+};
+struct SpotLight
+{
+	Vectorf3 direction;
+	float cutoffDeg;
+	PointLight point;
 	void InitShader(Shader& _lightShader);
 };
 #endif // !LIGHT_H
