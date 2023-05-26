@@ -21,6 +21,8 @@ void PointLight::InitShader(Shader& _lightShader)
 
 void DirectionalLight::InitShader(Shader& _lightShader)
 {
+	//light direction from the fragment towards the light source
+	Vectorf3 dirTowardSource = -(direction).Normalize();
 	light.InitShader("directionalLight.", _lightShader);
-	_lightShader.SetVec3("directionalLight.direction", direction);
+	_lightShader.SetVec3("directionalLight.direction", dirTowardSource);
 }
