@@ -1,14 +1,28 @@
 #include <Texture.hpp>
 #include <stb/stb_image.h>
 #include <glad/glad.h>
+#include <Assertion.hpp>
 
 Texture::Texture()
 {}
 
 Texture::Texture(const char* _filepath)
 {
+	LoadResource(_filepath);
+}
+Texture::~Texture()
+{
+}
+
+unsigned int Texture::GetID() const
+{
+	return m_Id;
+}
+
+void Texture::LoadResource(const char* _name)
+{
 	std::filesystem::path path = "assets/textures/";
-	path += _filepath;
+	path += _name;
 	//Could be problematic on models
 	stbi_set_flip_vertically_on_load(true);
 	//Potential class members
@@ -29,27 +43,16 @@ Texture::Texture(const char* _filepath)
 			format = GL_RGB;
 		else if (m_Channels == 4)
 			format = GL_RGBA;
+		else
+			Assert(true, "Invalid number of channels in texture file " << _name);
 		glTexImage2D(GL_TEXTURE_2D, 0, format, m_Width, m_Height, 0, format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
 	{
-		DEBUG_WARNING("Failed to load Texture %s", _filepath);
+		DEBUG_WARNING("Failed to load Texture %s", _name);
 	}
 	stbi_image_free(data);
-
-}
-Texture::~Texture()
-{
-}
-
-unsigned int Texture::GetID() const
-{
-	return m_Id;
-}
-
-void Texture::LoadResource(const char* _name)
-{
 }
 
 void Texture::UnloadResource()

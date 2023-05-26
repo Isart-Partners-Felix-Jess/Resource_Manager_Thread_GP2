@@ -3,8 +3,10 @@
 #define MATERIAL_H
 
 #include<ResourcesManager.hpp>
+
 #include <vectorM.hpp>
 class Shader;
+class Texture;
 class Material :
     public IResource
 {
@@ -13,11 +15,22 @@ public: //for now
     Vectorf3 diffuse{ 1.f, 1.f, 1.f };
     Vectorf3 specular{ 1.f, 1.f, 1.f };
     float shininess = 1.f;
+    int diffuse2DMap = 0; //No map (null) is a valid entry
+    int specular2DMap = 0; //No map (null) is a valid entry
+
     //Should go in Renderer
     void InitShader(Shader& _lightShader);
     Material();
     Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny);
     Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny);
+    void AttachDiffuseMap(Texture* _diffuseMap);
+    void AttachDiffuseMap(unsigned int _diffuseMapID);
+    void DetachDiffuseMap();
+
+    void AttachSpecularMap(Texture* _specularMap);
+    void AttachSpecularMap(unsigned int _specularMapID);
+    void DetachSpecularMap();
+
 private:
     // Inherited from IResource
     virtual void LoadResource(const char* _name) override;

@@ -139,6 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="assets\shaders\mix.frag">
+      <FileType>CppCode</FileType>
+    </None>
     <ClCompile Include="source\include\Resources\Material.cpp" />
     <ClCompile Include="source\src\Core\Application\Application.cpp" />
     <ClCompile Include="source\src\LowRenderer\Camera.cpp" />

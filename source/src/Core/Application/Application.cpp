@@ -20,13 +20,13 @@ unsigned int VBO2;
 Shader shadbasic;
 Shader shadlight;
 Shader shadlightCube;
-DirectionalLight light
-{ Vectorf3{0.f,0.f,1.f}
+DirectionalLight dLight
+{ Vectorf3{0.f,0.f,-1.f}
 	/*Vectorf3(1.2f, 1.0f, 2.0f),
 Vectorf3(1.0f, 0.0f, 0.0f),
 Vectorf3(.0f, 1.0f, .0f),
 Vectorf3(0.0f, 0.0f, 1.0f) */ };
-
+PointLight pLight{ Vectorf3(1.2f, 1.0f, 2.0f) };
 
 float mixValue = 0.2f;
 
@@ -56,8 +56,8 @@ Application::Application(int _width, int _height) :camera(_width, _height)
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
 
 	//LearnOpenGL tuto
-	Shadertest();
 	Texturetest();
+	Shadertest();
 	//TransTest();
 
 	glViewport(0, 0, _width, _height);
@@ -197,10 +197,16 @@ void Application::Texturetest()
 {
 	Texture container("container.jpg");
 	Texture awesomeface("awesomeface.png");
+	Texture container2("container2.png");
+	Texture container2_specular("container2_specular.png");
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, container.GetID());
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, awesomeface.GetID());
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, container2.GetID());
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, container2_specular.GetID());
 }
 void Application::ChangeColor(float _newcolor[4])
 {
@@ -241,15 +247,17 @@ void Application::TransTest()
 		//shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
 		shadlight.SetMat3("normalMatrix", rotation);
 		//material::none.InitShader(shadlight);
+		material::list[i].AttachDiffuseMap(2);
+		material::list[i].AttachSpecularMap(3);
 		material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }
 void Application::LightTest()
 {
-	light.direction = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * light.direction;
+	pLight.position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * pLight.position;
 	shadlightCube.Use();
-	Matrix4x4 model = matrix::MatrixTRS(light.direction, {}, { 1.f,1.f,1.f });
+	Matrix4x4 model = matrix::MatrixTRS(pLight.position, {}, { 1.f,1.f,1.f });
 	model *= 0.2f;
 	Matrix4x4 MVP = camera.viewProjection * model;
 	unsigned int MVPLoc = glGetUniformLocation(shadlightCube.GetShaderProgram(), "MVP");
@@ -257,8 +265,9 @@ void Application::LightTest()
 	glBindVertexArray(lightVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	shadlight.Use();
-	shadlight.SetVec3("objectColor", 1.0f, 0.5f, 0.31f);
-	light.InitShader(shadlight);
+	shadlight.SetVec3("objectColor", 1.0f,1.0f,1.0f/* 0.5f, 0.31f*/);
+	pLight.InitShader(shadlight);
+	dLight.InitShader(shadlight);
 	shadlight.SetVec3("viewPos", camera.eye);
 }
 

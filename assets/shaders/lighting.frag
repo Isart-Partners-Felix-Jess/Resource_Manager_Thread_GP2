@@ -1,10 +1,14 @@
 #version 330 core
+
+in vec3 ourColor;
 in vec3 Normal;
 in vec3 FragPos;  
+in vec2 TexCoord;
+
 out vec4 FragColor;
-in vec2 TexCoords;
 
 uniform vec3 objectColor;
+
 //ref to light(s)
 //light members create struct light here
 struct Light
@@ -44,6 +48,8 @@ uniform SpotLight spotLight;
 
 //material members
 struct Material {
+    sampler2D diffuse2D;
+    sampler2D specular2D;
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -51,28 +57,34 @@ struct Material {
 }; 
   
 uniform Material material;
+//Process material
+vec3 sampledTex = vec3(texture(material.diffuse2D, TexCoord));
+vec3 sampledAmbTex = sampledTex * material.ambient;
+vec3 sampledDiffTex = sampledTex * material.diffuse;
+vec3 sampledSpecTex = vec3(texture(material.specular2D, TexCoord)) * material.specular;
+
 vec3 processLight(Light _light, vec3 _dir)
 {
     //Ambient part
-    vec3 ambient = _light.ambientStrength * _light.ambientColor * material.ambient;
+    vec3 ambient = _light.ambientStrength * _light.ambientColor * sampledAmbTex;
     vec3 norm = normalize(Normal);
 
     //Diffuse part
     float diff = max(dot(norm, _dir), 0.0); //clamping the negative values
-    vec3 diffuse = diff * _light.diffuseColor * material.diffuse;
+    vec3 diffuse = diff * _light.diffuseColor * sampledDiffTex;
 
     //Specular part
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-_dir, norm);  
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    vec3 specular = _light.specularStrength * spec * _light.specularColor * material.specular;  
+    vec3 specular = _light.specularStrength * spec * _light.specularColor * sampledSpecTex;  
     
     //Combine
     vec3 result = (ambient + diffuse + specular) * objectColor;
     return result;
 }
 
-void processPointLight(PointLight _pointLight)
+vec3 processPointLight(PointLight _pointLight)
 {
     float distance    = length(_pointLight.position - FragPos);
     float attenuation = 1.0 / (_pointLight.constant + _pointLight.linear * distance + 
@@ -83,30 +95,34 @@ void processPointLight(PointLight _pointLight)
 
     //Combine
     vec3 result = processLight(_pointLight.light, lightDir) * attenuation;
-    FragColor = vec4(result, 1.0);
+    return result;
 }
 
 
-void processDirectionalLight(DirectionalLight _directionalLight)
+vec3 processDirectionalLight(DirectionalLight _directionalLight)
 {
     //Combine
     vec3 result = processLight(_directionalLight.light, _directionalLight.direction);
-    FragColor = vec4(result, 1.0);
+    return result;
 }
-void processSpotLight(SpotLight _spotLight)
+vec3 processSpotLight(SpotLight _spotLight)
 {
     vec3 lightDir = normalize(_spotLight.point.position - FragPos);
     float theta = dot(lightDir,_spotLight.direction);
     
     if(theta > _spotLight.cutoff) 
     {       
-      processPointLight(_spotLight.point);
+      return processPointLight(_spotLight.point);
     }
     else  // else, use ambient light so scene isn't completely dark outside the spotlight.
-      FragColor = vec4(_spotLight.point.light.ambientColor,1.0 );//* vec3(texture(material.diffuse, TexCoords)), 1.0);
+      return _spotLight.point.light.ambientColor * sampledTex;
 }
 void main()
 {
-    processDirectionalLight(directionalLight);
-    //processPointLight(pointLight);
+    vec3 result;
+    result += processDirectionalLight(directionalLight);
+    result += processPointLight(pointLight);
+    result += processSpotLight(spotLight);
+
+    FragColor = vec4(result * objectColor, 1.0);
 }
