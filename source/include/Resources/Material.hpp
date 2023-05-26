@@ -9,12 +9,13 @@ class Material :
     public IResource
 {
 public: //for now
-    Vectorf3 ambient;
-    Vectorf3 diffuse;
-    Vectorf3 specular;
-    float shininess;
+    Vectorf3 ambient{ 1.f, 1.f, 1.f };
+    Vectorf3 diffuse{ 1.f, 1.f, 1.f };
+    Vectorf3 specular{ 1.f, 1.f, 1.f };
+    float shininess = 1.f;
     //Should go in Renderer
     void InitShader(Shader& _lightShader);
+    Material();
     Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny);
     Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny);
 private:
@@ -24,6 +25,7 @@ private:
 };
 namespace material
 {
+    static Material none;
     static Material emerald(0.0215f, 0.1745f, 0.0215f, 0.07568f, 0.61424f, 0.07568f, 0.633f, 0.727811f, 0.633f, 0.6);
     static Material jade(0.135f, 0.2225f, 0.1575f, 0.54f, 0.89f, 0.63f, 0.316228f, 0.316228f, 0.316228f, 0.1);
     static Material obsidian(0.05375f, 0.05f, 0.06625f, 0.18275f, 0.17f, 0.22525f, 0.332741f, 0.328634f, 0.346435f, 0.3);

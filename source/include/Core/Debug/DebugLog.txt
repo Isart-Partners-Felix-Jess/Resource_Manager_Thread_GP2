@@ -4429,3 +4429,715 @@ Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
 End of log entry at Thu May 25 21:39:53 2023
 
+Log entry :Fri May 26 09:15:04 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 09:15:14 2023
+
+Log entry :Fri May 26 10:24:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 13:19:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:20:41 2023
+
+Log entry :Fri May 26 13:20:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:21:48 2023
+
+Log entry :Fri May 26 13:22:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 13:23:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:23:55 2023
+
+Log entry :Fri May 26 13:24:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:24:37 2023
+
+Log entry :Fri May 26 13:26:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:28:06 2023
+
+Log entry :Fri May 26 13:31:12 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:31:15 2023
+
+Log entry :Fri May 26 13:31:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:33:44 2023
+
+Log entry :Fri May 26 13:33:47 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:33:56 2023
+
+Log entry :Fri May 26 13:34:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:34:29 2023
+
+Log entry :Fri May 26 13:35:38 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:35:53 2023
+
+Log entry :Fri May 26 13:36:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:36:39 2023
+
+Log entry :Fri May 26 13:36:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:36:56 2023
+
+Log entry :Fri May 26 13:36:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:37:04 2023
+
+Log entry :Fri May 26 13:37:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:37:51 2023
+
+Log entry :Fri May 26 13:38:25 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:38:55 2023
+
+Log entry :Fri May 26 13:39:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:40:43 2023
+
+Log entry :Fri May 26 13:42:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:42:53 2023
+
+Log entry :Fri May 26 13:43:12 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:43:22 2023
+
+Log entry :Fri May 26 13:45:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:45:47 2023
+
+Log entry :Fri May 26 13:47:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 13:53:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:53:57 2023
+
+Log entry :Fri May 26 13:54:03 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:56:22 2023
+
+Log entry :Fri May 26 13:57:27 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 13:57:30 2023
+
+Log entry :Fri May 26 13:57:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 14:00:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:02:21 2023
+
+Log entry :Fri May 26 14:02:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:02:38 2023
+
+Log entry :Fri May 26 14:03:24 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:03:56 2023
+
+Log entry :Fri May 26 14:09:13 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:09:21 2023
+
+Log entry :Fri May 26 14:17:02 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:17:08 2023
+
+Log entry :Fri May 26 14:17:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(22) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(23) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(24) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(25) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(36) : error C1020: invalid operands to "*"
+0(42) : error C1020: invalid operands to "*"
+0(47) : error C1115: unable to find compa
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(22) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(23) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(24) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(25) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(36) : error C1020: invalid operands to "*"
+0(42) : error C1020: invalid operands to "*"
+0(47) : error
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:18:09 2023
+
+Log entry :Fri May 26 14:18:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(22) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(23) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(24) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(25) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(36) : error C1020: invalid operands to "*"
+0(42) : error C1020: invalid operands to "*"
+0(47) : error C1115: unable to find compa
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(22) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(23) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(24) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(25) : error C0000: syntax error, unexpected floating point constant at token "<float-const>"
+0(36) : error C1020: invalid operands to "*"
+0(42) : error C1020: invalid operands to "*"
+0(47) : error
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:18:31 2023
+
+Log entry :Fri May 26 14:19:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(22) : error C7546: OpenGL does not allow abstract declarations in structs
+0(22) : error C1001: initialization of struct member 'ambient' not allowed
+0(23) : error C7546: OpenGL does not allow abstract declarations in structs
+0(23) : error C1001: initialization of struct member 'diffuse' not allowed
+0(24) : error C7546: OpenGL does not allow abstract declarations in structs
+0(24) : error C1001: initialization of struct member 'specular' not allowed
+0(25) : error C1001: initialization of struct member 'shi
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(22) : error C7546: OpenGL does not allow abstract declarations in structs
+0(22) : error C1001: initialization of struct member 'ambient' not allowed
+0(23) : error C7546: OpenGL does not allow abstract declarations in structs
+0(23) : error C1001: initialization of struct member 'diffuse' not allowed
+0(24) : error C7546: OpenGL does not allow abstract declarations in structs
+0(24) : error C1001: initialization of struct member 'specular' not allowed
+0(25) : error C1001: initiali
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:19:15 2023
+
+Log entry :Fri May 26 14:19:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:20:03 2023
+
+Log entry :Fri May 26 14:22:52 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:22:55 2023
+
+Log entry :Fri May 26 14:23:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:23:53 2023
+
+Log entry :Fri May 26 14:24:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:24:28 2023
+
+Log entry :Fri May 26 14:24:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:24:54 2023
+
+Log entry :Fri May 26 14:25:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:25:18 2023
+
+Log entry :Fri May 26 14:25:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:25:35 2023
+
+Log entry :Fri May 26 14:25:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 14:26:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:26:34 2023
+
+Log entry :Fri May 26 14:26:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 14:28:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 14:28:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:30:36 2023
+
+Log entry :Fri May 26 14:31:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 14:34:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:46:12 2023
+
+Log entry :Fri May 26 14:46:58 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:48:11 2023
+
+Log entry :Fri May 26 14:48:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:48:46 2023
+
+Log entry :Fri May 26 14:49:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 14:50:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:52:16 2023
+
+Log entry :Fri May 26 14:52:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:55:07 2023
+
+Log entry :Fri May 26 14:55:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 14:55:32 2023
+
+Log entry :Fri May 26 15:39:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(25) : error C7537: OpenGL does not allow 'uniform' after a type specifier
+0(25) : error C1002: the name "PointLight" is already defined at 0(18)
+0(25) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "pointlight"
+0(31) : error C7537: OpenGL does not allow 'uniform' after a type specifier
+0(31) : error C1002: the name "DirectionalLight" is already defined at 0(27)
+0(31) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "directionallight"
+0(4
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(25) : error C7537: OpenGL does not allow 'uniform' after a type specifier
+0(25) : error C1002: the name "PointLight" is already defined at 0(18)
+0(25) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "pointlight"
+0(31) : error C7537: OpenGL does not allow 'uniform' after a type specifier
+0(31) : error C1002: the name "DirectionalLight" is already defined at 0(27)
+0(31) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at 
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 15:39:16 2023
+
+Log entry :Fri May 26 15:39:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(47) : error C1503: undefined variable "light"
+0(48) : error C1503: undefined variable "light"
+0(48) : error C1503: undefined variable "light"
+0(49) : error C1503: undefined variable "light"
+0(72) : error C1503: undefined variable "directionalLight"
+0(72) : error C1503: undefined variable "directionalLight"
+0(76) : error C1503: undefined variable "directionalLight"
+0(77) : error C1503: undefined variable "directionalLight"
+0(81) : error C1503: undefined variable "directionalLight"
+0(83) : error C1503: und
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(47) : error C1503: undefined variable "light"
+0(48) : error C1503: undefined variable "light"
+0(48) : error C1503: undefined variable "light"
+0(49) : error C1503: undefined variable "light"
+0(72) : error C1503: undefined variable "directionalLight"
+0(72) : error C1503: undefined variable "directionalLight"
+0(76) : error C1503: undefined variable "directionalLight"
+0(77) : error C1503: undefined variable "directionalLight"
+0(81) : error C1503: undefined variable "directionalLig
+Log entry :Fri May 26 15:41:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "light"
+0(76) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(81) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(90) : error C1014: "main" is not a function
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "light"
+0(76) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(81) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(90) : error C1014: "main" is not a function
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 15:43:15 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "light"
+0(76) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(81) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(90) : error C1014: "main" is not a function
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "light"
+0(76) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(81) : error C1009: "dir" is not member of struct "DirectionalLight"
+0(90) : error C1014: "main" is not a function
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 15:46:49 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "pointLight"
+0(90) : error C1014: "main" is not a function
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "pointLight"
+0(90) : error C1014: "main" is not a function
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 15:47:12 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "pointLight"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(47) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(48) : error C1503: undefined variable "pointLight"
+0(49) : error C1503: undefined variable "pointLight"
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 15:48:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(48) : error C1009: "constant" is not member of struct "Light"
+0(48) : error C1009: "linear" is not member of struct "Light"
+0(49) : error C1009: "quadratic" is not member of struct "Light"
+0(51) : error C1503: undefined variable "pointlight"
+0(51) : error C1503: undefined variable "pointlight"
+0(55) : error C1503: undefined variable "pointlight"
+0(57) : error C1503: undefined variable "pointlight"
+0(63) : error C1503: undefined variable "pointlight"
+0(63) : error C1503: undefined variable "pointlight"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(48) : error C1009: "constant" is not member of struct "Light"
+0(48) : error C1009: "linear" is not member of struct "Light"
+0(49) : error C1009: "quadratic" is not member of struct "Light"
+0(51) : error C1503: undefined variable "pointlight"
+0(51) : error C1503: undefined variable "pointlight"
+0(55) : error C1503: undefined variable "pointlight"
+0(57) : error C1503: undefined variable "pointlight"
+0(63) : error C1503: undefined variable "pointlight"
+0(63) : error C1503: undefi
+Log entry :Fri May 26 15:50:03 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(48) : error C1009: "constant" is not member of struct "Light"
+0(48) : error C1009: "linear" is not member of struct "Light"
+0(49) : error C1009: "quadratic" is not member of struct "Light"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(48) : error C1009: "constant" is not member of struct "Light"
+0(48) : error C1009: "linear" is not member of struct "Light"
+0(49) : error C1009: "quadratic" is not member of struct "Light"
+(0) : error C2003: incompatible options for link
+
+Log entry :Fri May 26 15:56:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 15:56:28 2023
+
+Log entry :Fri May 26 16:24:58 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 16:25:13 2023
+
+Log entry :Fri May 26 16:25:38 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 16:25:42 2023
+
+Log entry :Fri May 26 16:26:30 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 16:28:35 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 16:30:24 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 16:31:45 2023
+
+Log entry :Fri May 26 16:31:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 16:36:17 2023
+
+Log entry :Fri May 26 16:36:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 16:36:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 16:40:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Fri May 26 16:41:41 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Fri May 26 16:41:57 2023
+

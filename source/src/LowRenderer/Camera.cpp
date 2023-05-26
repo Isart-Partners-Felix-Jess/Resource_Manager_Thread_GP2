@@ -38,17 +38,11 @@ void Camera::Update(float deltaTime, const CameraInputs& inputs)
 	viewChanged = true;
 	if (inputs.deltaX)
 	{
-		//if (zCamera.Z() * zCamera.X() >  0.0f )
-		//Turn(inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
-		//else
-		Turn(-inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
+		Turn(inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
 	}
 	if (inputs.deltaY)
 	{
-		bool sign = zCamera.Z() < 0.f;
-		if((zCamera.Y() < 1 - 0.01f /*tol*/ || inputs.deltaY * zCamera.Z() > 0.f)
-			&&(zCamera.Y() > -1 + 0.01f /*tol*/ || inputs.deltaY * zCamera.Z() < 0.f))
-		Turn((sign?-1.f:1.f)*inputs.deltaY * deltaTime * camRotationSpeed, matrix::Axis::X);
+		Turn(-inputs.deltaY * deltaTime * camRotationSpeed, matrix::Axis::X);
 	}
 	if (inputs.moveForward)
 		Move(zCamera * deltaTime * camSpeed);
@@ -73,15 +67,36 @@ void Camera::Move(const Vectorf3& _velocity)
 void Camera::Turn(float _angle, matrix::Axis _axis)
 {
 	//FPS View
+	const float TOLERANCE = M_PI_2 - 1e-6;
+	static float yaw = -M_PI_2;
+	static float pitch = 0.f;
+	if (_axis == matrix::Axis::X)
+	{
+		pitch += _angle;
+		//Clamping, have to do it sadly on orthographic view too because of Gimbal Lock
+		if (pitch >  TOLERANCE)
+			pitch =  TOLERANCE;
+		if (pitch < -TOLERANCE)
+			pitch = -TOLERANCE;
+	}
+	if (_axis == matrix::Axis::Y)
+	{
+		yaw += _angle;
+	}
+	Vectorf3 direction;
+	direction[0] = cos(yaw) * cos(pitch);
+	direction[1] = sin(pitch);
+	direction[2] = sin(yaw) * cos(pitch);
+	zCamera = direction.Normalize();
+	//Matrix * vector is a lot of useless calculation here, previously :
+	//zCamera = matrix::Rotate3D(_angle, _axis) * zCamera;
 	if (perspective)
 	{
-		zCamera = matrix::Rotate3D(_angle, _axis) * zCamera;
 		center = eye + zCamera;
 		return;
 	}
 	else
-		//Model View
-		eye = matrix::Rotate3D(_angle, _axis) * eye;
+		eye = center - zCamera * orthoScale;
 }
 void Camera::Zoom(float yoffset)
 {
@@ -89,7 +104,7 @@ void Camera::Zoom(float yoffset)
 	{
 		float degToRad = M_PI / 180.f;
 		fovY -= yoffset * degToRad;
-		if (fovY < (/*1.0f * */degToRad))
+		if (fovY < (/*1.0f * */degToRad)) //1 degree, so lets skip that computation
 			fovY = /*1.0f * */degToRad;
 		if (fovY > 179.0f * degToRad)
 			fovY = 179.0f * degToRad;
@@ -123,9 +138,9 @@ void Camera::SetView()
 void Camera::SetProjection()
 {
 	if (perspective)
-	projection = Perspective(fovY, aspect, zNear, zFar);
+		projection = Perspective(fovY, aspect, zNear, zFar);
 	else
-	projection = Orthographic(-orthoScale, orthoScale, -orthoScale, orthoScale);
+		projection = Orthographic(-orthoScale, orthoScale, -orthoScale, orthoScale);
 }
 void Camera::ComputeViewProjection()
 {
@@ -152,7 +167,7 @@ void Camera::ShowImGuiControls()
 	{
 		ImGui::Text("WASD Keys to move along XZ Axis");
 		ImGui::Text("Right click to capture mouse and");
-		ImGui::Text("Move to turn around %s.", perspective?"camera":"object");
+		ImGui::Text("Move to turn around %s.", perspective ? "camera" : "object");
 	}
 	if (ImGui::CollapsingHeader("View", ImGuiTreeNodeFlags_DefaultOpen))
 	{
@@ -176,9 +191,9 @@ void Camera::ShowImGuiControls()
 	//Projection
 	if (ImGui::CollapsingHeader("Projection", ImGuiTreeNodeFlags_DefaultOpen))
 	{
-		if (ImGui::ListBoxHeader("Options",ImVec2(100,36)))
+		if (ImGui::ListBoxHeader("Options", ImVec2(100, 36)))
 		{
-			if (ImGui::Selectable("Perspective",perspective))
+			if (ImGui::Selectable("Perspective", perspective))
 			{
 				perspective = true;
 				projChanged = true;

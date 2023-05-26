@@ -11,6 +11,10 @@ void Material::InitShader(Shader& _lightShader)
 	_lightShader.SetFloat("material.shininess", shininess * 128.f); // *128 for OpenGL
 }
 
+Material::Material()
+{
+}
+
 Material::Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny)
 {
 	ambient = _ambient;

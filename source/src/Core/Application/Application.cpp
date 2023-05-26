@@ -20,7 +20,7 @@ unsigned int VBO2;
 Shader shadbasic;
 Shader shadlight;
 Shader shadlightCube;
-Light light
+PointLight light
 { Vectorf3(1.2f, 1.0f, 2.0f)/*,
 Vectorf3(1.0f, 0.0f, 0.0f),
 Vectorf3(.0f, 1.0f, .0f),
@@ -239,6 +239,7 @@ void Application::TransTest()
 		shadlight.SetMat4("model", modeltest);
 		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
 		//shadlight.SetMat3("normalMatrix", rotation);
+		//material::none.InitShader(shadlight);
 		material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
