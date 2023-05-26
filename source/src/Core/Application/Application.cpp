@@ -20,8 +20,9 @@ unsigned int VBO2;
 Shader shadbasic;
 Shader shadlight;
 Shader shadlightCube;
-PointLight light
-{ Vectorf3(1.2f, 1.0f, 2.0f)/*,
+DirectionalLight light
+{ Vectorf3{0.f,0.f,1.f}
+	/*Vectorf3(1.2f, 1.0f, 2.0f),
 Vectorf3(1.0f, 0.0f, 0.0f),
 Vectorf3(.0f, 1.0f, .0f),
 Vectorf3(0.0f, 0.0f, 1.0f) */ };
@@ -195,7 +196,7 @@ void Application::lightVAOtest()
 void Application::Texturetest()
 {
 	Texture container("container.jpg");
-	Texture awesomeface("awesomeface.png", true);
+	Texture awesomeface("awesomeface.png");
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, container.GetID());
 	glActiveTexture(GL_TEXTURE1);
@@ -237,8 +238,8 @@ void Application::TransTest()
 		shadbasic.SetMat4("MVP", MVP);
 		shadlight.SetMat4("MVP", MVP);
 		shadlight.SetMat4("model", modeltest);
-		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
-		//shadlight.SetMat3("normalMatrix", rotation);
+		//shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
+		shadlight.SetMat3("normalMatrix", rotation);
 		//material::none.InitShader(shadlight);
 		material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -246,9 +247,9 @@ void Application::TransTest()
 }
 void Application::LightTest()
 {
-	light.position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * light.position;
+	light.direction = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * light.direction;
 	shadlightCube.Use();
-	Matrix4x4 model = matrix::MatrixTRS(light.position, {}, { 1.f,1.f,1.f });
+	Matrix4x4 model = matrix::MatrixTRS(light.direction, {}, { 1.f,1.f,1.f });
 	model *= 0.2f;
 	Matrix4x4 MVP = camera.viewProjection * model;
 	unsigned int MVPLoc = glGetUniformLocation(shadlightCube.GetShaderProgram(), "MVP");

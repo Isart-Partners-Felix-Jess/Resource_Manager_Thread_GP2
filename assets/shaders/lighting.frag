@@ -89,6 +89,6 @@ void processDirectionalLight()
 
 void main()
 {
-    //processDirectionalLight();
-    processPointLight();
+    processDirectionalLight();
+    //processPointLight();
 }

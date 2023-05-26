@@ -11,7 +11,7 @@ private:
     unsigned int m_Id;
 public:
     Texture();
-    Texture(const char* _filepath, bool _alphaChannel = false);
+    Texture(const char* _filepath);
     ~Texture();
 
     unsigned int GetID() const;

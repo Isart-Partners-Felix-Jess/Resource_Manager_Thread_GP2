@@ -22,5 +22,5 @@ void PointLight::InitShader(Shader& _lightShader)
 void DirectionalLight::InitShader(Shader& _lightShader)
 {
 	light.InitShader("directionalLight.", _lightShader);
-	_lightShader.SetVec3("directionalLight.light.position", direction);
+	_lightShader.SetVec3("directionalLight.direction", direction);
 }
