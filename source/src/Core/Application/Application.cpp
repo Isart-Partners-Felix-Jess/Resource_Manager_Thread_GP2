@@ -27,7 +27,7 @@ Vectorf3(1.0f, 0.0f, 0.0f),
 Vectorf3(.0f, 1.0f, .0f),
 Vectorf3(0.0f, 0.0f, 1.0f) */ };
 PointLight pLight{ Vectorf3(1.2f, 1.0f, 2.0f) };
-SpotLight sLight{ Vectorf3(0.f,0.f,-1.f),30.f,12.5f, { {0.f,0.f,3.f}} };
+SpotLight sLight{ Vectorf3(0.f,0.f,-1.f),12.5f,17.5f, { {0.f,0.f,3.f},1.f,0.0f,0.032f} };
 
 float mixValue = 0.2f;
 
@@ -249,8 +249,8 @@ void Application::TransTest()
 		shadlight.SetMat3("normalMatrix", rotation);
 		material::list[i].AttachDiffuseMap(2);
 		material::list[i].AttachSpecularMap(3);
-		material::none.InitShader(shadlight);
-		//material::list[i].InitShader(shadlight);
+		//material::none.InitShader(shadlight);
+		material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }

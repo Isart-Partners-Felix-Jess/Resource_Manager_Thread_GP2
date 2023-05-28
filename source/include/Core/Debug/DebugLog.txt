@@ -7071,3 +7071,283 @@ Log entry :Sun May 28 22:54:09 2023
 
 Model File viking_room.obj has been opened
 Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 23:14:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+New Clear Color : 51,77,56
+New Clear Color : 51,77,40
+New Clear Color : 51,77,29
+New Clear Color : 51,77,28
+New Clear Color : 51,52,28
+New Clear Color : 0,52,28
+New Clear Color : 0,0,28
+New Clear Color : 0,0,0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:15:23 2023
+
+Log entry :Sun May 28 23:16:11 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:16:24 2023
+
+Log entry :Sun May 28 23:16:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:16:52 2023
+
+Log entry :Sun May 28 23:17:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:18:09 2023
+
+Log entry :Sun May 28 23:18:25 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:18:41 2023
+
+Log entry :Sun May 28 23:18:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 23:20:38 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:21:04 2023
+
+Log entry :Sun May 28 23:22:13 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:119: 'diffuseStrength' : no such field in structure 
+ERROR: 0:119: 'assign' :  cannot convert from 'highp float' to 'structure'
+ERROR: 0:128: '{' : syntax error syntax error
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 23:22:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:119: 'diffuseStrength' : no such field in structure 
+ERROR: 0:119: 'assign' :  cannot convert from 'highp float' to 'structure'
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 23:23:52 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:24:14 2023
+
+Log entry :Sun May 28 23:24:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:25:39 2023
+
+Log entry :Sun May 28 23:26:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:27:30 2023
+
+Log entry :Sun May 28 23:28:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:28:11 2023
+
+Log entry :Sun May 28 23:28:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:32:32 2023
+
+Log entry :Sun May 28 23:38:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:39:29 2023
+
+Log entry :Sun May 28 23:40:21 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:41:05 2023
+
+Log entry :Sun May 28 23:42:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:42:19 2023
+
+Log entry :Sun May 28 23:42:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 23:43:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:43:40 2023
+
+Log entry :Sun May 28 23:44:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 23:45:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:47:20 2023
+
+Log entry :Sun May 28 23:48:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:49:16 2023
+
+Log entry :Sun May 28 23:49:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:116: 'result' : undeclared identifier 
+ERROR: 0:116: 'processPointLight' : syntax error syntax error
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:49:44 2023
+
+Log entry :Sun May 28 23:49:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:50:08 2023
+
+Log entry :Sun May 28 23:51:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:52:12 2023
+
+Log entry :Sun May 28 23:52:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:53:04 2023
+
+Log entry :Sun May 28 23:53:25 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:53:52 2023
+
+Log entry :Sun May 28 23:54:13 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:54:33 2023
+
+Log entry :Sun May 28 23:54:47 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:55:45 2023
+
+Log entry :Sun May 28 23:56:15 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:56:22 2023
+
+Log entry :Sun May 28 23:56:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:114: ';' : syntax error syntax error
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 23:56:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:57:04 2023
+
+Log entry :Sun May 28 23:57:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 23:58:19 2023
+

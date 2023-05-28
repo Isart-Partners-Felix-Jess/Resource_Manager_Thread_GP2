@@ -110,23 +110,16 @@ vec3 processSpotLight(SpotLight _spotLight)
 {
     vec3 lightDir = normalize(_spotLight.pointLight.position - FragPos);
     float theta = dot(lightDir,_spotLight.direction);
-    float epsilon   = _spotLight.outerCutoff - _spotLight.cutoff ;
-    //float epsilon   = innerCutoff - _spotLight.outerCutoff;
-    float intensity = clamp((theta - _spotLight.outerCutoff) / epsilon, _spotLight.pointLight.light.ambientStrength, 1.0);    
-    
-    //if(theta > _spotLight.cutoff) 
-    {    //   _spotLight.pointLight.light.ambientStrength/=intensity;
-        return processPointLight(_spotLight.pointLight) * intensity;
-        //_spotLight.pointLight.light.ambientStrength *=intensity;
-    }
-   // else  // else, use ambient light so scene isn't completely dark outside the spotlight.
-    //  return _spotLight.pointLight.light.ambientColor * _spotLight.pointLight.light.ambientStrength * sampledAmbTex;
+    float epsilon   = _spotLight.cutoff  - _spotLight.outerCutoff ;
+    float intensity = clamp((theta - _spotLight.outerCutoff) / epsilon, 0.0, 1.0);    
+      
+    return processPointLight(_spotLight.pointLight) * intensity;
 }
 void main()
 {
     vec3 result;
-   // result += processDirectionalLight(directionalLight);
-    //result += processPointLight(pointLight);
+    result += processDirectionalLight(directionalLight);
+    result += processPointLight(pointLight);
     result += processSpotLight(spotLight);
 
     FragColor = vec4(result * objectColor, 1.0);
