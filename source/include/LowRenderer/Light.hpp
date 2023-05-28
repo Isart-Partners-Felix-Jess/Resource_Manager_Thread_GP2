@@ -36,6 +36,7 @@ struct SpotLight
 {
 	Vectorf3 direction;
 	float cutoffDeg;
+	float outerCutoffDeg;
 	PointLight point;
 	void InitShader(Shader& _lightShader);
 };

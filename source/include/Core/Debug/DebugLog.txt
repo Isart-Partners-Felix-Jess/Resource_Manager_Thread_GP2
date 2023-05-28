@@ -5859,3 +5859,1215 @@ Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
 End of log entry at Fri May 26 23:42:38 2023
 
+Log entry :Sun May 28 20:10:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:10:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:11:02 2023
+
+Log entry :Sun May 28 20:11:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:11:27 2023
+
+Log entry :Sun May 28 20:12:02 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:12:07 2023
+
+Log entry :Sun May 28 20:12:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:12:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:13:12 2023
+
+Log entry :Sun May 28 20:13:24 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:13:48 2023
+
+Log entry :Sun May 28 20:14:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:14:27 2023
+
+Log entry :Sun May 28 20:16:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:16:34 2023
+
+Log entry :Sun May 28 20:16:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:18:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:20:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:21:40 2023
+
+Log entry :Sun May 28 20:21:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:22:02 2023
+
+Log entry :Sun May 28 20:22:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:23:12 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:23:18 2023
+
+Log entry :Sun May 28 20:25:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:27:15 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:27:21 2023
+
+Log entry :Sun May 28 20:27:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:29:00 2023
+
+Log entry :Sun May 28 20:29:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:31:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:32:00 2023
+
+Log entry :Sun May 28 20:32:36 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:33:34 2023
+
+Log entry :Sun May 28 20:33:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:34:11 2023
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:37:28 2023
+
+Log entry :Sun May 28 20:44:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: 'light' : undeclared identifier 
+ERROR: 0:113: 'cutOff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutOff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutOff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:45:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: 'light' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:45:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:45:50 2023
+
+Log entry :Sun May 28 20:47:15 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:48:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:118: 'intensity' : undeclared identifier 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:48:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:48:40 2023
+
+Log entry :Sun May 28 20:48:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:50:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:50:20 2023
+
+Log entry :Sun May 28 20:50:27 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:50:49 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:50:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:51:00 2023
+
+Log entry :Sun May 28 20:51:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:51:16 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:52:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '_spotlight' : undeclared identifier 
+ERROR: 0:113: 'cutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:113: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:114: 'outerCutoff' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 20:53:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 20:53:15 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:54:03 2023
+
+Log entry :Sun May 28 20:55:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:55:21 2023
+
+Log entry :Sun May 28 20:55:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:56:18 2023
+
+Log entry :Sun May 28 20:57:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:57:09 2023
+
+Log entry :Sun May 28 20:57:21 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 20:57:24 2023
+
+Log entry :Sun May 28 21:00:49 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:01:21 2023
+
+Log entry :Sun May 28 21:01:30 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:01:49 2023
+
+Log entry :Sun May 28 21:02:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:02:23 2023
+
+Log entry :Sun May 28 21:02:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:02:47 2023
+
+Log entry :Sun May 28 21:10:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:10:56 2023
+
+Log entry :Sun May 28 21:11:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:11:49 2023
+
+Log entry :Sun May 28 21:12:08 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:12:11 2023
+
+Log entry :Sun May 28 21:12:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:12:30 2023
+
+Log entry :Sun May 28 21:12:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:12:58 2023
+
+Log entry :Sun May 28 21:13:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:13:46 2023
+
+Log entry :Sun May 28 21:13:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:14:08 2023
+
+Log entry :Sun May 28 21:14:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:14:36 2023
+
+Log entry :Sun May 28 21:14:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:15:00 2023
+
+Log entry :Sun May 28 21:20:21 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:20:34 2023
+
+Log entry :Sun May 28 21:20:59 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:21:49 2023
+
+Log entry :Sun May 28 21:21:58 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:22:17 2023
+
+Log entry :Sun May 28 21:22:47 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:23:08 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:23:31 2023
+
+Log entry :Sun May 28 21:23:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:23:59 2023
+
+Log entry :Sun May 28 21:24:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:24:14 2023
+
+Log entry :Sun May 28 21:29:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:114: 'innercutoff' : undeclared identifier 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 21:29:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:30:21 2023
+
+Log entry :Sun May 28 21:33:35 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:33:55 2023
+
+Log entry :Sun May 28 21:35:38 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:35:56 2023
+
+Log entry :Sun May 28 21:36:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:36:28 2023
+
+Log entry :Sun May 28 21:36:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:36:48 2023
+
+Log entry :Sun May 28 21:36:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:37:00 2023
+
+Log entry :Sun May 28 21:37:26 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:37:29 2023
+
+Log entry :Sun May 28 21:37:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:41:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:119: 'poinLight' : no such field in structure 
+ERROR: 0:119: 'light' : no such field in structure 
+ERROR: 0:119: 'ambientStrength' : no such field in structure 
+ERROR: 0:119: 'assign' :  cannot convert from 'highp float' to 'in highp structure'
+ERROR: 0:121: 'poinLight' : no such field in structure 
+ERROR: 0:121: 'light' : no such field in structure 
+ERROR: 0:121: 'ambientStrength' : no such field in structure 
+ERROR: 0:121: 'assign' :  cannot convert from 'highp float' to 'in highp structure'
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 21:41:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:121: 'poinLight' : no such field in structure 
+ERROR: 0:121: 'light' : no such field in structure 
+ERROR: 0:121: 'ambientStrength' : no such field in structure 
+ERROR: 0:121: 'assign' :  cannot convert from 'highp float' to 'in highp structure'
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 21:42:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:42:16 2023
+
+Log entry :Sun May 28 21:42:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:42:48 2023
+
+Log entry :Sun May 28 21:42:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:43:09 2023
+
+Log entry :Sun May 28 21:43:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:112: 'lightDi' : undeclared identifier 
+ERROR: 0:113: 'dot' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:113: 'dot' : function is not known 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:43:30 2023
+
+Log entry :Sun May 28 21:43:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:44:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:112: 'normalize' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:112: 'normalize' : function is not known 
+ERROR: 0:111: '=' :  cannot convert from 'const highp float' to '3-component vector of highp float'
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 21:44:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:44:39 2023
+
+Log entry :Sun May 28 21:44:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:45:00 2023
+
+Log entry :Sun May 28 21:45:13 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:45:31 2023
+
+Log entry :Sun May 28 21:45:49 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:46:21 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:120: 'processLight' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:120: 'processLight' : function is not known 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 21:46:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:120: 'processLight' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:120: 'processLight' : function is not known 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 21:47:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:47:38 2023
+
+Log entry :Sun May 28 21:47:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:47:55 2023
+
+Log entry :Sun May 28 21:48:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:48:34 2023
+
+Log entry :Sun May 28 21:48:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:49:01 2023
+
+Log entry :Sun May 28 21:49:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:49:39 2023
+
+Log entry :Sun May 28 21:50:36 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:51:28 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:52:41 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:52:48 2023
+
+Log entry :Sun May 28 21:52:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:53:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 21:53:38 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 21:53:45 2023
+
+Log entry :Sun May 28 21:54:06 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:11:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:14:28 2023
+
+Log entry :Sun May 28 22:15:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:15:29 2023
+
+Log entry :Sun May 28 22:18:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:18:37 2023
+
+Log entry :Sun May 28 22:18:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:19:04 2023
+
+Log entry :Sun May 28 22:19:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:19:26 2023
+
+Log entry :Sun May 28 22:20:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:20:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:113: '-' : wrong operand types no operation '-' exists that takes a left-hand operand of type 'float' and a right operand of type 'in highp structure' (or there is no acceptable conversion)
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Log entry :Sun May 28 22:21:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:21:25 2023
+
+Log entry :Sun May 28 22:21:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:21:45 2023
+
+Log entry :Sun May 28 22:22:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:24:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:24:36 2023
+
+Log entry :Sun May 28 22:24:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:25:33 2023
+
+Log entry :Sun May 28 22:26:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:27:02 2023
+
+Log entry :Sun May 28 22:27:27 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:27:31 2023
+
+Log entry :Sun May 28 22:27:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:27:47 2023
+
+Log entry :Sun May 28 22:27:57 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:28:26 2023
+
+Log entry :Sun May 28 22:28:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:28:52 2023
+
+Log entry :Sun May 28 22:29:03 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:29:25 2023
+
+Log entry :Sun May 28 22:29:39 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:29:52 2023
+
+Log entry :Sun May 28 22:30:15 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:31:52 2023
+
+Log entry :Sun May 28 22:31:56 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:32:26 2023
+
+Log entry :Sun May 28 22:32:47 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:34:16 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:34:45 2023
+
+Log entry :Sun May 28 22:35:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:35:11 2023
+
+Log entry :Sun May 28 22:35:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:35:48 2023
+
+Log entry :Sun May 28 22:35:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:36:23 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:37:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:118: 'instensity' : undeclared identifier 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:37:40 2023
+
+Log entry :Sun May 28 22:37:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:38:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:38:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:38:39 2023
+
+Log entry :Sun May 28 22:39:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:39:35 2023
+
+Log entry :Sun May 28 22:39:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:39:56 2023
+
+Log entry :Sun May 28 22:40:20 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:40:42 2023
+
+Log entry :Sun May 28 22:46:03 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:46:15 2023
+
+Log entry :Sun May 28 22:46:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:118: 'spotlight' : undeclared identifier 
+ERROR: 0:118: 'light' : field selection requires structure, vector, or matrix on left hand side 
+ERROR: 0:118: 'ambientStrength' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:46:51 2023
+
+Log entry :Sun May 28 22:47:02 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+ERROR: 0:118: 'light' : no such field in structure 
+ERROR: 0:118: 'ambientStrength' : no such field in structure 
+ERROR: 0:118: 'clamp' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:118: 'clamp' : function is not known 
+
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Attached fragment shader is not compiled.
+
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:47:17 2023
+
+Log entry :Sun May 28 22:47:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:48:22 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:48:54 2023
+
+Log entry :Sun May 28 22:49:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:49:31 2023
+
+Log entry :Sun May 28 22:49:49 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:50:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:50:56 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:51:09 2023
+
+Log entry :Sun May 28 22:51:45 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:52:08 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:52:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Sun May 28 22:52:49 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:53:10 2023
+
+Log entry :Sun May 28 22:53:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:53:27 2023
+
+Log entry :Sun May 28 22:53:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Sun May 28 22:53:50 2023
+
+Log entry :Sun May 28 22:54:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0

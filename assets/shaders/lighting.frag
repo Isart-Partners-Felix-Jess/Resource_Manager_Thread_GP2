@@ -41,7 +41,8 @@ struct SpotLight
 {
     vec3 direction;
     float cutoff;
-    PointLight point;
+    float outerCutoff;
+    PointLight pointLight;
 };
 uniform SpotLight spotLight;
 
@@ -107,21 +108,25 @@ vec3 processDirectionalLight(DirectionalLight _directionalLight)
 }
 vec3 processSpotLight(SpotLight _spotLight)
 {
-    vec3 lightDir = normalize(_spotLight.point.position - FragPos);
+    vec3 lightDir = normalize(_spotLight.pointLight.position - FragPos);
     float theta = dot(lightDir,_spotLight.direction);
+    float epsilon   = _spotLight.outerCutoff - _spotLight.cutoff ;
+    //float epsilon   = innerCutoff - _spotLight.outerCutoff;
+    float intensity = clamp((theta - _spotLight.outerCutoff) / epsilon, _spotLight.pointLight.light.ambientStrength, 1.0);    
     
-    if(theta > _spotLight.cutoff) 
-    {       
-      return processPointLight(_spotLight.point);
+    //if(theta > _spotLight.cutoff) 
+    {    //   _spotLight.pointLight.light.ambientStrength/=intensity;
+        return processPointLight(_spotLight.pointLight) * intensity;
+        //_spotLight.pointLight.light.ambientStrength *=intensity;
     }
-    else  // else, use ambient light so scene isn't completely dark outside the spotlight.
-      return _spotLight.point.light.ambientColor * sampledTex;
+   // else  // else, use ambient light so scene isn't completely dark outside the spotlight.
+    //  return _spotLight.pointLight.light.ambientColor * _spotLight.pointLight.light.ambientStrength * sampledAmbTex;
 }
 void main()
 {
     vec3 result;
-    result += processDirectionalLight(directionalLight);
-    result += processPointLight(pointLight);
+   // result += processDirectionalLight(directionalLight);
+    //result += processPointLight(pointLight);
     result += processSpotLight(spotLight);
 
     FragColor = vec4(result * objectColor, 1.0);

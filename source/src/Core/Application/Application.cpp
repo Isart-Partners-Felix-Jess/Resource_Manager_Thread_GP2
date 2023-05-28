@@ -27,6 +27,7 @@ Vectorf3(1.0f, 0.0f, 0.0f),
 Vectorf3(.0f, 1.0f, .0f),
 Vectorf3(0.0f, 0.0f, 1.0f) */ };
 PointLight pLight{ Vectorf3(1.2f, 1.0f, 2.0f) };
+SpotLight sLight{ Vectorf3(0.f,0.f,-1.f),30.f,12.5f, { {0.f,0.f,3.f}} };
 
 float mixValue = 0.2f;
 
@@ -246,15 +247,17 @@ void Application::TransTest()
 		shadlight.SetMat4("model", modeltest);
 		//shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
 		shadlight.SetMat3("normalMatrix", rotation);
-		//material::none.InitShader(shadlight);
 		material::list[i].AttachDiffuseMap(2);
 		material::list[i].AttachSpecularMap(3);
-		material::list[i].InitShader(shadlight);
+		material::none.InitShader(shadlight);
+		//material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }
 void Application::LightTest()
 {
+	sLight.point.position = camera.eye;
+	sLight.direction = camera.zCamera;
 	pLight.position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * pLight.position;
 	shadlightCube.Use();
 	Matrix4x4 model = matrix::MatrixTRS(pLight.position, {}, { 1.f,1.f,1.f });
@@ -268,6 +271,7 @@ void Application::LightTest()
 	shadlight.SetVec3("objectColor", 1.0f,1.0f,1.0f/* 0.5f, 0.31f*/);
 	pLight.InitShader(shadlight);
 	dLight.InitShader(shadlight);
+	sLight.InitShader(shadlight);
 	shadlight.SetVec3("viewPos", camera.eye);
 }
 

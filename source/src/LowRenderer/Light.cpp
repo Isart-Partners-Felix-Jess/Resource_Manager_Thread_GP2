@@ -33,6 +33,9 @@ void SpotLight::InitShader(Shader& _lightShader)
 	Vectorf3 dirTowardSource = -(direction).Normalize();
 	point.InitShader(_lightShader, "spotLight.");
 	_lightShader.SetVec3("spotLight.direction", dirTowardSource);
-	float cutoffRad = cutoffDeg * M_PI / 180.f;
+	float deg2Rad = M_PI / 180.f;
+	float cutoffRad = cutoffDeg * deg2Rad;
 	_lightShader.SetFloat("spotLight.cutoff", cos(cutoffRad));
+	float outerCutoffRad = outerCutoffDeg * deg2Rad;
+	_lightShader.SetFloat("spotLight.outerCutoff", cos(outerCutoffRad));
 }
