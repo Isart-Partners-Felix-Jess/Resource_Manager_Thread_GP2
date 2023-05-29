@@ -67,8 +67,8 @@ void Camera::Move(const Vectorf3& _velocity)
 void Camera::Turn(float _angle, matrix::Axis _axis)
 {
 	//FPS View
-	const float TOLERANCE = M_PI_2 - 1e-6;
-	static float yaw = -M_PI_2;
+	const float TOLERANCE = static_cast<float>(M_PI_2) - 1e-6;
+	static float yaw = -static_cast<float>(M_PI_2);
 	static float pitch = 0.f;
 	if (_axis == matrix::Axis::X)
 	{

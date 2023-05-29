@@ -7351,3 +7351,817 @@ Resource viking_room.obj deleted successfully
 Resource manager cleared successfully
 End of log entry at Sun May 28 23:58:19 2023
 
+Log entry :Mon May 29 10:17:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 10:19:19 2023
+
+Log entry :Mon May 29 10:20:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 10:20:12 2023
+
+Log entry :Mon May 29 10:23:36 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 10:27:05 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 10:29:56 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+ERROR: SHADER::VERTEX::COMPILATION_FAILED
+0(18) : error C1503: undefined variable "MVPl"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Vertex info
+-----------
+0(18) : error C1503: undefined variable "MVPl"
+(0) : error C2003: incompatible options for link
+
+ERROR: SHADER::VERTEX::COMPILATION_FAILED
+0(18) : error C1503: undefined variable "MVPl"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Vertex info
+-----------
+0(18) : error C1503: undefined variable "MVPl"
+(0) : error C2003: incompatible options for link
+
+Fragment info
+-------------
+0(120) : warning C7050: "result" might be used before being initialized
+
+ERROR: SHADER::VERTEX::COMPILATION_FAILED
+0(18) : error C1503: undefined variable "MVPl"
+
+ERROR: SHADER #9::LINK::COMPILATION_FAILED
+Vertex info
+-----------
+0(18) : error C1503: undefined variable "MVPl"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 10:33:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 10:34:51 2023
+
+Log entry :Mon May 29 10:35:02 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 10:35:36 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 10:35:38 2023
+
+Log entry :Mon May 29 10:43:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 10:51:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 10:57:41 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:01:55 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:05:36 2023
+
+Resource viking_room.obj created, ID: 0
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 1
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 2
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource `WOI∏ loaded
+Resource –POI∏ loaded
+Resource  QOI∏ loaded
+Resource WOI∏ loaded
+Log entry :Mon May 29 11:14:37 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:23:07 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:25:43 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:27:00 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:27:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 11:28:07 2023
+
+Log entry :Mon May 29 11:29:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:33:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:34:32 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:35:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 11:35:32 2023
+
+Log entry :Mon May 29 11:35:44 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:38:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:40:16 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 11:40:18 2023
+
+Log entry :Mon May 29 11:40:30 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 11:40:31 2023
+
+Log entry :Mon May 29 11:41:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:42:26 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:43:42 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:47:27 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 11:48:36 2023
+
+Log entry :Mon May 29 11:48:40 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:51:38 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:52:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:53:29 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:55:10 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:56:30 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 11:57:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 11:58:51 2023
+
+Log entry :Mon May 29 11:59:26 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 12:00:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 12:00:41 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 12:01:18 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 12:02:03 2023
+
+Log entry :Mon May 29 12:02:09 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 12:05:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 12:06:31 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 12:08:25 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 12:09:58 2023
+
+Log entry :Mon May 29 13:03:17 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:05:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Resource viking_room.obj deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 13:05:51 2023
+
+Log entry :Mon May 29 13:10:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:10:34 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:15:33 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:15:54 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:18:50 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:24:01 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:26:39 2023
+
+Log entry :Mon May 29 13:26:55 2023
+
+Log entry :Mon May 29 13:28:50 2023
+
+Log entry :Mon May 29 13:31:11 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: -842150451
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: -842150451
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: -842150451
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: -842150451
+Resource A∞N loaded
+Resource ¿?∞N loaded
+Resource @=∞N loaded
+Log entry :Mon May 29 13:32:46 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:33:48 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:34:14 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Log entry :Mon May 29 13:35:53 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Resource ç–’h not found
+Log entry :Mon May 29 13:36:19 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 1
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 2
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource viking_room.obj deleted successfully
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 13:37:21 2023
+
+Log entry :Mon May 29 13:37:51 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 2
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource CõJ loaded
+Resource  loaded
+Resource –<õJ loaded
+Resource –AõJ loaded
+Log entry :Mon May 29 13:41:58 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 2
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource  òäµ loaded
+Resource  òäµ loaded
+Resource pùäµ loaded
+Resource  loaded
+Log entry :Mon May 29 13:42:35 2023
+
+Model File viking_room.obj has been opened
+Resource viking_room.obj created, ID: 0
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Log entry :Mon May 29 13:51:24 2023
+
+Model File viking_room.obj has been opened
+Warning: Could not find id for viking_room.obj 
+Warning: Could not find id for viking_room.obj 
+Resource viking_room.obj created, ID: 0
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource @™¶¡ loaded
+Resource `®¶¡ loaded
+Resource ¿ù¶¡ loaded
+Resource 0ú¶¡ loaded
+Log entry :Mon May 29 13:53:20 2023
+
+Model File viking_room.obj has been opened
+Warning: Could not find id for viking_room.obj 
+Log entry :Mon May 29 13:54:04 2023
+
+Model File viking_room.obj has been opened
+Log entry :Mon May 29 13:55:58 2023
+
+Log entry :Mon May 29 13:58:23 2023
+
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Log entry :Mon May 29 13:59:18 2023
+
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 2
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource 0#Å≠€ loaded
+Resource ∞/Å≠€ loaded
+Resource –2Å≠€ loaded
+Resource ¿Å≠€ loaded
+Log entry :Mon May 29 13:59:33 2023
+
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 2
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource Ä+ºAk loaded
+Resource ‡/ºAk loaded
+Resource 3ºAk loaded
+Resource ‡/ºAk loaded
+Log entry :Mon May 29 14:00:07 2023
+
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 2
+Warning: Could not find id for container.jpg 
+Warning: Could not find id for container.jpg 
+Resource container.jpg created, ID: 3
+Warning: Could not find id for container2_specular.png 
+Warning: Could not find id for container2_specular.png 
+Resource container2_specular.png created, ID: 4
+Resource †â,ÃB loaded
+Resource ∞ó,ÃB loaded
+Resource ò,ÃB loaded
+Resource ‡ä,ÃB loaded
+Log entry :Mon May 29 14:00:47 2023
+
+Warning: Could not find id for awesomeface.png 
+Warning: Could not find id for awesomeface.png 
+Resource awesomeface.png created, ID: 1
+Warning: Could not find id for container2.png 
+Warning: Could not find id for container2.png 
+Resource container2.png created, ID: 2
+Log entry :Mon May 29 14:02:18 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource ê>mò loaded
+Resource Ä>mò loaded
+Resource –>mò loaded
+Resource †>mò loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:04:20 2023
+
+Log entry :Mon May 29 14:05:17 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:06:06 2023
+
+Log entry :Mon May 29 14:06:25 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:06:52 2023
+
+Log entry :Mon May 29 14:07:42 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:08:29 2023
+
+Log entry :Mon May 29 14:10:33 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(116) : error C1009: "diffuse" is not member of struct "Light"
+0(117) : error C1009: "ambient" is not member of struct "Light"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(116) : error C1009: "diffuse" is not member of struct "Light"
+0(117) : error C1009: "ambient" is not member of struct "Light"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 14:11:01 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:12:04 2023
+
+Log entry :Mon May 29 14:12:25 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:13:26 2023
+
+Log entry :Mon May 29 14:15:40 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:15:57 2023
+
+Log entry :Mon May 29 14:16:14 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Log entry :Mon May 29 14:16:40 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:17:14 2023
+
+Log entry :Mon May 29 14:19:52 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Log entry :Mon May 29 14:20:37 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:21:01 2023
+
+Log entry :Mon May 29 14:21:34 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:21:58 2023
+
+Log entry :Mon May 29 14:23:06 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:23:31 2023
+
+Log entry :Mon May 29 14:24:13 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:25:26 2023
+
+Log entry :Mon May 29 14:29:09 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(70) : error C1216: dereference of non-pointer
+0(81) : error C1216: dereference of non-pointer
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(70) : error C1216: dereference of non-pointer
+0(81) : error C1216: dereference of non-pointer
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 14:30:01 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:31:00 2023
+
+Log entry :Mon May 29 14:31:40 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:31:45 2023
+

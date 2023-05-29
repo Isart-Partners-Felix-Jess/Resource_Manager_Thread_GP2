@@ -14,14 +14,14 @@ public:
 	virtual void LoadResource(const char* _name) = 0;
 	virtual void UnloadResource() = 0;
 
-	void SetResourceId(size_t _id);
-	size_t GetResourceId() const;
+	//void SetResourceId(size_t _id);
+	unsigned int GetResourceId() const;
 
 	void SetResourcePath(const std::string& _path);
 	std::string GetResourcePath() const;
 
-protected:
-	size_t m_ResourceId;
+public:
+	unsigned int m_ResourceId = -1;
 	std::string m_ResourcePath;
 };
 
@@ -51,7 +51,7 @@ inline R* ResourcesManager::CreateResource(const std::string& _name)
 {
 	IResource* createdResource = new R();
 	createdResource->SetResourcePath(_name);
-	createdResource->SetResourceId(m_Resources.size());
+	//createdResource->SetResourceId(m_Resources.size());
 	createdResource->LoadResource(_name.c_str());
 	//Erase previous pointer if found
 	auto it = m_Resources.find(_name);
@@ -70,8 +70,8 @@ inline R* ResourcesManager::GetResource(const std::string& _name)
 	if (it != m_Resources.end())
 	{
 		// Found the resource, return the raw pointer
-		DEBUG_LOG("Resource %s loaded", _name);
-		return it->second; //No dynamic_cast, daring
+		DEBUG_LOG("Resource %s loaded", _name.c_str());
+		return dynamic_cast<R*>(it->second); //No dynamic_cast, daring
 	}
 	else
 	{

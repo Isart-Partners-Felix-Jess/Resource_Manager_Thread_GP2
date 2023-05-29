@@ -9,8 +9,8 @@ struct Light
 	Vectorf3 ambient{1.f,1.f, 1.f};
 	Vectorf3 diffuse{ 1.f,1.f, 1.f };
 	Vectorf3 specular{ 1.f,1.f, 1.f };
-	float ambientStrength = 0.1; // Could go in last parameter,
-	float specularStrength = 0.5;// I'd rather separate for clarity
+	//float ambientStrength = 0.1f; // Could go in last parameter,
+	//float specularStrength = 0.5f;// I'd rather separate for clarity
 
 	//Should go in Renderer
 	void InitShader(std::string _lightType,Shader& _lightShader);

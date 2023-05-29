@@ -16,7 +16,7 @@ Texture::~Texture()
 
 unsigned int Texture::GetID() const
 {
-	return m_Id;
+	return m_ResourceId;
 }
 
 void Texture::LoadResource(const char* _name)
@@ -27,8 +27,8 @@ void Texture::LoadResource(const char* _name)
 	stbi_set_flip_vertically_on_load(true);
 	//Potential class members
 	unsigned char* data = stbi_load(path.string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
-	glGenTextures(1, &m_Id);
-	glBindTexture(GL_TEXTURE_2D, m_Id);
+	glGenTextures(1, &m_ResourceId);
+	glBindTexture(GL_TEXTURE_2D, m_ResourceId);
 	// set the texture wrapping/filtering options (on the currently bound texture object)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

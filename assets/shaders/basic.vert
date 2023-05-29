@@ -19,5 +19,5 @@ void main()
      ourColor = aColor; 
      TexCoord = aTexCoord;
      FragPos = vec3(model * vec4(aPos,1.0));
-       Normal = normalMatrix * aNormal;
+     Normal = normalMatrix * aNormal;
 }

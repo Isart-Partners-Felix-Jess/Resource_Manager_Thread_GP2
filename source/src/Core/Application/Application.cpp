@@ -3,11 +3,12 @@
 #include <ImGui/imgui.h>
 #include <ImGui/imgui_impl_glfw.h>
 #include <ImGui/imgui_impl_opengl3.h>
+#include <ResourcesManager.hpp>
 #include <Shader.hpp>
 #include <Texture.hpp>
 #include <Material.hpp>
 #include <Light.hpp>
-#include <matrix.hpp>
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -86,6 +87,26 @@ Application::~Application()
 	glDisable(GL_DEPTH_TEST);
 	glfwDestroyWindow(window);
 	glfwTerminate();
+	//Destroy();
+}
+void Application::Destroy()
+{
+	//LearnOpenGL Tuto
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &VBO2);
+	glDeleteBuffers(1, &EBO);
+	glDeleteProgram(shadbasic.GetShaderProgram());
+	glDeleteProgram(shadlight.GetShaderProgram());
+
+	//IMGUI Destroy
+	ImGui_ImplGlfw_Shutdown();
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui::DestroyContext();
+
+	glDisable(GL_DEPTH_TEST);
+	glfwDestroyWindow(window);
+	glfwTerminate();
 }
 
 void Application::Update()
@@ -96,7 +117,7 @@ void Application::Update()
 		glfwPollEvents();
 		StartImGuiFrame();
 		ProcessInput(window);
-		float currentFrame = glfwGetTime();
+		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		camera.Update(deltaTime, inputs);
@@ -196,10 +217,16 @@ void Application::lightVAOtest()
 }
 void Application::Texturetest()
 {
-	Texture container("container.jpg");
-	Texture awesomeface("awesomeface.png");
-	Texture container2("container2.png");
-	Texture container2_specular("container2_specular.png");
+	ResourcesManager::CreateResource<Texture>(std::string("awesomeface.png"));
+	ResourcesManager::CreateResource<Texture>(std::string("container2.png"));
+	ResourcesManager::CreateResource<Texture>(std::string("container.jpg"));
+	ResourcesManager::CreateResource<Texture>(std::string("container2_specular.png"));
+
+	Texture& container = *ResourcesManager::GetResource<Texture>("container.jpg");
+	Texture& awesomeface = *ResourcesManager::GetResource<Texture>("awesomeface.png");
+	Texture& container2 = *ResourcesManager::GetResource<Texture>("container2.png");
+	Texture& container2_specular = *ResourcesManager::GetResource<Texture>("container2_specular.png");
+
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, container.GetID());
 	glActiveTexture(GL_TEXTURE1);
@@ -236,7 +263,7 @@ void Application::TransTest()
 			cubePositions[j * 6 + i] = Vectorf3(2.f * i -+ 6, -2.f * j + 4, 0.0f);
 	for (unsigned int i = 0; i < 24; i++)
 	{
-		float angle = 20.0f * i * M_PI_2 / 180;
+		float angle = 20.0f * i * static_cast<float>(M_PI_2) / 180;
 		Matrix3x3 rotation = matrix::Rotate3dAllAxis(Vectorf3{ angle, .3f * angle, .5f * angle });
 		Matrix4x4 modeltest = matrix::MatrixTRS(cubePositions[i].X(), cubePositions[i].Y(), cubePositions[i].Z(), angle, .3f * angle, .5f * angle, 1.f, 1.f, 1.f);
 

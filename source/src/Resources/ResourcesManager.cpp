@@ -61,14 +61,14 @@ void ResourcesManager::Delete(const std::string& _name)
 	Log::ResetColor();
 }
 
-void IResource::SetResourceId(size_t _id)
-{
-	m_ResourceId = _id;
-}
+//void IResource::SetResourceId(unsigned int _id)
+//{
+//	m_ResourceId = _id;
+//}
 
-size_t IResource::GetResourceId() const
+unsigned int IResource::GetResourceId() const
 {
-	if (m_ResourceId)
+	if (m_ResourceId == -1)
 	{
 		DEBUG_WARNING("Could not find id for %s ", m_ResourcePath.c_str());
 	}

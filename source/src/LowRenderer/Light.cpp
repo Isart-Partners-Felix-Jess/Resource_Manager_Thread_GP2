@@ -7,8 +7,8 @@ void Light::InitShader(std::string _lightType, Shader& _lightShader)
 	_lightShader.SetVec3(_lightType+"light.ambientColor", ambient);					
 	_lightShader.SetVec3(_lightType+"light.diffuseColor", diffuse);				 
 	_lightShader.SetVec3(_lightType+"light.specularColor", specular);
-	_lightShader.SetFloat(_lightType+"light.ambientStrength", ambientStrength);
-	_lightShader.SetFloat(_lightType+"light.specularStrength", specularStrength);
+	//_lightShader.SetFloat(_lightType+"light.ambientStrength", ambientStrength);
+	//_lightShader.SetFloat(_lightType+"light.specularStrength", specularStrength);
 }
 
 void PointLight::InitShader(Shader& _lightShader,std::string _structType )
@@ -33,7 +33,7 @@ void SpotLight::InitShader(Shader& _lightShader)
 	Vectorf3 dirTowardSource = -(direction).Normalize();
 	point.InitShader(_lightShader, "spotLight.");
 	_lightShader.SetVec3("spotLight.direction", dirTowardSource);
-	float deg2Rad = M_PI / 180.f;
+	float deg2Rad = static_cast<float>(M_PI) / 180.f;
 	float cutoffRad = cutoffDeg * deg2Rad;
 	_lightShader.SetFloat("spotLight.cutoff", cos(cutoffRad));
 	float outerCutoffRad = outerCutoffDeg * deg2Rad;

@@ -16,8 +16,6 @@ struct Light
     vec3 ambientColor;
     vec3 diffuseColor;
     vec3 specularColor;
-    float ambientStrength;
-    float specularStrength;
 };
 struct PointLight
 {
@@ -67,7 +65,7 @@ vec3 sampledSpecTex = vec3(texture(material.specular2D, TexCoord)) * material.sp
 vec3 processLight(Light _light, vec3 _dir)
 {
     //Ambient part
-    vec3 ambient = _light.ambientStrength * _light.ambientColor * sampledAmbTex;
+    vec3 ambient = _light.ambientColor * sampledAmbTex;
     vec3 norm = normalize(Normal);
 
     //Diffuse part
@@ -78,7 +76,7 @@ vec3 processLight(Light _light, vec3 _dir)
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-_dir, norm);  
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    vec3 specular = _light.specularStrength * spec * _light.specularColor * sampledSpecTex;  
+    vec3 specular = spec * _light.specularColor * sampledSpecTex;  
     
     //Combine
     vec3 result = (ambient + diffuse + specular) * objectColor;
@@ -113,7 +111,8 @@ vec3 processSpotLight(SpotLight _spotLight)
     float epsilon   = _spotLight.cutoff  - _spotLight.outerCutoff ;
     float intensity = clamp((theta - _spotLight.outerCutoff) / epsilon, 0.0, 1.0);    
       
-    return processPointLight(_spotLight.pointLight) * intensity;
+
+    return processPointLight(_spotLight.pointLight) * intensity ;
 }
 void main()
 {
