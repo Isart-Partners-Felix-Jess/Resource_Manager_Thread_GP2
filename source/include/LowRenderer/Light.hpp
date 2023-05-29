@@ -9,8 +9,8 @@ struct Light
 	Vectorf3 ambient{1.f,1.f, 1.f};
 	Vectorf3 diffuse{ 1.f,1.f, 1.f };
 	Vectorf3 specular{ 1.f,1.f, 1.f };
-	//float ambientStrength = 0.1f; // Could go in last parameter,
-	//float specularStrength = 0.5f;// I'd rather separate for clarity
+	float ambientStrength = 0.1f; // Could go in last parameter,
+	float specularStrength = 0.5f;// I'd rather separate for clarity
 
 	//Should go in Renderer
 	void InitShader(std::string _lightType,Shader& _lightShader);
@@ -23,14 +23,16 @@ struct PointLight
 	float linear = 0.09f;
 	float quadratic = 0.032f;
 	Light light{};
-	void InitShader(Shader& _lightShader, std::string _structType = "");
+	void InitShader(Shader& _lightShader, unsigned int _number);
+	//ONLY To init a point light inside of another structlight (such as Spotlight)
+	void InitShader(Shader& _lightShader, std::string _structType);
 };
 struct DirectionalLight
 {
 	Vectorf3 direction;
 	Light light{};
 
-	void InitShader(Shader& _lightShader);
+	void InitShader(Shader& _lightShader, unsigned int _number);
 };
 struct SpotLight
 {
@@ -38,7 +40,7 @@ struct SpotLight
 	float cutoffDeg;
 	float outerCutoffDeg;
 	PointLight point;
-	void InitShader(Shader& _lightShader);
+	void InitShader(Shader& _lightShader, unsigned int _number);
 };
 #endif // !LIGHT_H
 

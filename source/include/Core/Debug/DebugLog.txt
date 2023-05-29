@@ -8165,3 +8165,1736 @@ Resource container2_specular.png deleted successfully
 Resource manager cleared successfully
 End of log entry at Mon May 29 14:31:45 2023
 
+Log entry :Mon May 29 14:35:14 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:36:12 2023
+
+Log entry :Mon May 29 14:38:12 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Log entry :Mon May 29 14:38:34 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:39:07 2023
+
+Log entry :Mon May 29 14:40:06 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:40:55 2023
+
+Log entry :Mon May 29 14:58:26 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:58:39 2023
+
+Log entry :Mon May 29 14:58:51 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 14:58:57 2023
+
+Log entry :Mon May 29 15:00:09 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 15:00:34 2023
+
+Log entry :Mon May 29 15:56:51 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(31) : error C1307: non constant expression for array size
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(38) : error C1307: non constant expression for array size
+0(49) : error C7011: implicit cast from "int" to "uint"
+0(50) : error C1307: non constant expression for array size
+0(131) : error C7011: implicit cast from "int" to "uint"
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011: implicit cast from "int" to
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(31) : error C1307: non constant expression for array size
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(38) : error C1307: non constant expression for array size
+0(49) : error C7011: implicit cast from "int" to "uint"
+0(50) : error C1307: non constant expression for array size
+0(131) : error C7011: implicit cast from "int" to "uint"
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011:
+Log entry :Mon May 29 15:57:29 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(31) : error C1307: non constant expression for array size
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(38) : error C1307: non constant expression for array size
+0(49) : error C7011: implicit cast from "int" to "uint"
+0(50) : error C1307: non constant expression for array size
+0(131) : error C7011: implicit cast from "int" to "uint"
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011: implicit cast from "int" to
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(31) : error C1307: non constant expression for array size
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(38) : error C1307: non constant expression for array size
+0(49) : error C7011: implicit cast from "int" to "uint"
+0(50) : error C1307: non constant expression for array size
+0(131) : error C7011: implicit cast from "int" to "uint"
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011:
+Log entry :Mon May 29 15:58:16 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(49) : error C7011: implicit cast from "int" to "uint"
+0(131) : error C7011: implicit cast from "int" to "uint"
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(49) : error C7011: implicit cast from "int" to "uint"
+0(131) : error C7011: implicit cast from "int" to "uint"
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 15:58:46 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 15:59:30 2023
+
+Log entry :Mon May 29 16:00:25 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(124) : error C1009: "texture" is not member of struct "Material"
+0(124) : error C7563: assignment to uniform material
+0(124) : error C0000: syntax error, unexpected ')', expecting ',' or ';' at token ")"
+0(125) : error C1503: undefined variable "sampledTex"
+0(125) : error C7563: assignment to uniform material
+0(126) : error C1503: undefined variable "sampledTex"
+0(126) : error C7563: assignment to uniform material
+0(127) : error C7563: assignment to uniform material
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(124) : error C1009: "texture" is not member of struct "Material"
+0(124) : error C7563: assignment to uniform material
+0(124) : error C0000: syntax error, unexpected ')', expecting ',' or ';' at token ")"
+0(125) : error C1503: undefined variable "sampledTex"
+0(125) : error C7563: assignment to uniform material
+0(126) : error C1503: undefined variable "sampledTex"
+0(126) : error C7563: assignment to uniform material
+0(127) : error C7563: assignment to uniform material
+(0) : erro
+Log entry :Mon May 29 16:01:10 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(124) : error C7563: assignment to uniform material
+0(125) : error C1503: undefined variable "sampledTex"
+0(125) : error C7563: assignment to uniform material
+0(126) : error C1503: undefined variable "sampledTex"
+0(126) : error C7563: assignment to uniform material
+0(127) : error C7563: assignment to uniform material
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(124) : error C7563: assignment to uniform material
+0(125) : error C1503: undefined variable "sampledTex"
+0(125) : error C7563: assignment to uniform material
+0(126) : error C1503: undefined variable "sampledTex"
+0(126) : error C7563: assignment to uniform material
+0(127) : error C7563: assignment to uniform material
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 16:01:58 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(124) : error C0000: syntax error, unexpected '.', expecting ';' or '(' at token "."
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(124) : error C0000: syntax error, unexpected '.', expecting ';' or '(' at token "."
+(0) : error C2003: incompatible options for link
+
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:02:04 2023
+
+Log entry :Mon May 29 16:04:57 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(71) : error C0000: syntax error, unexpected '=', expecting "::" at token "="
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(71) : error C0000: syntax error, unexpected '=', expecting "::" at token "="
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 16:06:13 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(71) : error C0000: syntax error, unexpected '.', expecting ';' at token "."
+0(78) : error C1503: undefined variable "sampledAmbTex"
+0(83) : error C1503: undefined variable "sampledDiffTex"
+0(89) : error C1503: undefined variable "sampledSpecTex"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(71) : error C0000: syntax error, unexpected '.', expecting ';' at token "."
+0(78) : error C1503: undefined variable "sampledAmbTex"
+0(83) : error C1503: undefined variable "sampledDiffTex"
+0(89) : error C1503: undefined variable "sampledSpecTex"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 16:06:32 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(71) : error C0000: syntax error, unexpected '=', expecting "::" at token "="
+0(78) : error C1503: undefined variable "sampledAmbTex"
+0(83) : error C1503: undefined variable "sampledDiffTex"
+0(89) : error C1503: undefined variable "sampledSpecTex"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(71) : error C0000: syntax error, unexpected '=', expecting "::" at token "="
+0(78) : error C1503: undefined variable "sampledAmbTex"
+0(83) : error C1503: undefined variable "sampledDiffTex"
+0(89) : error C1503: undefined variable "sampledSpecTex"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 16:07:28 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:07:36 2023
+
+Log entry :Mon May 29 16:08:01 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:08:05 2023
+
+Log entry :Mon May 29 16:24:11 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(68) : error C0000: syntax error, unexpected '{', expecting "::" at token "{"
+0(72) : error C0000: syntax error, unexpected '}' at token "}"
+0(78) : error C1503: undefined variable "processedMaterial"
+0(83) : error C1503: undefined variable "processedMaterial"
+0(89) : error C1503: undefined variable "processedMaterial"
+0(128) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503: undefined variable "sampledTex"
+0(130) : erro
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(68) : error C0000: syntax error, unexpected '{', expecting "::" at token "{"
+0(72) : error C0000: syntax error, unexpected '}' at token "}"
+0(78) : error C1503: undefined variable "processedMaterial"
+0(83) : error C1503: undefined variable "processedMaterial"
+0(89) : error C1503: undefined variable "processedMaterial"
+0(128) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503: undefined variabl
+Log entry :Mon May 29 16:24:24 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(68) : error C0000: syntax error, unexpected '{', expecting "::" at token "{"
+0(72) : error C0000: syntax error, unexpected '}' at token "}"
+0(73) : error C0000: syntax error, unexpected ';', expecting "::" at token ";"
+0(78) : error C1503: undefined variable "processedMaterial"
+0(83) : error C1503: undefined variable "processedMaterial"
+0(89) : error C1503: undefined variable "processedMaterial"
+0(128) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503: undefined variable "process
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(68) : error C0000: syntax error, unexpected '{', expecting "::" at token "{"
+0(72) : error C0000: syntax error, unexpected '}' at token "}"
+0(73) : error C0000: syntax error, unexpected ';', expecting "::" at token ";"
+0(78) : error C1503: undefined variable "processedMaterial"
+0(83) : error C1503: undefined variable "processedMaterial"
+0(89) : error C1503: undefined variable "processedMaterial"
+0(128) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503:
+Log entry :Mon May 29 16:29:36 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(67) : error C0000: syntax error, unexpected '{', expecting "::" at token "{"
+0(72) : error C0000: syntax error, unexpected '}' at token "}"
+0(73) : error C0000: syntax error, unexpected ';', expecting "::" at token ";"
+0(78) : error C1503: undefined variable "processedMaterial"
+0(83) : error C1503: undefined variable "processedMaterial"
+0(89) : error C1503: undefined variable "processedMaterial"
+0(128) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503: undefined variable "process
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(67) : error C0000: syntax error, unexpected '{', expecting "::" at token "{"
+0(72) : error C0000: syntax error, unexpected '}' at token "}"
+0(73) : error C0000: syntax error, unexpected ';', expecting "::" at token ";"
+0(78) : error C1503: undefined variable "processedMaterial"
+0(83) : error C1503: undefined variable "processedMaterial"
+0(89) : error C1503: undefined variable "processedMaterial"
+0(128) : error C1503: undefined variable "processedMaterial"
+0(129) : error C1503:
+Log entry :Mon May 29 16:30:33 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(129) : error C1503: undefined variable "sampledTex"
+0(130) : error C1503: undefined variable "sampledTex"
+0(140) : error C1503: undefined variable "i"
+0(140) : error C1011: cannot index a non-array value
+0(141) : error C1503: undefined variable "i"
+0(141) : error C1011: cannot index a non-array value
+0(142) : error C1503: undefined variable "i"
+0(142) : error C1011: cannot index a non-array value
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(129) : error C1503: undefined variable "sampledTex"
+0(130) : error C1503: undefined variable "sampledTex"
+0(140) : error C1503: undefined variable "i"
+0(140) : error C1011: cannot index a non-array value
+0(141) : error C1503: undefined variable "i"
+0(141) : error C1011: cannot index a non-array value
+0(142) : error C1503: undefined variable "i"
+0(142) : error C1011: cannot index a non-array value
+(0) : error C2003: incompatible options for link
+
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:30:46 2023
+
+Log entry :Mon May 29 16:31:55 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(70) : error C0000: syntax error, unexpected ';', expecting "::" at token ";"
+0(137) : error C1503: undefined variable "i"
+0(137) : error C1011: cannot index a non-array value
+0(138) : error C1503: undefined variable "i"
+0(138) : error C1011: cannot index a non-array value
+0(139) : error C1503: undefined variable "i"
+0(139) : error C1011: cannot index a non-array value
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(70) : error C0000: syntax error, unexpected ';', expecting "::" at token ";"
+0(137) : error C1503: undefined variable "i"
+0(137) : error C1011: cannot index a non-array value
+0(138) : error C1503: undefined variable "i"
+0(138) : error C1011: cannot index a non-array value
+0(139) : error C1503: undefined variable "i"
+0(139) : error C1011: cannot index a non-array value
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 16:32:21 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:32:29 2023
+
+Log entry :Mon May 29 16:33:47 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(73) : error C1002: the name "Sampled" is already defined at 0(67)
+0(73) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "sampled"
+0(77) : error C1503: undefined variable "sampled"
+0(82) : error C1503: undefined variable "sampled"
+0(88) : error C1503: undefined variable "sampled"
+0(127) : error C1503: undefined variable "sampled"
+0(128) : error C1503: undefined variable "sampled"
+0(128) : error C1503: undefined variable "sampled"
+0(129) : error C1503: undefined variable "
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(73) : error C1002: the name "Sampled" is already defined at 0(67)
+0(73) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "sampled"
+0(77) : error C1503: undefined variable "sampled"
+0(82) : error C1503: undefined variable "sampled"
+0(88) : error C1503: undefined variable "sampled"
+0(127) : error C1503: undefined variable "sampled"
+0(128) : error C1503: undefined variable "sampled"
+0(128) : error C1503: undefined variable "sampled"
+0(129) : error
+Log entry :Mon May 29 16:34:10 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:34:14 2023
+
+Log entry :Mon May 29 16:35:11 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg loaded
+Resource awesomeface.png loaded
+Resource container2.png loaded
+Resource container2_specular.png loaded
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(49) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(30) : error C7011: implicit cast from "int" to "uint"
+0(37) : error C7011: implicit cast from "int" to "uint"
+0(49) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 16:35:18 2023
+
+Log entry :Mon May 29 16:37:37 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(31) : error C1307: non constant expression for array size
+0(38) : error C1307: non constant expression for array size
+0(50) : error C1307: non constant expression for array size
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011: implicit cast from "int" to "uint"
+0(137) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(31) : error C1307: non constant expression for array size
+0(38) : error C1307: non constant expression for array size
+0(50) : error C1307: non constant expression for array size
+0(133) : error C7011: implicit cast from "int" to "uint"
+0(135) : error C7011: implicit cast from "int" to "uint"
+0(137) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 17:28:12 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(40) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(53) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(136) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(136) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(140) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(140) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(144) : error C0000: syntax error, une
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(40) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(53) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(136) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(136) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(140) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(140) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(144) : er
+Log entry :Mon May 29 17:35:52 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #2::FRAGMENT::COMPILATION_FAILED
+0(40) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(53) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(136) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(136) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(140) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(140) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(144) : error C0000: syntax error, une
+ERROR: SHADER #6::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(40) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(53) : error C0000: syntax error, unexpected ';', expecting ']' at token ";"
+0(136) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(136) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(140) : error C0000: syntax error, unexpected ';', expecting ')' at token ";"
+0(140) : error C0000: syntax error, unexpected ')', expecting ';' at token ")"
+0(144) : er
+Log entry :Mon May 29 17:36:44 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:37:05 2023
+
+Log entry :Mon May 29 17:37:31 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:37:50 2023
+
+Log entry :Mon May 29 17:37:59 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:38:05 2023
+
+Log entry :Mon May 29 17:38:11 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:38:15 2023
+
+Log entry :Mon May 29 17:39:07 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:40:34 2023
+
+Log entry :Mon May 29 17:40:43 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:40:45 2023
+
+Log entry :Mon May 29 17:41:11 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:41:16 2023
+
+Log entry :Mon May 29 17:41:42 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:41:52 2023
+
+Log entry :Mon May 29 17:51:13 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:51:15 2023
+
+Log entry :Mon May 29 17:52:29 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 17:52:48 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 17:53:32 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 17:54:29 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 17:55:24 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 17:58:45 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 17:58:48 2023
+
+Log entry :Mon May 29 18:00:36 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:01:09 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:01:15 2023
+
+Log entry :Mon May 29 18:01:37 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:02:26 2023
+
+Log entry :Mon May 29 18:03:07 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:03:26 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:03:28 2023
+
+Log entry :Mon May 29 18:05:35 2023
+
+Resource awesomeface.png created, ID: 1
+Resource container2.png created, ID: 2
+Resource container.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container.jpg deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:05:46 2023
+
+Log entry :Mon May 29 18:06:47 2023
+
+Warning: Failed to load Texture container.png
+Resource container.png created, ID: 1
+Resource awesomeface.png created, ID: 2
+Warning: Failed to load Texture container2.jpg
+Resource container2.jpg created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:07:22 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:07:39 2023
+
+Log entry :Mon May 29 18:07:51 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:08:59 2023
+
+Model File viking_room.obj has been opened
+Warning: Could not find id for viking_room.obj 
+Warning: Could not find id for viking_room.obj 
+Resource viking_room.obj created, ID: -1
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:10:20 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:10:31 2023
+
+Log entry :Mon May 29 18:11:29 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:11:39 2023
+
+Log entry :Mon May 29 18:12:07 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 18:12:12 2023
+
+Log entry :Mon May 29 18:14:11 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Model File viking_room.obj has been opened
+Warning: Could not find id for viking_room.obj 
+Warning: Could not find id for viking_room.obj 
+Resource viking_room.obj created, ID: -1
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:34:35 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 18:37:34 2023
+
+Log entry :Mon May 29 18:49:27 2023
+
+Log entry :Mon May 29 18:50:29 2023
+
+Log entry :Mon May 29 18:51:57 2023
+
+Log entry :Mon May 29 18:52:59 2023
+
+Log entry :Mon May 29 18:53:39 2023
+
+Log entry :Mon May 29 18:55:31 2023
+
+Log entry :Mon May 29 18:56:51 2023
+
+Log entry :Mon May 29 18:58:54 2023
+
+Log entry :Mon May 29 19:01:05 2023
+
+Log entry :Mon May 29 19:01:35 2023
+
+Log entry :Mon May 29 19:06:57 2023
+
+Log entry :Mon May 29 19:10:29 2023
+
+Log entry :Mon May 29 19:11:07 2023
+
+Log entry :Mon May 29 19:12:45 2023
+
+Log entry :Mon May 29 19:14:14 2023
+
+Log entry :Mon May 29 19:15:54 2023
+
+Log entry :Mon May 29 19:17:35 2023
+
+Log entry :Mon May 29 19:20:17 2023
+
+Log entry :Mon May 29 19:21:50 2023
+
+Log entry :Mon May 29 19:25:16 2023
+
+Log entry :Mon May 29 19:25:27 2023
+
+Log entry :Mon May 29 19:31:59 2023
+
+Log entry :Mon May 29 19:33:47 2023
+
+Log entry :Mon May 29 19:35:52 2023
+
+Log entry :Mon May 29 19:36:47 2023
+
+Log entry :Mon May 29 19:39:43 2023
+
+Log entry :Mon May 29 19:40:33 2023
+
+End of log entry at Mon May 29 19:40:39 2023
+
+Log entry :Mon May 29 19:41:16 2023
+
+End of log entry at Mon May 29 19:42:07 2023
+
+Log entry :Mon May 29 19:47:45 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+End of log entry at Mon May 29 19:48:07 2023
+
+Log entry :Mon May 29 19:49:08 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 19:49:34 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:49:37 2023
+
+Log entry :Mon May 29 19:49:59 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:50:02 2023
+
+Log entry :Mon May 29 19:50:31 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:50:34 2023
+
+Log entry :Mon May 29 19:50:55 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:50:59 2023
+
+Log entry :Mon May 29 19:52:16 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:52:20 2023
+
+Log entry :Mon May 29 19:52:27 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 19:53:39 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:53:42 2023
+
+Log entry :Mon May 29 19:53:50 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 19:54:28 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 19:55:26 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 19:56:20 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:56:22 2023
+
+Log entry :Mon May 29 19:56:28 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 19:57:01 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:57:11 2023
+
+Log entry :Mon May 29 19:57:20 2023
+
+Log entry :Mon May 29 19:57:25 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 19:58:10 2023
+
+Log entry :Mon May 29 20:01:16 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:01:19 2023
+
+Log entry :Mon May 29 20:01:38 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 20:02:39 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 20:10:44 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:10:49 2023
+
+Log entry :Mon May 29 20:17:46 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(32) : error C1307: non constant expression for array size
+0(40) : error C1307: non constant expression for array size
+0(53) : error C1307: non constant expression for array size
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(32) : error C1307: non constant expression for array size
+0(40) : error C1307: non constant expression for array size
+0(53) : error C1307: non constant expression for array size
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:19:41 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(32) : error C1307: non constant expression for array size
+0(40) : error C1307: non constant expression for array size
+0(53) : error C1307: non constant expression for array size
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(32) : error C1307: non constant expression for array size
+0(40) : error C1307: non constant expression for array size
+0(53) : error C1307: non constant expression for array size
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:22:09 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(32) : error C1307: non constant expression for array size
+0(40) : error C1307: non constant expression for array size
+0(53) : error C1307: non constant expression for array size
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(32) : error C1307: non constant expression for array size
+0(40) : error C1307: non constant expression for array size
+0(53) : error C1307: non constant expression for array size
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:26:33 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:27:07 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:28:52 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(136) : error C7011: implicit cast from "int" to "uint"
+0(138) : error C7011: implicit cast from "int" to "uint"
+0(140) : error C7011: implicit cast from "int" to "uint"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:29:17 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(135) : warning C7050: "result" might be used before being initialized
+0(141) : error C7559: OpenGL requires constant indexes for unsized array access(pointLight)
+
+Log entry :Mon May 29 20:32:37 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(135) : error C7011: implicit cast from "float" to "vec3"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(135) : error C7011: implicit cast from "float" to "vec3"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:33:41 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(141) : error C7559: OpenGL requires constant indexes for unsized array access(pointLight)
+
+Log entry :Mon May 29 20:34:05 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(141) : error C0000: syntax error, unexpected '&', expecting ')' at token "&"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(141) : error C0000: syntax error, unexpected '&', expecting ')' at token "&"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:34:24 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(141) : error C0000: syntax error, unexpected '&', expecting ')' at token "&"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(141) : error C0000: syntax error, unexpected '&', expecting ')' at token "&"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:40:30 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(141) : error C0000: syntax error, unexpected '&', expecting ')' at token "&"
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(141) : error C0000: syntax error, unexpected '&', expecting ')' at token "&"
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:41:22 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(141) : error C1020: invalid operands to "+"
+0(141) : error C1216: dereference of non-pointer
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(141) : error C1020: invalid operands to "+"
+0(141) : error C1216: dereference of non-pointer
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:43:04 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(141) : error C1020: invalid operands to "+"
+0(141) : error C1216: dereference of non-pointer
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(141) : error C1020: invalid operands to "+"
+0(141) : error C1216: dereference of non-pointer
+(0) : error C2003: incompatible options for link
+
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:46:10 2023
+
+Log entry :Mon May 29 20:47:13 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+ERROR: SHADER #1::FRAGMENT::COMPILATION_FAILED
+0(142) : error C0000: syntax error, unexpected identifier, expecting '(' at token "i"
+0(144) : error C1020: invalid operands to "+"
+0(144) : error C1216: dereference of non-pointer
+
+ERROR: SHADER #3::LINK::COMPILATION_FAILED
+Fragment info
+-------------
+0(142) : error C0000: syntax error, unexpected identifier, expecting '(' at token "i"
+0(144) : error C1020: invalid operands to "+"
+0(144) : error C1216: dereference of non-pointer
+(0) : error C2003: incompatible options for link
+
+Log entry :Mon May 29 20:48:56 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:49:08 2023
+
+Log entry :Mon May 29 20:49:19 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:49:33 2023
+
+Log entry :Mon May 29 20:49:48 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:50:01 2023
+
+Log entry :Mon May 29 20:50:54 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Log entry :Mon May 29 20:51:19 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:51:31 2023
+
+Log entry :Mon May 29 20:51:51 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:51:55 2023
+
+Log entry :Mon May 29 20:53:14 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:53:59 2023
+
+Log entry :Mon May 29 20:54:07 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:54:09 2023
+
+Log entry :Mon May 29 20:54:14 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:54:17 2023
+
+Log entry :Mon May 29 20:54:25 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:54:31 2023
+
+Log entry :Mon May 29 20:54:40 2023
+
+Resource container.jpg created, ID: 1
+Resource awesomeface.png created, ID: 2
+Resource container2.png created, ID: 3
+Resource container2_specular.png created, ID: 4
+Resource container.jpg deleted successfully
+Resource awesomeface.png deleted successfully
+Resource container2.png deleted successfully
+Resource container2_specular.png deleted successfully
+Resource manager cleared successfully
+End of log entry at Mon May 29 20:54:46 2023
+

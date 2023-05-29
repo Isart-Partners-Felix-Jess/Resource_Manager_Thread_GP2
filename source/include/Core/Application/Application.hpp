@@ -5,7 +5,7 @@
 #include <glad/glad.h> 
 #include <GLFW/glfw3.h>
 #include <Assertion.hpp>
-#include <Camera.hpp>
+#include <Scene.hpp>
 
 class Shader;
 
@@ -17,8 +17,8 @@ private:
 	int m_Height;
 	float m_ClearColor[4] = { 0.2f, 0.3f, 0.3f, 1.0f
 	};
+	Scene scene;
 	//Cam part
-	Camera camera;
 	CameraInputs inputs;
 	double mouseX = 0.0;
 	double mouseY = 0.0;
@@ -36,18 +36,6 @@ private:
 	static void NewFrame(bool mouseCaptured);
 	void Render(GLFWwindow* window);
 	void ApplyChangeColor();
-
-	//LearnOpenGl TODO: replace
-	void Shadertest();
-	void VBOtest();
-	//void VBOCubetest();
-	void VAOtest();
-	void lightVAOtest();
-	void EBOtest();
-	void Texturetest();
-	void TransTest();
-	void VBOCubetest();
-	void LightTest();
 
 public:
 	Application();

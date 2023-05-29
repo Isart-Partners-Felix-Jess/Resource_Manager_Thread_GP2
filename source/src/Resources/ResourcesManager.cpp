@@ -9,7 +9,7 @@ std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources; //Eri
 //Unused for now
 void ResourcesManager::LoadResource(IResource* _toLoad)
 {
-	_toLoad->LoadResource("");
+	//_toLoad->LoadResource("");
 }
 
 ResourcesManager::ResourcesManager()
@@ -68,7 +68,7 @@ void ResourcesManager::Delete(const std::string& _name)
 
 unsigned int IResource::GetResourceId() const
 {
-	if (m_ResourceId == -1)
+	if (m_ResourceId == static_cast<unsigned int>(-1))
 	{
 		DEBUG_WARNING("Could not find id for %s ", m_ResourcePath.c_str());
 	}

@@ -35,7 +35,6 @@ void Model::LoadResource(const char* _name)
 		//clear in case of double load
 		m_VertexBuffer.clear();
 		m_IndexBuffer.clear();
-
 		//load .obj
 		std::string line;
 		uint32_t vtIdx = 0;

@@ -112,10 +112,10 @@ bool Shader::Link()
 
 void Shader::LoadResource(const char* _name)
 {
-	std::string namestr(_name);
-	SetVertexShader(namestr + ".vert"); //TODO: Check the extensions of the shader files
-	SetFragmentShader(namestr + ".frag");
-	Link();
+	//std::string namestr(_name);
+	//SetVertexShader(namestr + ".vert"); //TODO: Check the extensions of the shader files
+	//SetFragmentShader(namestr + ".frag");
+	//Link();
 }
 
 void Shader::UnloadResource()
@@ -140,6 +140,12 @@ void Shader::SetInt(const std::string& _name, int _value) const
 {
 	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
 	glUniform1i(valueLocation, _value);
+}
+
+void Shader::SetUint(const std::string& _name,unsigned int _value) const
+{
+	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
+	glUniform1ui(valueLocation, _value);
 }
 
 void Shader::SetFloat(const std::string& _name, float _value) const

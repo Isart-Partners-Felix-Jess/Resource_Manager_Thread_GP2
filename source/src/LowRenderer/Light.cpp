@@ -2,40 +2,53 @@
 #define _USE_MATH_DEFINES
 
 #include <Shader.hpp>
+
 void Light::InitShader(std::string _lightType, Shader& _lightShader)
 {
-	_lightShader.SetVec3(_lightType+"light.ambientColor", ambient);					
-	_lightShader.SetVec3(_lightType+"light.diffuseColor", diffuse);				 
-	_lightShader.SetVec3(_lightType+"light.specularColor", specular);
-	//_lightShader.SetFloat(_lightType+"light.ambientStrength", ambientStrength);
-	//_lightShader.SetFloat(_lightType+"light.specularStrength", specularStrength);
+	_lightShader.SetVec3(_lightType + "light.ambientColor", ambient);
+	_lightShader.SetVec3(_lightType + "light.diffuseColor", diffuse);
+	_lightShader.SetVec3(_lightType + "light.specularColor", specular);
+	_lightShader.SetFloat(_lightType + "light.ambientStrength", ambientStrength);
+	_lightShader.SetFloat(_lightType + "light.specularStrength", specularStrength);
 }
 
-void PointLight::InitShader(Shader& _lightShader,std::string _structType )
+void PointLight::InitShader(Shader& _lightShader, unsigned int _number)
 {
-	light.InitShader(_structType+"pointLight.", _lightShader);
-	_lightShader.SetVec3(_structType+"pointLight.position", position);
-	_lightShader.SetFloat(_structType+"pointLight.constant", constant);
-	_lightShader.SetFloat(_structType+"pointLight.linear", linear);
-	_lightShader.SetFloat(_structType+"pointLight.quadratic", quadratic);
+	std::string nbstr = "pointLight[" + std::to_string(_number) + "].";
+	light.InitShader(nbstr, _lightShader);
+	_lightShader.SetVec3(nbstr+ "position", position);
+	_lightShader.SetFloat(nbstr + "constant", constant);
+	_lightShader.SetFloat( nbstr + "linear", linear);
+	_lightShader.SetFloat( nbstr + "quadratic", quadratic);
+}
+void PointLight::InitShader(Shader& _lightShader, std::string _structType)
+{
+	light.InitShader(_structType + "pointLight.", _lightShader);
+	_lightShader.SetVec3(_structType + "pointLight.position", position);
+	_lightShader.SetFloat(_structType + "pointLight.constant", constant);
+	_lightShader.SetFloat(_structType + "pointLight.linear", linear);
+	_lightShader.SetFloat(_structType + "pointLight.quadratic", quadratic);
 }
 
-void DirectionalLight::InitShader(Shader& _lightShader)
+
+void DirectionalLight::InitShader(Shader& _lightShader, unsigned int _number)
 {
+	std::string nbstr = "directionalLight[" + std::to_string(_number) + "].";
 	//light direction from the fragment towards the light source
 	Vectorf3 dirTowardSource = -(direction).Normalize();
-	light.InitShader("directionalLight.", _lightShader);
-	_lightShader.SetVec3("directionalLight.direction", dirTowardSource);
+	light.InitShader(nbstr, _lightShader);
+	_lightShader.SetVec3(nbstr+"direction", dirTowardSource);
 }
-void SpotLight::InitShader(Shader& _lightShader)
+void SpotLight::InitShader(Shader& _lightShader, unsigned int _number)
 {
+	std::string nbstr = "spotLight[" + std::to_string(_number) + "].";
 	//light direction from the fragment towards the light source
 	Vectorf3 dirTowardSource = -(direction).Normalize();
-	point.InitShader(_lightShader, "spotLight.");
-	_lightShader.SetVec3("spotLight.direction", dirTowardSource);
+	point.InitShader(_lightShader, nbstr);
+	_lightShader.SetVec3(nbstr+"direction", dirTowardSource);
 	float deg2Rad = static_cast<float>(M_PI) / 180.f;
 	float cutoffRad = cutoffDeg * deg2Rad;
-	_lightShader.SetFloat("spotLight.cutoff", cos(cutoffRad));
+	_lightShader.SetFloat(nbstr+"cutoff", cos(cutoffRad));
 	float outerCutoffRad = outerCutoffDeg * deg2Rad;
-	_lightShader.SetFloat("spotLight.outerCutoff", cos(outerCutoffRad));
+	_lightShader.SetFloat(nbstr+"outerCutoff", cos(outerCutoffRad));
 }

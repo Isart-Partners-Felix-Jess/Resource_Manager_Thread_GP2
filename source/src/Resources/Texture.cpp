@@ -27,15 +27,16 @@ void Texture::LoadResource(const char* _name)
 	stbi_set_flip_vertically_on_load(true);
 	//Potential class members
 	unsigned char* data = stbi_load(path.string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
+	if (data)
+	{
 	glGenTextures(1, &m_ResourceId);
+	glActiveTexture(GL_TEXTURE0 + m_ResourceId-1);
 	glBindTexture(GL_TEXTURE_2D, m_ResourceId);
 	// set the texture wrapping/filtering options (on the currently bound texture object)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // MIPMAP is only for minifier
-	if (data)
-	{
 		GLenum format;
 		if (m_Channels == 1)
 			format = GL_RED;

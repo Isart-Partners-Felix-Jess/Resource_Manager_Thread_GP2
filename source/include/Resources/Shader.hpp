@@ -30,6 +30,7 @@ public:
 
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;
+	void SetUint(const std::string& _name, unsigned int _value) const;
 	void SetFloat(const std::string& _name, float _value) const;
 	void SetVec2(const std::string& _name, Vectorf2 _value) const;
 	void SetVec2(const std::string& _name, float _valueX, float _valueY) const;
