@@ -8,6 +8,8 @@
 #include <ResourcesManager.hpp>
 #include <Texture.hpp>
 
+class Shader;
+
 struct Vertex {
 	Vectorf3 Position;
 	Vectorf3 Normal;
@@ -17,13 +19,20 @@ struct Vertex {
 class Model : public IResource
 {
 private:
-	std::vector<Vertex> m_VertexBuffer;
-	std::vector<uint32_t> m_IndexBuffer;
-	std::vector<Texture> m_Textures;
+	unsigned int VAO, VBO, EBO;
 
 	~Model() override;
+//public: ?
+	std::vector<Vertex> m_Vertices;
+	std::vector<uint32_t> m_Indices;
+	std::vector<Texture> m_Textures;
+
 public:
 	void LoadResource(const char* _name) override;
 	void UnloadResource() override;
+
+	void SetupMesh();
+	void Draw(Shader& _shader);
+
 };
 #endif // MODEL_H

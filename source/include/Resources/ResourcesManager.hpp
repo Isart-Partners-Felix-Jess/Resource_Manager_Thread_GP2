@@ -20,7 +20,7 @@ public:
 	void SetResourcePath(const std::string& _path);
 	std::string GetResourcePath() const;
 
-public:
+protected:
 	unsigned int m_ResourceId = -1;
 	std::string m_ResourcePath;
 };
@@ -39,7 +39,7 @@ public:
 	//Maybe try to make the parameter a path...
 	static R* CreateResource(const std::string& _name);
 	template<typename R>
-	static R* GetResource(const std::string& _name);
+	static const R* GetResource(const std::string& _name);
 	static void Destroy();
 	void Delete(const std::string& _name);
 private:
@@ -64,14 +64,14 @@ inline R* ResourcesManager::CreateResource(const std::string& _name)
 }
 
 template<typename R>
-inline R* ResourcesManager::GetResource(const std::string& _name)
+inline const R* ResourcesManager::GetResource(const std::string& _name)
 {
 	auto it = m_Resources.find(_name);
 	if (it != m_Resources.end())
 	{
 		// Found the resource, return the raw pointer
 		DEBUG_LOG("Resource %s loaded", _name.c_str());
-		return dynamic_cast<R*>(it->second); //No dynamic_cast, daring
+		return dynamic_cast<R*>(it->second);
 	}
 	else
 	{

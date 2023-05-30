@@ -30,7 +30,7 @@ void Texture::LoadResource(const char* _name)
 	if (data)
 	{
 	glGenTextures(1, &m_ResourceId);
-	glActiveTexture(GL_TEXTURE0 + m_ResourceId-1);
+	glActiveTexture(GL_TEXTURE0 + m_ResourceId);
 	glBindTexture(GL_TEXTURE_2D, m_ResourceId);
 	// set the texture wrapping/filtering options (on the currently bound texture object)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

@@ -8,7 +8,6 @@ class Texture : public IResource
 {
 private:
     int m_Width, m_Height, m_Channels;
-    //unsigned int m_Id;
 public:
     Texture();
     Texture(const char* _filepath);

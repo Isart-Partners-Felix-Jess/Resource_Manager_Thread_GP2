@@ -133,11 +133,11 @@ void main()
    sampled.SpecTex = vec3(texture(material.specular2D, TexCoord)) * material.specular;
 
     vec3 result = vec3(0.f,0.f,0.f);
-    for(int i = 0; i<=SPOT_LIGHT_NBR;i++)
+    for(int i = 0; i<SPOT_LIGHT_NBR;i++)
        result += processSpotLight(spotLight[i]);
-    for(int i = 0; i<=DIRECTIONAL_LIGHT_NBR;i++)
+    for(int i = 0; i<DIRECTIONAL_LIGHT_NBR;i++)
         result += processDirectionalLight(directionalLight[i]);
-    for(int i = 0; i<=POINT_LIGHT_NBR;i++)
+    for(int i = 0; i<POINT_LIGHT_NBR;i++)
         result += processPointLight(pointLight[i]);
     FragColor = vec4(result * objectColor, 1.0);
 }

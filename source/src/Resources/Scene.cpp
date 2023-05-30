@@ -37,26 +37,35 @@ void Scene::Init()
 		Vectorf3(1.0f, 0.0f, 0.0f),
 		Vectorf3(.0f, 1.0f, .0f),
 		Vectorf3(0.0f, 0.0f, 1.0f) */ });
+	directionalLights.push_back(DirectionalLight{ Vectorf3{0.f,-1.f,0.f},
+		{Vectorf3(1.0f, 0.0f, 0.0f),
+		Vectorf3(.0f, 1.0f, .0f),
+		Vectorf3(0.0f, 0.0f, 1.0f) } });
 	pointLights.push_back({ Vectorf3(1.2f, 1.0f, 2.0f) });
 	pointLights.push_back({ Vectorf3(2.2f, 1.0f, 2.0f) });
 	pointLights.push_back({ Vectorf3(3.2f, 1.0f, 2.0f) });
 	pointLights.push_back({ Vectorf3(4.2f, 1.0f, 2.0f) });
 	spotLights.push_back({ Vectorf3(0.f,0.f,-1.f),12.5f,17.5f, { {0.f,0.f,3.f},1.f,0.0f,0.032f} });
+	spotLights.push_back({ Vectorf3(0.f,0.f,-1.f),12.5f,17.5f, { {0.f,0.f,3.f},1.f,0.0f,0.032f} });
 	//LearnOpenGL tuto
 	Texturetest();
+	InitModeltest();
 	Shadertest();
+	InitLights();
 	//TransTest();
 }
 
 void Scene::Update()
 {
 	//OpenGL test part
-//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");
-	LightTest();
+	//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");s
+	UpdateLights();
 	//shadbasic.Use();//Only if forgotten before
 	//shadbasic.SetInt("texture1", 0);
 	//shadbasic.SetInt("texture2", 1);
 	//shadbasic.SetFloat("mixValue", mixValue);
+	shadlight.Use();
+	DrawModeltest();
 	TransTest();
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	//shadlightCube.Use();
@@ -82,6 +91,68 @@ void Scene::Destroy()
 	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shadlight.GetShaderProgram());
 }
+
+void Scene::InitLights()
+{
+	shadlight.SetInt("DIRECTIONAL_LIGHT_NBR", directionalLights.size());
+	for (int i = 0; i < directionalLights.size(); i++)
+	{
+		directionalLights[i].InitShader(shadlight, i);
+	}
+	shadlight.SetInt("POINT_LIGHT_NBR", pointLights.size());
+	for (int i = 0; i < pointLights.size(); i++)
+	{
+		pointLights[i].InitShader(shadlight, i);
+	}
+	shadlight.SetInt("SPOT_LIGHT_NBR", spotLights.size());
+	//In our case spotLight0 and 1 are torch lights (from the player), such as car headlights
+	Vectorf3 X_Offset = camera.up.Cross_product(camera.zCamera).Normalize() * 0.25f;
+	spotLights[0].point.position = camera.eye - X_Offset ;
+	spotLights[0].direction = camera.zCamera;
+	spotLights[1].point.position = camera.eye + X_Offset;
+	spotLights[1].direction = camera.zCamera;
+	for (int i = 0; i < spotLights.size(); i++)
+	{
+		spotLights[i].InitShader(shadlight, i);
+	}
+
+}
+void Scene::UpdateLights()
+{
+	Vectorf3 X_Offset = camera.up.Cross_product(camera.zCamera).Normalize() * 0.25f;
+	spotLights[0].point.position = camera.eye - X_Offset;
+	spotLights[0].direction = camera.zCamera;
+	spotLights[1].point.position = camera.eye + X_Offset;
+	spotLights[1].direction = camera.zCamera;
+
+	spotLights[0].point.position = camera.eye;
+	spotLights[0].direction = camera.zCamera;
+	pointLights[0].position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * pointLights[0].position;
+	shadlightCube.Use();
+	Matrix4x4 model = matrix::MatrixTRS(pointLights[0].position, {}, { 1.f,1.f,1.f });
+	model = model * 0.2f;
+	Matrix4x4 MVP = camera.viewProjection * model;
+	unsigned int MVPLoc = glGetUniformLocation(shadlightCube.GetShaderProgram(), "MVP");
+	shadlightCube.SetMat4("MVP", MVP);
+	glBindVertexArray(lightVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	shadlight.Use();
+	InitLights();
+	shadlight.SetVec3("objectColor", 1.0f, 1.0f, 1.0f/* 0.5f, 0.31f*/);
+	shadlight.SetVec3("viewPos", camera.eye);
+}
+
+void Scene::InitModeltest()
+{
+	viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
+	viking_room->SetupMesh();
+}
+
+void Scene::DrawModeltest()
+{
+	viking_room->Draw(shadlight);
+}
+
 void Scene::Shadertest()
 {
 	float vertices[] = {
@@ -96,9 +167,9 @@ void Scene::Shadertest()
 	1, 2, 3    // second triangle
 	};
 	lightVAOtest();
-	EBOtest();
+	//EBOtest();
 	//VBOtest();
-	VBOCubetest();
+	//VBOCubetest();
 	shadlight.SetFragmentShader("assets/shaders/lighting.frag");
 	shadlight.SetVertexShader("assets/shaders/basic.vert");
 	shadlight.Link();
@@ -186,6 +257,13 @@ void Scene::Texturetest()
 	//glBindTexture(GL_TEXTURE_2D, container2.GetID());
 	//glActiveTexture(GL_TEXTURE3);
 	//glBindTexture(GL_TEXTURE_2D, container2_specular.GetID());
+	for (unsigned int i = 0; i < 24; i++)
+	{
+		material::list[i].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("container2.png"));
+		material::list[i].AttachSpecularMap(ResourcesManager::GetResource<Texture>("container2_specular.png"));
+	}
+	material::none.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("container2.png"));
+	material::none.AttachSpecularMap(ResourcesManager::GetResource<Texture>("container2_specular.png"));
 }
 
 void Scene::TransTest()
@@ -218,38 +296,11 @@ void Scene::TransTest()
 		shadlight.SetMat4("model", modeltest);
 		//shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
 		shadlight.SetMat3("normalMatrix", rotation);
-		material::list[i].AttachDiffuseMap(2);
-		material::list[i].AttachSpecularMap(3);
+
 		//material::none.InitShader(shadlight);
 		material::list[i].InitShader(shadlight);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
-}
-void Scene::LightTest()
-{
-	shadlight.SetInt("DIRECTIONAL_LIGHTS_NBR", directionalLights.size());
-	shadlight.SetInt("POINT_LIGHTS_NBR", pointLights.size());
-	shadlight.SetInt("SPOT_LIGHTS_NBR", spotLights.size());
-	spotLights[0].point.position = camera.eye;
-	spotLights[0].direction = camera.zCamera;
-	pointLights[0].position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * pointLights[0].position;
-	shadlightCube.Use();
-	Matrix4x4 model = matrix::MatrixTRS(pointLights[0].position, {}, { 1.f,1.f,1.f });
-	model = model * 0.2f;
-	Matrix4x4 MVP = camera.viewProjection * model;
-	unsigned int MVPLoc = glGetUniformLocation(shadlightCube.GetShaderProgram(), "MVP");
-	shadlightCube.SetMat4("MVP", MVP);
-	glBindVertexArray(lightVAO);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-	shadlight.Use();
-	shadlight.SetVec3("objectColor", 1.0f, 1.0f, 1.0f/* 0.5f, 0.31f*/);
-	pointLights[0].InitShader(shadlight, 0);
-	pointLights[1].InitShader(shadlight, 1);
-	pointLights[2].InitShader(shadlight, 2);
-	pointLights[3].InitShader(shadlight, 3);
-	directionalLights[0].InitShader(shadlight, 0);
-	spotLights[0].InitShader(shadlight, 0);
-	shadlight.SetVec3("viewPos", camera.eye);
 }
 
 //VertexBufferOutput

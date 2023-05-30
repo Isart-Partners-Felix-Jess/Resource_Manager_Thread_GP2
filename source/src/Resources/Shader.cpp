@@ -20,6 +20,7 @@ Shader::Shader(const char* _vertexPath, const char* _fragmentPath) : Shader()
 Shader::~Shader()
 {
 	UnloadResource();
+	glDeleteProgram(m_ShaderProgram);
 }
 uint32_t Shader::GetShaderProgram() const
 {
