@@ -284,22 +284,30 @@ void Scene::TransTest()
 	for (int j = 0; j < 4; j++)
 		for (int i = 0; i < 6; i++)
 			cubePositions[j * 6 + i] = Vectorf3(2.f * i - +6, -2.f * j + 4, 0.0f);
-	for (unsigned int i = 0; i < 24; i++)
+	for (unsigned int i = 0; i < 1 /*24*/; i++)
 	{
 		float angle = 20.0f * i * static_cast<float>(M_PI_2) / 180;
 		Matrix3x3 rotation = matrix::Rotate3dAllAxis(Vectorf3{ angle, .3f * angle, .5f * angle });
 		Matrix4x4 modeltest = matrix::MatrixTRS(cubePositions[i].X(), cubePositions[i].Y(), cubePositions[i].Z(), angle, .3f * angle, .5f * angle, 1.f, 1.f, 1.f);
 
+		//for model loader
+
+		rotation = Matrix3x3(true);
+		modeltest = Matrix4x4(true);
+
+
 		Matrix4x4 MVP = camera.viewProjection * modeltest;
+
+
 
 		shadlight.SetMat4("MVP", MVP);
 		shadlight.SetMat4("model", modeltest);
-		//shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
-		shadlight.SetMat3("normalMatrix", rotation);
+		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
+		//shadlight.SetMat3("normalMatrix", rotation);
 
-		//material::none.InitShader(shadlight);
-		material::list[i].InitShader(shadlight);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		material::none.InitShader(shadlight);
+		//material::list[i].InitShader(shadlight);
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 }
 

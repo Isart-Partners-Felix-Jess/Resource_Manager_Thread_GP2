@@ -9,7 +9,6 @@ template <typename T, size_t M = 3>
 class VectorM {
 	static_assert(M > 0, "M must be greater than 0");
 protected:
-	size_t dimension = M; // size of vector
 	T elements[M]; // content
 public:
 	VectorM()
@@ -58,7 +57,7 @@ public:
 	void Print()
 	{
 		std::cout << "( ";
-		for (size_t i = 0; i < dimension; i++)
+		for (size_t i = 0; i < M; i++)
 		{
 			std::cout << elements[i];
 			std::cout << " ";
@@ -72,7 +71,7 @@ public:
 	//dot Product
 	T Dot(const VectorM<T, M>& other) const {
 		T result = 0;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result += elements[i] * other[i];
 		}
 		return result;
@@ -105,7 +104,7 @@ public:
 
 	T GetDimension()
 	{
-		return dimension;
+		return M;
 	}
 	// Direct access to elements
 	T& operator[](size_t index) {
@@ -113,7 +112,7 @@ public:
 		return elements[index];
 	}
 	const T& operator[](size_t index) const {
-		assert(index < dimension && "Index must be inside vector range (inferior to its dimension)");
+		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return elements[index];
 	}
 	T(&data())[M] {
@@ -138,7 +137,7 @@ public:
 	// mathematical operators
 	VectorM<T, M> operator+(const VectorM<T, M>& other) const {
 		VectorM<T, M> result;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = elements[i] + other[i];
 		}
 		return result;
@@ -149,7 +148,7 @@ public:
 	}
 	VectorM<T, M> operator-() const {
 		VectorM<T, M> result;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			if (elements[i] != 0)
 				result[i] = -elements[i];
 		}
@@ -157,7 +156,7 @@ public:
 	}
 	VectorM<T, M> operator-(const VectorM<T, M>& other) const {
 		VectorM<T, M> result;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = elements[i] - other[i];
 		}
 		return result;
@@ -169,7 +168,7 @@ public:
 	//Product by a scalar
 	VectorM<T, M> operator*(const T& scalar) const {
 		VectorM<T, M> result;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = elements[i] * scalar;
 		}
 		return result;
@@ -181,7 +180,7 @@ public:
 	//Product between each components
 	VectorM<T, M> operator*(const VectorM<T, M>& other) const {
 		VectorM<T, M> result;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = elements[i] * other[i];
 		}
 		return result;
@@ -192,7 +191,7 @@ public:
 	VectorM<T, M> operator/(const T& scalar) const {
 		//static_assert(scalar != 0, "Can't divide by 0 !");
 		VectorM<T, M> result;
-		for (size_t i = 0; i < dimension; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = elements[i] / scalar;
 		}
 		return result;

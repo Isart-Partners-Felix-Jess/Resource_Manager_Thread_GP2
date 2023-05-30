@@ -24,7 +24,7 @@ private:
 	~Model() override;
 //public: ?
 	std::vector<Vertex> m_Vertices;
-	std::vector<uint32_t> m_Indices;
+	std::vector<unsigned int> m_Indices;
 	std::vector<Texture> m_Textures;
 
 public:

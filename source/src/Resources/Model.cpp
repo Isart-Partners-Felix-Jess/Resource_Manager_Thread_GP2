@@ -43,8 +43,11 @@ void Model::LoadResource(const char* _name)
 		m_Indices.clear();
 		//load .obj
 		std::string line;
-		uint32_t vtIdx = 0;
-		uint32_t vnIdx = 0;
+		unsigned int vtIdx = 0;
+		unsigned int vnIdx = 0;
+		//only informative
+		unsigned int fIdx = 0;
+
 		while (std::getline(file, line))
 		{
 			float x, y, z;
@@ -75,10 +78,13 @@ void Model::LoadResource(const char* _name)
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
-				uint32_t i;
+				//only informative
+				fIdx++;
+				unsigned int i;
 				char separator ='/'; // Variable to separator the slash characters
 				while(!iss.eof())
 				{
+				iss >> i;
 					// Ignore the separator '/' or ' ' if present
 					if (iss.peek() == separator)
 					{
@@ -90,7 +96,6 @@ void Model::LoadResource(const char* _name)
 						}
 					}
 				// Extract the value into i
-				iss >> i;
 				// Extract the three values directly into vi, ti, and ni
 				m_Indices.push_back(i); // Store the vertex index // Subtract 1 to convert to 0-based indexing
 
@@ -123,23 +128,23 @@ void Model::SetupMesh()
 	glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(Vertex), &m_Vertices[0].Normal[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(uint32_t),
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int),
 		&m_Indices[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+	glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(Vertex), &m_Vertices[0].Position[0], GL_STATIC_DRAW);
 
 	// vertex positions
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, Position)));
-	// vertex normals
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, Normal)));
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 	// vertex texture coords
-	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, Uv)));
+	// vertex normals
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, Normal)));
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(3);
 
 	glBindVertexArray(0);
 }
@@ -166,7 +171,7 @@ void Model::Draw(Shader& _shader)
 
 	// draw mesh
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLES,0, m_Vertices.size());
-	//glDrawElements(GL_TRIANGLES, m_Indices.size(), GL_UNSIGNED_INT, 0);
+	//glDrawArrays(GL_TRIANGLES,0, m_Vertices.size());
+	glDrawElements(GL_TRIANGLES, m_Indices.size()/3, GL_UNSIGNED_INT, (void*)m_Indices[0]);
 	glBindVertexArray(0);
 }
