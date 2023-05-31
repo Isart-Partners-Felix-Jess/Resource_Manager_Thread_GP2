@@ -144,7 +144,7 @@ void Scene::UpdateLights()
 
 void Scene::InitModeltest()
 {
-	viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
+	viking_room = ResourcesManager::CreateResource<Model>(std::string("cube.obj"));
 	viking_room->SetupMesh();
 }
 
@@ -222,12 +222,13 @@ void Scene::VAOtest()
 {
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
-
+	glBindVertexArray(0);
 }
 void Scene::lightVAOtest()
 {
 	glGenVertexArrays(1, &lightVAO);
 	glBindVertexArray(lightVAO);
+	glBindVertexArray(0);
 	//glBindBuffer(GL_ARRAY_BUFFER, VBO2);
 	//// set the vertex attribute 
 	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);

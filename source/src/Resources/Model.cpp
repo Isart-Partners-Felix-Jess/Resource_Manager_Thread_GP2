@@ -47,59 +47,88 @@ void Model::LoadResource(const char* _name)
 		unsigned int vnIdx = 0;
 		//only informative
 		unsigned int fIdx = 0;
-
+		//m_Vertices.push_back(Vertex{ {} });
 		while (std::getline(file, line))
 		{
+			int hashpos = line.find('#');
+			if (hashpos != -1)
+				line = line.substr(0, hashpos);
+			if (line.empty())
+				continue;
+			std::vector<Vectorf3> temp_Positions;
+			std::vector<Vectorf3> temp_Uvs;
+			std::vector<Vectorf3> temp_Normals;
+
 			float x, y, z;
 			// Process each line
 			std::istringstream iss(line);
 			std::string type;
 			iss >> type;
-			if (type == "#") //Note
-			{
-				continue;
-			}
-			else if (type == "v") // Vertex position
+
+			if (type == "v") // Vertex position
 			{
 				iss >> x >> y >> z;
-				m_Vertices.push_back(Vertex{ Vectorf3{ x, y, z }, Vectorf3(), Vectorf2() }); //Assumes that vertex position is the first of the 3 coordinates
+				temp_Positions.push_back( Vectorf3{ x, y, z }); //Assumes that vertex position is the first of the 3 coordinates
 			}
 			else if (type == "vt") // Texture position
 			{
 				iss >> x >> y;
-				m_Vertices[vtIdx].Uv = Vectorf2(x, y);
-				vtIdx++;
+				temp_Uvs.push_back(Vectorf2{x, y});
+				//if (vtIdx < m_Vertices.size())
+				//	m_Vertices[vtIdx].Uv = Vectorf2(x, y);
+				//else
+				//	m_Vertices.push_back({ {}, Vectorf2(x, y),{} });
+				//vtIdx++;
 			}
 			else if (type == "vn")// Normal position
 			{
 				iss >> x >> y >> z;
-				m_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
-				vnIdx++;
+				temp_Normals.push_back(Vectorf3{ x, y, z });
+				//if (vtIdx < m_Vertices.size())
+				//	m_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
+				//else
+				//	m_Vertices.push_back({ {},{}, Vectorf3(x, y, z) });
+				//vnIdx++;
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
 				//only informative
 				fIdx++;
-				unsigned int i;
-				char separator ='/'; // Variable to separator the slash characters
-				while(!iss.eof())
-				{
-				iss >> i;
-					// Ignore the separator '/' or ' ' if present
-					if (iss.peek() == separator)
-					{
+				char separator = '/'; // Variable to separator the slash characters
+				do {
+					while (iss.peek() == ' ')
 						iss.ignore();
-						if (iss.peek() == separator || iss.peek() == ' ')
+					for (int elementsToAdd = 3; elementsToAdd > 0; --elementsToAdd)
+					{
+						unsigned int i = 0;
+						// Extract the value into i
+						iss >> i;
+						if (!i)
+							break;
+						std::cout << i << std::endl;
+						m_Indices.push_back(i-1);
+
+						if (iss.peek() == ' ')
 						{
-							m_Indices.push_back(0);
+							while (--elementsToAdd)
+							{
+								m_Indices.push_back(0);
+							}
+							continue;
+						}
+						if (iss.peek() == '/')
+						{
 							iss.ignore();
+							if (iss.peek() == '/')
+							{
+								m_Indices.push_back(0);
+								elementsToAdd--;
+							}
+							continue;
 						}
 					}
-				// Extract the value into i
-				// Extract the three values directly into vi, ti, and ni
-				m_Indices.push_back(i); // Store the vertex index // Subtract 1 to convert to 0-based indexing
+				} while (iss);
 
-				}
 			}
 			//Ask Erik : Records starting with the letter "l" (lowercase L) specify the order of the vertices which build a polyline.
 			//mtl ?
@@ -108,6 +137,16 @@ void Model::LoadResource(const char* _name)
 			//s shading
 		}
 		file.close();
+	}
+	for (int i = 0; i < m_Indices.size(); i++)
+	{
+		std::cout << m_Indices[i];
+		if (i % 9 == 8)
+			std::cout << std::endl;
+		else if (i % 3 == 2)
+			std::cout << ' ';
+		else
+			std::cout << '/';
 	}
 }
 
@@ -118,7 +157,6 @@ void Model::UnloadResource()
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
-
 }
 
 void Model::SetupMesh()
@@ -128,23 +166,24 @@ void Model::SetupMesh()
 	glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int),
-		&m_Indices[0], GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(Vertex), &m_Vertices[0].Position[0], GL_STATIC_DRAW);
 
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int),
+		&m_Indices[0], GL_STATIC_DRAW);
 	// vertex positions
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 	// vertex texture coords
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, Uv)));
 	// vertex normals
-	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, Normal)));
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(2);
 	glEnableVertexAttribArray(3);
+
+
 
 	glBindVertexArray(0);
 }
@@ -171,7 +210,8 @@ void Model::Draw(Shader& _shader)
 
 	// draw mesh
 	glBindVertexArray(VAO);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//glDrawArrays(GL_TRIANGLES,0, m_Vertices.size());
-	glDrawElements(GL_TRIANGLES, m_Indices.size()/3, GL_UNSIGNED_INT, (void*)m_Indices[0]);
+	glDrawElements(GL_TRIANGLES, m_Indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }

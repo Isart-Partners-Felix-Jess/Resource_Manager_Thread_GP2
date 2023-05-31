@@ -10,10 +10,11 @@
 
 class Shader;
 
+
 struct Vertex {
 	Vectorf3 Position;
-	Vectorf3 Normal;
 	Vectorf2 Uv;
+	Vectorf3 Normal;
 };
 
 class Model : public IResource
