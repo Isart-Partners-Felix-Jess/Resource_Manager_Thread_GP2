@@ -144,7 +144,7 @@ void Scene::UpdateLights()
 
 void Scene::InitModeltest()
 {
-	viking_room = ResourcesManager::CreateResource<Model>(std::string("cube.obj"));
+	viking_room = ResourcesManager::CreateResource<Model>(std::string("objBuilding.obj"));
 	viking_room->SetupMesh();
 }
 

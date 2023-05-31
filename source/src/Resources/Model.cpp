@@ -32,6 +32,17 @@ void Model::LoadResource(const char* _name)
 		file.close();
 		return;
 	}
+	//m_Vertices.push_back(Vertex{ {} });
+		//temp vertex
+	std::vector<Vectorf3> temp_Positions;
+	std::vector<Vectorf2> temp_Uvs;
+	std::vector<Vectorf3> temp_Normals;
+
+	//temp index
+	std::vector<uint32_t> temp_idx_Positions;
+	std::vector<uint32_t> temp_idx_Uvs;
+	std::vector<uint32_t> temp_idx_Normals;
+
 	if (file.is_open())
 	{
 		Log::SuccessColor();
@@ -47,7 +58,7 @@ void Model::LoadResource(const char* _name)
 		unsigned int vnIdx = 0;
 		//only informative
 		unsigned int fIdx = 0;
-		//m_Vertices.push_back(Vertex{ {} });
+
 		while (std::getline(file, line))
 		{
 			int hashpos = line.find('#');
@@ -55,10 +66,6 @@ void Model::LoadResource(const char* _name)
 				line = line.substr(0, hashpos);
 			if (line.empty())
 				continue;
-			std::vector<Vectorf3> temp_Positions;
-			std::vector<Vectorf3> temp_Uvs;
-			std::vector<Vectorf3> temp_Normals;
-
 			float x, y, z;
 			// Process each line
 			std::istringstream iss(line);
@@ -68,12 +75,12 @@ void Model::LoadResource(const char* _name)
 			if (type == "v") // Vertex position
 			{
 				iss >> x >> y >> z;
-				temp_Positions.push_back( Vectorf3{ x, y, z }); //Assumes that vertex position is the first of the 3 coordinates
+				temp_Positions.push_back(Vectorf3{ x, y, z }); //Assumes that vertex position is the first of the 3 coordinates
 			}
 			else if (type == "vt") // Texture position
 			{
 				iss >> x >> y;
-				temp_Uvs.push_back(Vectorf2{x, y});
+				temp_Uvs.push_back(Vectorf2{ x, y });
 				//if (vtIdx < m_Vertices.size())
 				//	m_Vertices[vtIdx].Uv = Vectorf2(x, y);
 				//else
@@ -92,9 +99,6 @@ void Model::LoadResource(const char* _name)
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
-				//only informative
-				fIdx++;
-				char separator = '/'; // Variable to separator the slash characters
 				do {
 					while (iss.peek() == ' ')
 						iss.ignore();
@@ -105,23 +109,26 @@ void Model::LoadResource(const char* _name)
 						iss >> i;
 						if (!i)
 							break;
-						std::cout << i << std::endl;
-						m_Indices.push_back(i-1);
+						if (elementsToAdd == 3)
+						{
+							temp_idx_Positions.push_back(i);
+							fIdx++;
+							m_Indices.push_back(fIdx);//LOL
+						}
+						if (elementsToAdd == 2)
+							temp_idx_Uvs.push_back(i);
+						if (elementsToAdd == 1)
+							temp_idx_Normals.push_back(i);
 
 						if (iss.peek() == ' ')
 						{
-							while (--elementsToAdd)
-							{
-								m_Indices.push_back(0);
-							}
-							continue;
+							break;
 						}
 						if (iss.peek() == '/')
 						{
 							iss.ignore();
 							if (iss.peek() == '/')
 							{
-								m_Indices.push_back(0);
 								elementsToAdd--;
 							}
 							continue;
@@ -130,6 +137,8 @@ void Model::LoadResource(const char* _name)
 				} while (iss);
 
 			}
+
+
 			//Ask Erik : Records starting with the letter "l" (lowercase L) specify the order of the vertices which build a polyline.
 			//mtl ?
 			//o for obj name?
@@ -137,16 +146,18 @@ void Model::LoadResource(const char* _name)
 			//s shading
 		}
 		file.close();
+
 	}
-	for (int i = 0; i < m_Indices.size(); i++)
+	//Build final VAO (Mesh)
+	size_t total_size = std::max(temp_idx_Positions.size(), temp_idx_Uvs.size());
+	total_size = std::max(total_size, temp_idx_Normals.size());
+	m_Vertices.resize(total_size);
+	for (size_t i = 0; i < total_size; ++i)
 	{
-		std::cout << m_Indices[i];
-		if (i % 9 == 8)
-			std::cout << std::endl;
-		else if (i % 3 == 2)
-			std::cout << ' ';
-		else
-			std::cout << '/';
+		//m_Indices.push_back(i);
+		m_Vertices[i].Position = temp_Positions[temp_idx_Positions[i] - 1];
+		m_Vertices[i].Uv = temp_Uvs[temp_idx_Uvs[i] - 1];
+		m_Vertices[i].Normal = temp_Normals[temp_idx_Normals[i] - 1];
 	}
 }
 
