@@ -99,6 +99,7 @@ void Model::LoadResource(const char* _name)
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
+				fIdx = 0;
 				do {
 					while (iss.peek() == ' ')
 						iss.ignore();
