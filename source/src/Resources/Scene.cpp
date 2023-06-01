@@ -161,7 +161,7 @@ void Scene::InitModeltest()
 	building->meshes[2]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
 	building->meshes[2]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
 	building->meshes[4]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->meshes[4]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->meshes[4]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
 	building->meshes[5]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
 	building->meshes[5]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
 	building->meshes[6]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
