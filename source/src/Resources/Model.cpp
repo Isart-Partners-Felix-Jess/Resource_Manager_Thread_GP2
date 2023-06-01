@@ -34,9 +34,7 @@ void Model::LoadResource(const char* _name)
 	}
 	//m_Vertices.push_back(Vertex{ {} });
 		//temp vertex
-	std::vector<Vectorf3> temp_Positions;
-	std::vector<Vectorf2> temp_Uvs;
-	std::vector<Vectorf3> temp_Normals;
+	std::vector<Vertex> temp_Vertices;
 
 	//temp index
 	std::vector<uint32_t> temp_idx_Positions;
@@ -50,10 +48,12 @@ void Model::LoadResource(const char* _name)
 		Log::ResetColor();
 
 		//clear in case of double load
+		temp_Vertices.clear();
 		m_Vertices.clear();
 		m_Indices.clear();
 		//load .obj
 		std::string line;
+		unsigned int vIdx = 0;
 		unsigned int vtIdx = 0;
 		unsigned int vnIdx = 0;
 		//only informative
@@ -75,27 +75,31 @@ void Model::LoadResource(const char* _name)
 			if (type == "v") // Vertex position
 			{
 				iss >> x >> y >> z;
-				temp_Positions.push_back(Vectorf3{ x, y, z }); //Assumes that vertex position is the first of the 3 coordinates
+				if(vIdx < temp_Vertices.size())
+				temp_Vertices[vIdx].Position = Vectorf3{x, y, z}; //Assumes that vertex position is the first of the 3 coordinates
+				else
+					temp_Vertices.push_back({ Vectorf3(x, y,z)});
+				vIdx++;
 			}
 			else if (type == "vt") // Texture position
 			{
 				iss >> x >> y;
-				temp_Uvs.push_back(Vectorf2{ x, y });
-				//if (vtIdx < m_Vertices.size())
-				//	m_Vertices[vtIdx].Uv = Vectorf2(x, y);
-				//else
-				//	m_Vertices.push_back({ {}, Vectorf2(x, y),{} });
-				//vtIdx++;
+				//temp_Vertices.Uv.push_back(Vectorf2{ x, y });
+				if (vtIdx < temp_Vertices.size())
+					temp_Vertices[vtIdx].Uv = Vectorf2(x, y);
+				else
+					temp_Vertices.push_back({ {}, Vectorf2(x, y) });
+				vtIdx++;
 			}
 			else if (type == "vn")// Normal position
 			{
 				iss >> x >> y >> z;
-				temp_Normals.push_back(Vectorf3{ x, y, z });
-				//if (vtIdx < m_Vertices.size())
-				//	m_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
-				//else
-				//	m_Vertices.push_back({ {},{}, Vectorf3(x, y, z) });
-				//vnIdx++;
+				//temp_Normals.push_back(Vectorf3{ x, y, z });
+				if (vnIdx < temp_Vertices.size())
+					temp_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
+				else
+					temp_Vertices.push_back({ {},{}, Vectorf3(x, y, z) });
+				vnIdx++;
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
@@ -155,9 +159,9 @@ void Model::LoadResource(const char* _name)
 	m_Vertices.resize(total_size);
 	for (size_t i = 0; i < total_size; ++i)
 	{
-		m_Vertices[i].Position = temp_Positions[temp_idx_Positions[i] - 1];
-		m_Vertices[i].Uv = temp_Uvs[temp_idx_Uvs[i] - 1];
-		m_Vertices[i].Normal = temp_Normals[temp_idx_Normals[i] - 1];
+		m_Vertices[i].Position = temp_Vertices[temp_idx_Positions[i] - 1].Position;
+		m_Vertices[i].Uv = temp_Vertices[temp_idx_Uvs[i] - 1].Uv;
+		m_Vertices[i].Normal = temp_Vertices[temp_idx_Normals[i] - 1].Normal;
 	}
 }
 

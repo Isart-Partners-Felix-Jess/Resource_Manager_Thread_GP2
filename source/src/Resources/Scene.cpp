@@ -25,6 +25,7 @@ Shader shadlightCube;
 
 Scene::Scene(unsigned int _width, unsigned int _height) : camera(_width, _height)
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 }
 Scene::~Scene()
 {
