@@ -28,9 +28,9 @@ void ResourcesManager::Destroy()
 	Log::SuccessColor();
 	for (std::pair<std::string, IResource*> pair : m_Resources)
 	{
-		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
 		pair.second->UnloadResource();
 		delete pair.second;
+		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
 	}
 	m_Resources.clear(); //Probably useless
 	DEBUG_LOG("Resource manager cleared successfully");

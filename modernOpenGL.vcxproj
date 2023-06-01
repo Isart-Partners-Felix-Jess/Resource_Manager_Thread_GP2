@@ -151,7 +151,6 @@
     <ClCompile Include="source\src\Resources\ResourcesManager.cpp" />
     <ClCompile Include="source\src\Resources\Scene.cpp" />
     <ClCompile Include="source\src\Resources\Shader.cpp" />
-    <ClCompile Include="source\src\Core\DataStructure\Graph.cpp" />
     <ClCompile Include="source\src\Core\Debug\Log.cpp" />
     <ClCompile Include="modernOpenGL.cpp" />
     <ClCompile Include="source\src\Physics\Transform.cpp" />
@@ -173,6 +172,7 @@
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp" />
     <ClInclude Include="source\include\LowRenderer\Camera.hpp" />
     <ClInclude Include="source\include\LowRenderer\Light.hpp" />
+    <ClInclude Include="source\include\Physics\Transform.hpp" />
     <ClInclude Include="source\include\Resources\Material.hpp" />
     <ClInclude Include="source\include\Resources\ResourcesManager.hpp" />
   </ItemGroup>

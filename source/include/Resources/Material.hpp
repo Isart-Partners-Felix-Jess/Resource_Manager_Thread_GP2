@@ -11,8 +11,8 @@ class Material :
     public IResource
 {
 public: //for now
-    Vectorf3 ambient{ 1.f, 1.f, 1.f };
-    Vectorf3 diffuse{ 1.f, 1.f, 1.f };
+    Vectorf3 ambient{ 0.1f, 0.1f, 0.1f };
+    Vectorf3 diffuse{ 0.5f, 0.5f, 0.5f };
     Vectorf3 specular{ 1.f, 1.f, 1.f };
     float shininess = 1.f;
     unsigned int diffuse2DMap = -1; //No map (-1) is a valid entry

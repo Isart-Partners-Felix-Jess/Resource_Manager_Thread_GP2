@@ -69,9 +69,6 @@
     <ClCompile Include="source\src\LowRenderer\Light.cpp">
       <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
     </ClCompile>
-    <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
-      <Filter>Fichiers d%27en-tête\Core\DataStructure</Filter>
-    </ClCompile>
     <ClCompile Include="source\src\Core\Debug\Log.cpp">
       <Filter>Fichiers d%27en-tête\Core\Debug</Filter>
     </ClCompile>
@@ -134,6 +131,9 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Physics\Transform.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

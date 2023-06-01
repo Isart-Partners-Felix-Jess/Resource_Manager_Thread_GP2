@@ -67,7 +67,7 @@ void Scene::Update()
 	//shadbasic.SetFloat("mixValue", mixValue);
 	shadlight.Use();
 	DrawModeltest();
-	TransTest();
+	//TransTest();
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	//shadlightCube.Use();
 	//glBindVertexArray(VAO);
@@ -108,7 +108,7 @@ void Scene::InitLights()
 	shadlight.SetInt("SPOT_LIGHT_NBR", spotLights.size());
 	//In our case spotLight0 and 1 are torch lights (from the player), such as car headlights
 	Vectorf3 X_Offset = camera.up.Cross_product(camera.zCamera).Normalize() * 0.25f;
-	spotLights[0].point.position = camera.eye - X_Offset ;
+	spotLights[0].point.position = camera.eye - X_Offset;
 	spotLights[0].direction = camera.zCamera;
 	spotLights[1].point.position = camera.eye + X_Offset;
 	spotLights[1].direction = camera.zCamera;
@@ -145,13 +145,54 @@ void Scene::UpdateLights()
 
 void Scene::InitModeltest()
 {
-	viking_room = ResourcesManager::CreateResource<Model>(std::string("objBuilding.obj"));
-	viking_room->SetupMesh();
+	cube = ResourcesManager::CreateResource<Model>(std::string("cube"));
+	cube->meshes[0]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	cube->meshes[0]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+	viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room"));
+	viking_room->meshes[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg"));
+	viking_room->meshes[0]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("viking_room.jpg"));
+	robot = ResourcesManager::CreateResource<Model>(std::string("robot_operator"));
+	robot->meshes[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png"));
+	robot->meshes[0]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png"));
+	building = ResourcesManager::CreateResource<Model>(std::string("objBuilding"));
+	building->meshes[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->meshes[1]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
+	building->meshes[1]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
+	building->meshes[2]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
+	building->meshes[2]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
+	building->meshes[4]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->meshes[4]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->meshes[5]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
+	building->meshes[5]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
+	building->meshes[6]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
+	building->meshes[6]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
+	building->meshes[7]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
+	building->meshes[7]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
 }
 
 void Scene::DrawModeltest()
 {
-	viking_room->Draw(shadlight);
+	//Init MVP
+	Matrix3x3 rotation(true);
+	Matrix4x4 modeltest(true);
+	for (int i = -2; i <= 2; i++)
+	{
+		modeltest[0][3] = 2 * i; //modeltest[1][3] = 2i; modeltest[2][3] = 2i;
+
+		Matrix4x4 MVP = camera.viewProjection * modeltest;
+
+		shadlight.SetMat4("MVP", MVP);
+		shadlight.SetMat4("model", modeltest);
+		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
+		if (i == -2)
+			viking_room->Draw(shadlight);
+		if (i == 0)
+			robot->Draw(shadlight);
+		if (i == 1)
+			cube->Draw(shadlight);
+		if (i == 2)
+			building->Draw(shadlight);
+	}
 }
 
 void Scene::Shadertest()
@@ -259,13 +300,14 @@ void Scene::Texturetest()
 	//glBindTexture(GL_TEXTURE_2D, container2.GetID());
 	//glActiveTexture(GL_TEXTURE3);
 	//glBindTexture(GL_TEXTURE_2D, container2_specular.GetID());
+	ResourcesManager::CreateResource<Texture>("white.png");
 	for (unsigned int i = 0; i < 24; i++)
 	{
-		material::list[i].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("container2.png"));
-		material::list[i].AttachSpecularMap(ResourcesManager::GetResource<Texture>("container2_specular.png"));
+		material::list[i].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+		material::list[i].AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 	}
-	material::none.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("container2.png"));
-	material::none.AttachSpecularMap(ResourcesManager::GetResource<Texture>("container2_specular.png"));
+	material::none.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	material::none.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 }
 
 void Scene::TransTest()
@@ -286,7 +328,7 @@ void Scene::TransTest()
 	for (int j = 0; j < 4; j++)
 		for (int i = 0; i < 6; i++)
 			cubePositions[j * 6 + i] = Vectorf3(2.f * i - +6, -2.f * j + 4, 0.0f);
-	for (unsigned int i = 0; i < 1 /*24*/; i++)
+	for (unsigned int i = 0; i < 24; i++)
 	{
 		float angle = 20.0f * i * static_cast<float>(M_PI_2) / 180;
 		Matrix3x3 rotation = matrix::Rotate3dAllAxis(Vectorf3{ angle, .3f * angle, .5f * angle });
@@ -306,6 +348,9 @@ void Scene::TransTest()
 		shadlight.SetMat4("model", modeltest);
 		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
 		//shadlight.SetMat3("normalMatrix", rotation);
+		
+		//cube->material = material::list[i];
+		cube->Draw(shadlight);
 
 		material::none.InitShader(shadlight);
 		//material::list[i].InitShader(shadlight);

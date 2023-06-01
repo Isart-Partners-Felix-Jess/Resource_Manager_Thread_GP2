@@ -1,39 +1,27 @@
 #pragma once
-
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <vectorM.hpp>
-#include <vector>
-#include <ResourcesManager.hpp>
-#include <Texture.hpp>
-
-class Shader;
-
-
-struct Vertex {
-	Vectorf3 Position;
-	Vectorf2 Uv;
-	Vectorf3 Normal;
-};
-
+#include <Graph.hpp>
+#include <Scene.hpp>
+#include <Mesh.hpp>
 class Model : public IResource
 {
-private:
-	unsigned int VAO, VBO, EBO;
-
-	~Model() override;
-//public: ?
-	std::vector<Vertex> m_Vertices;
-	std::vector<unsigned int> m_Indices;
-	std::vector<Texture> m_Textures;
-
 public:
-	void LoadResource(const char* _name) override;
-	void UnloadResource() override;
+    void Draw(Shader& _shader);
+    std::vector<Mesh*> meshes;
+private:
+    // model data
+    std::string directory;
 
-	void SetupMesh();
-	void Draw(Shader& _shader);
+    //void ProcessNode(SceneNode* node, const Scene* scene);
+    //Mesh ProcessMesh(Mesh* mesh, const Scene* scene);
+    //std::vector<Texture> LoadMaterialTextures(Material* mat, TextureType type,
+    //    std::string typeName);
+    Mesh BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals);
 
+    // Inherited from IResource
+    virtual void UnloadResource() override;
+    void LoadResource(const char* path) override;
 };
-#endif // MODEL_H
+#endif // !MODEL_H

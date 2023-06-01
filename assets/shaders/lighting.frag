@@ -78,16 +78,19 @@ vec3 processLight(Light _light, vec3 _dir)
 {
     //Ambient part
     vec3 ambient = _light.ambientStrength * _light.ambientColor * sampled.AmbTex;
-    vec3 norm = normalize(Normal);
+    vec3 normal = normalize(Normal);
 
     //Diffuse part
-    float diff = max(dot(norm, _dir), 0.0); //clamping the negative values
+    float diff = max(dot(normal, _dir), 0.0); //clamping the negative values
     vec3 diffuse = diff * _light.diffuseColor * sampled.DiffTex;
 
     //Specular part
     vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 reflectDir = reflect(-_dir, norm);  
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    //vec3 reflectDir = reflect(-_dir, normal);  
+    vec3 halfwayDir = normalize(_dir + viewDir);  
+
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess*2);
+    //float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     vec3 specular = _light.specularStrength * spec * _light.specularColor * sampled.SpecTex;  
     
     //Combine

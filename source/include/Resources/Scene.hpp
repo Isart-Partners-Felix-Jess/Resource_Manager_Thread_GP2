@@ -14,10 +14,16 @@ public:
 	std::vector<PointLight> pointLights;
 	std::vector<SpotLight> spotLights;
 	
-	Graph graph;
+	//Graph graph;
 
 	//Temp
+	//std::vector<Model*> ModelList;
+
+	Model* cube;
 	Model* viking_room;
+	Model* robot;
+	Model* building;
+
 
 	Scene(unsigned int _width, unsigned int _height);
 	~Scene();

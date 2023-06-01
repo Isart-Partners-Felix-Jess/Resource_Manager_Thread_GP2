@@ -1,7 +1,11 @@
 #pragma once
+
+#define GRAPH_H
+#ifndef GRAPH_H
+
 #include <matrix.hpp>
 #include <Transform.hpp>
-#include <Mesh.hpp>
+#include <Model.hpp>
 
 //Generic one
 struct Node
@@ -18,7 +22,7 @@ struct Node
 struct SceneNode : public Node
 {
 	Transform transform;
-	std::vector<Mesh*> meshes;
+	std::vector<Model*> models;
 
 	bool UpdateChildren() override;
 };
@@ -45,3 +49,4 @@ public:
 //	}
 //	return true;
 //}
+#endif//GRAPH_H

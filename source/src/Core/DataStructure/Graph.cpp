@@ -3,10 +3,10 @@
 
 bool SceneNode::UpdateChildren()
 {
-	for (Mesh* mesh : meshes)
+	for (Model* model : models)
 	{
-		// Update meshes specific to SceneNode
-		// mesh->update();
+		// Update modeles specific to SceneNode
+		// model->update();
 	}
 	for (Node* child : children)
 	{
