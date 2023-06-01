@@ -57,7 +57,7 @@ void Model::LoadResource(const char* _name)
 		unsigned int vtIdx = 0;
 		unsigned int vnIdx = 0;
 		//only informative
-		unsigned int fIdx = 0;
+		unsigned int faceIdx = 0;
 
 		while (std::getline(file, line))
 		{
@@ -99,7 +99,7 @@ void Model::LoadResource(const char* _name)
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
-				fIdx = 0; //triangle count
+				unsigned int vertexIdx = 0;
 				do {
 					while (iss.peek() == ' ')
 						iss.ignore();
@@ -113,8 +113,13 @@ void Model::LoadResource(const char* _name)
 						if (elementsToAdd == 3)
 						{
 							temp_idx_Positions.push_back(i);
-							fIdx++;
-							m_Indices.push_back(fIdx);//LOL
+							if(vertexIdx/2) // NewTriangle
+							{
+								m_Indices.push_back(faceIdx);
+								m_Indices.push_back(faceIdx + vertexIdx - 1);
+								m_Indices.push_back(faceIdx + vertexIdx);
+							}
+							vertexIdx++;
 						}
 						if (elementsToAdd == 2)
 							temp_idx_Uvs.push_back(i);
@@ -136,15 +141,10 @@ void Model::LoadResource(const char* _name)
 						}
 					}
 				} while (iss);
-
+				faceIdx += vertexIdx; //triangle count
 			}
 
 
-			//Ask Erik : Records starting with the letter "l" (lowercase L) specify the order of the vertices which build a polyline.
-			//mtl ?
-			//o for obj name?
-			//g for groupe name?
-			//s shading
 		}
 		file.close();
 
@@ -155,7 +155,6 @@ void Model::LoadResource(const char* _name)
 	m_Vertices.resize(total_size);
 	for (size_t i = 0; i < total_size; ++i)
 	{
-		//m_Indices.push_back(i);
 		m_Vertices[i].Position = temp_Positions[temp_idx_Positions[i] - 1];
 		m_Vertices[i].Uv = temp_Uvs[temp_idx_Uvs[i] - 1];
 		m_Vertices[i].Normal = temp_Normals[temp_idx_Normals[i] - 1];
