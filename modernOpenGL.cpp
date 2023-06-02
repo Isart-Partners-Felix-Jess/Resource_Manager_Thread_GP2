@@ -17,17 +17,14 @@ int main()
 	//_CrtSetBreakAlloc(160); // Debugger should stop alloc nb
 	Log::OpenFile("source/include/Core/Debug/DebugLog.txt");
 	
-	//Need to set ID
-	//ResourcesManager::CreateResource<Model>(std::string("viking_room.obj"));
-
-	//In App ?
 	Application app(800, 600);
 	app.Update();
 
+	//In App ?
 	ResourcesManager::Destroy();
 	Log::DeleteInstance();
-	std::cout << "Program ended!\n";
 
+	std::cout << "Program ended!\n";
 
 	return 0;
 }

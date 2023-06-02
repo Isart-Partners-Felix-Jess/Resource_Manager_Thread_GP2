@@ -96,23 +96,23 @@ void Scene::Destroy()
 void Scene::InitLights()
 {
 	shadlight.SetInt("DIRECTIONAL_LIGHT_NBR", directionalLights.size());
-	for (int i = 0; i < directionalLights.size(); i++)
+	for (size_t i = 0; i < directionalLights.size(); i++)
 	{
 		directionalLights[i].InitShader(shadlight, i);
 	}
 	shadlight.SetInt("POINT_LIGHT_NBR", pointLights.size());
-	for (int i = 0; i < pointLights.size(); i++)
+	for (size_t i = 0; i < pointLights.size(); i++)
 	{
 		pointLights[i].InitShader(shadlight, i);
 	}
-	shadlight.SetInt("SPOT_LIGHT_NBR", spotLights.size());
+	shadlight.SetInt("SPOT_LIGHT_NBR", (int)spotLights.size());
 	//In our case spotLight0 and 1 are torch lights (from the player), such as car headlights
 	Vectorf3 X_Offset = camera.up.Cross_product(camera.zCamera).Normalize() * 0.25f;
 	spotLights[0].point.position = camera.eye - X_Offset;
 	spotLights[0].direction = camera.zCamera;
 	spotLights[1].point.position = camera.eye + X_Offset;
 	spotLights[1].direction = camera.zCamera;
-	for (int i = 0; i < spotLights.size(); i++)
+	for (size_t i = 0; i < spotLights.size(); i++)
 	{
 		spotLights[i].InitShader(shadlight, i);
 	}
@@ -178,7 +178,7 @@ void Scene::DrawModeltest()
 	Matrix4x4 modeltest(true);
 	for (int i = -2; i <= 2; i++)
 	{
-		modeltest[0][3] = 2 * i; //modeltest[1][3] = 2i; modeltest[2][3] = 2i;
+		modeltest[0][3] = 2.f * i; //modeltest[1][3] = 2i; modeltest[2][3] = 2i;
 
 		Matrix4x4 MVP = camera.viewProjection * modeltest;
 

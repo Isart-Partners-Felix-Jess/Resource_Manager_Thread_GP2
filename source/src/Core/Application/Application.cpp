@@ -57,7 +57,6 @@ void Application::Destroy()
 	glDisable(GL_DEPTH_TEST);
 	glfwDestroyWindow(window);
 	glfwTerminate();
-
 }
 
 void Application::Update()

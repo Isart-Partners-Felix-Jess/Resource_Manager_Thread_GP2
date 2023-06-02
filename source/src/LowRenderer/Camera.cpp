@@ -263,4 +263,5 @@ bool CameraInputs::NoInputs() const
 {
 	if (deltaX != 0.f || deltaY != 0.f || moveForward || moveBackward || moveLeft || moveRight)
 		return false;
+	return true;
 }
