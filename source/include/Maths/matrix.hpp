@@ -309,7 +309,7 @@ public:
 	{
 		return n;
 	}
-	size_t GetColumnssNb()
+	size_t GetColumnsNb()
 	{
 		return m;
 	}
@@ -437,7 +437,7 @@ VectorM<T, 4> operator*(const MatrixMN<T, 4>& matrix, const VectorM<T, 4>& vecto
 	}
 	return result;
 }
-//Order reversed cause of asignment
+//Order reversed cause of assignment
 template <typename T>
 VectorM<T, 3> operator*=(const VectorM<T, 3>& vector, const MatrixMN<T, 4>& matrix)
 {
