@@ -71,7 +71,7 @@ public:
 		}
 	}
 
-	//Copy into another matrix(0 for unitialized)
+	//Copy into another matrix(0 for uninitialized)
 	template <typename T, size_t P, size_t Q>
 	MatrixMN(const MatrixMN<T, P, Q>& other)
 	{
