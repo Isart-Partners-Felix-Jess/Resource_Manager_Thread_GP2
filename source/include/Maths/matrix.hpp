@@ -593,13 +593,13 @@ namespace matrix
 			cosC = 1; sinC = 0;
 		}
 		rotationXYZ[0][0] = cosB * cosC;
-		rotationXYZ[0][1] = -cosB * sinC;
-		rotationXYZ[0][2] = sinB;
-		rotationXYZ[1][0] = sinA * sinB * cosC + cosA * sinC;
+		rotationXYZ[1][0] = -cosB * sinC;
+		rotationXYZ[2][0] = sinB;
+		rotationXYZ[0][1] = sinA * sinB * cosC + cosA * sinC;
 		rotationXYZ[1][1] = -sinA * sinB * sinC + cosA * cosC;
-		rotationXYZ[1][2] = -sinA * cosB;
-		rotationXYZ[2][0] = -cosA * sinB * cosC + sinA * sinC;
-		rotationXYZ[2][1] = cosA * sinB * sinC + sinA * cosC;
+		rotationXYZ[2][1] = -sinA * cosB;
+		rotationXYZ[0][2] = -cosA * sinB * cosC + sinA * sinC;
+		rotationXYZ[1][2] = cosA * sinB * sinC + sinA * cosC;
 		rotationXYZ[2][2] = cosA * cosB;
 		return rotationXYZ;
 	}
