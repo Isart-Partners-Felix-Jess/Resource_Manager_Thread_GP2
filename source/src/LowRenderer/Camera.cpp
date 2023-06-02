@@ -67,7 +67,7 @@ void Camera::Move(const Vectorf3& _velocity)
 void Camera::Turn(float _angle, matrix::Axis _axis)
 {
 	//FPS View
-	const float TOLERANCE = static_cast<float>(M_PI_2) - 1e-6;
+	const float TOLERANCE = static_cast<float>(M_PI_2) - static_cast<float>(1e-6);
 	static float yaw = -static_cast<float>(M_PI_2);
 	static float pitch = 0.f;
 	if (_axis == matrix::Axis::X)
@@ -102,7 +102,7 @@ void Camera::Zoom(float yoffset)
 {
 	if (perspective)
 	{
-		float degToRad = M_PI / 180.f;
+		float degToRad = static_cast<float>(M_PI) / 180.f;
 		fovY -= yoffset * degToRad;
 		if (fovY < (/*1.0f * */degToRad)) //1 degree, so lets skip that computation
 			fovY = /*1.0f * */degToRad;
@@ -231,11 +231,11 @@ Matrix4x4 Camera::Frustum(float left, float right, float bottom, float top, floa
 }
 Matrix4x4 Camera::Perspective(float fovY, float aspect, float near, float far)
 {
-	float angle = M_PI_2 - fovY * 0.5f;
+	float angle = static_cast<float>(M_PI_2) - fovY * 0.5f;
 	//Safe tan
 	float f = 0.f;
 	//Very specific, I am afraid
-	if (angle != M_PI_2 && angle != -M_PI_2)
+	if (angle != static_cast<float>(M_PI_2) && angle != -static_cast<float>(M_PI_2))
 		f = tan(angle);
 	float iDist = 1.f / (near - far);
 	return Matrix4x4{

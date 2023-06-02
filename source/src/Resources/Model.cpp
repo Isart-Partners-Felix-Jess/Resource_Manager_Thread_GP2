@@ -1,4 +1,5 @@
 #include<Model.hpp>
+#include <Material.hpp>
 
 static unsigned int s_ModelNumber = 0;
 
@@ -47,9 +48,6 @@ void Model::LoadResource(const char* _name)
 
 		while (std::getline(file, line))
 		{
-			int hashpos = line.find('#');
-			if (hashpos != -1)
-				line = line.substr(0, hashpos);
 			if (line.empty())
 				continue;
 			float x, y, z;
@@ -57,7 +55,8 @@ void Model::LoadResource(const char* _name)
 			std::istringstream iss(line);
 			std::string type;
 			iss >> type;
-
+			if (type == "#")
+				continue;
 			if (type[0] == 'v')
 			{
 				iss >> x >> y >> z;
@@ -155,10 +154,18 @@ void Model::LoadResource(const char* _name)
 }
 void Model::Draw(Shader& _shader)
 {
+	materials[0].InitShader(_shader);
+	uint32_t i = 1;
 	for (Mesh* mesh : meshes)
 	{
+		if(i < materials.size())
+			materials[i++].InitShader(_shader);
 		mesh->Draw(_shader);
 	}
+}
+void Model::Draw()
+{
+	Draw(*shader);
 }
 void Model::UnloadResource()
 {
@@ -183,4 +190,25 @@ Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vect
 	}
 	result.Set_Vertices(vertices);
 	return result;
+}
+
+void Model::AddMaterial()
+{
+	materials.push_back(material::none);
+}
+
+void Model::AddMaterials(unsigned int _number)
+{
+	for (unsigned int i =0; i<_number;i++)
+		AddMaterial();
+}
+
+void Model::AddMaterial(Material _mat)
+{
+	materials.push_back(_mat);
+}
+
+void Model::ChangeMaterial(Material _mat, uint32_t idx)
+{
+	materials[idx] = _mat;
 }

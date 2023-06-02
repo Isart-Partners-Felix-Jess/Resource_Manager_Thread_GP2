@@ -16,6 +16,7 @@ void Material::InitShader(Shader& _lightShader)
 
 Material::Material()
 {
+	*this = material::none;
 }
 
 Material::Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny)

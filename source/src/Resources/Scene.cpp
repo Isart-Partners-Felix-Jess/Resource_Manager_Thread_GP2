@@ -146,28 +146,29 @@ void Scene::UpdateLights()
 void Scene::InitModeltest()
 {
 	cube = ResourcesManager::CreateResource<Model>(std::string("cube"));
-	cube->meshes[0]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
-	cube->meshes[0]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+	cube->materials[0].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	cube->materials[0].AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 	viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room"));
-	viking_room->meshes[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg"));
-	viking_room->meshes[0]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("viking_room.jpg"));
+	viking_room->materials[0].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg"));
+	viking_room->materials[0].AttachSpecularMap(ResourcesManager::GetResource<Texture>("viking_room.jpg"));
 	robot = ResourcesManager::CreateResource<Model>(std::string("robot_operator"));
-	robot->meshes[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png"));
-	robot->meshes[0]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png"));
+	robot->materials[0].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png"));
+	robot->materials[0].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png"));
 	building = ResourcesManager::CreateResource<Model>(std::string("objBuilding"));
-	building->meshes[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->meshes[1]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
-	building->meshes[1]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
-	building->meshes[2]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
-	building->meshes[2]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
-	building->meshes[4]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->meshes[4]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->meshes[5]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
-	building->meshes[5]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
-	building->meshes[6]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
-	building->meshes[6]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
-	building->meshes[7]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
-	building->meshes[7]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
+	building->AddMaterials(8);
+	building->materials[1].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->materials[2].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
+	building->materials[2].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
+	building->materials[3].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
+	building->materials[3].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
+	building->materials[5].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->materials[5].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->materials[6].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
+	building->materials[6].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
+	building->materials[7].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
+	building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
+	building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
+	building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
 }
 
 void Scene::DrawModeltest()

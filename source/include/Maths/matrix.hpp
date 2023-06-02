@@ -288,12 +288,12 @@ public:
 			std::cout << " ( ";
 			for (size_t j = 0; j < N; j++)
 				std::cout << row[j] << " ";
-			std::cout << ")\N";
+			std::cout << ")\n";
 		}
 		std::cout << std::endl;
 	};
 
-	VectorM<T, M> Column(int index) const
+	VectorM<T, M> Column(size_t index) const
 	{
 		if (index >= N)
 			throw std::runtime_error("outside of range");

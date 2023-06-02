@@ -12,6 +12,7 @@ Texture::Texture(const char* _filepath)
 }
 Texture::~Texture()
 {
+	UnloadResource();
 }
 
 unsigned int Texture::GetID() const
@@ -58,4 +59,5 @@ void Texture::LoadResource(const char* _name)
 
 void Texture::UnloadResource()
 {
+	glDeleteTextures(1,&m_ResourceId);
 }

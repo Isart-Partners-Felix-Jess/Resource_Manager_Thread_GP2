@@ -2,8 +2,6 @@
 #include <Log.hpp>
 #include <glad/glad.h>
 #include <Shader.hpp>
-#include <Material.hpp>
-
 
 
 Mesh::~Mesh()
@@ -55,11 +53,11 @@ void Mesh::SetupMesh()
 
 void Mesh::Draw(Shader& _shader)
 {
-	material.InitShader(_shader);
+	
 
 	// draw mesh
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, m_Indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, (GLsizei)m_Indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 	glActiveTexture(GL_TEXTURE0);
 }

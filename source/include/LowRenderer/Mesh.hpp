@@ -28,7 +28,6 @@ private:
     Matrix4x4 local = Matrix4x4(true);
 public:
     ~Mesh();
-    Material material = material::none;
     Mesh() {};
 
     //void Set_OpenGLOutput(unsigned int _VAO, unsigned int _VBO, unsigned int _EBO);
