@@ -46,7 +46,7 @@ void Texture::LoadResource(const char* _name)
 		else if (m_Channels == 4)
 			format = GL_RGBA;
 		else
-			Assert(true, "Invalid number of channels in texture file " << _name);
+			Assert(true, std::string("Invalid number of channels in texture file ") + _name);
 		glTexImage2D(GL_TEXTURE_2D, 0, format, m_Width, m_Height, 0, format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}

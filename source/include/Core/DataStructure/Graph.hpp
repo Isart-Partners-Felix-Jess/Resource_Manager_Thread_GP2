@@ -1,42 +1,64 @@
 #pragma once
 
-#define GRAPH_H
 #ifndef GRAPH_H
+#define GRAPH_H
 
 #include <matrix.hpp>
 #include <Transform.hpp>
-#include <Model.hpp>
+class Model;
+
+class Scene;
+class Shader;
 
 //Generic one
 struct Node
 {
-	Node* parent;
-	Matrix4x4 local1;
-	Matrix4x4 local2;
-	Matrix4x4 global;
+	Node* parent = nullptr;
 	std::vector<Node*> children;
+	//Dirty Flag
+	bool changed = false;
 
 	virtual bool UpdateChildren();
 };
 
-struct SceneNode : public Node
-{
-	Transform transform;
-	std::vector<Model*> models;
-
-	bool UpdateChildren() override;
-};
 
 class Graph
 {
-	Node m_RootNode;
+protected:
+const Node m_RootNode;
 public:
 	Graph() {};
-	
-	bool UpdateChildren();
-	//bool Draw();
+
+	bool Update();
 };
 
+struct SceneNode : public Node
+{
+protected:
+	SceneNode() {};
+public:
+	SceneNode(SceneNode* _parent);
+
+	Transform transform;
+	std::vector<Model*> models;
+
+	void InitDefaultShader(Shader& _shader, Scene* _scene);
+	bool UpdateChildren() override;
+	void Draw();
+};
+//Like a gameobject
+class SceneGraph : public Graph
+{
+public:
+	std::vector<SceneNode*> entities;
+	Scene* scene;
+	SceneGraph(Scene* _scene);
+
+	//Check if all shaders are initialized first
+	void Draw();
+	//Think to do this before drawing and first update
+	void InitDefaultShader(Shader& _shader);
+};
 //template <typename N>
 //bool Graph<N>::Draw()
 //{

@@ -142,6 +142,7 @@
     <None Include="assets\shaders\mix.frag">
       <FileType>CppCode</FileType>
     </None>
+    <ClCompile Include="source\src\Core\DataStructure\Graph.cpp" />
     <ClCompile Include="source\src\Resources\Material.cpp" />
     <ClCompile Include="source\src\Core\Application\Application.cpp" />
     <ClCompile Include="source\src\LowRenderer\Camera.cpp" />

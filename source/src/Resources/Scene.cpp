@@ -144,7 +144,7 @@ void Scene::UpdateLights()
 }
 
 void Scene::InitModeltest()
-{
+{	
 	cube = ResourcesManager::CreateResource<Model>(std::string("cube"));
 	cube->materials[0].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
 	cube->materials[0].AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));

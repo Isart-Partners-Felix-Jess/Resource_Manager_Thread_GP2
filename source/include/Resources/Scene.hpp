@@ -14,7 +14,7 @@ public:
 	std::vector<PointLight> pointLights;
 	std::vector<SpotLight> spotLights;
 	
-	//Graph graph;
+	SceneGraph graph = SceneGraph(this);
 
 	//Temp
 	//std::vector<Model*> ModelList;

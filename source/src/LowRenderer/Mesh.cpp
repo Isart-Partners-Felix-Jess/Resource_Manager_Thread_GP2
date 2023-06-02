@@ -51,7 +51,7 @@ void Mesh::SetupMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::Draw(Shader& _shader)
+void Mesh::Draw()
 {
 	
 

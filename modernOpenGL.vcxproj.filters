@@ -108,6 +108,9 @@
     <ClCompile Include="source\src\Resources\ResourcesManager.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="third_party\libs\glfw3.lib">

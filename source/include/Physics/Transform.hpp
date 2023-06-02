@@ -29,7 +29,7 @@ public:
 
 	Matrix4x4 ModelMatrix();
 
-	void ComputeAll(Matrix4x4 _transform);
+	void ComputeAll(Matrix4x4 _globalTransform);
 };
 #endif //!TRANSFORM_H
 

@@ -2,9 +2,11 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <Graph.hpp>
-#include <Scene.hpp>
 #include <Mesh.hpp>
+
+class Scene;
+struct SceneNode;
+
 class Model : public IResource
 {
 public:
@@ -17,10 +19,11 @@ public:
     void AddMaterials(unsigned int _number);
     void AddMaterial(Material _mat);
     void ChangeMaterial(Material _mat, uint32_t idx);
+    void ProcessNode(SceneNode* node, const Scene* scene);
 private:
+
     // model data
     std::string directory;
-    //void ProcessNode(SceneNode* node, const Scene* scene);
     //Mesh ProcessMesh(Mesh* mesh, const Scene* scene);
     //std::vector<Texture> LoadMaterialTextures(Material* mat, TextureType type,
     //    std::string typeName);

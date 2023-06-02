@@ -55,11 +55,11 @@ Matrix4x4 Transform::ModelMatrix()
 	return global;
 }
 
-void Transform::ComputeAll(Matrix4x4 _transform)
+void Transform::ComputeAll(Matrix4x4 _globalTransform)
 {
-	local = _transform * local;
-	global = _transform * global;
-	xAxis = _transform * xAxis;
-	yAxis = _transform * yAxis;
-	zAxis = _transform * zAxis;
+	global = _globalTransform * global;
+	//local = _globalTransform * local;
+	xAxis = _globalTransform * xAxis;
+	yAxis = _globalTransform * yAxis;
+	zAxis = _globalTransform * zAxis;
 }

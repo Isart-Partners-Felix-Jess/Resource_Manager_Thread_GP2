@@ -35,7 +35,7 @@ public:
     void Set_Indices(const std::vector<unsigned int>& _Indices);
 
     void SetupMesh();
-    void Draw(Shader& _shader);
+    void Draw();
 
 };
 #endif // MESH_H
