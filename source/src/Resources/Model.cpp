@@ -59,10 +59,36 @@ void Model::LoadResource(const char* _name)
 			iss >> type;
 
 			if (type[0] == 'v')
+			{
 				iss >> x >> y >> z;
-			if (type == "g" )
-				/* &&*/if( line.find("default")!=-1 )
-					/* &&*/if( !temp_Vertices.empty()) // group
+				if (type == "v") // Vertex position
+				{
+					if (vIdx < temp_Vertices.size())
+						temp_Vertices[vIdx].Position = Vectorf3{ x, y, z };
+					else
+						temp_Vertices.push_back({ Vectorf3(x, y,z) });
+					vIdx++;
+				}
+				else if (type[1] == 't') // Texture position
+				{
+					if (vtIdx < temp_Vertices.size())
+						temp_Vertices[vtIdx].Uv = Vectorf2(x, y);
+					else
+						temp_Vertices.push_back({ {}, Vectorf2(x, y) });
+					vtIdx++;
+				}
+				else if (type[1] == 'n')// Normal position
+				{
+					if (vnIdx < temp_Vertices.size())
+						temp_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
+					else
+						temp_Vertices.push_back({ {},{}, Vectorf3(x, y, z) });
+					vnIdx++;
+				}
+			}
+			else if (type == "g" 
+				&& line.find("default")!=-1 
+				&& !temp_Vertices.empty()) // group
 			{
 				Mesh* next_mesh = new Mesh;
 				*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
@@ -70,32 +96,6 @@ void Model::LoadResource(const char* _name)
 				next_mesh->SetupMesh();
 				meshes.push_back(next_mesh);
 				indices.clear();
-			}
-			if (type == "v") // Vertex position
-			{
-				if (vIdx < temp_Vertices.size())
-					temp_Vertices[vIdx].Position = Vectorf3{ x, y, z };
-				else
-					temp_Vertices.push_back({ Vectorf3(x, y,z) });
-				vIdx++;
-			}
-			else if (type == "vt") // Texture position
-			{
-				//iss >> x >> y;
-				if (vtIdx < temp_Vertices.size())
-					temp_Vertices[vtIdx].Uv = Vectorf2(x, y);
-				else
-					temp_Vertices.push_back({ {}, Vectorf2(x, y) });
-				vtIdx++;
-			}
-			else if (type == "vn")// Normal position
-			{
-				//iss >> x >> y >> z;
-				if (vnIdx < temp_Vertices.size())
-					temp_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
-				else
-					temp_Vertices.push_back({ {},{}, Vectorf3(x, y, z) });
-				vnIdx++;
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
@@ -146,15 +146,6 @@ void Model::LoadResource(const char* _name)
 		}
 		file.close();
 
-		//Build final VBO (Mesh)
-		//size_t total_size = std::max({ temp_idx_Positions.size(), temp_idx_Uvs.size(), temp_idx_Normals.size() });
-		//m_Vertices.resize(total_size);
-		//for (size_t i = 0; i < total_size; ++i)
-		//{
-		//	m_Vertices[i].Position = temp_Vertices[temp_idx_Positions[i] - 1].Position;
-		//	m_Vertices[i].Uv = temp_Vertices[temp_idx_Uvs[i] - 1].Uv;
-		//	m_Vertices[i].Normal = temp_Vertices[temp_idx_Normals[i] - 1].Normal;
-		//}
 		Mesh* next_mesh = new Mesh;
 		*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
 		next_mesh->Set_Indices(indices);
@@ -184,7 +175,7 @@ Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vect
 	size_t total_size = std::max({ _temp_idx_Positions.size(), _temp_idx_Uvs.size(), _temp_idx_Normals.size() });
 	std::vector<Vertex> vertices;
 	vertices.resize(total_size);
-	for (size_t i = 0; i < total_size; ++i)
+	for (size_t i = 0; i < total_size; i++)
 	{
 		vertices[i].Position = _temp_Vertices[_temp_idx_Positions[i] - 1].Position;
 		vertices[i].Uv = _temp_Vertices[_temp_idx_Uvs[i] - 1].Uv;

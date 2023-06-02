@@ -14,7 +14,6 @@ public:
 	virtual void LoadResource(const char* _name) = 0;
 	virtual void UnloadResource() = 0;
 
-	//void SetResourceId(size_t _id);
 	unsigned int GetResourceId() const;
 
 	void SetResourcePath(const std::string& _path);
@@ -51,7 +50,6 @@ inline R* ResourcesManager::CreateResource(const std::string& _name)
 {
 	IResource* createdResource = new R();
 	createdResource->SetResourcePath(_name);
-	//createdResource->SetResourceId(m_Resources.size());
 	createdResource->LoadResource(_name.c_str());
 	//Erase previous pointer if found
 	auto it = m_Resources.find(_name);

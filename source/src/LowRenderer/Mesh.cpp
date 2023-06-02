@@ -59,7 +59,7 @@ void Mesh::Draw(Shader& _shader)
 
 	// draw mesh
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, m_Indices.size()-1, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, m_Indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 	glActiveTexture(GL_TEXTURE0);
 }

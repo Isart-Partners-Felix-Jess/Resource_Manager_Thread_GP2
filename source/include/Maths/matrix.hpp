@@ -13,8 +13,6 @@ class MatrixMN
 {
 	static_assert(M > 0 && N > 0, "M and N must be greater than 0");
 private:
-	size_t m = M;
-	size_t n = N;
 	bool square = false;
 	std::vector<VectorM<T, N>> data;
 
@@ -24,21 +22,21 @@ public:
 	//Identity fills last rows by 0 if more rows than cols
 	MatrixMN(bool identity = false)
 	{
-		if (m == n)
+		if (M == N)
 			square = true;
 		data.resize(M);
 		for (VectorM<T, N>& row : data)
-			for (size_t j = 0; j < n; j++)
+			for (size_t j = 0; j < N; j++)
 				row[j] = 0;
 		if (identity)
-			for (size_t i = 0; i < n; i++)
+			for (size_t i = 0; i < N; i++)
 				data[i][i] = 1;
 	}
 
 	// Constructor for initializing with {{,...}, ...}
 	MatrixMN(std::initializer_list<std::initializer_list<T>> values)
 	{
-		if (m == n)
+		if (M == N)
 			square = true;
 		data.resize(M);
 		size_t i = 0, j = 0;
@@ -63,10 +61,10 @@ public:
 
 
 	MatrixMN(VectorM<T, N>* vectors) {
-		if (m == n)
+		if (M == N)
 			square = true;
-		data.resize(m);
-		for (size_t i = 0; i < m; i++) {
+		data.resize(M);
+		for (size_t i = 0; i < M; i++) {
 			data[i] = vectors[i];
 		}
 	}
@@ -100,8 +98,8 @@ public:
 	{
 		if (!square)
 			return false;
-		for (int i = 1; i < m; i++)
-			for (int j = 1; j < m; j++)
+		for (int i = 1; i < M; i++)
+			for (int j = 1; j < M; j++)
 				if (i != j && data[i][j])
 					return false;
 		return true;
@@ -118,7 +116,7 @@ public:
 	T trace()
 	{
 		T temp = 0;
-		for (size_t i = 0; i < std::min(m, N); i++) {
+		for (size_t i = 0; i < std::min(M, N); i++) {
 			temp += data[i][i];
 		}
 		return temp;
@@ -196,12 +194,12 @@ public:
 	{
 		T det = 1;
 		int r = 0;
-		for (int j = 0; j < n; ++j)
+		for (int j = 0; j < N; ++j)
 		{
 			T max = 0;
 			T pivot = 0;
 			int maxId = 0;
-			for (int i = r; i < m; ++i)
+			for (int i = r; i < M; ++i)
 			{
 				if (abs(data[i][j]) > max)
 				{
@@ -218,7 +216,7 @@ public:
 			}
 			else if (pivot)
 			{
-				for (int k = r; k < n; ++k)
+				for (int k = r; k < N; ++k)
 				{
 					data[maxId][k] /= pivot;
 				}
@@ -232,13 +230,13 @@ public:
 						Print();
 					}
 				}
-				for (int i = 0; i < m; ++i)
+				for (int i = 0; i < M; ++i)
 				{
 					if (i != r)
 					{
 						// save the first element of the row
 						T firstElement = data[i][j];
-						for (int p = j; p < n; ++p)
+						for (int p = j; p < N; ++p)
 						{
 							data[i][p] -= data[r][p] * firstElement;
 						}
@@ -288,9 +286,9 @@ public:
 		for (VectorM<T, N>& row : data)
 		{
 			std::cout << " ( ";
-			for (size_t j = 0; j < n; j++)
+			for (size_t j = 0; j < N; j++)
 				std::cout << row[j] << " ";
-			std::cout << ")\n";
+			std::cout << ")\N";
 		}
 		std::cout << std::endl;
 	};
@@ -307,11 +305,11 @@ public:
 	}
 	size_t GetRowsNb()
 	{
-		return n;
+		return N;
 	}
 	size_t GetColumnsNb()
 	{
-		return m;
+		return M;
 	}
 #pragma endregion //GettersandPrint
 
@@ -328,9 +326,7 @@ public:
 	template<size_t P, size_t Q>
 	MatrixMN<T, M, N>& operator=(const MatrixMN<T, P, Q>& other)
 	{
-		m = M;
-		n = N;
-		if (m == n)
+		if (M == N)
 			square = true;
 		for (size_t i = 0; i < std::min(P, M); i++) {
 			this->data[i] = other[i];
@@ -347,7 +343,7 @@ public:
 	// mathematical operators
 	MatrixMN<T, M, N> operator+(const MatrixMN<T, M, N>& other) const {
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < m; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result.data[i] = data[i] + other[i];
 		}
 		return result;
@@ -358,14 +354,14 @@ public:
 	}
 	MatrixMN<T, M, N> operator-() const {
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < m; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result.data[i] = -data[i];
 		}
 		return result;
 	}
 	MatrixMN<T, M, N> operator-(const MatrixMN<T, M, N>& other) const {
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < m; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = data[i] - other[i];
 		}
 		return result;
@@ -377,7 +373,7 @@ public:
 	//Product by a scalar
 	MatrixMN operator*(const T& scalar) const {
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < m; i++) {
+		for (size_t i = 0; i < M; i++) {
 			result[i] = data[i] * scalar;
 		}
 		return result;
@@ -662,8 +658,8 @@ typedef MatrixMN<float, 4> Matrix4x4;
 //	Matrixf2 rotationMatrixf2(float theta);
 //	Matrixf2 scaleMatrixf2(float a);
 //	Matrixf2 identityMatrixf2(void);
-//	Vectorf2 productVectorf2Matrixf2(Matrixf2 m, Vectorf2 v);
-//	Vectorf3 productVectorf3Matrixf3(Matrixf3 m, Vectorf3 v);
+//	Vectorf2 productVectorf2Matrixf2(Matrixf2 M, Vectorf2 v);
+//	Vectorf3 productVectorf3Matrixf3(Matrixf3 M, Vectorf3 v);
 //	Vectorf2 cartesianVectorf3(Vectorf3 homo);
 //	Matrixf2 cartesianMatrixf3(Matrixf3 homo);
 //	float detMatrixf2(Matrixf2 matrix);

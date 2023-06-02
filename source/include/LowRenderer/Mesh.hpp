@@ -4,7 +4,7 @@
 #ifndef MESH_H
 #define MESH_H
 
-#include <vectorM.hpp>
+#include <matrix.hpp>
 #include <vector>
 //#include <ResourcesManager.hpp>
 #include <Material.hpp>
@@ -25,7 +25,7 @@ private:
     //public: ?
     std::vector<Vertex> m_Vertices;
     std::vector<unsigned int> m_Indices;
-
+    Matrix4x4 local = Matrix4x4(true);
 public:
     ~Mesh();
     Material material = material::none;
