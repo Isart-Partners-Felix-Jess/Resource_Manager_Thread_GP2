@@ -1,6 +1,7 @@
 #include <Graph.hpp>
 #include <Model.hpp>
 
+SceneNode SceneGraph::m_RootSceneNode = SceneNode(nullptr);
 SceneNode::SceneNode(SceneNode* _parent)
 {
 	parent = _parent;
@@ -50,22 +51,13 @@ bool Node::UpdateChildren()
 	return true;
 }
 
-bool Graph::Update()
-{
-	bool success = true;
-	for (Node* child : m_RootNode.children)
-	{
-		success &= child->UpdateChildren();
-	}
-	return success;
-}
 SceneGraph::SceneGraph(Scene* _scene)
 {
 	scene = _scene;
 }
 void SceneGraph::Draw()
 {
-	for (Node* child : m_RootNode.children)
+	for (Node* child : m_RootSceneNode.children)
 	{
 		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
 		sceneChild->Draw();
@@ -76,7 +68,7 @@ void SceneGraph::Draw()
 
 void SceneGraph::InitDefaultShader(Shader& _shader)
 {
-	for (Node* child : m_RootNode.children)
+	for (Node* child : m_RootSceneNode.children)
 	{
 		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
 		sceneChild->InitDefaultShader(_shader, scene);
@@ -84,3 +76,18 @@ void SceneGraph::InitDefaultShader(Shader& _shader)
 	//Stop condition
 	return;
 }
+;
+void  SceneGraph::AddEntity(Model& _model, SceneNode& _parent, Transform _transform)
+{
+	SceneNode entity(_parent);
+	entity.models.push_back(&_model);
+	entities.push_back(entity);
+	_parent.children.push_back((SceneNode*) &entities.back());
+}
+
+//void  SceneGraph::AddEntity(std::vector<Model*> _models, SceneNode& _parent, Transform _transform)
+//{
+//	SceneNode entity(_parent);
+//	entity.models = _models;
+//	entities.push_back(entity);
+//}

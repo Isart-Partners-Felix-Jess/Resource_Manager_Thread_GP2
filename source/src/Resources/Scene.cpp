@@ -33,15 +33,11 @@ Scene::~Scene()
 }
 void Scene::Init()
 {
-	directionalLights.push_back({ Vectorf3{0.f,0.f,-1.f}
-		/*Vectorf3(1.2f, 1.0f, 2.0f),
-		Vectorf3(1.0f, 0.0f, 0.0f),
-		Vectorf3(.0f, 1.0f, .0f),
-		Vectorf3(0.0f, 0.0f, 1.0f) */ });
+	directionalLights.push_back({ Vectorf3{0.f,0.f,-1.f} });
 	directionalLights.push_back(DirectionalLight{ Vectorf3{0.f,-1.f,0.f},
-		{Vectorf3(1.0f, 0.0f, 0.0f),
-		Vectorf3(.0f, 1.0f, .0f),
-		Vectorf3(0.0f, 0.0f, 1.0f) } });
+		{Vectorf3(.2f, 0.0f, 0.0f),
+		Vectorf3(0.f, 0.5f, .0f),
+		Vectorf3(0.8f, 0.8f, 1.0f) } });
 	pointLights.push_back({ Vectorf3(1.2f, 1.0f, 2.0f) });
 	pointLights.push_back({ Vectorf3(2.2f, 1.0f, 2.0f) });
 	pointLights.push_back({ Vectorf3(3.2f, 1.0f, 2.0f) });
@@ -58,6 +54,7 @@ void Scene::Init()
 
 void Scene::Update()
 {
+	graph.Update();
 	//OpenGL test part
 	//int vertexColorLocation = glGetUniformLocation(shadbasic.GetShaderProgram(), "ourColor");s
 	UpdateLights();
@@ -169,31 +166,37 @@ void Scene::InitModeltest()
 	building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
 	building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
 	building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
+	graph.AddEntity(*cube);
+	graph.AddEntity(*viking_room);
+	graph.AddEntity(*robot);
+	graph.AddEntity(*building);
+	graph.InitDefaultShader(shadlight);
 }
 
 void Scene::DrawModeltest()
 {
-	//Init MVP
-	Matrix3x3 rotation(true);
-	Matrix4x4 modeltest(true);
-	for (int i = -2; i <= 2; i++)
-	{
-		modeltest[0][3] = 2.f * i; //modeltest[1][3] = 2i; modeltest[2][3] = 2i;
+	graph.Draw();
+	////Init MVP
+	//Matrix3x3 rotation(true);
+	//Matrix4x4 modeltest(true);
+	//for (int i = -2; i <= 2; i++)
+	//{
+	//	modeltest[0][3] = 2.f * i; //modeltest[1][3] = 2i; modeltest[2][3] = 2i;
 
-		Matrix4x4 MVP = camera.viewProjection * modeltest;
+	//	Matrix4x4 MVP = camera.viewProjection * modeltest;
 
-		shadlight.SetMat4("MVP", MVP);
-		shadlight.SetMat4("model", modeltest);
-		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
-		if (i == -2)
-			viking_room->Draw(shadlight);
-		if (i == 0)
-			robot->Draw(shadlight);
-		if (i == 1)
-			cube->Draw(shadlight);
-		if (i == 2)
-			building->Draw(shadlight);
-	}
+	//	shadlight.SetMat4("MVP", MVP);
+	//	shadlight.SetMat4("model", modeltest);
+	//	shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); //It works :D
+	//	if (i == -2)
+	//		viking_room->Draw(shadlight);
+	//	if (i == 0)
+	//		robot->Draw(shadlight);
+	//	if (i == 1)
+	//		cube->Draw(shadlight);
+	//	if (i == 2)
+	//		building->Draw(shadlight);
+	//}
 }
 
 void Scene::Shadertest()

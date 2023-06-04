@@ -6,10 +6,10 @@
 class Shader;
 struct Light
 {
-	Vectorf3 ambient{1.f,1.f, 1.f};
-	Vectorf3 diffuse{ 1.f,1.f, 1.f };
+	Vectorf3 ambient{0.2f,0.2f, 0.2f};
+	Vectorf3 diffuse{ .5f, .5f, .5f };
 	Vectorf3 specular{ 1.f,1.f, 1.f };
-	float ambientStrength = 0.1f; // Could go in last parameter,
+	float ambientStrength = 0.1f; // Could go in last vector component,
 	float specularStrength = 0.5f;// I'd rather separate for clarity
 
 	//Should go in Renderer
@@ -26,6 +26,8 @@ struct PointLight
 	void InitShader(Shader& _lightShader, unsigned int _number);
 	//ONLY To init a point light inside of another structlight (such as Spotlight)
 	void InitShader(Shader& _lightShader, std::string _structType);
+private:
+	void InitShaderKnownName(Shader& _lightShader, std::string _structType);
 };
 struct DirectionalLight
 {

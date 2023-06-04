@@ -14,20 +14,20 @@ void Light::InitShader(std::string _lightType, Shader& _lightShader)
 
 void PointLight::InitShader(Shader& _lightShader, unsigned int _number)
 {
-	std::string nbstr = "pointLight[" + std::to_string(_number) + "].";
-	light.InitShader(nbstr, _lightShader);
-	_lightShader.SetVec3(nbstr+ "position", position);
-	_lightShader.SetFloat(nbstr + "constant", constant);
-	_lightShader.SetFloat( nbstr + "linear", linear);
-	_lightShader.SetFloat( nbstr + "quadratic", quadratic);
+	InitShaderKnownName(_lightShader, "pointLight[" + std::to_string(_number) + "].");
 }
 void PointLight::InitShader(Shader& _lightShader, std::string _structType)
 {
-	light.InitShader(_structType + "pointLight.", _lightShader);
-	_lightShader.SetVec3(_structType + "pointLight.position", position);
-	_lightShader.SetFloat(_structType + "pointLight.constant", constant);
-	_lightShader.SetFloat(_structType + "pointLight.linear", linear);
-	_lightShader.SetFloat(_structType + "pointLight.quadratic", quadratic);
+	InitShaderKnownName(_lightShader, _structType + "pointLight.");
+}
+
+void PointLight::InitShaderKnownName(Shader& _lightShader, std::string _fullName)
+{
+	light.InitShader(_fullName, _lightShader);
+	_lightShader.SetVec3(_fullName + "position", position);
+	_lightShader.SetFloat(_fullName + "constant", constant);
+	_lightShader.SetFloat(_fullName + "linear", linear);
+	_lightShader.SetFloat(_fullName + "quadratic", quadratic);
 }
 
 
