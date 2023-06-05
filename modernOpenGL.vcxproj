@@ -139,9 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="assets\shaders\mix.frag">
-      <FileType>CppCode</FileType>
-    </None>
     <ClCompile Include="source\src\Core\DataStructure\Graph.cpp" />
     <ClCompile Include="source\src\Resources\Material.cpp" />
     <ClCompile Include="source\src\Core\Application\Application.cpp" />
@@ -166,9 +163,6 @@
     <ClCompile Include="third_party\src\stb\stb_impl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="third_party\libs\glfw3.lib" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="source\include\Core\Application\Application.hpp" />
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp" />
     <ClInclude Include="source\include\LowRenderer\Camera.hpp" />
@@ -179,12 +173,7 @@
     <ClInclude Include="source\include\Resources\Scene.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\basic.frag">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="assets\shaders\basic.vert" />
-    <None Include="assets\shaders\lighting.frag" />
-    <None Include="assets\shaders\white.frag" />
+    <Library Include="third_party\libs\glfw3.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

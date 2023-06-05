@@ -1,5 +1,4 @@
 #include <ResourcesManager.hpp>
-//#include <Model.hpp>
 
 //Singleton
 ResourcesManager* ResourcesManager::instance = nullptr;

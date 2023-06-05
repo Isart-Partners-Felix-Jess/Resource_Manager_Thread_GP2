@@ -46,10 +46,10 @@ void Scene::Init()
 	spotLights.push_back({ Vectorf3(0.f,0.f,-1.f),12.5f,17.5f, { {0.f,0.f,3.f},1.f,0.0f,0.032f} });
 	//LearnOpenGL tuto
 	Texturetest();
-	InitModeltest();
 	Shadertest();
 	InitLights();
-	//TransTest();
+	InitModeltest();
+	TransTest();
 }
 
 void Scene::Update()
@@ -62,7 +62,7 @@ void Scene::Update()
 	//shadbasic.SetInt("texture1", 0);
 	//shadbasic.SetInt("texture2", 1);
 	//shadbasic.SetFloat("mixValue", mixValue);
-	shadlight.Use();
+	//shadlight.Use();
 	DrawModeltest();
 	//TransTest();
 	glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -88,6 +88,7 @@ void Scene::Destroy()
 	glDeleteBuffers(1, &VBO2);
 	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shadlight.GetShaderProgram());
+	glDeleteProgram(shadlightCube.GetShaderProgram());
 }
 
 void Scene::InitLights()
@@ -126,7 +127,7 @@ void Scene::UpdateLights()
 	spotLights[0].point.position = camera.eye;
 	spotLights[0].direction = camera.zCamera;
 	pointLights[0].position = matrix::Rotate3D(ImGui::GetIO().DeltaTime, matrix::Axis::Y) * pointLights[0].position;
-	shadlightCube.Use();
+	//shadlightCube.Use();
 	Matrix4x4 model = matrix::MatrixTRS(pointLights[0].position, {}, { 1.f,1.f,1.f });
 	model = model * 0.2f;
 	Matrix4x4 MVP = camera.viewProjection * model;
@@ -134,7 +135,7 @@ void Scene::UpdateLights()
 	shadlightCube.SetMat4("MVP", MVP);
 	glBindVertexArray(lightVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
-	shadlight.Use();
+	//shadlight.Use();
 	InitLights();
 	shadlight.SetVec3("objectColor", 1.0f, 1.0f, 1.0f/* 0.5f, 0.31f*/);
 	shadlight.SetVec3("viewPos", camera.eye);
@@ -166,10 +167,16 @@ void Scene::InitModeltest()
 	building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
 	building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
 	building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
-	graph.AddEntity(*cube);
-	graph.AddEntity(*viking_room);
-	graph.AddEntity(*robot);
-	graph.AddEntity(*building);
+	graph.AddEntity(cube, nullptr, Transform({ -5.f,0.f,0.f }));
+	graph.AddEntity(viking_room,graph.entities[0], Transform({5.f,0.f,0.f},{90.f,90.f,0.f},{3.f,3.f,3.f}));
+	graph.AddEntity(robot);
+	graph.entities[2]->SetParent(graph.entities[1],true);
+	graph.AddEntity(building);
+	graph.entities[0]->AddChild(graph.entities[3]);
+	graph.entities[3]->SetTransform().translation = Vectorf3{ 0.f,0.f, -5.f };
+	graph.entities[3]->SetTransform().scale = Vectorf3{ 0.2f,0.2f, 0.2f };
+	graph.entities[3]->SetTransform().ComputeLocal();
+
 	graph.InitDefaultShader(shadlight);
 }
 

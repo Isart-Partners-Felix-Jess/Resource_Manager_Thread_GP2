@@ -1,5 +1,4 @@
 #include <Log.hpp>
-//#include <stdarg.h>
 #include <iostream>
 #include <chrono>
 

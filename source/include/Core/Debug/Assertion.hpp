@@ -14,7 +14,7 @@ throw std::runtime_error(message); \
 #else
 #define Assert(condition, message) \
 if (!(condition)) { \
-    std::cerr << "Assertion failed: " << message << std::endl; \
+    DEBUG_ERROR(true, std::string("Assertion failed: " + std::string(message)).c_str()); \
     __debugbreak();}
 #endif
 #endif//Assert_h

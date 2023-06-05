@@ -3,10 +3,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <matrix.hpp>
 #include <Transform.hpp>
 #include <assertion.hpp>
-#include <type_traits>
 
 class Model;
 
@@ -38,10 +36,7 @@ public:
 template<typename T>
 Graph<T>::Graph()
 {
-	static_assert( std::is_base_of_v<Node, T>, "T must be a specialization of Node");
-	//Assert(std::is_base_of_v<Node, T>,"T must be a specialization of Node");
-
-	//m_RootNode = nullptr;
+	Assert((std::is_base_of_v<Node, T>),"T must be a specialization of Node");
 }
 
 template<typename T>
@@ -59,30 +54,39 @@ struct SceneNode : public Node
 {
 protected:
 	SceneNode() {};
-public:
-	SceneNode(SceneNode* _parent);
-
 	Transform transform;
-	std::vector<Model*> models;
+public:
+	SceneNode(SceneNode* _parent,const Scene* _scene);
 
-	void InitDefaultShader(Shader& _shader, Scene* _scene);
-	bool UpdateChildren() override;
+	//Here for component list/vector (WIP)
+	Model* model;
+	const Scene* scene;
+
+	void InitDefaultShader(Shader& _shader);
+	bool UpdateChildren();
+	void SetParent(SceneNode* _parent, bool _keepGlobalTransform = false); 
+	void AddChild(SceneNode* _child, bool _keepGlobalTransform = false); 
+	SceneNode* GetChild(size_t _index = 0);
+	size_t GetChildNumber();
+	SceneNode* GetParent();
+	Transform& SetTransform();
+	Transform GetTransform();
 	void Draw();
 };
 //Like a gameobject
 class SceneGraph : public Graph<SceneNode>
 {
-	static SceneNode m_RootSceneNode;
 public:
-	std::vector<SceneNode> entities;
-	Scene* scene;
+	std::vector<SceneNode*> entities;
+	const Scene* scene;
 	SceneGraph(Scene* _scene);
+	~SceneGraph();
 
-	//Check if all shaders are initialized first
-	void Draw();
+	void AddEntity(Model* _model, SceneNode* _parent = nullptr, Transform _transform = Transform());
 	//Think to do this before drawing and first update
 	void InitDefaultShader(Shader& _shader);
-	void AddEntity(Model& _model, SceneNode& _parent = m_RootSceneNode, Transform _transform = Transform());
-	//void AddEntity(std::vector<Model*> _models, SceneNode& _parent = m_RootSceneNode, Transform _transform = Transform());
+	//Check if all shaders are initialized first
+	void Update();
+	void Draw();
 };
 #endif //GRAPH_H

@@ -88,8 +88,8 @@ void Model::LoadResource(const char* _name)
 					vnIdx++;
 				}
 			}
-			else if (type == "g" 
-				&& line.find("default")!=-1 
+			else if (type == "g"
+				&& line.find("default") != -1
 				&& !temp_Vertices.empty()) // group
 			{
 				Mesh* next_mesh = new Mesh;
@@ -157,19 +157,17 @@ void Model::LoadResource(const char* _name)
 }
 void Model::Draw(Shader& _shader)
 {
-	materials[0].InitShader(_shader);
-	uint32_t i = 1;
+	uint32_t i = 0;
 	for (Mesh* mesh : meshes)
 	{
-		if(i < materials.size())
+		if (i < materials.size())
 			materials[i++].InitShader(_shader);
 		mesh->Draw();
 	}
 }
 void Model::Draw()
 {
-	if (!shader)
-		DEBUG_ERROR("No Shader for Model nb%i.", m_ResourceId);
+	Assert(shader, "No Shader for Model nb%i.", m_ResourceId);
 	Draw(*shader);
 }
 void Model::UnloadResource()
@@ -180,14 +178,21 @@ void Model::UnloadResource()
 		delete mesh;
 	}
 }
-void Model::ProcessNode(SceneNode* node, const Scene* scene)
+void Model::ProcessNode(SceneNode* _node, const Scene* _scene)
 {
-	Matrix4x4 model = node->transform.ModelMatrix();
-	Matrix4x4 MVP = scene->camera.viewProjection * model;
+	ProcessNode(_node, _scene, shader);
+	
+}
+void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
+{
+	Assert(_shader, "No Shader for Model nb%i.", m_ResourceId);
+	_shader->Use();
+	Matrix4x4 model = _node->GetTransform().ModelMatrix();
+	Matrix4x4 MVP = _scene->camera.viewProjection * model;
 
-	shader->SetMat4("model", model);
-	shader->SetMat3("normalMatrix", model.Inversion().Transposed());
-	shader->SetMat4("MVP", MVP);
+	_shader->SetMat4("model", model);
+	_shader->SetMat3("normalMatrix", model.Inversion().Transposed());
+	_shader->SetMat4("MVP", MVP);
 }
 Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals)
 {
@@ -213,7 +218,7 @@ void Model::AddMaterial()
 
 void Model::AddMaterials(unsigned int _number)
 {
-	for (unsigned int i =0; i<_number;i++)
+	for (unsigned int i = 0; i < _number; i++)
 		AddMaterial();
 }
 

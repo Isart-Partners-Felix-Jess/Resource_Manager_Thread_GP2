@@ -1,22 +1,80 @@
 #include <Graph.hpp>
 #include <Model.hpp>
+#include <Scene.hpp>
 
-SceneNode SceneGraph::m_RootSceneNode = SceneNode(nullptr);
-SceneNode::SceneNode(SceneNode* _parent)
+
+SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene)
+{
+	if (!_parent)
+		parent = _parent; //nullptr
+	else
+		SetParent(_parent); //Set parent child as well
+	scene = _scene;
+	changed = true;
+}
+//Set parent child as well
+void SceneNode::SetParent(SceneNode* _parent, bool _keepGlobalPosition)
 {
 	parent = _parent;
+	_parent->children.push_back(this);
+	if (_keepGlobalPosition)
+	{
+		transform.SetNewLocalFrom(_parent->transform.ModelMatrix());
+	}
+	else
+	{
+		changed = true;
+	}
 }
-
-void SceneNode::InitDefaultShader(Shader& _shader, Scene* _scene)
+//Set child's parent as well
+void SceneNode::AddChild(SceneNode* _child, bool _keepGlobalPosition)
 {
+	_child->parent = this;
+	if (_keepGlobalPosition)
+	{
+		_child->transform.SetNewLocalFrom(this->transform.ModelMatrix());
+	}
+	else
+	{
+		changed = true;
+	}
+	children.push_back(_child);
+}
+//0 by default
+SceneNode* SceneNode::GetChild(size_t _index)
+{
+	//"Safe" out of array
+	if (_index > children.size())
+		return nullptr;
+	return dynamic_cast<SceneNode*>(children[_index]);
+}
+size_t SceneNode::GetChildNumber()
+{
+	return children.size();
+}
+//Setter, so each time transform is touched, we update the dirty flag
+Transform& SceneNode::SetTransform()
+{
+	changed = true;
+	return transform;
+}
+Transform SceneNode::GetTransform()
+{
+	return transform;
+}
+SceneNode* SceneNode::GetParent()
+{
+	return dynamic_cast<SceneNode*>(parent);
+}
+void SceneNode::InitDefaultShader(Shader& _shader)
+{
+	//Here for all components
+	model->shader = &_shader;
+
 	for (Node* child : children)
 	{
 		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
-		for (Model* model : sceneChild->models)
-		{
-			model->ProcessNode(sceneChild, _scene);
-			model->shader = &_shader;
-		}
+		sceneChild->InitDefaultShader(_shader);
 	}
 }
 bool SceneNode::UpdateChildren()
@@ -25,14 +83,19 @@ bool SceneNode::UpdateChildren()
 	{
 		transform.ComputeAll(dynamic_cast<SceneNode*>(parent)->transform.ModelMatrix());
 	}
-	return true;
+	bool success = Node::UpdateChildren();
+	return success;
 }
 
 void SceneNode::Draw()
 {
-	for (Model* model : models)
+	//Here for all components
+	model->ProcessNode(this, scene);
+	model->Draw();
+	for (Node* child : children)
 	{
-		model->Draw();
+		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
+		sceneChild->Draw();
 	}
 }
 
@@ -53,41 +116,44 @@ bool Node::UpdateChildren()
 
 SceneGraph::SceneGraph(Scene* _scene)
 {
+	m_RootNode = new SceneNode(nullptr, _scene);
 	scene = _scene;
+}
+SceneGraph::~SceneGraph()
+{
+	for (SceneNode* entity : entities)
+		delete entity;
+	delete m_RootNode;
+}
+void SceneGraph::Update()
+{
+	for (size_t i = 0; i < m_RootNode->GetChildNumber(); i++)
+	{
+		m_RootNode->GetChild(i)->UpdateChildren();
+	}
 }
 void SceneGraph::Draw()
 {
-	for (Node* child : m_RootSceneNode.children)
+	for (size_t i = 0; i < m_RootNode->GetChildNumber(); i++)
 	{
-		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
-		sceneChild->Draw();
+		m_RootNode->GetChild(i)->Draw();
 	}
-	//Stop condition
-	return;
 }
 
 void SceneGraph::InitDefaultShader(Shader& _shader)
 {
-	for (Node* child : m_RootSceneNode.children)
+	for (size_t i = 0; i < m_RootNode->GetChildNumber(); i++)
 	{
-		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
-		sceneChild->InitDefaultShader(_shader, scene);
+		m_RootNode->GetChild(i)->InitDefaultShader(_shader);
 	}
-	//Stop condition
-	return;
 }
-;
-void  SceneGraph::AddEntity(Model& _model, SceneNode& _parent, Transform _transform)
+void  SceneGraph::AddEntity(Model* _model, SceneNode* _parent, Transform _transform)
 {
-	SceneNode entity(_parent);
-	entity.models.push_back(&_model);
+	SceneNode* entity = new SceneNode(m_RootNode, scene);
+	entity->SetTransform() = _transform;
+	if (_model != nullptr)
+		entity->model = _model;
+	if (_parent != nullptr)
+		entity->SetParent(_parent);
 	entities.push_back(entity);
-	_parent.children.push_back((SceneNode*) &entities.back());
 }
-
-//void  SceneGraph::AddEntity(std::vector<Model*> _models, SceneNode& _parent, Transform _transform)
-//{
-//	SceneNode entity(_parent);
-//	entity.models = _models;
-//	entities.push_back(entity);
-//}
