@@ -432,4 +432,5 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,c++
 /source/include/Core/DebugLog/DebugLog.txt
-/third_party/libs/glfw3.lib
+DebugLog.txt
+/DebugLog.txt
