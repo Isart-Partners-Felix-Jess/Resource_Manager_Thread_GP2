@@ -15,6 +15,9 @@ SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene)
 //Set parent child as well
 void SceneNode::SetParent(SceneNode* _parent, bool _keepGlobalPosition)
 {
+	if (parent)
+		std::erase(parent->children, this);
+
 	parent = _parent;
 	_parent->children.push_back(this);
 	if (_keepGlobalPosition)
@@ -29,7 +32,7 @@ void SceneNode::SetParent(SceneNode* _parent, bool _keepGlobalPosition)
 //Set child's parent as well
 void SceneNode::AddChild(SceneNode* _child, bool _keepGlobalPosition)
 {
-	_child->parent = this;
+	_child->SetParent(this, _keepGlobalPosition);
 	if (_keepGlobalPosition)
 	{
 		_child->transform.SetNewLocalFrom(this->transform.ModelMatrix());
@@ -69,7 +72,8 @@ SceneNode* SceneNode::GetParent()
 void SceneNode::InitDefaultShader(Shader& _shader)
 {
 	//Here for all components
-	model->shader = &_shader;
+	if (model)
+		model->shader = &_shader;
 
 	for (Node* child : children)
 	{
@@ -90,8 +94,11 @@ bool SceneNode::UpdateChildren()
 void SceneNode::Draw()
 {
 	//Here for all components
-	model->ProcessNode(this, scene);
-	model->Draw();
+	if (model)
+	{
+		model->ProcessNode(this, scene);
+		model->Draw();
+	}
 	for (Node* child : children)
 	{
 		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
@@ -125,7 +132,7 @@ SceneGraph::~SceneGraph()
 		delete entity;
 	delete m_RootNode;
 }
-void SceneGraph::Update()
+void SceneGraph::Update(const float& _deltaTime)
 {
 	for (size_t i = 0; i < m_RootNode->GetChildNumber(); i++)
 	{

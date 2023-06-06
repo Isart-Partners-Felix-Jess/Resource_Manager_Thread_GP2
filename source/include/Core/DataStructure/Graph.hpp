@@ -59,11 +59,11 @@ public:
 	SceneNode(SceneNode* _parent,const Scene* _scene);
 
 	//Here for component list/vector (WIP)
-	Model* model;
+	Model* model = nullptr;
 	const Scene* scene;
 
 	void InitDefaultShader(Shader& _shader);
-	bool UpdateChildren();
+	bool UpdateChildren() override;
 	void SetParent(SceneNode* _parent, bool _keepGlobalTransform = false); 
 	void AddChild(SceneNode* _child, bool _keepGlobalTransform = false); 
 	SceneNode* GetChild(size_t _index = 0);
@@ -86,7 +86,7 @@ public:
 	//Think to do this before drawing and first update
 	void InitDefaultShader(Shader& _shader);
 	//Check if all shaders are initialized first
-	void Update();
+	void Update(const float& _deltaTime);
 	void Draw();
 };
 #endif //GRAPH_H

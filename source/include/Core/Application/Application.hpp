@@ -17,6 +17,7 @@ private:
 	int m_Height;
 	float m_ClearColor[4] = { 0.2f, 0.3f, 0.3f, 1.0f
 	};
+	float deltaTime = 0.f;
 	Scene scene;
 	//Cam part
 	CameraInputs inputs;

@@ -19,6 +19,7 @@ public:
 	//Temp
 	//std::vector<Model*> ModelList;
 
+	std::vector<Model*> lightCubes;
 	Model* cube;
 	Model* viking_room;
 	Model* robot;
@@ -28,24 +29,24 @@ public:
 	Scene(unsigned int _width, unsigned int _height);
 	~Scene();
 	void Init();
-	void Update();
+	void Update(const float& _deltaTime, const CameraInputs& _inputs);
+	void Draw();
 	void Destroy();
-	void Texturetest();
 private:
 	void InitLights();
-	void UpdateLights();
+	void InitModels();
+	void InitMaterials();
+	void UpdateLights(const float& _deltaTime);
 
 	//LearnOpenGl TODO: replace
-	void InitModeltest();
-	void DrawModeltest();
 
-	void Shadertest();
+	void InitShaders();
 	void VBOtest();
 	//void VBOCubetest();
 	void VAOtest();
 	void lightVAOtest();
 	void EBOtest();
-	void TransTest();
+	void MaterialTest();
 	void VBOCubetest();
 };
 

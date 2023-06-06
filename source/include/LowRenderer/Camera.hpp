@@ -26,7 +26,7 @@ struct Camera
     Vectorf3 eye, center, up;
     Vectorf3 zCamera;
 
-    float camSpeed = 0.5f;
+    float camSpeed = 1.f;
     float camRotationSpeed = 0.1f;
     float orthoScale = 2.f;
 

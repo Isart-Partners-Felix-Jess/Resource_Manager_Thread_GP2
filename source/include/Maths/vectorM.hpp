@@ -142,7 +142,7 @@ public:
 		}
 		return result;
 	}
-	VectorM<T, M>& operator+=(const VectorM<T, M>& other) const {
+	VectorM<T, M>& operator+=(const VectorM<T, M>& other) {
 		*this = (*this) + other;
 		return *this;
 	}
@@ -161,7 +161,7 @@ public:
 		}
 		return result;
 	}
-	VectorM<T, M>& operator-=(const VectorM<T, M>& other) const {
+	VectorM<T, M>& operator-=(const VectorM<T, M>& other) {
 		*this = (*this) - other;
 		return *this;
 	}
@@ -173,7 +173,7 @@ public:
 		}
 		return result;
 	}
-	VectorM<T, M>& operator*=(const T& scalar) const {
+	VectorM<T, M>& operator*=(const T& scalar){
 		*this = (*this) * scalar;
 		return *this;
 	}
@@ -185,7 +185,7 @@ public:
 		}
 		return result;
 	}
-	VectorM<T, M> operator*=(const VectorM<T, M>& other) const {
+	VectorM<T, M> operator*=(const VectorM<T, M>& other) {
 		return (*this * other);
 	}
 	VectorM<T, M> operator/(const T& scalar) const {
@@ -196,7 +196,7 @@ public:
 		}
 		return result;
 	}
-	VectorM<T, M>& operator/=(const T& scalar) const {
+	VectorM<T, M>& operator/=(const T& scalar) {
 		*this = (*this) / scalar;
 		return *this;
 	}

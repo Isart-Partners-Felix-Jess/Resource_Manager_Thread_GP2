@@ -38,7 +38,7 @@ public:
 	//Maybe try to make the parameter a path...
 	static R* CreateResource(const std::string& _name);
 	template<typename R>
-	static const R* GetResource(const std::string& _name);
+	static R* GetResource(const std::string& _name);
 	static void Destroy();
 	void Delete(const std::string& _name);
 private:
@@ -62,7 +62,7 @@ inline R* ResourcesManager::CreateResource(const std::string& _name)
 }
 
 template<typename R>
-inline const R* ResourcesManager::GetResource(const std::string& _name)
+inline R* ResourcesManager::GetResource(const std::string& _name)
 {
 	auto it = m_Resources.find(_name);
 	if (it != m_Resources.end())

@@ -61,7 +61,7 @@ void Application::Destroy()
 
 void Application::Update()
 {
-	float deltaTime = 0.f, lastFrame = 0.f;
+	float lastFrame = 0.f;
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
@@ -70,7 +70,7 @@ void Application::Update()
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-		scene.camera.Update(deltaTime, inputs);
+		scene.Update(deltaTime,inputs);
 		if (m_ShowControls)
 			ShowImGuiControls();
 		Render(window);
@@ -216,7 +216,7 @@ void Application::Render(GLFWwindow* window)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-	scene.Update();
+	scene.Draw();
 
 	GLFWwindow* ctxBackup = glfwGetCurrentContext();
 	ImGui::UpdatePlatformWindows();
