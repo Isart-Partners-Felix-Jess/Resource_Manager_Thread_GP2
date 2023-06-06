@@ -6,11 +6,10 @@
 Shader::Shader()
 {
 	s_m_TotalShaderNumber++;
-	m_ShaderProgram = s_m_TotalShaderNumber;
+	IResource::m_ResourceId = s_m_TotalShaderNumber;
 }
 
 // Initializing the static member variable
-//unsigned int Shader::s_m_TotalShaderNumber = 0;
 Shader::Shader(const char* _vertexPath, const char* _fragmentPath) : Shader()
 {
 	SetVertexShader(_vertexPath);
@@ -107,16 +106,20 @@ bool Shader::Link()
 		glGetProgramInfoLog(m_ShaderProgram, 512, NULL, infoLog);
 		DEBUG_ERROR("SHADER #" << m_ShaderProgram << "::LINK::COMPILATION_FAILED\n" << infoLog);
 	}
+	else
+	{
+		Log::SuccessColor();
+		DEBUG_LOG("SHADER #%i::LINK::SUCCESS\n",m_ShaderProgram);
+		Log::ResetColor();
+	}
 	UnloadResource(); //Maybe you delete in any case
 	return success;
 }
 
 void Shader::LoadResource(const char* _name)
 {
-	//std::string namestr(_name);
-	//SetVertexShader(namestr + ".vert"); //TODO: Check the extensions of the shader files
-	//SetFragmentShader(namestr + ".frag");
-	//Link();
+	//Only to name the shader
+	IResource::m_ResourcePath = _name;
 }
 
 void Shader::UnloadResource()

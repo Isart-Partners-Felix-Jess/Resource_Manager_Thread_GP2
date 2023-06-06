@@ -9,6 +9,7 @@ class Transform
 	Matrix4x4 global = Matrix4x4(true); //ModelMatrix
 
 public:
+	//Remind to computeLocal if you change those
 	Vectorf3 translation;
 	Vectorf3 rotation;
 	Vectorf3 scale{ 1.f,1.f,1.f };

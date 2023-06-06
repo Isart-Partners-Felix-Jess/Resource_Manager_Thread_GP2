@@ -348,7 +348,7 @@ public:
 		}
 		return result;
 	}
-	MatrixMN& operator+=(const MatrixMN& other) const {
+	MatrixMN& operator+=(const MatrixMN& other) {
 		*this = (*this) + other;
 		return *this;
 	}
@@ -366,7 +366,7 @@ public:
 		}
 		return result;
 	}
-	MatrixMN < T, M, N>& operator-=(const MatrixMN& other) const {
+	MatrixMN < T, M, N>& operator-=(const MatrixMN& other) {
 		*this = (*this) - other;
 		return *this;
 	}
@@ -639,31 +639,4 @@ namespace matrix
 typedef MatrixMN<float, 2> Matrix2x2;
 typedef MatrixMN<float, 3> Matrix3x3;
 typedef MatrixMN<float, 4> Matrix4x4;
-#pragma region StructuresWIP
-////light structs WIP
-//typedef struct Matrixf2
-//{
-//	Vectorf2 a;
-//	Vectorf2 b;
-//} Matrixf2;
-//typedef struct Matrixf3
-//{
-//	Vectorf3 a;
-//	Vectorf3 b;
-//	Vectorf3 c;
-//} Matrixf3;
-//Could use here with cpp
-//namespace matrix
-//{
-//	Matrixf2 rotationMatrixf2(float theta);
-//	Matrixf2 scaleMatrixf2(float a);
-//	Matrixf2 identityMatrixf2(void);
-//	Vectorf2 productVectorf2Matrixf2(Matrixf2 M, Vectorf2 v);
-//	Vectorf3 productVectorf3Matrixf3(Matrixf3 M, Vectorf3 v);
-//	Vectorf2 cartesianVectorf3(Vectorf3 homo);
-//	Matrixf2 cartesianMatrixf3(Matrixf3 homo);
-//	float detMatrixf2(Matrixf2 matrix);
-//	float detMatrixf3(Matrixf3 matrix);
-//}
-#pragma endregion
-#endif // !MATRIX_H
+#endif// !MATRIX_H

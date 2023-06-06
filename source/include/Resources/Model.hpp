@@ -25,9 +25,6 @@ private:
 
     // model data
     std::string directory;
-    //Mesh ProcessMesh(Mesh* mesh, const Scene* scene);
-    //std::vector<Texture> LoadMaterialTextures(Material* mat, TextureType type,
-    //    std::string typeName);
     Mesh BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals);
     // Inherited from IResource
     virtual void UnloadResource() override;

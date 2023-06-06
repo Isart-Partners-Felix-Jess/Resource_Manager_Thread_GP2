@@ -8,17 +8,14 @@
 #include <ImGui/imgui.h>
 
 #include <ResourcesManager.hpp>
-#include <Shader.hpp>
 #include <Texture.hpp>
 #include <Material.hpp>
 #include <Model.hpp>
 
-Shader shadlight;
-Shader shadlightCube;
-
-Scene::Scene(unsigned int _width, unsigned int _height) : camera(_width, _height)
+Scene::Scene(unsigned int _width, unsigned int _height) : camera(_width, _height),shadlight (*ResourcesManager::CreateResource<Shader>("shadlight")), shadlightCube(*ResourcesManager::CreateResource<Shader>("shadlightCube"))
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	
 }
 Scene::~Scene()
 {
@@ -65,10 +62,10 @@ void Scene::InitLights()
 		Vectorf3(0.f, 0.5f, .0f),
 		Vectorf3(0.8f, 0.8f, 1.0f) } });
 	
-	pointLights.push_back({ Vectorf3(1.2f, 1.0f, 2.0f) });
-	pointLights.push_back({ Vectorf3(2.2f, 1.0f, 2.0f) });
-	pointLights.push_back({ Vectorf3(3.2f, 1.0f, 2.0f) });
-	pointLights.push_back({ Vectorf3(4.2f, 1.0f, 2.0f) });
+	pointLights.push_back({ Vectorf3(-5.5f, 1.0f, 2.0f) });
+	pointLights.push_back({ Vectorf3(-4.5f, 1.0f, 2.0f) });
+	pointLights.push_back({ Vectorf3(-3.5f, 1.0f, 2.0f) });
+	pointLights.push_back({ Vectorf3(-2.2f, 1.0f, 2.0f) });
 	
 	spotLights.push_back({ Vectorf3(0.f,0.f,-1.f),12.5f,17.5f, { {0.f,0.f,3.f},1.f,0.0f,0.032f} });
 	spotLights.push_back({ Vectorf3(0.f,0.f,-1.f),12.5f,17.5f, { {0.f,0.f,3.f},1.f,0.0f,0.032f} });
@@ -88,14 +85,11 @@ void Scene::UpdateLights(const float& _deltaTime)
 	spotLights[0].direction = camera.zCamera;
 	spotLights[1].point.position = camera.eye + X_Offset;
 	spotLights[1].direction = camera.zCamera;
-
-	spotLights[0].point.position = camera.eye;
-	spotLights[0].direction = camera.zCamera;
 	
 	//Rotative Pointlight
 	pointLights[0].position = matrix::Rotate3D(_deltaTime, matrix::Axis::Y) * pointLights[0].position;
 
-	//shadlight.Use();
+	shadlight.Use();
 	shadlight.SetInt("DIRECTIONAL_LIGHT_NBR", directionalLights.size());
 	for (size_t i = 0; i < directionalLights.size(); i++)
 	{
@@ -112,7 +106,7 @@ void Scene::UpdateLights(const float& _deltaTime)
 		spotLights[i].InitShader(shadlight, i);
 	}
 	shadlight.SetVec3("objectColor", 1.0f, 1.0f, 1.0f);
-	//shadlight.SetVec3("viewPos", camera.eye);
+	shadlight.SetVec3("viewPos", camera.eye);
 }
 
 void Scene::InitModels()
@@ -153,7 +147,7 @@ void Scene::InitModels()
 	graph.AddEntity(cube, nullptr, Transform({0.f,1.f,-0.5f}));
 	graph.entities[2]->SetParent(graph.entities[1]);
 	//Building [3]
-	graph.AddEntity(building, nullptr, Transform({ 0.f,0.f, -5.f }, {}, { 0.1f,0.2f, 0.3f }));
+	graph.AddEntity(building, nullptr, Transform({ 5.f,0.f, 0.f }, {}, { 0.1f,0.2f, 0.3f }));
 
 	//Orbit [4]
 	graph.AddEntity(nullptr, nullptr, Transform({ -7.f,0.f,0.f }));
@@ -174,7 +168,7 @@ void Scene::InitShaders()
 	shadlight.Link();
 	shadlightCube.SetFragmentShader("assets/shaders/white.frag");
 	shadlightCube.SetVertexShader("assets/shaders/basic.vert");
-
+	shadlightCube.Link();
 }
 void Scene::InitMaterials()
 {

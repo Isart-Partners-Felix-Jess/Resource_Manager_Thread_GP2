@@ -3,8 +3,8 @@
 #define MATERIAL_H
 
 #include<ResourcesManager.hpp>
-
 #include <vectorM.hpp>
+
 class Shader;
 class Texture;
 class Material :
@@ -15,8 +15,8 @@ public: //for now
     Vectorf3 diffuse{ 0.5f, 0.5f, 0.5f };
     Vectorf3 specular{ 1.f, 1.f, 1.f };
     float shininess = 1.f;
-    unsigned int diffuse2DMap = -1; //No map (-1) is a valid entry
-    unsigned int specular2DMap = -1; //No map (-1) is a valid entry
+    unsigned int diffuse2DMap = -1; //No map (-1) is a valid entry,
+    unsigned int specular2DMap = -1; //default one
 
     //Should go in Renderer
     void InitShader(Shader& _lightShader);

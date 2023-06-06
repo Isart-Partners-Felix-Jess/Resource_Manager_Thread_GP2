@@ -8,8 +8,8 @@ Camera::Camera(unsigned int _width, unsigned int _height)
 	zNear = 0.1f;
 	zFar = 100.f;
 	fovY = static_cast<float>(M_PI_2);
-	eye = Vectorf3{ 0.f,0.f,3.f };
-	center = Vectorf3{ 0.f,0.f,0.f };
+	eye = Vectorf3{ 0.f,1.f,3.f };
+	center = Vectorf3{ 0.f,1.f,0.f };
 	up = Vectorf3{ 0.f,1.f,0.f };
 	//zCamera normalized inside SetView()
 

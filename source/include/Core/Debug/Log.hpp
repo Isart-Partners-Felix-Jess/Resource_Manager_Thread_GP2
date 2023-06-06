@@ -15,7 +15,7 @@
 #define DEBUG_LOG(format,...)\
 { \
 std::ostringstream debugLogStream; \
-debugLogStream /*<<"DEBUG: "*/<< __FILENAME__ << "(" << __LINE__ << "): "; \
+debugLogStream << __FILENAME__ << "(" << __LINE__ << "): "; \
 const int bufferSize = 1024;\
 char buffer[bufferSize];\
 FormatString(buffer, bufferSize, format, ##__VA_ARGS__);\

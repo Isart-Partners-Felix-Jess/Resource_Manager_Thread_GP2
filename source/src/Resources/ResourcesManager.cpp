@@ -60,10 +60,6 @@ void ResourcesManager::Delete(const std::string& _name)
 	Log::ResetColor();
 }
 
-//void IResource::SetResourceId(unsigned int _id)
-//{
-//	m_ResourceId = _id;
-//}
 
 unsigned int IResource::GetResourceId() const
 {

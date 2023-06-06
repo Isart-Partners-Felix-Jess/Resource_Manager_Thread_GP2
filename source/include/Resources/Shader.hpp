@@ -6,7 +6,6 @@
 
 #include <vector>
 #include <filesystem>
-#include <vectorM.hpp>
 #include <ResourcesManager.hpp>
 #include <matrix.hpp>
 

@@ -15,7 +15,7 @@ private:
 	GLFWwindow* window;
 	int m_Width;
 	int m_Height;
-	float m_ClearColor[4] = { 0.2f, 0.3f, 0.3f, 1.0f
+	float m_ClearColor[4] = { 0.05f, 0.0f, 0.2f, 1.0f
 	};
 	float deltaTime = 0.f;
 	Scene scene;
@@ -34,7 +34,6 @@ private:
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 	void SetupImGui(GLFWwindow* window);
 	static void StartImGuiFrame();
-	static void NewFrame(bool mouseCaptured);
 	void Render(GLFWwindow* window);
 	void ApplyChangeColor();
 

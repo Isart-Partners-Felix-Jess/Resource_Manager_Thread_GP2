@@ -2,6 +2,7 @@
 #include <Camera.hpp>
 #include <Light.hpp>
 #include <Graph.hpp>
+#include <Shader.hpp>
 
 //Temp
 class Model;
@@ -16,8 +17,8 @@ public:
 	
 	SceneGraph graph = SceneGraph(this);
 
-	//Temp
-	//std::vector<Model*> ModelList;
+	Shader& shadlight;
+	Shader& shadlightCube;
 
 	std::vector<Model*> lightCubes;
 	Model* cube;
@@ -36,17 +37,9 @@ private:
 	void InitLights();
 	void InitModels();
 	void InitMaterials();
+	void InitShaders();
 	void UpdateLights(const float& _deltaTime);
 
-	//LearnOpenGl TODO: replace
-
-	void InitShaders();
-	void VBOtest();
-	//void VBOCubetest();
-	void VAOtest();
-	void lightVAOtest();
-	void EBOtest();
 	void MaterialTest();
-	void VBOCubetest();
 };
 

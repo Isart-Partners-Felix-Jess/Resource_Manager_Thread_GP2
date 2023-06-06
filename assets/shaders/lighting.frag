@@ -86,11 +86,9 @@ vec3 processLight(Light _light, vec3 _dir)
 
     //Specular part
     vec3 viewDir = normalize(viewPos - FragPos);
-    //vec3 reflectDir = reflect(-_dir, normal);  
     vec3 halfwayDir = normalize(_dir + viewDir);  
 
     float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess*2);
-    //float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     vec3 specular = _light.specularStrength * spec * _light.specularColor * sampled.SpecTex;  
     
     //Combine
