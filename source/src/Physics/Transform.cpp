@@ -24,6 +24,7 @@ void Transform::ComputeLocal()
 void Transform::ComputeGlobal()
 {
 	global = matrix::MatrixTRS(translation, rotation * (M_PI / 180), scale);
+	normalMatrix = global.Inversion().Transposed();
 }
 
 
@@ -54,7 +55,10 @@ Matrix4x4 Transform::ModelMatrix()
 {
 	return global;
 }
-
+Matrix4x4 Transform::NormalMatrix()
+{
+	return normalMatrix;
+}
 void Transform::ComputeAll(Matrix4x4 _globalTransform)
 {
 	global = _globalTransform * local;

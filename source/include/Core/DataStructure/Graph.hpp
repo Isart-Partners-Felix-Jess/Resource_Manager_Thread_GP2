@@ -5,11 +5,16 @@
 
 #include <Transform.hpp>
 #include <assertion.hpp>
+#include <Material.hpp>
+
 
 class Model;
 
 class Scene;
 class Shader;
+class Camera;
+struct  PointLight;
+struct  SpotLight;
 
 //Generic one
 struct Node
@@ -53,13 +58,19 @@ bool Graph<T>::Update()
 struct SceneNode : public Node
 {
 protected:
-	SceneNode() {};
+	SceneNode() : material(material::none) {};
 	Transform transform;
 public:
 	SceneNode(SceneNode* _parent,const Scene* _scene);
-
+	std::string name;
 	//Here for component list/vector (WIP)
 	Model* model = nullptr;
+	//In model is best
+	Material material;
+	PointLight* pointLight = nullptr;
+	SpotLight* spotLight = nullptr;
+	Camera* camera = nullptr;
+	Shader* shader = nullptr;
 	const Scene* scene;
 
 	void InitDefaultShader(Shader& _shader);

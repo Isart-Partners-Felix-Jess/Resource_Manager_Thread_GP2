@@ -163,6 +163,7 @@
     <ClCompile Include="third_party\src\stb\stb_impl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\include\Core\DataStructure\Component.hpp" />
     <ClInclude Include="source\include\Core\Application\Application.hpp" />
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp" />
     <ClInclude Include="source\include\LowRenderer\Camera.hpp" />

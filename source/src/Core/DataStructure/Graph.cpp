@@ -1,9 +1,12 @@
 #include <Graph.hpp>
-#include <Model.hpp>
 #include <Scene.hpp>
+//components
+#include <Model.hpp>
+#include <Light.hpp>
+#include <Camera.hpp>
 
 
-SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene)
+SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene): material(material::none)
 {
 	if (!_parent)
 		parent = _parent; //nullptr
@@ -11,6 +14,7 @@ SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene)
 		SetParent(_parent); //Set parent child as well
 	scene = _scene;
 	changed = true;
+	shader = &scene->shadlight;
 }
 //Set parent child as well
 void SceneNode::SetParent(SceneNode* _parent, bool _keepGlobalPosition)
@@ -74,7 +78,7 @@ void SceneNode::InitDefaultShader(Shader& _shader)
 	//Here for all components
 	if (model)
 		model->shader = &_shader;
-
+	shader = &_shader;
 	for (Node* child : children)
 	{
 		SceneNode* sceneChild = dynamic_cast<SceneNode*>(child);
@@ -86,6 +90,17 @@ bool SceneNode::UpdateChildren()
 	if (changed)
 	{
 		transform.ComputeAll(dynamic_cast<SceneNode*>(parent)->transform.ModelMatrix());
+		//Update Component
+		if (pointLight)
+			pointLight->position = transform.ModelMatrix() * pointLight->position;
+		if (spotLight)
+			spotLight->point.position = transform.ModelMatrix() * spotLight->point.position;
+		if (camera)
+		{
+			camera->eye *= transform.ModelMatrix();
+			camera->zCamera *= transform.ModelMatrix().Inversion().Transposed(); //NormalMatrix
+			camera->ComputeViewProjection();
+		}
 	}
 	bool success = Node::UpdateChildren();
 	return success;
@@ -96,7 +111,11 @@ void SceneNode::Draw()
 	//Here for all components
 	if (model)
 	{
+		Assert(shader, "No Shader for object \"%s.\"", name.c_str());
+		shader->Use();
+		material.InitShader(*shader);
 		model->ProcessNode(this, scene);
+
 		model->Draw();
 	}
 	for (Node* child : children)

@@ -160,14 +160,13 @@ void Model::Draw(Shader& _shader)
 	uint32_t i = 0;
 	for (Mesh* mesh : meshes)
 	{
-		if (i < materials.size())
-			materials[i++].InitShader(_shader);
+		//if (i < materials.size())
+		//	materials[i++].InitShader(_shader);
 		mesh->Draw();
 	}
 }
 void Model::Draw()
 {
-	Assert(shader, "No Shader for Model nb%i.", m_ResourceId);
 	Draw(*shader);
 }
 void Model::UnloadResource()
@@ -180,7 +179,7 @@ void Model::UnloadResource()
 }
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene)
 {
-	ProcessNode(_node, _scene, shader);
+	ProcessNode(_node, _scene,_node->shader);
 	
 }
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
@@ -191,7 +190,7 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 	Matrix4x4 MVP = _scene->camera.viewProjection * model;
 
 	_shader->SetMat4("model", model);
-	_shader->SetMat3("normalMatrix", model.Inversion().Transposed());
+	_shader->SetMat3("normalMatrix", _node->GetTransform().NormalMatrix());
 	_shader->SetMat4("MVP", MVP);
 }
 Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals)

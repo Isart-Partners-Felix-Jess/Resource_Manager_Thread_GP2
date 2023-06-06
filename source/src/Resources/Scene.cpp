@@ -26,6 +26,7 @@ void Scene::Init()
 
 	//InitComponents
 	InitMaterials();
+
 	InitShaders();
 	InitLights();
 	InitModels();
@@ -50,8 +51,6 @@ void Scene::Destroy()
 	directionalLights.clear();
 	pointLights.clear();
 	spotLights.clear();
-	glDeleteProgram(shadlight.GetShaderProgram());
-	glDeleteProgram(shadlightCube.GetShaderProgram());
 }
 
 void Scene::InitLights()
@@ -111,48 +110,70 @@ void Scene::UpdateLights(const float& _deltaTime)
 
 void Scene::InitModels()
 {
-	cube =ResourcesManager::CreateResource<Model>(std::string("cube"));
-	cube->ChangeMaterial(material::copper, 0);
-	cube->materials[0].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
-	cube->materials[0].AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+	
 
 
-	viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room"));
-	viking_room->materials[0].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg"));
-	viking_room->materials[0].AttachSpecularMap(ResourcesManager::GetResource<Texture>("viking_room.jpg"));
-	robot = ResourcesManager::CreateResource<Model>(std::string("robot_operator"));
-	robot->materials[0].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png"));
-	robot->materials[0].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png"));
-	building = ResourcesManager::CreateResource<Model>(std::string("objBuilding"));
-	building->AddMaterials(8);
-	building->materials[1].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->materials[2].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
-	building->materials[2].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
-	building->materials[3].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
-	building->materials[3].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
-	building->materials[5].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->materials[5].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	building->materials[6].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
-	building->materials[6].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
-	building->materials[7].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
-	building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
-	building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
-	building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
+
+
+	
+	//building->AddMaterials(8);
+	//building->materials[1].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
+	//building->materials[2].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
+	//building->materials[2].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
+	//building->materials[3].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
+	//building->materials[3].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
+	//building->materials[5].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	//building->materials[5].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	//building->materials[6].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
+	//building->materials[6].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
+	//building->materials[7].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
+	//building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
+	//building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
+	//building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
 
 	//Viking Room [0]
+	viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room"));
 	graph.AddEntity(viking_room, nullptr, Transform({ -4.f,0.f,0.f }, { 90.f,90.f,0.f }, { 3.f,3.f,3.f }));
+	graph.entities[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg"));
+	graph.entities[0]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("viking_room.jpg"));
 	//Robot [1]
+	robot = ResourcesManager::CreateResource<Model>(std::string("robot_operator"));
 	graph.AddEntity(robot, nullptr, Transform({}, { 0.f,90.f,0.f }));
+	graph.entities[1]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png"));
+	graph.entities[1]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png"));
 	//Copper Box [2]
+	cube = ResourcesManager::CreateResource<Model>(std::string("cube"));
 	graph.AddEntity(cube, nullptr, Transform({0.f,1.f,-0.5f}));
+	graph.entities[2]->material = material::copper;
+	graph.entities[2]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	graph.entities[2]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[2]->SetParent(graph.entities[1]);
 	//Building [3]
+	building = ResourcesManager::CreateResource<Model>(std::string("objBuilding"));
 	graph.AddEntity(building, nullptr, Transform({ 5.f,0.f, 0.f }, {}, { 0.1f,0.2f, 0.3f }));
+	graph.entities[3]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
+	graph.entities[3]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
 
 	//Orbit [4]
 	graph.AddEntity(nullptr, nullptr, Transform({ -7.f,0.f,0.f }));
 	graph.entities[4]->AddChild(graph.entities[1],true);
+	//Orbs 
+	//Orb [5]
+	graph.AddEntity(cube, graph.entities[1], Transform({0.f,1.f,1.f},{},{0.15f,0.15f,0.15f}));
+	graph.entities[5]->material = material::ruby;
+	graph.entities[5]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	graph.entities[5]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+	//Orb [6]
+	graph.AddEntity(cube, graph.entities[1], Transform({ 0.f,1.2f,0.0f }, {}, { 0.15f,0.15f,0.15f}));
+	graph.entities[6]->material = material::emerald;
+	graph.entities[6]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	graph.entities[6]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 
+	//Orb [7]
+	graph.AddEntity(cube, graph.entities[1], Transform({ 0.f,1.f,-1.f }, {}, { 0.15f,0.15f,0.15f }));
+	graph.entities[7]->material = material::turquoise;
+	graph.entities[7]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	graph.entities[7]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.InitDefaultShader(shadlight);
 }
 

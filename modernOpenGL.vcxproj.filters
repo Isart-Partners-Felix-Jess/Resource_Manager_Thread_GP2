@@ -137,6 +137,9 @@
     <ClInclude Include="source\include\Resources\Scene.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="source\include\Core\DataStructure\Component.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="third_party\libs\glfw3.lib" />
