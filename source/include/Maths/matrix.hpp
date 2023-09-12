@@ -16,7 +16,7 @@ private:
 
 public:
 #pragma region Constructors
-	// Null by default 
+	// Null by default
 	// Identity fills last rows by 0 if more rows than cols
 	MatrixMN(bool identity = false)
 	{
@@ -40,7 +40,7 @@ public:
 		size_t i = 0, j = 0;
 		for (const auto& row : values) {
 			for (const auto& val : row) {
-				if (i >= M || j >= N) 
+				if (i >= M || j >= N)
 					break; // Ignore excess values
 				data[i][j++] = val;
 			}
@@ -49,18 +49,18 @@ public:
 		}
 		// Fill remaining elements with 0
 		for (; i < M; i++) {
-			for (; j < N; j++) 
+			for (; j < N; j++)
 				data[i][j] = 0;
 			j = 0;
 		}
 	}
 
-	MatrixMN(VectorM<T, N>* vectors) 
+	MatrixMN(VectorM<T, N>* vectors)
 	{
 		if (M == N)
 			square = true;
 		data.resize(M);
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			data[i] = vectors[i];
 	}
 
@@ -71,18 +71,18 @@ public:
 		if (M == N)
 			square = true;
 		data.resize(M);
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			for (size_t j = 0; j < N; j++) {
-				if (i < P && j < Q) 
+				if (i < P && j < Q)
 					data[i][j] = other[i][j];
-				else 
+				else
 					data[i][j] = 0;
 			}
 	}
 #pragma endregion //Constructors
 
 #pragma region Properties
-	bool IsSquare()	{
+	bool IsSquare() {
 		return square;
 	}
 
@@ -100,7 +100,7 @@ public:
 	VectorM<T, std::min(M, N)> diagonal()
 	{
 		VectorM<T, std::min(M, N)> diagonal;
-		for (size_t i = 0; i < std::min(M, N); i++) 
+		for (size_t i = 0; i < std::min(M, N); i++)
 			diagonal[i] = data[i][i];
 		return diagonal;
 	}
@@ -108,7 +108,7 @@ public:
 	T trace()
 	{
 		T temp = 0;
-		for (size_t i = 0; i < std::min(M, N); i++) 
+		for (size_t i = 0; i < std::min(M, N); i++)
 			temp += data[i][i];
 		return temp;
 	}
@@ -149,7 +149,7 @@ public:
 		}
 	}
 
-	// Faster than recursive and can give the determinant for the MatrixMN<T,M,M> 
+	// Faster than recursive and can give the determinant for the MatrixMN<T,M,M>
 	// (actual determinant of MatrixMN doesn't exist in this case)
 	T determinant() const
 	{
@@ -289,7 +289,7 @@ public:
 		if (index >= N)
 			throw std::runtime_error("outside of range");
 		VectorM<T, M> Column;
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			Column[i] = data[i][index];
 		return Column;
 	}
@@ -304,13 +304,13 @@ public:
 #pragma endregion //GettersAndPrint
 
 #pragma region Operators
-	VectorM<T, N>& operator[](unsigned int index) 
+	VectorM<T, N>& operator[](unsigned int index)
 	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return data[index];
 	}
 
-	const VectorM<T, N>& operator[](unsigned int index) const 
+	const VectorM<T, N>& operator[](unsigned int index) const
 	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return data[index];
@@ -322,65 +322,65 @@ public:
 	{
 		if (M == N)
 			square = true;
-		for (size_t i = 0; i < std::min(P, M); i++) 
+		for (size_t i = 0; i < std::min(P, M); i++)
 			this->data[i] = other[i];
-		
+
 		if (P < M) {
 			// Use MatrixMN constructor to initialize remaining elements to 0
 			MatrixMN<T, M - P, Q> zeros;
-			for (size_t i = P; i < M; i++) 
+			for (size_t i = P; i < M; i++)
 				this->data[i] = zeros[i - P];
 		}
 		return *this;
 	}
 
 	// Mathematical operators
-	MatrixMN<T, M, N> operator+(const MatrixMN<T, M, N>& other) const 
+	MatrixMN<T, M, N> operator+(const MatrixMN<T, M, N>& other) const
 	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			result.data[i] = data[i] + other[i];
 		return result;
 	}
 
-	MatrixMN& operator+=(const MatrixMN& other) 
+	MatrixMN& operator+=(const MatrixMN& other)
 	{
 		*this = (*this) + other;
 		return *this;
 	}
 
-	MatrixMN<T, M, N> operator-() const 
+	MatrixMN<T, M, N> operator-() const
 	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			result.data[i] = -data[i];
 		return result;
 	}
 
-	MatrixMN<T, M, N> operator-(const MatrixMN<T, M, N>& other) const 
+	MatrixMN<T, M, N> operator-(const MatrixMN<T, M, N>& other) const
 	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			result[i] = data[i] - other[i];
 		return result;
 	}
 
-	MatrixMN < T, M, N>& operator-=(const MatrixMN& other) 
+	MatrixMN < T, M, N>& operator-=(const MatrixMN& other)
 	{
 		*this = (*this) - other;
 		return *this;
 	}
 
 	// Product by a scalar
-	MatrixMN operator*(const T& scalar) const 
+	MatrixMN operator*(const T& scalar) const
 	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			result[i] = data[i] * scalar;
 		return result;
 	}
 
-	MatrixMN < T, M, N> operator*=(const T& scalar) 
+	MatrixMN < T, M, N> operator*=(const T& scalar)
 	{
 		*this = (*this) * scalar;
 		return *this;
@@ -391,7 +391,7 @@ public:
 	MatrixMN<T, M, Q> operator*(const MatrixMN<T, P, Q>& other) const {
 		static_assert(N == P, "Matrix1 must have the same number of Columns than Matrix2 has of rows");
 		MatrixMN<T, M, Q> result;
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			for (size_t j = 0; j < Q; j++) {
 				VectorM<T, Q> col = other.Column(j);
 				result[i][j] = data[i].Dot(col);
@@ -400,7 +400,7 @@ public:
 	}
 
 	template <size_t P, size_t Q>
-	MatrixMN<T, M, Q>& operator*=(const MatrixMN<T, P, Q>& other) 
+	MatrixMN<T, M, Q>& operator*=(const MatrixMN<T, P, Q>& other)
 	{
 		*this = *this * other;
 		return *this;
@@ -413,7 +413,7 @@ template <typename T, size_t M, size_t N>
 VectorM<T, M> operator*(const MatrixMN<T, M, N>& matrix, const VectorM<T, N>& vector)
 {
 	VectorM<T, M> result;
-	for (size_t j = 0; j < M; j++) 
+	for (size_t j = 0; j < M; j++)
 		result[j] = matrix[j].Dot(vector);
 	return result;
 }
@@ -430,7 +430,7 @@ template <typename T>
 VectorM<T, 4> operator*(const MatrixMN<T, 4>& matrix, const VectorM<T, 4>& vector)
 {
 	VectorM<T, 4> result;
-	for (size_t i = 0; i < 4; i++) 
+	for (size_t i = 0; i < 4; i++)
 		result[i] = matrix[i].Dot(vector);
 	return result;
 }
@@ -501,7 +501,6 @@ namespace matrix
 	template <typename T>
 	MatrixMN<T, 3> Rotate3D(T angleinrad, Axis axis)
 	{
-
 		MatrixMN<T, 3> result(true);
 		T ca;
 		T sa;
@@ -608,7 +607,7 @@ namespace matrix
 	{
 		// Set rotation values
 
-		// Faster XYZ 
+		// Faster XYZ
 		MatrixMN<T, 3> rotationXYZ = Rotate3dAllAxis(angleXYZinrad);
 
 		// Apply scaling to the Columns
@@ -639,7 +638,6 @@ namespace matrix
 
 		return MatrixTRS(translation, rotation, scaling);
 	}
-
 }
 typedef MatrixMN<float, 2> Matrix2x2;
 typedef MatrixMN<float, 3> Matrix3x3;

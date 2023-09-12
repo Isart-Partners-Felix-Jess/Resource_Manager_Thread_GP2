@@ -155,6 +155,7 @@ void Model::LoadResource(const char* _name)
 		meshes.push_back(next_mesh);
 	}
 }
+
 void Model::Draw(Shader& _shader)
 {
 	uint32_t i = 0;
@@ -165,10 +166,11 @@ void Model::Draw(Shader& _shader)
 		mesh->Draw();
 	}
 }
-void Model::Draw()
-{
+
+void Model::Draw() {
 	Draw(*shader);
 }
+
 void Model::UnloadResource()
 {
 	for (Mesh* mesh : meshes)
@@ -177,10 +179,11 @@ void Model::UnloadResource()
 		delete mesh;
 	}
 }
-void Model::ProcessNode(SceneNode* _node, const Scene* _scene)
-{
+
+void Model::ProcessNode(SceneNode* _node, const Scene* _scene) {
 	ProcessNode(_node, _scene, _node->shader);
 }
+
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 {
 	Assert(_shader, "No Shader for Model nb%i.", m_ResourceId);
@@ -192,6 +195,7 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 	_shader->SetMat3("normalMatrix", _node->GetTransform().NormalMatrix());
 	_shader->SetMat4("MVP", MVP);
 }
+
 Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals)
 {
 	Mesh result;
@@ -209,8 +213,7 @@ Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vect
 	return result;
 }
 
-void Model::AddMaterial()
-{
+void Model::AddMaterial() {
 	materials.push_back(material::none);
 }
 
@@ -220,12 +223,10 @@ void Model::AddMaterials(unsigned int _number)
 		AddMaterial();
 }
 
-void Model::AddMaterial(Material _mat)
-{
+void Model::AddMaterial(Material _mat) {
 	materials.push_back(_mat);
 }
 
-void Model::ChangeMaterial(Material _mat, uint32_t idx)
-{
+void Model::ChangeMaterial(Material _mat, uint32_t idx) {
 	materials[idx] = _mat;
 }

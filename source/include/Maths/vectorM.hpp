@@ -16,7 +16,7 @@ protected:
 public:
 	VectorM()
 	{
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			elements[i] = 0;
 	}
 
@@ -26,11 +26,11 @@ public:
 	}
 
 	// Array constructor for vector between two points
-	VectorM(const T(&arr1)[M], const T(&arr2)[M]) 
+	VectorM(const T(&arr1)[M], const T(&arr2)[M])
 	{
 		for (size_t i = 0; i < M; i++)
 			elements[i] = arr2[i] - arr1[i];
-	} 
+	}
 
 	VectorM(std::initializer_list<T> values)
 	{
@@ -41,19 +41,19 @@ public:
 			elements[i++] = val;
 		}
 		// Fill remaining elements with 0
-		for (; i < M; i++) 
+		for (; i < M; i++)
 			elements[i] = 0;
 	}
 
 	// Copy constructor for vector between two points
-	VectorM(const VectorM<T, M>& v1, const VectorM<T, M>& v2) 
+	VectorM(const VectorM<T, M>& v1, const VectorM<T, M>& v2)
 	{
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			elements[i] = v2[i] - v1[i];
 	}
 
 	// Here to avoid conflicts
-	template <typename... Args, typename std::enable_if<sizeof...(Args) == M, int>::type = 0> 
+	template <typename... Args, typename std::enable_if<sizeof...(Args) == M, int>::type = 0>
 	VectorM(Args... args) : elements{ static_cast<T>(args)... } {}
 
 	virtual ~VectorM() {}
@@ -70,10 +70,10 @@ public:
 
 #pragma region vecOperations
 	// Dot Product
-	T Dot(const VectorM<T, M>& other) const 
+	T Dot(const VectorM<T, M>& other) const
 	{
 		T result = 0;
-		for (size_t i = 0; i < M; i++) 
+		for (size_t i = 0; i < M; i++)
 			result += elements[i] * other[i];
 		return result;
 	}
@@ -90,19 +90,19 @@ public:
 		return sqrt(this->MagnitudeSquared());
 	}
 
-	T LengthSquared(const VectorM& other) const 
+	T LengthSquared(const VectorM& other) const
 	{
 		VectorM diff = *this - other;
 		return diff.MagnitudeSquared();
 	}
 
-	T Length(const VectorM& other) const 
+	T Length(const VectorM& other) const
 	{
 		VectorM diff = *this - other;
 		return diff.Magnitude();
 	}
 
-	VectorM Normalize() const 
+	VectorM Normalize() const
 	{
 		//assert(this != VectorM.Null());
 		return (*this) / this->Magnitude();
@@ -117,13 +117,13 @@ public:
 	}
 
 	// Direct access to elements
-	T& operator[](size_t index) 
+	T& operator[](size_t index)
 	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return elements[index];
 	}
 
-	const T& operator[](size_t index) const 
+	const T& operator[](size_t index) const
 	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return elements[index];
@@ -131,112 +131,112 @@ public:
 
 	T(&data())[M] {
 		return elements;
-	}
-
-	// Assignment
-	template<size_t N>
-	VectorM<T, M>& operator=(const VectorM<T, N>& other)
-	{
-		// Stop condition is similar to a std::min
-		for (size_t i = 0; i < N && i<M; i++) 
-			this->elements[i] = other[i];
-
-		if (N < M) {
-			VectorM<T, M - N>zeros;
-			for (size_t i = N; i < M; i++) 
-				this->elements[i] = zeros[i - N];
 		}
-		return *this;
-	}
 
-	// Mathematical operators
-	VectorM<T, M> operator+(const VectorM<T, M>& other) const {
-		VectorM<T, M> result;
-		for (size_t i = 0; i < M; i++)
-			result[i] = elements[i] + other[i];
-		return result;
-	}
+		// Assignment
+			template<size_t N>
+		VectorM<T, M>& operator=(const VectorM<T, N>& other)
+		{
+			// Stop condition is similar to a std::min
+			for (size_t i = 0; i < N && i < M; i++)
+				this->elements[i] = other[i];
 
-	VectorM<T, M>& operator+=(const VectorM<T, M>& other) 
-	{
-		*this = (*this) + other;
-		return *this;
-	}
-
-	VectorM<T, M> operator-() const 
-	{
-		VectorM<T, M> result;
-		for (size_t i = 0; i < M; i++) 
-			if (elements[i] != 0)
-				result[i] = -elements[i];
-		return result;
-	}
-
-	VectorM<T, M> operator-(const VectorM<T, M>& other) const 
-	{
-		VectorM<T, M> result;
-		for (size_t i = 0; i < M; i++) 
-			result[i] = elements[i] - other[i];
-		return result;
-	}
-
-	VectorM<T, M>& operator-=(const VectorM<T, M>& other) 
-	{
-		*this = (*this) - other;
-		return *this;
-	}
-
-	// Product by a scalar
-	VectorM<T, M> operator*(const T& scalar) const 
-	{
-		VectorM<T, M> result;
-		for (size_t i = 0; i < M; i++)
-			result[i] = elements[i] * scalar;
-		return result;
-	}
-
-	VectorM<T, M>& operator*=(const T& scalar)
-	{
-		*this = (*this) * scalar;
-		return *this;
-	}
-
-	// Product between each components
-	VectorM<T, M> operator*(const VectorM<T, M>& other) const 
-	{
-		VectorM<T, M> result;
-		for (size_t i = 0; i < M; i++) {
-			result[i] = elements[i] * other[i];
+			if (N < M) {
+				VectorM<T, M - N>zeros;
+				for (size_t i = N; i < M; i++)
+					this->elements[i] = zeros[i - N];
+			}
+			return *this;
 		}
-		return result;
-	}
 
-	VectorM<T, M> operator*=(const VectorM<T, M>& other) {
-		return (*this * other);
-	}
+		// Mathematical operators
+		VectorM<T, M> operator+(const VectorM<T, M>& other) const {
+			VectorM<T, M> result;
+			for (size_t i = 0; i < M; i++)
+				result[i] = elements[i] + other[i];
+			return result;
+		}
 
-	VectorM<T, M> operator/(const T& scalar) const 
-	{
-		//static_assert(scalar != 0, "Can't divide by 0 !");
-		VectorM<T, M> result;
-		for (size_t i = 0; i < M; i++)
-			result[i] = elements[i] / scalar;
-		return result;
-	}
+		VectorM<T, M>& operator+=(const VectorM<T, M>& other)
+		{
+			*this = (*this) + other;
+			return *this;
+		}
 
-	VectorM<T, M>& operator/=(const T& scalar)
-	{
-		*this = (*this) / scalar;
-		return *this;
-	}
+		VectorM<T, M> operator-() const
+		{
+			VectorM<T, M> result;
+			for (size_t i = 0; i < M; i++)
+				if (elements[i] != 0)
+					result[i] = -elements[i];
+			return result;
+		}
 
-	bool operator==(const VectorM<T, M>& other) const 
-	{
-		for (size_t i = 0; i < M; i++)
-			if (this->elements[i] != other.elements[i])
-				return false;
-		return true;
-	}
+		VectorM<T, M> operator-(const VectorM<T, M>& other) const
+		{
+			VectorM<T, M> result;
+			for (size_t i = 0; i < M; i++)
+				result[i] = elements[i] - other[i];
+			return result;
+		}
+
+		VectorM<T, M>& operator-=(const VectorM<T, M>& other)
+		{
+			*this = (*this) - other;
+			return *this;
+		}
+
+		// Product by a scalar
+		VectorM<T, M> operator*(const T& scalar) const
+		{
+			VectorM<T, M> result;
+			for (size_t i = 0; i < M; i++)
+				result[i] = elements[i] * scalar;
+			return result;
+		}
+
+		VectorM<T, M>& operator*=(const T& scalar)
+		{
+			*this = (*this) * scalar;
+			return *this;
+		}
+
+		// Product between each components
+		VectorM<T, M> operator*(const VectorM<T, M>& other) const
+		{
+			VectorM<T, M> result;
+			for (size_t i = 0; i < M; i++) {
+				result[i] = elements[i] * other[i];
+			}
+			return result;
+		}
+
+		VectorM<T, M> operator*=(const VectorM<T, M>& other) {
+			return (*this * other);
+		}
+
+		VectorM<T, M> operator/(const T& scalar) const
+		{
+			//static_assert(scalar != 0, "Can't divide by 0 !");
+			VectorM<T, M> result;
+			for (size_t i = 0; i < M; i++)
+				result[i] = elements[i] / scalar;
+			return result;
+		}
+
+		VectorM<T, M>& operator/=(const T& scalar)
+		{
+			*this = (*this) / scalar;
+			return *this;
+		}
+
+		bool operator==(const VectorM<T, M>& other) const
+		{
+			for (size_t i = 0; i < M; i++)
+				if (this->elements[i] != other.elements[i])
+					return false;
+			return true;
+		}
 };
 #pragma endregion //Operators
 
@@ -276,7 +276,7 @@ public:
 
 	Vector2<T>& operator=(const VectorM<T, 2>& other)
 	{
-		for (size_t i = 0; i < 2; ++i) 
+		for (size_t i = 0; i < 2; ++i)
 			elements[i] = other[i];
 		return *this;
 	}
@@ -308,7 +308,7 @@ public:
 	const T& Y() const { return elements[1]; }
 	const T& Z() const { return elements[2]; }
 
-	Vector3 Cross_product(Vector3<T> v2) const 
+	Vector3 Cross_product(Vector3<T> v2) const
 	{
 		return { Y() * v2.Z() - Z() * v2.Y(),
 				 Z() * v2.X() - X() * v2.Z(),
@@ -331,7 +331,7 @@ public:
 
 	Vector3<T>& operator=(const VectorM<T, 3>& other)
 	{
-		for (size_t i = 0; i < 3; ++i) 
+		for (size_t i = 0; i < 3; ++i)
 			elements[i] = other[i];
 		return *this;
 	}

@@ -28,12 +28,6 @@
     <Filter Include="Fichiers d%27en-tête\Core\Debug">
       <UniqueIdentifier>{79a9872b-8a67-4d2d-b390-a0086d02608a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Core\Maths">
-      <UniqueIdentifier>{cb8c7d32-cead-482a-a025-835324eb4fcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Core\DataStructure">
-      <UniqueIdentifier>{984a6493-5e68-47e5-8567-64eba1c19f49}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\LowRenderer">
       <UniqueIdentifier>{4d79bbb7-0ff7-42fe-9882-e660db4f2930}</UniqueIdentifier>
     </Filter>
@@ -42,6 +36,9 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Resources">
       <UniqueIdentifier>{4ad1393d-589a-4e85-b253-41ace8b279ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Math">
+      <UniqueIdentifier>{b7024009-802f-4909-b6b6-174a5d2e73cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,9 +52,6 @@
       <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\Shader.cpp">
-      <Filter>Fichiers d%27en-tête\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="source\src\Resources\Scene.cpp">
       <Filter>Fichiers d%27en-tête\Resources</Filter>
     </ClCompile>
     <ClCompile Include="source\src\Resources\Model.cpp">
@@ -96,49 +90,76 @@
     <ClCompile Include="third_party\src\stb\stb_impl.cpp">
       <Filter>Third_party\impl</Filter>
     </ClCompile>
-    <ClCompile Include="source\src\LowRenderer\Camera.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="source\src\Resources\Material.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="source\src\Resources\ResourcesManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="third_party\src\Glad\glad.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="source\src\Resources\Material.cpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="source\src\Resources\ResourcesManager.cpp">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\src\Core\DataStructure\Graph.cpp">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\src\Resources\Scene.cpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="source\src\LowRenderer\Camera.cpp">
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\include\Resources\ResourcesManager.hpp">
-      <Filter>Fichiers de ressources</Filter>
-    </ClInclude>
     <ClInclude Include="source\include\Core\Application\Application.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\LowRenderer\Camera.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\include\LowRenderer\Light.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Resources\Material.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Core\DataStructure\Graph.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
     </ClInclude>
     <ClInclude Include="source\include\Physics\Transform.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="source\include\Resources\Scene.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="source\include\Resources\Material.hpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Resources\ResourcesManager.hpp">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\include\Core\DataStructure\Component.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Resources\Scene.hpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Core\DataStructure\Graph.hpp">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Resources\Model.hpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Resources\Texture.hpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Resources\Shader.hpp">
+      <Filter>Fichiers d%27en-tête\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\LowRenderer\Mesh.hpp">
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Core\Debug\Log.hpp">
+      <Filter>Fichiers d%27en-tête\Core\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Core\Debug\Assertion.hpp">
+      <Filter>Fichiers d%27en-tête\Core\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\LowRenderer\Camera.hpp">
+      <Filter>Fichiers d%27en-tête\LowRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Maths\matrix.hpp">
+      <Filter>Fichiers d%27en-tête\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Maths\vectorM.hpp">
+      <Filter>Fichiers d%27en-tête\Core\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

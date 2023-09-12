@@ -55,6 +55,7 @@ private:
 	Matrix4x4 Frustum(float left, float right, float bottom, float top, float near, float far);
 	Matrix4x4 Perspective(float fovY, float aspect, float near, float far);
 	Matrix4x4 Orthographic(float left, float right, float bottom, float top);
+
 	void Move(const Vectorf3& _velocity);
 	void Turn(float _angle, matrix::Axis _axis);
 };
