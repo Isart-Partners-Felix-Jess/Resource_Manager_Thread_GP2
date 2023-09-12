@@ -9,9 +9,13 @@ class Texture : public IResource
 private:
     int m_Width, m_Height, m_Channels;
 public:
-    Texture();
-    Texture(const char* _filepath);
-    ~Texture();
+    Texture() {};
+    Texture(const char* _filepath) {
+        LoadResource(_filepath);
+    };
+    ~Texture() {
+        UnloadResource();
+    };
 
     unsigned int GetID() const;
 

@@ -1,7 +1,7 @@
 #include <Shader.hpp>
+
 #include <fstream>
 #include <glad/glad.h>
-
 
 Shader::Shader()
 {
@@ -10,26 +10,28 @@ Shader::Shader()
 }
 
 // Initializing the static member variable
-Shader::Shader(const char* _vertexPath, const char* _fragmentPath) : Shader()
+Shader::Shader(const char* _vertexPath, const char* _fragmentPath)
 {
 	SetVertexShader(_vertexPath);
 	SetFragmentShader(_fragmentPath);
 	Link();
 }
+
 Shader::~Shader()
 {
 	UnloadResource();
 	glDeleteProgram(m_ShaderProgram);
 }
-uint32_t Shader::GetShaderProgram() const
-{
+
+uint32_t Shader::GetShaderProgram() const {
 	return m_ShaderProgram;
 }
+
 bool Shader::SetVertexShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
 	file.open(_filename);
-	int  success = 0; //false
+	int  success = 0; // false
 	if (file.bad())
 	{
 		DEBUG_ERROR("Shader file %s is BAD", _filename);
@@ -43,9 +45,11 @@ bool Shader::SetVertexShader(std::filesystem::path const& _filename)
 		std::string fileContent((std::istreambuf_iterator<char>(file)),
 			std::istreambuf_iterator<char>());
 		const char* vertexShaderSource = fileContent.c_str();
+
 		m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(m_VertexShader, 1, &vertexShaderSource, NULL);
 		glCompileShader(m_VertexShader);
+
 		char infoLog[512];
 		glGetShaderiv(m_VertexShader, GL_COMPILE_STATUS, &success);
 		if (!success)
@@ -53,7 +57,7 @@ bool Shader::SetVertexShader(std::filesystem::path const& _filename)
 			glGetShaderInfoLog(m_VertexShader, 512, NULL, infoLog);
 			DEBUG_ERROR("SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog);
 		}
-	}//safe if file isn't open
+	} // Safe if file isn't open
 	file.close();
 	return static_cast<bool>(success);
 }
@@ -62,7 +66,7 @@ bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
 	file.open(_filename);
-	int  success = 0; //false
+	int  success = 0; // false
 	if (file.bad())
 	{
 		DEBUG_ERROR("Shader #%i file %s is BAD", m_ShaderProgram, _filename);
@@ -84,10 +88,9 @@ bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
 		if (!success)
 		{
 			glGetShaderInfoLog(m_FragmentShader, 512, NULL, infoLog);
-			DEBUG_ERROR("SHADER #"<< m_ShaderProgram <<"::FRAGMENT::COMPILATION_FAILED\n" << infoLog);
+			DEBUG_ERROR("SHADER #" << m_ShaderProgram << "::FRAGMENT::COMPILATION_FAILED\n" << infoLog);
 		}
-	}
-	//safe if file isn't open
+	}// Safe if file isn't open
 	file.close();
 	return static_cast<bool>(success);
 }
@@ -109,16 +112,15 @@ bool Shader::Link()
 	else
 	{
 		Log::SuccessColor();
-		DEBUG_LOG("SHADER #%i::LINK::SUCCESS\n",m_ShaderProgram);
+		DEBUG_LOG("SHADER #%i::LINK::SUCCESS\n", m_ShaderProgram);
 		Log::ResetColor();
 	}
-	UnloadResource(); //Maybe you delete in any case
+	UnloadResource(); // Maybe you delete in any case
 	return success;
 }
 
-void Shader::LoadResource(const char* _name)
-{
-	//Only to name the shader
+// Only to name the shader
+void Shader::LoadResource(const char* _name) {
 	IResource::m_ResourcePath = _name;
 }
 
@@ -128,8 +130,7 @@ void Shader::UnloadResource()
 	glDeleteShader(m_FragmentShader);
 }
 
-void Shader::Use()
-{
+void Shader::Use() {
 	glUseProgram(m_ShaderProgram);
 }
 
@@ -146,7 +147,7 @@ void Shader::SetInt(const std::string& _name, int _value) const
 	glUniform1i(valueLocation, _value);
 }
 
-void Shader::SetUint(const std::string& _name,unsigned int _value) const
+void Shader::SetUint(const std::string& _name, unsigned int _value) const
 {
 	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
 	glUniform1ui(valueLocation, _value);
@@ -158,28 +159,30 @@ void Shader::SetFloat(const std::string& _name, float _value) const
 	glUniform1f(valueLocation, _value);
 }
 
-void Shader::SetVec2(const std::string& _name, Vectorf2 _value) const
-{
+void Shader::SetVec2(const std::string& _name, Vectorf2 _value) const {
 	SetVec2(_name, _value.X(), _value.Y());
 }
+
 void Shader::SetVec2(const std::string& _name, float _valueX, float _valueY) const
 {
 	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
 	glUniform2f(valueLocation, _valueX, _valueY);
 }
-void Shader::SetVec3(const std::string& _name, Vectorf3 _value) const
-{
+
+void Shader::SetVec3(const std::string& _name, Vectorf3 _value) const {
 	SetVec3(_name, _value.X(), _value.Y(), _value.Z());
 }
+
 void Shader::SetVec3(const std::string& _name, float _valueX, float _valueY, float _valueZ) const
 {
 	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
 	glUniform3f(valueLocation, _valueX, _valueY, _valueZ);
 }
-void Shader::SetVec4(const std::string& _name, Vectorf4 _value) const
-{
+
+void Shader::SetVec4(const std::string& _name, Vectorf4 _value) const {
 	SetVec4(_name, _value.X(), _value.Y(), _value.Z(), _value.Z());
 }
+
 void Shader::SetVec4(const std::string& _name, float _valueX, float _valueY, float _valueZ, float _valueW) const
 {
 	int valueLocation = glGetUniformLocation(m_ShaderProgram, _name.c_str());
@@ -195,7 +198,6 @@ void Shader::SetMat3(const std::string& _name, Matrix3x3 _value) const
 		elements[i] = _value[i % 3][i / 3];
 	}
 	glUniformMatrix3fv(valueLocation, 1, GL_FALSE, elements);
-
 }
 
 void Shader::SetMat4(const std::string& _name, Matrix4x4 _value) const
@@ -207,6 +209,4 @@ void Shader::SetMat4(const std::string& _name, Matrix4x4 _value) const
 		elements[i] = _value[i % 4][i / 4];
 	}
 	glUniformMatrix4fv(valueLocation, 1, GL_FALSE, elements);
-
 }
-

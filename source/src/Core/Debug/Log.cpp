@@ -1,4 +1,5 @@
 #include <Log.hpp>
+
 #include <iostream>
 #include <chrono>
 
@@ -12,11 +13,11 @@ void FormatString(char* buffer, size_t bufferSize, const char* format, ...)
 	std::vsnprintf(buffer, bufferSize, format, args);
 	va_end(args);
 }
+
 Log* Log::GetInstance()
 {
-	if (instance == nullptr) {
+	if (instance == nullptr)
 		instance = new Log();
-	}
 	return instance;
 }
 
@@ -26,24 +27,20 @@ void Log::DeleteInstance()
 	delete instance;
 }
 
-Log::Log()
-{
-
-}
-
 Log::~Log()
 {
 	time_t now = time(0);
 	char buffer[26];
 	ctime_s(buffer, sizeof(buffer), &now);
 	GetInstance()->Print("End of log entry at %s", buffer);
-if (m_Output.is_open())
-	m_Output.close();
+	if (m_Output.is_open())
+		m_Output.close();
 }
-void Log::OpenFile(std::filesystem::path const& filename, bool _erase)
-{
-	GetInstance()->InstanceOpenFile(filename,_erase);
+
+void Log::OpenFile(std::filesystem::path const& filename, bool _erase) {
+	GetInstance()->InstanceOpenFile(filename, _erase);
 }
+
 void Log::InstanceOpenFile(std::filesystem::path const& filename, bool _erase)
 {
 	if (_erase)
@@ -60,6 +57,7 @@ void Log::InstanceOpenFile(std::filesystem::path const& filename, bool _erase)
 	else
 		std::cout << "Failed to open " << filename << std::endl;
 }
+
 void Log::Print(const char* format, ...)
 {
 	va_list args;
@@ -67,6 +65,7 @@ void Log::Print(const char* format, ...)
 	GetInstance()->InstancePrint(format, args);
 	va_end(args);
 }
+
 void Log::InstancePrint(const char* format, va_list args)
 {
 	//vsnprintf instead of manually checking the format[i]
@@ -77,28 +76,27 @@ void Log::InstancePrint(const char* format, va_list args)
 	m_Output << std::string(buffer) << "\n";
 	m_Output.flush();
 }
-void Log::ResetColor()
-{
+
+void Log::ResetColor() {
 	SetConsoleTextAttribute(GetInstance()->handle, 15); // texte in white (default)
 }
-void Log::SuccessColor()
-{
+
+void Log::SuccessColor() {
 	GetInstance()->ChangeColor(Color::GREENONBLACKBG);
 }
 
-void Log::WarningColor()
-{
+void Log::WarningColor() {
 	GetInstance()->ChangeColor(Color::YELLOWONBLACKBG);
 }
-void Log::ErrorColor()
-{
+
+void Log::ErrorColor() {
 	GetInstance()->ChangeColor(Color::WHITEONREDBG);
 }
-void Log::ChangeColor(unsigned char _handleWindowsId) const
-{
+
+void Log::ChangeColor(unsigned char _handleWindowsId) const {
 	SetConsoleTextAttribute(handle, _handleWindowsId);
 }
-void Log::ChangeColor(Color _handleWindowsId) const
-{
+
+void Log::ChangeColor(Color _handleWindowsId) const {
 	SetConsoleTextAttribute(handle, (WORD)_handleWindowsId);
 }

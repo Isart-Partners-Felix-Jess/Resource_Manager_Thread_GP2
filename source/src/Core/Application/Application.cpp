@@ -1,21 +1,9 @@
 #include <Application.hpp>
-#include <iostream>
-#include <ImGui/imgui.h>
-#include <ImGui/imgui_impl_glfw.h>
-#include <ImGui/imgui_impl_opengl3.h>
-#include <Scene.hpp>
-#include <ResourcesManager.hpp>
 
-float mixValue = 0.2f;
+// Static declaration(s)
+float Application::s_MouseScrollOffset = 0.f;
 
-//static declarations
-float Application::s_MouseScrollOffset = 0.0f;
-
-Application::Application() :Application(800, 600)
-{
-}
-
-Application::Application(int _width, int _height): scene(_width, _height)
+Application::Application(int _width, int _height) : scene(_width, _height)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -32,7 +20,7 @@ Application::Application(int _width, int _height): scene(_width, _height)
 	}
 	glfwMakeContextCurrent(window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
-	
+
 	scene.Init();
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
@@ -41,10 +29,6 @@ Application::Application(int _width, int _height): scene(_width, _height)
 	SetupImGui(window);
 }
 
-Application::~Application()
-{
-	Destroy();
-}
 void Application::Destroy()
 {
 	scene.Destroy();
@@ -70,7 +54,7 @@ void Application::Update()
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-		scene.Update(deltaTime,inputs);
+		scene.Update(deltaTime, inputs);
 		if (m_ShowControls)
 			ShowImGuiControls();
 		Render(window);
@@ -79,8 +63,7 @@ void Application::Update()
 	}
 }
 
-void Application::ApplyChangeColor()
-{
+void Application::ApplyChangeColor() {
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 }
 
@@ -90,7 +73,6 @@ void Application::ChangeColor(float _newcolor[4])
 		m_ClearColor[i] = _newcolor[i];
 	ApplyChangeColor();
 }
-
 
 void Application::ShowImGuiControls()
 {
@@ -102,12 +84,9 @@ void Application::ShowImGuiControls()
 			ImGui::Text("FPS : %f", 1.f / ImGui::GetIO().DeltaTime);
 			if (ImGui::ColorEdit4("clearColor", m_ClearColor))
 				ApplyChangeColor();
-
 		}
 		if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen))
-		{
 			scene.camera.ShowImGuiControls();
-		}
 	}
 	ImGui::End();
 }
@@ -116,7 +95,9 @@ void Application::ProcessInput(GLFWwindow* _window)
 {
 	static double s_LastPressed = glfwGetTime();
 	double timeToApply = .5;
-	//App
+	float mixValue = 0.2f;
+
+	// App
 	if (glfwGetKey(_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(_window, true);
 	if ((glfwGetKey(_window, GLFW_KEY_S) & glfwGetKey(_window, GLFW_KEY_I)) == GLFW_PRESS && (glfwGetTime() - s_LastPressed) > timeToApply)
@@ -124,21 +105,23 @@ void Application::ProcessInput(GLFWwindow* _window)
 		s_LastPressed = glfwGetTime();
 		m_ShowControls = !m_ShowControls;
 	}
-	//LearnOpenGL
+
+	// LearnOpenGL
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 	{
-		mixValue += 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
+		mixValue += 0.001f; // Change this value accordingly (might be too slow or too fast based on system hardware)
 		if (mixValue >= 1.0f)
 			mixValue = 1.0f;
 	}
+
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 	{
-		mixValue -= 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
+		mixValue -= 0.001f; // Change this value accordingly (might be too slow or too fast based on system hardware)
 		if (mixValue <= 0.0f)
 			mixValue = 0.0f;
 	}
 
-	//Camera, should clean
+	// Camera, should clean
 	{
 		double newMouseX, newMouseY;
 		glfwGetCursorPos(window, &newMouseX, &newMouseY);
@@ -161,26 +144,29 @@ void Application::ProcessInput(GLFWwindow* _window)
 		inputs.deltaY = 0.f;
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
+
 	inputs.moveForward = glfwGetKey(window, GLFW_KEY_W);
 	inputs.moveBackward = glfwGetKey(window, GLFW_KEY_S);
 	inputs.moveRight = glfwGetKey(window, GLFW_KEY_D);
 	inputs.moveLeft = glfwGetKey(window, GLFW_KEY_A);
 	glfwSetScrollCallback(window, Scroll_callback);
+
 	if (s_MouseScrollOffset)
 	{
 		scene.camera.Zoom(s_MouseScrollOffset);
 		s_MouseScrollOffset = 0.f;
 	}
-	//Cam end
+	// Cam end
 }
-void Application::Scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
+
+void Application::Scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 	s_MouseScrollOffset = (float)yoffset;
-};
-void Application::framebuffer_size_callback(GLFWwindow* _window, int _width, int _height)
-{
+}
+
+void Application::framebuffer_size_callback(GLFWwindow* _window, int _width, int _height) {
 	glViewport(0, 0, _width, _height);
 }
+
 void Application::SetupImGui(GLFWwindow* window)
 {
 	// Setup Dear ImGui context
@@ -208,9 +194,9 @@ void Application::StartImGuiFrame()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 }
+
 void Application::Render(GLFWwindow* window)
 {
-
 	ImGui::Render();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -221,5 +207,4 @@ void Application::Render(GLFWwindow* window)
 	ImGui::UpdatePlatformWindows();
 	ImGui::RenderPlatformWindowsDefault();
 	glfwMakeContextCurrent(ctxBackup);
-
 }

@@ -179,8 +179,7 @@ void Model::UnloadResource()
 }
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene)
 {
-	ProcessNode(_node, _scene,_node->shader);
-	
+	ProcessNode(_node, _scene, _node->shader);
 }
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 {

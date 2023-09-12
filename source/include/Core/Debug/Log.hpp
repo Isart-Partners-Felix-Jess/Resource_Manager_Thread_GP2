@@ -1,19 +1,17 @@
 #pragma once
 
-#ifndef LOG_H
-#define LOG_H
-
 #include <fstream>
 #include <filesystem>
+
 #define NOMINMAX
 #include <Windows.h>
 
-//Windows only
+// Windows only /!\
 
 #define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
 
 #define DEBUG_LOG(format,...)\
-{ \
+{\
 std::ostringstream debugLogStream; \
 debugLogStream << __FILENAME__ << "(" << __LINE__ << "): "; \
 const int bufferSize = 1024;\
@@ -21,41 +19,50 @@ char buffer[bufferSize];\
 FormatString(buffer, bufferSize, format, ##__VA_ARGS__);\
 debugLogStream << buffer << std::endl; \
 Log::Print(format, ##__VA_ARGS__);\
-OutputDebugStringA(debugLogStream.str().c_str()); \
+OutputDebugStringA(debugLogStream.str().c_str());\
 }
+
 #define DEBUG_WARNING(format,...)\
-{Log::WarningColor();\
+{\
+Log::WarningColor();\
 std::ostringstream WarningLogStream;\
 WarningLogStream <<"Warning: " << format ;\
-DEBUG_LOG(WarningLogStream.str().c_str(),##__VA_ARGS__)\
-Log::ResetColor();}
+DEBUG_LOG(WarningLogStream.str().c_str(), ##__VA_ARGS__)\
+Log::ResetColor();\
+}
+
 #define DEBUG_ERROR(format,...)\
-{Log::ErrorColor();\
+{\
+Log::ErrorColor();\
 std::ostringstream ERRORLogStream;\
 ERRORLogStream <<"ERROR: " << format ;\
-DEBUG_LOG(ERRORLogStream.str().c_str(),##__VA_ARGS__)\
-Log::ResetColor();}
+DEBUG_LOG(ERRORLogStream.str().c_str(), ##__VA_ARGS__)\
+Log::ResetColor();\
+}
 
 void FormatString(char* buffer, size_t bufferSize, const char* format, ...);
+
 class Log
 {
 private:
 	std::ofstream m_Output;
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	//Singleton part /!\ CARE: IT IS NOT THREAD SAFE
+	// Singleton /!\ BE CAREFUL: IT IS NOT THREAD SAFE
 	static Log* instance;
-	Log();
+	Log() {};
+
 public:
 	static Log* GetInstance();
 	static void DeleteInstance();
-	Log(Log& other) = delete;
-	void operator=(const Log&) = delete;
-	~Log();
-	//End of Singleton part
 
-	//Shortcut to get the instance
+	Log(Log& other) = delete;
+	~Log();
+
+	void operator=(const Log&) = delete;
+
+	// Shortcut to get the instance
 	static void OpenFile(std::filesystem::path const& filename, bool _erase = false);
-	//Shortcut to get the instance
+	// Shortcut to get the instance
 	static void Print(const char* format, ...);
 	static void WarningColor();
 	static void ErrorColor();
@@ -76,4 +83,3 @@ private:
 	};
 	void ChangeColor(Color _handleWindowsId) const;
 };
-#endif // Log_h

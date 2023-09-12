@@ -1,11 +1,9 @@
 #pragma once
 
-#ifndef MATRIX_H
-#define MATRIX_H
-
 #include <vector>
 #include <utility>
 #include <cassert>
+
 #include "vectorM.hpp"
 
 template <typename T, size_t M, size_t N = M>
@@ -18,8 +16,8 @@ private:
 
 public:
 #pragma region Constructors
-	//Null by default 
-	//Identity fills last rows by 0 if more rows than cols
+	// Null by default 
+	// Identity fills last rows by 0 if more rows than cols
 	MatrixMN(bool identity = false)
 	{
 		if (M == N)
@@ -42,9 +40,8 @@ public:
 		size_t i = 0, j = 0;
 		for (const auto& row : values) {
 			for (const auto& val : row) {
-				if (i >= M || j >= N) {
+				if (i >= M || j >= N) 
 					break; // Ignore excess values
-				}
 				data[i][j++] = val;
 			}
 			i++;
@@ -52,48 +49,43 @@ public:
 		}
 		// Fill remaining elements with 0
 		for (; i < M; i++) {
-			for (; j < N; j++) {
+			for (; j < N; j++) 
 				data[i][j] = 0;
-			}
 			j = 0;
 		}
 	}
 
-
-	MatrixMN(VectorM<T, N>* vectors) {
+	MatrixMN(VectorM<T, N>* vectors) 
+	{
 		if (M == N)
 			square = true;
 		data.resize(M);
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			data[i] = vectors[i];
-		}
 	}
 
-	//Copy into another matrix(0 for uninitialized)
+	// Copy into another matrix(0 for uninitialized)
 	template <typename T, size_t P, size_t Q>
 	MatrixMN(const MatrixMN<T, P, Q>& other)
 	{
 		if (M == N)
 			square = true;
 		data.resize(M);
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			for (size_t j = 0; j < N; j++) {
-				if (i < P && j < Q) {
+				if (i < P && j < Q) 
 					data[i][j] = other[i][j];
-				}
-				else {
+				else 
 					data[i][j] = 0;
-				}
 			}
-		}
 	}
 #pragma endregion //Constructors
 
 #pragma region Properties
-	bool IsSquare()
-	{
+	bool IsSquare()	{
 		return square;
 	}
+
 	bool IsDiagonal()
 	{
 		if (!square)
@@ -108,20 +100,20 @@ public:
 	VectorM<T, std::min(M, N)> diagonal()
 	{
 		VectorM<T, std::min(M, N)> diagonal;
-		for (size_t i = 0; i < std::min(M, N); i++) {
+		for (size_t i = 0; i < std::min(M, N); i++) 
 			diagonal[i] = data[i][i];
-		}
 		return diagonal;
 	}
+
 	T trace()
 	{
 		T temp = 0;
-		for (size_t i = 0; i < std::min(M, N); i++) {
+		for (size_t i = 0; i < std::min(M, N); i++) 
 			temp += data[i][i];
-		}
 		return temp;
 	}
-	//Faster for Matrix 3x3 or less
+
+	// Faster for Matrix 3x3 or less
 	T DeterminantRecursive() const
 	{
 		static_assert(M == N, "Matrix must be square");
@@ -138,18 +130,16 @@ public:
 
 			for (size_t colFirstRow = 0; colFirstRow < M; colFirstRow++)
 			{
-				//Subroutine
+				// Subroutine
 				MatrixMN<T, M - 1 > submatrix;
 				for (size_t i = 1; i < M; i++)
 				{
 					for (size_t j = 0, k = 0; j < M; j++)
-					{
 						if (j != colFirstRow)
 						{
 							submatrix[i - 1][k] = data[i][j];
 							k++;
 						}
-					}
 					T temp = submatrix.DeterminantRecursive();
 					det += sign * data[0][colFirstRow] * temp;
 				}
@@ -158,8 +148,9 @@ public:
 			return det;
 		}
 	}
-	//Faster than recursive and can give the determinant for the MatrixMN<T,M,M> 
-	//(actual determinant of MatrixMN doesn't exist in this case)
+
+	// Faster than recursive and can give the determinant for the MatrixMN<T,M,M> 
+	// (actual determinant of MatrixMN doesn't exist in this case)
 	T determinant() const
 	{
 		MatrixMN<T, M, N> temp(*this);
@@ -176,7 +167,7 @@ public:
 		return result;
 	}
 
-	//Augment to the right
+	// Augment to the right
 	template<size_t P>
 	MatrixMN<T, M, (N + P)> Augment(MatrixMN<T, M, P> other) const
 	{
@@ -189,7 +180,7 @@ public:
 		return result;
 	}
 
-	//Not const, applies directly on the matrix
+	// Not const, applies directly on the matrix
 	T GaussianAlgorithm(bool debug = false)
 	{
 		T det = 1;
@@ -234,7 +225,7 @@ public:
 				{
 					if (i != r)
 					{
-						// save the first element of the row
+						// Save the first element of the row
 						T firstElement = data[i][j];
 						for (int p = j; p < N; ++p)
 						{
@@ -252,26 +243,26 @@ public:
 				det *= pivot;
 				r++;
 			}
-			//No pivot;
+			// No pivot;
 			else
 				det = 0;
 		}
 		return det;
-	};
+	}
 
 	MatrixMN<T, M> Inversion() const
 	{
-		//check if Matrix is squared and determinant is Null
+		// Check if Matrix is squared and determinant is Null
 		if (!square || !this->determinant())
 		{
 			std::cout << "Matrix is not inversible" << std::endl;
 			return *this;
 		}
 		MatrixMN<T, M> identityM(true);
-		//copy and Augment by identityM
+		// Copy and Augment by identityM
 		MatrixMN<T, M, M + M> temp = this->Augment(identityM);
 		temp.GaussianAlgorithm();
-		//Extract last part
+		// Extract last part
 		MatrixMN < T, M> result;
 		for (int i = 0; i < M; i++)
 			for (int j = 0; j < M; j++)
@@ -280,7 +271,7 @@ public:
 	}
 #pragma endregion //Transformations
 
-#pragma region GettersandPrint
+#pragma region GettersAndPrint
 	void Print()
 	{
 		for (VectorM<T, N>& row : data)
@@ -291,126 +282,139 @@ public:
 			std::cout << ")\n";
 		}
 		std::cout << std::endl;
-	};
+	}
 
 	VectorM<T, M> Column(size_t index) const
 	{
 		if (index >= N)
 			throw std::runtime_error("outside of range");
 		VectorM<T, M> Column;
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			Column[i] = data[i][index];
-		}
 		return Column;
 	}
-	size_t GetRowsNb()
-	{
+
+	size_t GetRowsNb() {
 		return N;
 	}
-	size_t GetColumnsNb()
-	{
+
+	size_t GetColumnsNb() {
 		return M;
 	}
-#pragma endregion //GettersandPrint
+#pragma endregion //GettersAndPrint
 
 #pragma region Operators
-	VectorM<T, N>& operator[](unsigned int index) {
+	VectorM<T, N>& operator[](unsigned int index) 
+	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return data[index];
 	}
-	const VectorM<T, N>& operator[](unsigned int index) const {
+
+	const VectorM<T, N>& operator[](unsigned int index) const 
+	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return data[index];
 	}
-	//Assignment
+
+	// Assignment
 	template<size_t P, size_t Q>
 	MatrixMN<T, M, N>& operator=(const MatrixMN<T, P, Q>& other)
 	{
 		if (M == N)
 			square = true;
-		for (size_t i = 0; i < std::min(P, M); i++) {
+		for (size_t i = 0; i < std::min(P, M); i++) 
 			this->data[i] = other[i];
-		}
+		
 		if (P < M) {
 			// Use MatrixMN constructor to initialize remaining elements to 0
 			MatrixMN<T, M - P, Q> zeros;
-			for (size_t i = P; i < M; i++) {
+			for (size_t i = P; i < M; i++) 
 				this->data[i] = zeros[i - P];
-			}
 		}
 		return *this;
 	}
-	// mathematical operators
-	MatrixMN<T, M, N> operator+(const MatrixMN<T, M, N>& other) const {
+
+	// Mathematical operators
+	MatrixMN<T, M, N> operator+(const MatrixMN<T, M, N>& other) const 
+	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			result.data[i] = data[i] + other[i];
-		}
 		return result;
 	}
-	MatrixMN& operator+=(const MatrixMN& other) {
+
+	MatrixMN& operator+=(const MatrixMN& other) 
+	{
 		*this = (*this) + other;
 		return *this;
 	}
-	MatrixMN<T, M, N> operator-() const {
+
+	MatrixMN<T, M, N> operator-() const 
+	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			result.data[i] = -data[i];
-		}
 		return result;
 	}
-	MatrixMN<T, M, N> operator-(const MatrixMN<T, M, N>& other) const {
+
+	MatrixMN<T, M, N> operator-(const MatrixMN<T, M, N>& other) const 
+	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			result[i] = data[i] - other[i];
-		}
 		return result;
 	}
-	MatrixMN < T, M, N>& operator-=(const MatrixMN& other) {
+
+	MatrixMN < T, M, N>& operator-=(const MatrixMN& other) 
+	{
 		*this = (*this) - other;
 		return *this;
 	}
-	//Product by a scalar
-	MatrixMN operator*(const T& scalar) const {
+
+	// Product by a scalar
+	MatrixMN operator*(const T& scalar) const 
+	{
 		MatrixMN<T, M, N> result(*this);
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			result[i] = data[i] * scalar;
-		}
 		return result;
 	}
-	MatrixMN < T, M, N> operator*=(const T& scalar) {
+
+	MatrixMN < T, M, N> operator*=(const T& scalar) 
+	{
 		*this = (*this) * scalar;
 		return *this;
 	}
-	//Product by a matrix
+
+	// Product by a matrix
 	template <size_t P, size_t Q>
 	MatrixMN<T, M, Q> operator*(const MatrixMN<T, P, Q>& other) const {
 		static_assert(N == P, "Matrix1 must have the same number of Columns than Matrix2 has of rows");
 		MatrixMN<T, M, Q> result;
-		for (size_t i = 0; i < M; i++) {
+		for (size_t i = 0; i < M; i++) 
 			for (size_t j = 0; j < Q; j++) {
 				VectorM<T, Q> col = other.Column(j);
 				result[i][j] = data[i].Dot(col);
 			}
-		}
 		return result;
 	}
+
 	template <size_t P, size_t Q>
-	MatrixMN<T, M, Q>& operator*=(const MatrixMN<T, P, Q>& other) {
+	MatrixMN<T, M, Q>& operator*=(const MatrixMN<T, P, Q>& other) 
+	{
 		*this = *this * other;
 		return *this;
 	}
-#pragma endregion //Operators
 };
+#pragma endregion //Operators
 
-//Product vector by matrix
+// Product vector by matrix
 template <typename T, size_t M, size_t N>
 VectorM<T, M> operator*(const MatrixMN<T, M, N>& matrix, const VectorM<T, N>& vector)
 {
 	VectorM<T, M> result;
-	for (size_t j = 0; j < M; j++) {
+	for (size_t j = 0; j < M; j++) 
 		result[j] = matrix[j].Dot(vector);
-	}
 	return result;
 }
 
@@ -418,25 +422,22 @@ template <typename T>
 VectorM<T, 3> operator*(const MatrixMN<T, 4>& matrix, const VectorM<T, 3>& vector)
 {
 	VectorM<T, 3> result;
-	for (size_t i = 0; i < 3; i++) {
-		result[i] = matrix[i].Dot({ vector[0],vector[1],vector[2], 1.f
-			}) + matrix[i][3];
-	}
+	for (size_t i = 0; i < 3; i++)
+		result[i] = matrix[i].Dot({ vector[0],vector[1],vector[2], 1.f }) + matrix[i][3];
 	return result;
 }
 template <typename T>
 VectorM<T, 4> operator*(const MatrixMN<T, 4>& matrix, const VectorM<T, 4>& vector)
 {
 	VectorM<T, 4> result;
-	for (size_t i = 0; i < 4; i++) {
+	for (size_t i = 0; i < 4; i++) 
 		result[i] = matrix[i].Dot(vector);
-	}
 	return result;
 }
-//Order reversed cause of assignment
+
+// Order reversed cause of assignment
 template <typename T>
-VectorM<T, 3> operator*=(const VectorM<T, 3>& vector, const MatrixMN<T, 4>& matrix)
-{
+VectorM<T, 3> operator*=(const VectorM<T, 3>& vector, const MatrixMN<T, 4>& matrix) {
 	return matrix * vector;
 }
 
@@ -489,12 +490,14 @@ namespace matrix
 		result[1][0] = sa;  result[1][1] = std::cos(angleinrad);
 		return result;
 	}
+
 	enum class Axis
 	{
 		X,
 		Y,
 		Z
 	};
+
 	template <typename T>
 	MatrixMN<T, 3> Rotate3D(T angleinrad, Axis axis)
 	{
@@ -539,9 +542,9 @@ namespace matrix
 			break;
 		}
 		return result;
-
 	}
-	//faster, don't compute sin or cos if null angle
+
+	// Faster, don't compute sin or cos if null angle
 	template<typename T>
 	MatrixMN<T, 3> Rotate3dAllAxis(VectorM<T, 3> angleXYZinrad)
 	{
@@ -552,10 +555,10 @@ namespace matrix
 
 		if (angleXYZinrad[0])
 		{
-			cosA = std::cos(angleXYZinrad[0]);
+			cosA = (T)std::cos(angleXYZinrad[0]);
 			cosA = (std::abs(cosA) < tolerance) ? 0.0 : cosA;
 
-			sinA = std::sin(angleXYZinrad[0]);
+			sinA = (T)std::sin(angleXYZinrad[0]);
 			sinA = (std::abs(sinA) < tolerance) ? 0.0 : sinA;
 		}
 		else
@@ -565,10 +568,10 @@ namespace matrix
 
 		if (angleXYZinrad[1])
 		{
-			cosB = std::cos(angleXYZinrad[1]);
+			cosB = (T)std::cos(angleXYZinrad[1]);
 			cosB = (std::abs(cosB) < tolerance) ? 0.0 : cosB;
 
-			sinB = std::sin(angleXYZinrad[1]);
+			sinB = (T)std::sin(angleXYZinrad[1]);
 			sinB = (std::abs(sinB) < tolerance) ? 0.0 : sinB;
 		}
 		else
@@ -578,10 +581,10 @@ namespace matrix
 
 		if (angleXYZinrad[2])
 		{
-			cosC = std::cos(angleXYZinrad[2]);
+			cosC = (T)std::cos(angleXYZinrad[2]);
 			cosC = (std::abs(cosC) < tolerance) ? 0.0 : cosC;
 
-			sinC = std::sin(angleXYZinrad[2]);
+			sinC = (T)std::sin(angleXYZinrad[2]);
 			sinC = (std::abs(sinC) < tolerance) ? 0.0 : sinC;
 		}
 		else
@@ -599,20 +602,21 @@ namespace matrix
 		rotationXYZ[2][2] = cosA * cosB;
 		return rotationXYZ;
 	}
+
 	template <typename T>
 	MatrixMN<T, 4> MatrixTRS(VectorM<T, 3> translation, VectorM<T, 3> angleXYZinrad, VectorM<T, 3> scaleFactors)
 	{
 		// Set rotation values
 
-		//faster XYZ 
+		// Faster XYZ 
 		MatrixMN<T, 3> rotationXYZ = Rotate3dAllAxis(angleXYZinrad);
 
-		//apply scaling to the Columns
+		// Apply scaling to the Columns
 		for (size_t i = 0; i < 3; i++)
 			for (size_t j = 0; j < 3; j++)
 				rotationXYZ[i][j] *= scaleFactors[j];
 
-		//Extend Matrix
+		// Extend Matrix
 		MatrixMN<T, 4>result = rotationXYZ;
 		result[3][3] = 1;
 
@@ -623,7 +627,8 @@ namespace matrix
 
 		return result;
 	}
-	//Fast access
+
+	// Fast access
 	template <typename T>
 	MatrixMN<T, 4> MatrixTRS(T transX, T transY, T transZ, T rotaX, T rotaY, T rotaZ, T scaleX, T scaleY, T scaleZ)
 	{
@@ -639,4 +644,3 @@ namespace matrix
 typedef MatrixMN<float, 2> Matrix2x2;
 typedef MatrixMN<float, 3> Matrix3x3;
 typedef MatrixMN<float, 4> Matrix4x4;
-#endif// !MATRIX_H

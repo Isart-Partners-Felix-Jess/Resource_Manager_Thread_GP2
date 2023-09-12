@@ -1,11 +1,8 @@
 #pragma once
 
-#ifndef SHADER_H
-#define SHADER_H
-#endif
-
 #include <vector>
 #include <filesystem>
+
 #include <ResourcesManager.hpp>
 #include <matrix.hpp>
 
@@ -16,11 +13,13 @@ private:
 	unsigned int m_ShaderProgram;
 	unsigned int m_VertexShader;
 	unsigned int m_FragmentShader;
+
 public:
-	//Creates an empty shader, are you sure you don't want to specify paths ?
+	// Creates an empty shader, are you sure you don't want to specify paths ?
 	Shader();
 	Shader(const char* _vertexPath, const char* _fragmentPath);
 	~Shader();
+
 	uint32_t GetShaderProgram() const;
 	bool SetVertexShader(std::filesystem::path const& _filename);
 	bool SetFragmentShader(std::filesystem::path const& _filename);

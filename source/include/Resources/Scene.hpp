@@ -1,11 +1,16 @@
 #pragma once
+
 #include <Camera.hpp>
 #include <Light.hpp>
+
 #include <Graph.hpp>
 #include <Shader.hpp>
 
-//Temp
-class Model;
+#include <Model.hpp>
+#include <ResourcesManager.hpp>
+
+#include <Texture.hpp>
+#include <Material.hpp>
 
 class Scene
 {
@@ -14,25 +19,36 @@ public:
 	std::vector<DirectionalLight> directionalLights;
 	std::vector<PointLight> pointLights;
 	std::vector<SpotLight> spotLights;
-	
+
 	SceneGraph graph = SceneGraph(this);
 
 	Shader& shadlight;
 	Shader& shadlightCube;
 
 	std::vector<Model*> lightCubes;
-	Model* cube;
-	Model* viking_room;
-	Model* robot;
-	Model* building;
+	Model* cube = nullptr;
+	Model* viking_room = nullptr;
+	Model* robot = nullptr;
+	Model* building = nullptr;
 
+	Scene(unsigned int _width, unsigned int _height) :
+		camera(_width, _height),
+		shadlight(*ResourcesManager::CreateResource<Shader>("shadlight")),
+		shadlightCube(*ResourcesManager::CreateResource<Shader>("shadlightCube"))
+	{
+		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	}
+	~Scene() {
+		Destroy();
+	}
 
-	Scene(unsigned int _width, unsigned int _height);
-	~Scene();
 	void Init();
 	void Update(const float& _deltaTime, const CameraInputs& _inputs);
-	void Draw();
+	void Draw() {
+		graph.Draw();
+	}
 	void Destroy();
+
 private:
 	void InitLights();
 	void InitModels();
@@ -42,4 +58,3 @@ private:
 
 	void MaterialTest();
 };
-

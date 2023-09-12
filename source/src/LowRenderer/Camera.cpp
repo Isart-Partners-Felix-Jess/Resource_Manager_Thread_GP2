@@ -1,8 +1,5 @@
 #include <Camera.hpp>
 
-
-#include <ImGui/imgui.h>
-
 Camera::Camera(unsigned int _width, unsigned int _height)
 {
 	zNear = 0.1f;
@@ -11,7 +8,7 @@ Camera::Camera(unsigned int _width, unsigned int _height)
 	eye = Vectorf3{ 0.f,1.f,3.f };
 	center = Vectorf3{ 0.f,1.f,0.f };
 	up = Vectorf3{ 0.f,1.f,0.f };
-	//zCamera normalized inside SetView()
+	// zCamera normalized inside SetView()
 
 	// width and height are useful to compute projection matrix with the right aspect ratio
 	width = _width;
@@ -36,18 +33,17 @@ void Camera::Update(float deltaTime, const CameraInputs& inputs)
 	if (inputs.NoInputs())
 		return;
 	viewChanged = true;
+
 	if (inputs.deltaX)
-	{
 		Turn(inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
-	}
 	if (inputs.deltaY)
-	{
 		Turn(-inputs.deltaY * deltaTime * camRotationSpeed, matrix::Axis::X);
-	}
+
 	if (inputs.moveForward)
 		Move(zCamera * deltaTime * camSpeed);
 	if (inputs.moveBackward)
 		Move(-zCamera * deltaTime * camSpeed);
+
 	if (inputs.moveLeft)
 	{
 		Vectorf3 right = up.Cross_product(zCamera).Normalize();
@@ -59,36 +55,37 @@ void Camera::Update(float deltaTime, const CameraInputs& inputs)
 		Move(left * deltaTime * camSpeed);
 	}
 }
+
 void Camera::Move(const Vectorf3& _velocity)
 {
 	eye = eye + _velocity;
 	center = center + _velocity;
 }
+
 void Camera::Turn(float _angle, matrix::Axis _axis)
 {
-	//FPS View
+	// FPS View
 	const float TOLERANCE = static_cast<float>(M_PI_2) - static_cast<float>(1e-6);
 	static float yaw = -static_cast<float>(M_PI_2);
 	static float pitch = 0.f;
 	if (_axis == matrix::Axis::X)
 	{
 		pitch += _angle;
-		//Clamping, have to do it sadly on orthographic view too because of Gimbal Lock
-		if (pitch >  TOLERANCE)
-			pitch =  TOLERANCE;
+		// Clamping, have to do it sadly on orthographic view too because of Gimbal Lock
+		if (pitch > TOLERANCE)
+			pitch = TOLERANCE;
 		if (pitch < -TOLERANCE)
 			pitch = -TOLERANCE;
 	}
 	if (_axis == matrix::Axis::Y)
-	{
 		yaw += _angle;
-	}
+
 	Vectorf3 direction;
 	direction[0] = cos(yaw) * cos(pitch);
 	direction[1] = sin(pitch);
 	direction[2] = sin(yaw) * cos(pitch);
 	zCamera = direction.Normalize();
-	//Matrix * vector is a lot of useless calculation here, previously :
+	// Matrix * vector is a lot of useless calculation here, previously :
 	//zCamera = matrix::Rotate3D(_angle, _axis) * zCamera;
 	if (perspective)
 	{
@@ -98,6 +95,7 @@ void Camera::Turn(float _angle, matrix::Axis _axis)
 	else
 		eye = center - zCamera * orthoScale;
 }
+
 void Camera::Zoom(float yoffset)
 {
 	if (perspective)
@@ -116,7 +114,8 @@ void Camera::Zoom(float yoffset)
 	}
 	projChanged = true;
 }
-//Remember to compute ViewProjection after this (or after projection)
+
+// Remember to compute ViewProjection after this (or after projection)
 void Camera::SetView()
 {
 	zCamera = (center - eye).Normalize();
@@ -134,7 +133,8 @@ void Camera::SetView()
 
 	view = result;
 }
-//Remember to compute ViewProjection after this (or after view)
+
+// Remember to compute ViewProjection after this (or after view)
 void Camera::SetProjection()
 {
 	if (perspective)
@@ -142,13 +142,12 @@ void Camera::SetProjection()
 	else
 		projection = Orthographic(-orthoScale, orthoScale, -orthoScale, orthoScale);
 }
-void Camera::ComputeViewProjection()
-{
+
+void Camera::ComputeViewProjection() {
 	viewProjection = projection * view;
 }
 
-void Camera::LookAt(float _x, float _y, float _z)
-{
+void Camera::LookAt(float _x, float _y, float _z) {
 	LookAt({ _x,_y,_z });
 }
 
@@ -159,10 +158,9 @@ void Camera::LookAt(const Vectorf3& _target)
 	viewChanged = true;
 }
 
-
 void Camera::ShowImGuiControls()
 {
-	//View
+	// View
 	if (ImGui::CollapsingHeader("Controls", ImGuiTreeNodeFlags_DefaultOpen))
 	{
 		ImGui::Text("WASD Keys to move along XZ Axis");
@@ -188,7 +186,7 @@ void Camera::ShowImGuiControls()
 		if (ImGui::IsItemEdited())
 			LookAt(lookAt);
 	}
-	//Projection
+	// Projection
 	if (ImGui::CollapsingHeader("Projection", ImGuiTreeNodeFlags_DefaultOpen))
 	{
 		if (ImGui::ListBoxHeader("Options", ImVec2(100, 36)))
@@ -229,22 +227,24 @@ Matrix4x4 Camera::Frustum(float left, float right, float bottom, float top, floa
 		{0.f,0.f, (far + near) * iDepDist, dNear * far * iDepDist},
 		{0.f,0.f, -1.f, 0.f} };
 }
+
 Matrix4x4 Camera::Perspective(float fovY, float aspect, float near, float far)
 {
 	float angle = static_cast<float>(M_PI_2) - fovY * 0.5f;
-	//Safe tan
+	// Safe tan
 	float f = 0.f;
-	//Very specific, I am afraid
+	// Very specific, I am afraid
 	if (angle != static_cast<float>(M_PI_2) && angle != -static_cast<float>(M_PI_2))
 		f = tan(angle);
 	float iDist = 1.f / (near - far);
 	return Matrix4x4{
-		{f / aspect,0.f,0.f					,0.f},
+		{f / aspect,0.f,0.f					,0.f },
 		{		0.f,f  ,0.f					,0.f },
 		{		0.f,0.f,(far + near) * iDist,2.f * far * near * iDist},
 		{		0.f,0.f,-1.f				,0.f }
 	};
 }
+
 Matrix4x4 Camera::Orthographic(float left, float right, float bottom, float top)
 {
 	float iHdist = 1.f / (right - left);
