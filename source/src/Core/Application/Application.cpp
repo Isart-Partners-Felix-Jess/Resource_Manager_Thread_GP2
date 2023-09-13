@@ -12,7 +12,7 @@ Application::Application(int _width, int _height) : scene(_width, _height)
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 
-											//	 \!/ with an "r" /!\
+											/*	 \!/ with an "r" / !\ */
 	window = glfwCreateWindow(_width, _height, "Threaded Resource Manager", NULL, NULL);
 	if (window == NULL)
 	{
