@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Component">
+    <Position X="11.75" Y="21" Width="2.25" />
+    <AssociationLine Name="node" Type="Node">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.047" Y="0.07" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>source\include\Core\DataStructure\Component.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="node" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Application">
+    <Position X="10.75" Y="1.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAQASEAABBEAAgABAIAAAMAAAIBiABCJQBAAAAAABAA=</HashCode>
+      <FileName>source\include\Core\Application\Application.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="scene" />
+      <Field Name="inputs" />
+      <Field Name="window" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Graph&lt;T&gt;">
+    <Position X="22" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAA=</HashCode>
+      <FileName>source\include\Core\DataStructure\Graph.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneGraph">
+    <Position X="15.75" Y="15.25" Width="5" />
+    <AssociationLine Name="entities" Type="SceneNode" FixedFromPoint="true">
+      <Path>
+        <Point X="15.75" Y="17.312" />
+        <Point X="14.833" Y="17.312" Type="JumpStart" />
+        <Point X="14.667" Y="17.312" Type="JumpEnd" />
+        <Point X="11" Y="17.312" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAAAggAAAAAAIAAAAAAAQAAAJAAAAAAAAA=</HashCode>
+      <FileName>source\include\Core\DataStructure\Graph.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="scene" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="entities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Log">
+    <Position X="1.5" Y="24.25" Width="3.75" />
+    <NestedTypes>
+      <Enum Name="Log::Color" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>source\include\Core\Debug\Log.hpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <AssociationLine Name="instance" Type="Log">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.173" Y="0.311" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAgAAgACAAAAABAABAhAAMEAAAAiAAAEAII=</HashCode>
+      <FileName>source\include\Core\Debug\Log.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="instance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Mesh">
+    <Position X="29.5" Y="19.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAgAAJAEAAgAAAAAQACAAAAAAAAAAQQAAAAAEACA=</HashCode>
+      <FileName>source\include\LowRenderer\Mesh.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="m_Vertices" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Transform">
+    <Position X="1" Y="17.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>BEEgAAAAEAIABAAAAgCAAQQCAAAAAAgAQAAAAQAAgAA=</HashCode>
+      <FileName>source\include\Physics\Transform.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Material">
+    <Position X="8.25" Y="24.5" Width="10" />
+    <TypeIdentifier>
+      <HashCode>QEABAAAAABAAgAAAAAAAAAIAAAAAAAAAEAAAiABAgEA=</HashCode>
+      <FileName>source\include\Resources\Material.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model">
+    <Position X="25.5" Y="24.5" Width="11.5" />
+    <AssociationLine Name="materials" Type="Material" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="28.375" Y="28.108" />
+        <Point X="28.375" Y="31.05" />
+        <Point X="15.5" Y="31.05" />
+        <Point X="15.5" Y="29.261" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAQAgAAAAACAAAAAAAAAEACEAAAAEhAAEA=</HashCode>
+      <FileName>source\include\Resources\Model.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="shader" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="meshes" />
+      <Field Name="materials" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Scene">
+    <Position X="11.5" Y="9" Width="4.5" />
+    <AssociationLine Name="graph" Type="SceneGraph" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.812" Y="13.824" />
+        <Point X="14.812" Y="16.394" />
+        <Point X="15.75" Y="16.394" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.058" Y="0.05" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="pointLights" Type="PointLight" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="13.562" />
+        <Point X="8.208" Y="13.562" Type="JumpStart" />
+        <Point X="8.042" Y="13.562" Type="JumpEnd" />
+        <Point X="4.938" Y="13.562" />
+        <Point X="4.938" Y="14" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="spotLights" Type="SpotLight" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.75" Y="13.824" />
+        <Point X="14.75" Y="23.438" />
+        <Point X="11" Y="23.438" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>FCQAgQEAAgAAAsCIgAAEAAAAyABAAIAAAAQCQAAIAAA=</HashCode>
+      <FileName>source\include\Resources\Scene.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="camera" />
+      <Field Name="graph" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="directionalLights" />
+      <Field Name="pointLights" />
+      <Field Name="spotLights" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Shader">
+    <Position X="19" Y="24.5" Width="5.75" />
+    <InheritanceLine Type="IResource">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="-0.499" Y="0.06" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>QBAJEQgQAAAIAhAIAAAAAAAAAAAFAAAAFAABQAA4ABA=</HashCode>
+      <FileName>source\include\Resources\Shader.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texture">
+    <Position X="18" Y="20.25" Width="3" />
+    <InheritanceLine Type="IResource" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="24.5" Y="22.959" />
+        <Point X="24.5" Y="24.126" />
+        <Point X="21.583" Y="24.126" Type="JumpStart" />
+        <Point X="21.417" Y="24.126" Type="JumpEnd" />
+        <Point X="19.312" Y="24.126" />
+        <Point X="19.312" Y="23.281" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAgAABACAAgAAAAAAAAACAEAIAAAAAAAA=</HashCode>
+      <FileName>source\include\Resources\Texture.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IResource">
+    <Position X="23" Y="20.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AgCBAAAAAAAAAAAAAAAAAAAAAEAAAAYAEAAAAAABAAA=</HashCode>
+      <FileName>source\include\Resources\ResourcesManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Camera">
+    <Position X="4.75" Y="5.25" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AB0CAIAQQIAAUAQY1AASgAAAAAAIAAIRAQEAAgEBAAI=</HashCode>
+      <FileName>source\include\LowRenderer\Camera.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Node">
+    <Position X="11.75" Y="18.75" Width="2.25" />
+    <AssociationLine Name="children" Type="Node">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.318" Y="0.269" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="parent" Type="Node">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.058" Y="0.162" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAQAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\include\Core\DataStructure\Graph.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="parent" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="children" />
+    </ShowAsCollectionAssociation>
+  </Struct>
+  <Struct Name="SceneNode">
+    <Position X="6.5" Y="16" Width="4.5" />
+    <AssociationLine Name="transform" Type="Transform" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="18.688" />
+        <Point X="5.5" Y="18.688" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.07" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="model" Type="Model" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="17.812" />
+        <Point X="14.667" Y="17.812" Type="JumpStart" />
+        <Point X="14.833" Y="17.812" Type="JumpEnd" />
+        <Point X="27.75" Y="17.812" />
+        <Point X="27.75" Y="24.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="material" Type="Material" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="17.812" />
+        <Point X="14.667" Y="17.812" Type="JumpStart" />
+        <Point X="14.833" Y="17.812" Type="JumpEnd" />
+        <Point X="17.438" Y="17.812" />
+        <Point X="17.438" Y="24.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="pointLight" Type="PointLight" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="16" />
+        <Point X="7.5" Y="15.625" />
+        <Point X="5.25" Y="15.625" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.058" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="shader" Type="Shader" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="17.812" />
+        <Point X="14.667" Y="17.812" Type="JumpStart" />
+        <Point X="14.833" Y="17.812" Type="JumpEnd" />
+        <Point X="21.5" Y="17.812" />
+        <Point X="21.5" Y="24.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="scene" Type="Scene" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="16.75" />
+        <Point X="12.062" Y="16.75" />
+        <Point X="12.062" Y="13.824" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAgAAEgAAQAZAAIAAAAAEAAAwAFAAAERIAAA=</HashCode>
+      <FileName>source\include\Core\DataStructure\Graph.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="transform" />
+      <Field Name="model" />
+      <Field Name="material" />
+      <Field Name="pointLight" />
+      <Field Name="spotLight" />
+      <Field Name="camera" />
+      <Field Name="shader" />
+      <Field Name="scene" />
+    </ShowAsAssociation>
+  </Struct>
+  <Struct Name="CameraInputs">
+    <Position X="17" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAARAAAAAQAAAAAAAACEAAAAA=</HashCode>
+      <FileName>source\include\LowRenderer\Camera.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Light">
+    <Position X="17.75" Y="12.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAgAAAAAAAAAAAAAIAAAAAAAAAAACAAABAgAA=</HashCode>
+      <FileName>source\include\LowRenderer\Light.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PointLight">
+    <Position X="0.5" Y="14" Width="4.75" />
+    <AssociationLine Name="light" Type="Light" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="14.625" />
+        <Point X="8.042" Y="14.625" Type="JumpStart" />
+        <Point X="8.208" Y="14.625" Type="JumpEnd" />
+        <Point X="11.979" Y="14.625" Type="JumpStart" />
+        <Point X="12.146" Y="14.625" Type="JumpEnd" />
+        <Point X="14.667" Y="14.625" Type="JumpStart" />
+        <Point X="14.896" Y="14.625" Type="JumpEnd" />
+        <Point X="16.792" Y="14.625" Type="JumpStart" />
+        <Point X="16.958" Y="14.625" Type="JumpEnd" />
+        <Point X="17.75" Y="14.625" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAIAAAAAIAAAAAAAAYACAAgAA=</HashCode>
+      <FileName>source\include\LowRenderer\Light.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="light" />
+    </ShowAsAssociation>
+  </Struct>
+  <Struct Name="DirectionalLight">
+    <Position X="18.75" Y="9" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAIAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>source\include\LowRenderer\Light.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="light" />
+    </ShowAsAssociation>
+  </Struct>
+  <Struct Name="SpotLight">
+    <Position X="6.75" Y="22.25" Width="4.25" />
+    <AssociationLine Name="point" Type="PointLight" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="22.688" />
+        <Point X="0.75" Y="22.688" />
+        <Point X="0.75" Y="16.517" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.663" Y="0.123" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAMAAAAAAAAAAAAAAAAAAAABAAAAAAgAA=</HashCode>
+      <FileName>source\include\LowRenderer\Light.hpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="point" />
+    </ShowAsAssociation>
+  </Struct>
+  <Struct Name="Vertex">
+    <Position X="35" Y="20.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAIAAAAAAACAAAAAAA=</HashCode>
+      <FileName>source\include\LowRenderer\Mesh.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="GLFWwindow" Collapsed="true">
+    <Position X="16.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>third_party\include\GLFW\glfw3.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
