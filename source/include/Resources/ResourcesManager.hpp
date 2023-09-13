@@ -9,6 +9,7 @@ class IResource
 {
 public:
 	virtual ~IResource() = default;
+
 	virtual void LoadResource(const char* _name) = 0;
 	virtual void UnloadResource() = 0;
 
@@ -25,7 +26,6 @@ protected:
 class ResourcesManager
 {
 private:
-	// Unused for now
 	static ResourcesManager* instance;
 	static std::unordered_map<std::string, IResource*> m_Resources;
 

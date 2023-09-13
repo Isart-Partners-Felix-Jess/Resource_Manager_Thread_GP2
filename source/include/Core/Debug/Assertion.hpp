@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <intrin.h>
+
 #include <Log.hpp>
 
 #ifdef NDEBUG
@@ -14,5 +15,6 @@ throw std::runtime_error(message); \
 #define Assert(condition, message) \
 if (!(condition)) { \
     DEBUG_ERROR(true, std::string("Assertion failed: " + std::string(message)).c_str()); \
-    __debugbreak();}
+    __debugbreak(); \
+}
 #endif

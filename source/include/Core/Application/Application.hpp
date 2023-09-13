@@ -51,6 +51,7 @@ public:
 
 	void Destroy();
 	void Update();
+
 	//Not so useful function TBH, just use glClearColor
 	void ChangeColor(float _newcolor[4]);
 	void ShowImGuiControls();

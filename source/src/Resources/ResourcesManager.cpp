@@ -2,12 +2,9 @@
 
 // Singleton
 ResourcesManager* ResourcesManager::instance = nullptr;
-std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources; //Erik: Necessary ?
+std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources;
 
-// Unused for now
-void ResourcesManager::LoadResource(IResource* _toLoad) {
-	//_toLoad->LoadResource("");
-}
+void ResourcesManager::LoadResource(IResource* _toLoad) {}
 
 ResourcesManager::ResourcesManager() {
 	instance = this->GetInstance();

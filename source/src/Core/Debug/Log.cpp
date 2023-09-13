@@ -23,7 +23,7 @@ Log* Log::GetInstance()
 
 void Log::DeleteInstance()
 {
-	//Useless to check: delete nullptr is safe
+	// Useless to check: delete nullptr is safe
 	delete instance;
 }
 
@@ -77,8 +77,8 @@ void Log::InstancePrint(const char* format, va_list args)
 	m_Output.flush();
 }
 
-void Log::ResetColor() {
-	SetConsoleTextAttribute(GetInstance()->handle, 15); // texte in white (default)
+void Log::ResetColor() { // Text in white (default)
+	SetConsoleTextAttribute(GetInstance()->handle, 15);
 }
 
 void Log::SuccessColor() {
