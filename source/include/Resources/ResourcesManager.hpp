@@ -13,6 +13,8 @@ public:
 	virtual void LoadResource(const char* _name) = 0;
 	virtual void UnloadResource() = 0;
 
+	void LoadResourceThread(const char* _name);
+
 	unsigned int GetResourceId() const;
 
 	void SetResourcePath(const std::string& _path);
@@ -40,7 +42,7 @@ public:
 	static R* CreateResource(const std::string& _name) {
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
-		createdResource->LoadResource(_name.c_str());
+		createdResource->LoadResourceThread(_name.c_str());
 		// Erase previous pointer if found
 		auto it = m_Resources.find(_name);
 		if (it != m_Resources.end())
@@ -50,7 +52,12 @@ public:
 		DEBUG_LOG("Resource %s created, ID: %i", _name.c_str(), createdResource->GetResourceId());
 		return dynamic_cast<R*>(createdResource);
 	}
-
+	template<typename R>
+	static R* CreateResourceThread(const std::string& _name) {
+		R* createdResource = new R();
+		std::thread creationThread = std::thread([_name,createdResource]()mutable { createdResource = CreateResource<R>(_name); });
+		return createdResource;
+	}
 	template<typename R>
 	static R* GetResource(const std::string& _name) {
 		auto it = m_Resources.find(_name);

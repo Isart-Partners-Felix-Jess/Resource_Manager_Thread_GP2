@@ -163,6 +163,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Library Include="third_party\libs\glfw3dll.lib" />
     <Library Include="third_party\libs\glfw3.lib" />
   </ItemGroup>
   <ItemGroup>

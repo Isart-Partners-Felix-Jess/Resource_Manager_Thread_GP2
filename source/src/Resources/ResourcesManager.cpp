@@ -1,4 +1,5 @@
 #include <ResourcesManager.hpp>
+#include <thread>
 
 // Singleton
 ResourcesManager* ResourcesManager::instance = nullptr;
@@ -51,6 +52,12 @@ void ResourcesManager::Delete(const std::string& _name)
 	Log::SuccessColor();
 	DEBUG_LOG("Resource %s deleted successfully", name);
 	Log::ResetColor();
+}
+
+void IResource::LoadResourceThread(const char* _name)
+{
+	std::thread loadThread = std::thread([this, _name] { LoadResource(_name); });
+	loadThread.join();
 }
 
 unsigned int IResource::GetResourceId() const
