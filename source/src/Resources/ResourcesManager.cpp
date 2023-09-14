@@ -2,19 +2,20 @@
 #include <thread>
 
 // Singleton
-ResourcesManager* ResourcesManager::instance = nullptr;
+std::atomic<ResourcesManager*> ResourcesManager::m_instance = nullptr;
+std::mutex ResourcesManager::m_mutex;
 std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources;
 
 void ResourcesManager::LoadResource(IResource* _toLoad) {}
 
 ResourcesManager::ResourcesManager() {
-	instance = this->GetInstance();
+	m_instance = this->GetInstance();
 }
 
 ResourcesManager::~ResourcesManager()
 {
 	Destroy();
-	delete instance;
+	delete m_instance;
 }
 
 void ResourcesManager::Destroy()
@@ -33,8 +34,14 @@ void ResourcesManager::Destroy()
 
 ResourcesManager* ResourcesManager::GetInstance()
 {
+	ResourcesManager* instance = m_instance.load(std::memory_order::acquire);
 	if (instance == nullptr)
-		instance = new ResourcesManager();
+	{
+		std::lock_guard<std::mutex> lock(m_mutex);
+		instance = m_instance.load(std::memory_order::relaxed);
+		if (instance == nullptr)
+			instance = new ResourcesManager();
+	}
 	return instance;
 }
 

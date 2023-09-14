@@ -2,6 +2,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <mutex>
 
 #include <Log.hpp>
 
@@ -28,7 +29,8 @@ protected:
 class ResourcesManager
 {
 private:
-	static ResourcesManager* instance;
+	static std::atomic<ResourcesManager*> m_instance;
+	static std::mutex m_mutex;
 	static std::unordered_map<std::string, IResource*> m_Resources;
 
 	ResourcesManager();
