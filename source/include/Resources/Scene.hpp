@@ -21,6 +21,7 @@ public:
 	std::vector<SpotLight> spotLights;
 
 	SceneGraph graph = SceneGraph(this);
+	std::vector<std::thread> threadPool;
 
 	bool monoThreaded = true;
 
@@ -53,6 +54,7 @@ public:
 	void Restart();
 
 private:
+	void InitThread();
 	void InitLights();
 	void InitModels();
 	void InitMaterials();

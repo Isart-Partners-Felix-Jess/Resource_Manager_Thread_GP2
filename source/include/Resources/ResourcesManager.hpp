@@ -15,7 +15,8 @@ public:
 	virtual void LoadResource(const char* _name) = 0;
 	virtual void UnloadResource() = 0;
 
-	void LoadResourceThread(const char* _name);
+	virtual std::thread LoadResourceStartThread(const char* _name) = 0;
+	virtual void LoadResourceThreadJoined(const char* _name)= 0;
 
 	unsigned int GetResourceId() const;
 
@@ -56,11 +57,31 @@ public:
 		return dynamic_cast<R*>(createdResource);
 	}
 	template<typename R>
-	static R* CreateResourceThread(const std::string& _name) {
-		R* createdResource = new R();
-		auto creationThread = std::async([_name,createdResource]()mutable { createdResource = CreateResource<R>(_name); });
-		creationThread.get();
-		return createdResource;
+	static std::thread CreateResourceThread(const std::string& _name) {
+		IResource* createdResource = new R();
+		createdResource->SetResourcePath(_name);
+		std::thread creationThread = createdResource->LoadResourceStartThread(_name.c_str());
+		auto it = m_Resources.find(_name);
+		if (it != m_Resources.end())
+			delete it->second;
+		m_Resources.emplace(_name, createdResource);
+		return creationThread;
+	}
+	template<typename R>
+	static R* CreateResourceThreadJoined(const std::string& _name) {
+		
+		auto it = m_Resources.find(_name);
+		if (it == m_Resources.end())
+		{
+			DEBUG_WARNING("Resource %s not found", _name.c_str());
+			return nullptr;
+		}
+		IResource* createdResource = it->second;
+		createdResource->LoadResourceThreadJoined(_name.c_str());
+
+		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
+
+		return dynamic_cast<R*>(createdResource);
 	}
 	template<typename R>
 	static R* GetResource(const std::string& _name) {

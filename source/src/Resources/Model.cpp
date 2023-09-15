@@ -8,6 +8,17 @@ static unsigned int s_ModelNumber = 0;
 
 void Model::LoadResource(const char* _name)
 {
+	FileRead(_name);
+
+	Mesh* next_mesh = new Mesh;
+	*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
+	next_mesh->Set_Indices(indices);
+	next_mesh->SetupMesh();
+	meshes.push_back(next_mesh);
+}
+
+void Model::FileRead(const char* _name)
+{
 	m_ResourceId = s_ModelNumber++;
 	std::ifstream file;
 	std::filesystem::path path = "assets/meshes/";
@@ -29,11 +40,6 @@ void Model::LoadResource(const char* _name)
 	}
 	if (file.is_open())
 	{
-		std::vector<Vertex> temp_Vertices;
-		//temp index
-		std::vector<uint32_t> temp_idx_Positions;
-		std::vector<uint32_t> temp_idx_Uvs;
-		std::vector<uint32_t> temp_idx_Normals;
 
 		Log::SuccessColor();
 		DEBUG_LOG("Model File %s has been opened", _name);
@@ -41,7 +47,6 @@ void Model::LoadResource(const char* _name)
 
 		//clear in case of double load
 		temp_Vertices.clear();
-		std::vector<uint32_t> indices;
 		//load .obj
 		std::string line;
 		unsigned int vIdx = 0;
@@ -97,7 +102,6 @@ void Model::LoadResource(const char* _name)
 				next_mesh->Set_Indices(indices);
 				next_mesh->SetupMesh();
 				meshes.push_back(next_mesh);
-				indices.clear();
 			}
 			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
 			{
@@ -147,13 +151,29 @@ void Model::LoadResource(const char* _name)
 			}
 		}
 		file.close();
-
-		Mesh* next_mesh = new Mesh;
-		*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
-		next_mesh->Set_Indices(indices);
-		next_mesh->SetupMesh();
-		meshes.push_back(next_mesh);
 	}
+}
+
+std::thread Model::LoadResourceStartThread(const char* _name)
+{
+	std::thread load_thread = std::thread([this, _name] {
+		FileRead(_name); });
+	return load_thread;
+}
+
+void Model::LoadResourceThreadJoined(const char* _name)
+{
+	Mesh* next_mesh = new Mesh;
+	*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
+	next_mesh->Set_Indices(indices);
+	next_mesh->SetupMesh();
+	meshes.push_back(next_mesh);
+
+	temp_Vertices.clear();
+	temp_idx_Positions.clear();
+	temp_idx_Uvs.clear();
+	temp_idx_Normals.clear();
+	indices.clear();
 }
 
 void Model::Draw(Shader& _shader)
@@ -162,7 +182,7 @@ void Model::Draw(Shader& _shader)
 	for (Mesh* mesh : meshes)
 	{
 		//if (i < materials.size())
-		//	materials[i++].InitShader(_shader);
+			//materials[i++].InitShader(_shader);
 		mesh->Draw();
 	}
 }
@@ -178,6 +198,7 @@ void Model::UnloadResource()
 		mesh->~Mesh();
 		delete mesh;
 	}
+	//meshes.clear();
 }
 
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene) {

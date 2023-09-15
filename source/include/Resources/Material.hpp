@@ -33,6 +33,9 @@ public:
 private:
 	// Inherited from IResource
 	virtual void LoadResource(const char* _name) override {};
+	virtual std::thread LoadResourceStartThread(const char* _name) override { return std::thread{}; };
+	virtual void LoadResourceThreadJoined(const char* _name) override {};
+
 	virtual void UnloadResource() override {};
 };
 
