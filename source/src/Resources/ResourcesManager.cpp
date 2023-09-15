@@ -61,6 +61,7 @@ void ResourcesManager::Delete(const std::string& _name)
 	Log::ResetColor();
 }
 
+//TODO: Remove ?
 void IResource::LoadResourceThread(const char* _name)
 {
 	std::thread loadThread = std::thread([this, _name] { LoadResource(_name); });

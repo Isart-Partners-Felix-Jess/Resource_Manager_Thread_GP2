@@ -22,6 +22,8 @@ public:
 
 	SceneGraph graph = SceneGraph(this);
 
+	bool monoThreaded = true;
+
 	Shader& shadlight;
 	Shader& shadlightCube;
 
@@ -48,6 +50,7 @@ public:
 		graph.Draw();
 	}
 	void Destroy();
+	void Restart();
 
 private:
 	void InitLights();

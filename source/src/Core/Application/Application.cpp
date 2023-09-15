@@ -22,6 +22,7 @@ Application::Application(int _width, int _height) : scene(_width, _height)
 	}
 	glfwMakeContextCurrent(window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
+	Log::Print("'S' + 'I' Keys to hide/show controls");
 
 	scene.Init();
 	glViewport(0, 0, _width, _height);
@@ -81,6 +82,7 @@ void Application::ShowImGuiControls()
 	if (ImGui::Begin("Config"))
 	{
 		ImGui::Text("'S' + 'I' Keys to hide/show controls");
+		ImGui::Text("'R' to restart");
 		if (ImGui::CollapsingHeader("Framebuffer", ImGuiTreeNodeFlags_DefaultOpen))
 		{
 			ImGui::Text("FPS : %f", 1.f / ImGui::GetIO().DeltaTime);
@@ -107,7 +109,8 @@ void Application::ProcessInput(GLFWwindow* _window)
 		s_LastPressed = glfwGetTime();
 		m_ShowControls = !m_ShowControls;
 	}
-
+	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+		scene.Restart();
 	// LearnOpenGL
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 	{

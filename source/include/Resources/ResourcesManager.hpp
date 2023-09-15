@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <mutex>
+#include <future>
 
 #include <Log.hpp>
 
@@ -44,7 +45,7 @@ public:
 	static R* CreateResource(const std::string& _name) {
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
-		createdResource->LoadResourceThread(_name.c_str());
+		createdResource->LoadResource(_name.c_str());
 		// Erase previous pointer if found
 		auto it = m_Resources.find(_name);
 		if (it != m_Resources.end())
@@ -57,7 +58,8 @@ public:
 	template<typename R>
 	static R* CreateResourceThread(const std::string& _name) {
 		R* createdResource = new R();
-		std::thread creationThread = std::thread([_name,createdResource]()mutable { createdResource = CreateResource<R>(_name); });
+		auto creationThread = std::async([_name,createdResource]()mutable { createdResource = CreateResource<R>(_name); });
+		creationThread.get();
 		return createdResource;
 	}
 	template<typename R>
