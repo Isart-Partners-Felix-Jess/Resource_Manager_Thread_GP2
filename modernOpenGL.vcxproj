@@ -173,6 +173,7 @@
     <ClInclude Include="source\include\Core\DataStructure\Graph.hpp" />
     <ClInclude Include="source\include\Core\Debug\Assertion.hpp" />
     <ClInclude Include="source\include\Core\Debug\Log.hpp" />
+    <ClInclude Include="source\include\Core\Thread\ThreadPool.hpp" />
     <ClInclude Include="source\include\LowRenderer\Camera.hpp" />
     <ClInclude Include="source\include\LowRenderer\Light.hpp" />
     <ClInclude Include="source\include\LowRenderer\Mesh.hpp" />

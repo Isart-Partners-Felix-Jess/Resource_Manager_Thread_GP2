@@ -161,10 +161,14 @@
     <ClInclude Include="source\include\Maths\vectorM.hpp">
       <Filter>Fichiers d%27en-tête\Core\Math</Filter>
     </ClInclude>
+    <ClInclude Include="source\include\Core\Thread\ThreadPool.hpp">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="third_party\libs\glfw3dll.lib" />
     <Library Include="third_party\libs\glfw3.lib" />
+    <Library Include="third_party\libs\glfw3_mt.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
