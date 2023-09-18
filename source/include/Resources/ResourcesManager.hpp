@@ -15,8 +15,8 @@ public:
 	virtual void LoadResource(const std::string _name) = 0;
 	virtual void UnloadResource() = 0;
 
-	virtual std::thread LoadResourceStartThread(const std::string _name) = 0;
-	virtual void LoadResourceThreadJoined(const std::string _name)= 0;
+	virtual std::thread LoadResourceStartThread(const std::string _name);
+	virtual void LoadResourceThreadJoined(const std::string _name);
 
 	unsigned int GetResourceId() const;
 

@@ -23,10 +23,10 @@ public:
 	SceneGraph graph = SceneGraph(this);
 	std::vector<std::thread> threadPool;
 
-	bool monoThreaded = false;
+	bool monoThreaded = true;
 
-	Shader& shadlight;
-	Shader& shadlightCube;
+	Shader* shadlight;
+	Shader* shadlightCube;
 
 	std::vector<Model*> lightCubes;
 	Model* cube = nullptr;
@@ -35,9 +35,7 @@ public:
 	Model* building = nullptr;
 
 	Scene(unsigned int _width, unsigned int _height) :
-		camera(_width, _height),
-		shadlight(*ResourcesManager::CreateResource<Shader>("shadlight")),
-		shadlightCube(*ResourcesManager::CreateResource<Shader>("shadlightCube"))
+		camera(_width, _height)
 	{
 		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	}

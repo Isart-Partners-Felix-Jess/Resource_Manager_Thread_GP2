@@ -11,7 +11,7 @@ SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene) : material(materia
 		SetParent(_parent); // Set parent child as well
 	scene = _scene;
 	changed = true;
-	shader = &scene->shadlight;
+	shader = scene->shadlight;
 }
 
 // Set parent child as well
@@ -142,8 +142,7 @@ SceneGraph::SceneGraph(Scene* _scene)
 
 SceneGraph::~SceneGraph()
 {
-	for (SceneNode* entity : entities)
-		delete entity;
+	Destroy();
 	delete m_RootNode;
 }
 
@@ -157,6 +156,14 @@ void SceneGraph::Draw()
 {
 	for (size_t i = 0; i < m_RootNode->GetChildNumber(); i++)
 		m_RootNode->GetChild(i)->Draw();
+}
+
+void SceneGraph::Destroy()
+{
+	for (SceneNode* entity : entities)
+		delete entity;
+	m_RootNode->children.clear();
+	entities.clear();
 }
 
 void SceneGraph::InitDefaultShader(Shader& _shader)

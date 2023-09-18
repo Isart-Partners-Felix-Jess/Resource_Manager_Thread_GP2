@@ -115,7 +115,7 @@ bool Shader::Link()
 		DEBUG_LOG("SHADER #%i::LINK::SUCCESS\n", m_ShaderProgram);
 		Log::ResetColor();
 	}
-	UnloadResource(); // Maybe you delete in any case
+	//UnloadResource(); // Maybe you delete in any case
 	return success;
 }
 

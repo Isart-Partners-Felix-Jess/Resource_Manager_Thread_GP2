@@ -92,4 +92,5 @@ public:
 	// Check if all shaders are initialized first
 	void Update(const float& _deltaTime);
 	void Draw();
+	void Destroy();
 };

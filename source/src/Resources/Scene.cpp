@@ -15,9 +15,9 @@ void Scene::Init()
 		InitThread();
 	InitMaterials();
 
-	InitShaders();
 	InitLights();
 	InitModels();
+	InitShaders();
 }
 
 void Scene::Update(const float& _deltaTime, const CameraInputs& _inputs)
@@ -43,12 +43,15 @@ void Scene::Destroy()
 	directionalLights.clear();
 	pointLights.clear();
 	spotLights.clear();
+	threadPool.clear();
 }
 
 void Scene::Restart()
 {
-	ResourcesManager::Destroy();
 	Scene::Destroy();
+	ResourcesManager::Destroy();
+	graph.Destroy();
+
 	monoThreaded = !monoThreaded; //Change the option multi<->mono
 	Scene::Init();
 }
@@ -106,21 +109,21 @@ void Scene::UpdateLights(const float& _deltaTime)
 	// Rotative Pointlight
 	pointLights[0].position = matrix::Rotate3D(_deltaTime, matrix::Axis::Y) * pointLights[0].position;
 
-	shadlight.Use();
-	shadlight.SetInt("DIRECTIONAL_LIGHT_NBR", directionalLights.size());
+	shadlight->Use();
+	shadlight->SetInt("DIRECTIONAL_LIGHT_NBR", directionalLights.size());
 	for (size_t i = 0; i < directionalLights.size(); i++)
-		directionalLights[i].InitShader(shadlight, i);
+		directionalLights[i].InitShader(*shadlight, i);
 
-	shadlight.SetInt("POINT_LIGHT_NBR", pointLights.size());
+	shadlight->SetInt("POINT_LIGHT_NBR", pointLights.size());
 	for (size_t i = 0; i < pointLights.size(); i++)
-		pointLights[i].InitShader(shadlight, i);
+		pointLights[i].InitShader(*shadlight, i);
 
-	shadlight.SetInt("SPOT_LIGHT_NBR", (int)spotLights.size());
+	shadlight->SetInt("SPOT_LIGHT_NBR", (int)spotLights.size());
 	for (size_t i = 0; i < spotLights.size(); i++)
-		spotLights[i].InitShader(shadlight, i);
+		spotLights[i].InitShader(*shadlight, i);
 
-	shadlight.SetVec3("objectColor", 1.0f, 1.0f, 1.0f);
-	shadlight.SetVec3("viewPos", camera.eye);
+	shadlight->SetVec3("objectColor", 1.0f, 1.0f, 1.0f);
+	shadlight->SetVec3("viewPos", camera.eye);
 }
 
 void Scene::InitModels()
@@ -220,18 +223,22 @@ void Scene::InitModels()
 	graph.entities[7]->material = material::turquoise;
 	graph.entities[7]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[7]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
-	graph.InitDefaultShader(shadlight);
+	graph.InitDefaultShader(*shadlight);
 }
 
 void Scene::InitShaders()
 {
-	shadlight.SetFragmentShader("assets/shaders/lighting.frag");
-	shadlight.SetVertexShader("assets/shaders/basic.vert");
-	shadlight.Link();
+	shadlight = ResourcesManager::CreateResource<Shader>("shadlight");
+	shadlightCube = ResourcesManager::CreateResource<Shader>("shadlightCube");
 
-	shadlightCube.SetFragmentShader("assets/shaders/white.frag");
-	shadlightCube.SetVertexShader("assets/shaders/basic.vert");
-	shadlightCube.Link();
+	shadlight->SetFragmentShader("assets/shaders/lighting.frag");
+	shadlight->SetVertexShader("assets/shaders/basic.vert");
+	shadlight->Link();
+
+	shadlightCube->SetFragmentShader("assets/shaders/white.frag");
+	shadlightCube->SetVertexShader("assets/shaders/basic.vert");
+	shadlightCube->Link();
+	graph.InitDefaultShader(*shadlight);
 }
 
 void Scene::InitMaterials()
@@ -269,12 +276,12 @@ void Scene::MaterialTest()
 
 		Matrix4x4 MVP = camera.viewProjection * modeltest;
 
-		shadlight.SetMat4("MVP", MVP);
-		shadlight.SetMat4("model", modeltest);
-		shadlight.SetMat3("normalMatrix", modeltest.Inversion().Transposed()); // It works :D
+		shadlight->SetMat4("MVP", MVP);
+		shadlight->SetMat4("model", modeltest);
+		shadlight->SetMat3("normalMatrix", modeltest.Inversion().Transposed()); // It works :D
 		cube->ChangeMaterial(material::list[i], 0);
-		cube->Draw(shadlight);
+		cube->Draw(*shadlight);
 
-		material::none.InitShader(shadlight);
+		material::none.InitShader(*shadlight);
 	}
 }
