@@ -193,7 +193,7 @@ void Model::UnloadResource()
 {
 	for (Mesh* mesh : meshes)
 	{
-		mesh->~Mesh();
+		mesh->Unload();
 		delete mesh;
 	}
 	//meshes.clear();
@@ -213,6 +213,11 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 	_shader->SetMat4("model", model);
 	_shader->SetMat3("normalMatrix", _node->GetTransform().NormalMatrix());
 	_shader->SetMat4("MVP", MVP);
+}
+
+void Model::ResetCount()
+{
+	s_ModelNumber = 0;
 }
 
 Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals)

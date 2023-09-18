@@ -20,7 +20,6 @@ Shader::Shader(const char* _vertexPath, const char* _fragmentPath)
 Shader::~Shader()
 {
 	UnloadResource();
-	glDeleteProgram(m_ShaderProgram);
 }
 
 uint32_t Shader::GetShaderProgram() const {
@@ -115,7 +114,7 @@ bool Shader::Link()
 		DEBUG_LOG("SHADER #%i::LINK::SUCCESS\n", m_ShaderProgram);
 		Log::ResetColor();
 	}
-	//UnloadResource(); // Maybe you delete in any case
+	DeleteVertFrag(); // Maybe you delete in any case
 	return success;
 }
 
@@ -126,12 +125,26 @@ void Shader::LoadResource(const std::string _name) {
 
 void Shader::UnloadResource()
 {
+	DeleteVertFrag();
+	DeleteProgram();
+}
+void Shader::DeleteVertFrag()
+{
 	glDeleteShader(m_VertexShader);
 	glDeleteShader(m_FragmentShader);
+}
+void Shader::DeleteProgram()
+{
+	glDeleteProgram(m_ShaderProgram);
 }
 
 void Shader::Use() {
 	glUseProgram(m_ShaderProgram);
+}
+
+void Shader::ResetCount()
+{
+	s_m_TotalShaderNumber = 0;
 }
 
 void Shader::SetBool(const std::string& _name, bool _value) const

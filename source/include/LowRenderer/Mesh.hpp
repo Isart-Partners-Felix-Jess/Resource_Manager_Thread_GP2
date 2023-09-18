@@ -28,6 +28,8 @@ public:
 	~Mesh();
 	Mesh() {};
 
+	void Unload();
+
 	void Set_Vertices(const std::vector<Vertex>& _Vertices);
 	void Set_Indices(const std::vector<unsigned int>& _Indices);
 

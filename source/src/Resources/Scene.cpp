@@ -48,11 +48,11 @@ void Scene::Destroy()
 
 void Scene::Restart()
 {
-	Scene::Destroy();
-	ResourcesManager::Destroy();
 	graph.Destroy();
-
+	Scene::Destroy(); 
+	ResourcesManager::Destroy();;
 	monoThreaded = !monoThreaded; //Change the option multi<->mono
+
 	Scene::Init();
 }
 

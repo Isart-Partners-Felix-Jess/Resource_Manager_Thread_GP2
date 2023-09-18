@@ -26,6 +26,9 @@ public:
 	bool Link();
 	void Use();
 
+	//Only when Destroying
+	static void ResetCount();
+
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;
 	void SetUint(const std::string& _name, unsigned int _value) const;
@@ -42,6 +45,9 @@ public:
 	// Inherited from IResource
 	virtual void LoadResource(const std::string _name) override;
 	virtual void UnloadResource() override;
+	void DeleteVertFrag();
+	void DeleteProgram();
 	virtual std::thread LoadResourceStartThread(const std::string _name) override { return std::thread{}; };
 	virtual void LoadResourceThreadJoined(const std::string _name) override {};
 };
+
