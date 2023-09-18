@@ -12,11 +12,11 @@ class IResource
 public:
 	virtual ~IResource() = default;
 
-	virtual void LoadResource(const char* _name) = 0;
+	virtual void LoadResource(const std::string _name) = 0;
 	virtual void UnloadResource() = 0;
 
-	virtual std::thread LoadResourceStartThread(const char* _name) = 0;
-	virtual void LoadResourceThreadJoined(const char* _name)= 0;
+	virtual std::thread LoadResourceStartThread(const std::string _name) = 0;
+	virtual void LoadResourceThreadJoined(const std::string _name)= 0;
 
 	unsigned int GetResourceId() const;
 

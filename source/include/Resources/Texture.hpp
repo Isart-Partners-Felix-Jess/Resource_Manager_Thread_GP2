@@ -19,9 +19,9 @@ public:
 	unsigned int GetID() const;
 
 	// Inherited via IResource
-	virtual void LoadResource(const char* _name) override;
+	virtual void LoadResource(const std::string _name) override;
 	virtual void UnloadResource() override;
 
-	std::thread LoadResourceStartThread(const char* _name) override;
-	void LoadResourceThreadJoined(const char* _name) override;
+	std::thread LoadResourceStartThread(const std::string _name) override;
+	void LoadResourceThreadJoined(const std::string _name) override;
 };

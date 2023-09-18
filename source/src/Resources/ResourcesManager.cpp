@@ -61,14 +61,13 @@ void ResourcesManager::Delete(const std::string& _name)
 	Log::ResetColor();
 }
 
-void IResource::LoadResourceThreadJoined(const char* _name)
+void IResource::LoadResourceThreadJoined(const std::string _name)
 {
 }
 
-std::thread IResource::LoadResourceStartThread(const char* _name)
+std::thread IResource::LoadResourceStartThread(std::string _name)
 {
-	std::thread loadThread = std::thread([this, _name] { LoadResource(_name); });
-	return loadThread;
+	return std::thread([this, _name]() { LoadResource(_name); });
 }
 
 unsigned int IResource::GetResourceId() const

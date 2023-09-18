@@ -120,7 +120,7 @@ bool Shader::Link()
 }
 
 // Only to name the shader
-void Shader::LoadResource(const char* _name) {
+void Shader::LoadResource(const std::string _name) {
 	IResource::m_ResourcePath = _name;
 }
 

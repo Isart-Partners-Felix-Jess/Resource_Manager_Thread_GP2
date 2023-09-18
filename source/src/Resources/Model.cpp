@@ -6,7 +6,7 @@
 
 static unsigned int s_ModelNumber = 0;
 
-void Model::LoadResource(const char* _name)
+void Model::LoadResource(const std::string _name)
 {
 	FileRead(_name);
 
@@ -17,7 +17,7 @@ void Model::LoadResource(const char* _name)
 	meshes.push_back(next_mesh);
 }
 
-void Model::FileRead(const char* _name)
+void Model::FileRead(const std::string _name)
 {
 	m_ResourceId = s_ModelNumber++;
 	std::ifstream file;
@@ -28,13 +28,13 @@ void Model::FileRead(const char* _name)
 	//m_ResourcePath = path.generic_string();
 	if (file.bad())
 	{
-		DEBUG_ERROR("Model File %s is BAD", _name);
+		DEBUG_ERROR("Model File %s is BAD", _name.c_str());
 		file.close();
 		return;
 	}
 	if (file.fail())
 	{
-		DEBUG_WARNING("Model File %s opening has FAILED", _name);
+		DEBUG_WARNING("Model File %s opening has FAILED", _name.c_str());
 		file.close();
 		return;
 	}
@@ -42,7 +42,7 @@ void Model::FileRead(const char* _name)
 	{
 
 		Log::SuccessColor();
-		DEBUG_LOG("Model File %s has been opened", _name);
+		DEBUG_LOG("Model File %s has been opened", _name.c_str());
 		Log::ResetColor();
 
 		//clear in case of double load
@@ -154,14 +154,12 @@ void Model::FileRead(const char* _name)
 	}
 }
 
-std::thread Model::LoadResourceStartThread(const char* _name)
+std::thread Model::LoadResourceStartThread(const std::string _name)
 {
-	std::thread load_thread = std::thread([this, _name] {
-		FileRead(_name); });
-	return load_thread;
+	return std::thread([this, _name]() { FileRead(_name); });
 }
 
-void Model::LoadResourceThreadJoined(const char* _name)
+void Model::LoadResourceThreadJoined(const std::string _name)
 {
 	Mesh* next_mesh = new Mesh;
 	*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);

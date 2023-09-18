@@ -23,7 +23,7 @@ public:
 	SceneGraph graph = SceneGraph(this);
 	std::vector<std::thread> threadPool;
 
-	bool monoThreaded = true;
+	bool monoThreaded = false;
 
 	Shader& shadlight;
 	Shader& shadlightCube;

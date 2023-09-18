@@ -22,7 +22,7 @@ public:
 	void ProcessNode(SceneNode* _node, const Scene* _scene);
 	void ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader);
 
-	virtual void LoadResourceThreadJoined(const char* _name) override;
+	virtual void LoadResourceThreadJoined(const std::string _name) override;
 private:
 	// Model data
 	std::string directory;
@@ -37,7 +37,7 @@ private:
 
 	// Inherited from IResource
 	virtual void UnloadResource() override;
-	void LoadResource(const char* path) override;
-	void FileRead(const char* path);
-	virtual std::thread LoadResourceStartThread(const char* _name) override ;
+	void LoadResource(const std::string path) override;
+	void FileRead(const std::string path);
+	virtual std::thread LoadResourceStartThread(const std::string _name) override ;
 };

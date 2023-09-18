@@ -9,7 +9,7 @@ unsigned int Texture::GetID() const {
 	return m_ResourceId;
 }
 
-void Texture::LoadResource(const char* _name)
+void Texture::LoadResource(const std::string _name)
 {
 	std::filesystem::path path = "assets/textures/";
 	path += _name;
@@ -53,7 +53,7 @@ void Texture::UnloadResource() {
 	glDeleteTextures(1, &m_ResourceId);
 }
 
-std::thread Texture::LoadResourceStartThread(const char* _name)
+std::thread Texture::LoadResourceStartThread(const std::string _name)
 {
 	//std::thread load_thread = IResource::LoadResourceStartThread(_name);
 	std::thread load_thread = std::thread([this, _name] {
@@ -63,10 +63,10 @@ std::thread Texture::LoadResourceStartThread(const char* _name)
 		// Could be problematic on models
 		stbi_set_flip_vertically_on_load(true);
 		data = stbi_load(path.string().c_str(), &m_Width, &m_Height, &m_Channels, 0); });
-	return load_thread ;
+	return load_thread;
 }
 
-void Texture::LoadResourceThreadJoined(const char* _name)
+void Texture::LoadResourceThreadJoined(const std::string _name)
 {
 	if (data)
 	{
@@ -93,7 +93,7 @@ void Texture::LoadResourceThreadJoined(const char* _name)
 	}
 	else
 	{
-		DEBUG_WARNING("Failed to load Texture %s", _name);
+		DEBUG_WARNING("Failed to load Texture %s", _name.c_str());
 	}
 	stbi_image_free(data);
 }
