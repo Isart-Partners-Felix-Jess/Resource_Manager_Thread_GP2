@@ -13,11 +13,11 @@ void Scene::Init()
 	//InitComponents
 	if (!monoThreaded)
 		InitThread();
+	InitShaders();
 	InitMaterials();
 
 	InitLights();
 	InitModels();
-	InitShaders();
 }
 
 void Scene::Update(const float& _deltaTime, const CameraInputs& _inputs)
@@ -231,14 +231,21 @@ void Scene::InitShaders()
 	shadlight = ResourcesManager::CreateResource<Shader>("shadlight");
 	shadlightCube = ResourcesManager::CreateResource<Shader>("shadlightCube");
 
-	shadlight->SetFragmentShader("assets/shaders/lighting.frag");
-	shadlight->SetVertexShader("assets/shaders/basic.vert");
+	shadlight->ReadFragmentShader("assets/shaders/lighting.frag");
+	shadlight->ReadVertexShader("assets/shaders/basic.vert");
+
+	shadlight->SetFragmentShader();
+	shadlight->SetVertexShader();
+
 	shadlight->Link();
 
-	shadlightCube->SetFragmentShader("assets/shaders/white.frag");
-	shadlightCube->SetVertexShader("assets/shaders/basic.vert");
+	shadlightCube->ReadFragmentShader("assets/shaders/white.frag");
+	shadlightCube->ReadVertexShader("assets/shaders/basic.vert");
+
+	shadlightCube->SetFragmentShader();
+	shadlightCube->SetVertexShader();
+
 	shadlightCube->Link();
-	graph.InitDefaultShader(*shadlight);
 }
 
 void Scene::InitMaterials()

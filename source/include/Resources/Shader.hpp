@@ -14,6 +14,9 @@ private:
 	unsigned int m_VertexShader;
 	unsigned int m_FragmentShader;
 
+	std::string vertexShaderSource;
+	std::string fragmentShaderSource;
+
 public:
 	// Creates an empty shader, are you sure you don't want to specify paths ?
 	Shader();
@@ -21,8 +24,10 @@ public:
 	~Shader();
 
 	uint32_t GetShaderProgram() const;
-	bool SetVertexShader(std::filesystem::path const& _filename);
-	bool SetFragmentShader(std::filesystem::path const& _filename);
+	bool ReadVertexShader(std::filesystem::path const& _filename);
+	bool SetVertexShader();
+	bool ReadFragmentShader(std::filesystem::path const& _filename);
+	bool SetFragmentShader();
 	bool Link();
 	void Use();
 

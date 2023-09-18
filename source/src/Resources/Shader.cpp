@@ -12,8 +12,8 @@ Shader::Shader()
 // Initializing the static member variable
 Shader::Shader(const char* _vertexPath, const char* _fragmentPath)
 {
-	SetVertexShader(_vertexPath);
-	SetFragmentShader(_fragmentPath);
+	ReadVertexShader(_vertexPath);
+	ReadFragmentShader(_fragmentPath);
 	Link();
 }
 
@@ -26,11 +26,11 @@ uint32_t Shader::GetShaderProgram() const {
 	return m_ShaderProgram;
 }
 
-bool Shader::SetVertexShader(std::filesystem::path const& _filename)
+bool Shader::ReadVertexShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
 	file.open(_filename);
-	int  success = 0; // false
+	bool success = false;
 	if (file.bad())
 	{
 		DEBUG_ERROR("Shader file %s is BAD", _filename);
@@ -43,10 +43,18 @@ bool Shader::SetVertexShader(std::filesystem::path const& _filename)
 	{
 		std::string fileContent((std::istreambuf_iterator<char>(file)),
 			std::istreambuf_iterator<char>());
-		const char* vertexShaderSource = fileContent.c_str();
-
+		vertexShaderSource = fileContent.c_str();
+		success = true;
+	} // Safe if file isn't open
+	file.close();
+	return success;
+}
+bool Shader::SetVertexShader()
+{
+	int  success = 0; // false
+	const char* vertSrc = vertexShaderSource.c_str();
 		m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(m_VertexShader, 1, &vertexShaderSource, NULL);
+		glShaderSource(m_VertexShader, 1, &vertSrc, NULL);
 		glCompileShader(m_VertexShader);
 
 		char infoLog[512];
@@ -56,16 +64,13 @@ bool Shader::SetVertexShader(std::filesystem::path const& _filename)
 			glGetShaderInfoLog(m_VertexShader, 512, NULL, infoLog);
 			DEBUG_ERROR("SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog);
 		}
-	} // Safe if file isn't open
-	file.close();
 	return static_cast<bool>(success);
 }
-
-bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
+bool Shader::ReadFragmentShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
 	file.open(_filename);
-	int  success = 0; // false
+	bool success = false;
 	if (file.bad())
 	{
 		DEBUG_ERROR("Shader #%i file %s is BAD", m_ShaderProgram, _filename);
@@ -78,22 +83,28 @@ bool Shader::SetFragmentShader(std::filesystem::path const& _filename)
 	{
 		std::string fileContent((std::istreambuf_iterator<char>(file)),
 			std::istreambuf_iterator<char>());
-		const char* fragmentShaderSource = fileContent.c_str();
-		m_FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(m_FragmentShader, 1, &fragmentShaderSource, NULL);
-		glCompileShader(m_FragmentShader);
-		char infoLog[512];
-		glGetShaderiv(m_FragmentShader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(m_FragmentShader, 512, NULL, infoLog);
-			DEBUG_ERROR("SHADER #" << m_ShaderProgram << "::FRAGMENT::COMPILATION_FAILED\n" << infoLog);
-		}
+		fragmentShaderSource = fileContent;
+		success = true;
 	}// Safe if file isn't open
 	file.close();
+	return success;
+}
+bool Shader::SetFragmentShader()
+{
+	int success = 0; // false
+	const char* fragSrc = fragmentShaderSource.c_str();
+	m_FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(m_FragmentShader, 1, &fragSrc, NULL);
+	glCompileShader(m_FragmentShader);
+	char infoLog[512];
+	glGetShaderiv(m_FragmentShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(m_FragmentShader, 512, NULL, infoLog);
+		DEBUG_ERROR("SHADER #" << m_ShaderProgram << "::FRAGMENT::COMPILATION_FAILED\n" << infoLog);
+	}
 	return static_cast<bool>(success);
 }
-
 bool Shader::Link()
 {
 	m_ShaderProgram = glCreateProgram();
