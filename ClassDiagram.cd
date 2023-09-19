@@ -83,14 +83,14 @@
   <Class Name="Material">
     <Position X="8.25" Y="24.5" Width="10" />
     <TypeIdentifier>
-      <HashCode>QEABAAAAABAAgAAAAAAAAAIAAAAAEAAAEAAAiABAgEA=</HashCode>
+      <HashCode>QEABAAAQABAAggAAAAAAAAIAAAACAAAAAAAIiABAgEA=</HashCode>
       <FileName>source\include\Resources\Material.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model">
     <Position X="25.5" Y="24.5" Width="11.5" />
     <TypeIdentifier>
-      <HashCode>AAIBQABAAAAQAgAAAIAAAAAAIAAAEEACEAAAAEhCAEA=</HashCode>
+      <HashCode>AAIAQABQAAAQAgAAAIAAAAAAIAACAEACAAAIAEhAAEA=</HashCode>
       <FileName>source\include\Resources\Model.hpp</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -121,22 +121,22 @@
       </InheritanceModifierLabel>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>QBAJEQgQAAAIApAIAAQAAAAAAAAlEAAAFAABQAB4GBA=</HashCode>
+      <HashCode>QBAIEQgQAAAIApAIAAQAAAAAAAAnAAAABAAJQAB4GBA=</HashCode>
       <FileName>source\include\Resources\Shader.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Texture">
     <Position X="18" Y="20.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAgAABACAAgAAAAAAAEACAEAIQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAQAAAAgAABACAAgAAAAAACAACAAAIYAAAAAAA=</HashCode>
       <FileName>source\include\Resources\Texture.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IResource">
     <Position X="23" Y="20.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AgCBAAAAAAAAAAAAAAAACAAAAEAAEAYAEAAAAAABAAA=</HashCode>
-      <FileName>source\include\Resources\ResourcesManager.hpp</FileName>
+      <HashCode>AgCBAAAAAAAAAgAAAAAACAAAAEACAAYAEAAAAAABAAA=</HashCode>
+      <FileName>source\include\Resources\IResource.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ThreadPool">
@@ -149,7 +149,7 @@
   <Class Name="ResourcesManager">
     <Position X="25.25" Y="11.25" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAEAAAAACCgABAFAAAEIAAAACgAIAAA=</HashCode>
+      <HashCode>ACAAAAAAAAAAAAEAAAAACCgAFAFAAAAIAAAACgAIAAA=</HashCode>
       <FileName>source\include\Resources\ResourcesManager.hpp</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

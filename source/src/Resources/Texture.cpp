@@ -1,18 +1,18 @@
 #include <Texture.hpp>
 
 Texture::Texture(const char* _filepath) {
-	LoadResource(_filepath);
+	ResourceLoad(_filepath);
 };
 
 Texture::~Texture() {
-	UnloadResource();
+	ResourceUnload();
 };
 
 unsigned int Texture::GetID() const {
 	return m_ResourceId;
 }
 
-void Texture::ReadResourceFile(const std::string _name)
+void Texture::ResourceFileRead(const std::string _name)
 {
 	std::filesystem::path path = "assets/textures/";
 	path += _name;
@@ -23,7 +23,7 @@ void Texture::ReadResourceFile(const std::string _name)
 	data = stbi_load(path.string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
 }
 
-void Texture::LoadResourceThreaded(const std::string _name)
+void Texture::ResourceLoadOpenGL(const std::string _name)
 {
 	if (data)
 	{
@@ -55,6 +55,6 @@ void Texture::LoadResourceThreaded(const std::string _name)
 	stbi_image_free(data);
 }
 
-void Texture::UnloadResource() {
+void Texture::ResourceUnload() {
 	glDeleteTextures(1, &m_ResourceId);
 }

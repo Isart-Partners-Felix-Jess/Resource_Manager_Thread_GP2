@@ -30,7 +30,7 @@ public:
 		IResource* createdResource = new R();
 		if (!isMultiThread) {
 			createdResource->SetResourcePath(_name);
-			createdResource->LoadResource(_name);
+			createdResource->ResourceLoad(_name);
 
 			// Erase previous pointer if found
 			auto it = m_Resources.find(_name);
@@ -48,7 +48,7 @@ public:
 				return nullptr;
 			}
 			createdResource = it->second;
-			createdResource->LoadResourceThreaded(_name);
+			createdResource->ResourceLoadOpenGL(_name);
 		}
 		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
 		return dynamic_cast<R*>(createdResource);
@@ -60,7 +60,7 @@ public:
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
 
-		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->LoadResource(_name, true); },_name+" creation");
+		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->ResourceLoad(_name, true); },_name+" creation");
 
 		auto it = m_Resources.find(_name);
 		if (it != m_Resources.end())

@@ -33,7 +33,7 @@ void ResourcesManager::Destroy()
 	Log::SuccessColor();
 	for (std::pair<std::string, IResource*> pair : m_Resources)
 	{
-		pair.second->UnloadResource();
+		pair.second->ResourceUnload();
 		delete pair.second;
 		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
 	}

@@ -5,7 +5,7 @@
 
 static unsigned int s_ModelNumber = 0;
 
-void Model::ReadResourceFile(const std::string _name)
+void Model::ResourceFileRead(const std::string _name)
 {
 	m_ResourceId = s_ModelNumber++;
 	std::ifstream file;
@@ -141,7 +141,7 @@ void Model::ReadResourceFile(const std::string _name)
 	}
 }
 
-void Model::LoadResourceThreaded(const std::string _name)
+void Model::ResourceLoadOpenGL(const std::string _name)
 {
 	if (meshes.empty())
 	{
@@ -175,7 +175,7 @@ void Model::Draw() {
 	Draw(*shader);
 }
 
-void Model::UnloadResource()
+void Model::ResourceUnload()
 {
 	for (Mesh* mesh : meshes)
 	{

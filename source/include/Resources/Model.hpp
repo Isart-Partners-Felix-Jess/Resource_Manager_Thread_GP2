@@ -40,7 +40,7 @@ private:
 	std::vector<uint32_t> tmpIdxNormals;
 
 	// Inherited from IResource
-	virtual void ReadResourceFile(const std::string path) override;
-	virtual void LoadResourceThreaded(const std::string _name) override;
-	virtual void UnloadResource() override;
+	virtual void ResourceFileRead(const std::string path) override;
+	virtual void ResourceLoadOpenGL(const std::string _name) override;
+	virtual void ResourceUnload() override;
 };

@@ -15,7 +15,7 @@ Shader::Shader(const char* _vertexPath, const char* _fragmentPath)
 }
 
 Shader::~Shader() {
-	UnloadResource();
+	ResourceUnload();
 }
 
 uint32_t Shader::GetShaderProgram() const {
@@ -137,11 +137,11 @@ bool Shader::Link()
 }
 
 // Only to name the shader
-void Shader::LoadResource(const std::string _name, bool isMultiThread) {
+void Shader::ResourceLoad(const std::string _name, bool isMultiThread) {
 	IResource::m_ResourcePath = _name;
 }
 
-void Shader::UnloadResource()
+void Shader::ResourceUnload()
 {
 	DeleteVertFrag();
 	DeleteProgram();

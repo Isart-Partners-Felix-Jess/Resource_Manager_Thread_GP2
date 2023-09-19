@@ -41,10 +41,10 @@ public:
 	static void ResetCount();
 
 	// Inherited from IResource
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
-	virtual void LoadResourceThreaded(const std::string _name) override {};
-	virtual void ReadResourceFile(const std::string _name) override {};
-	virtual void UnloadResource() override;
+	virtual void ResourceLoad(const std::string _name, bool isMultiThread = false) override;
+	virtual void ResourceLoadOpenGL(const std::string _name) override {};
+	virtual void ResourceFileRead(const std::string _name) override {};
+	virtual void ResourceUnload() override;
 
 	void DeleteVertFrag();
 	void DeleteProgram();

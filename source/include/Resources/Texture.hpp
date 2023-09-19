@@ -20,9 +20,9 @@ public:
 
 	unsigned int GetID() const;
 
-	void ReadResourceFile(const std::string _name);
+	void ResourceFileRead(const std::string _name);
 
 	// Inherited via IResource
-	void LoadResourceThreaded(const std::string _name) override;
-	virtual void UnloadResource() override;
+	void ResourceLoadOpenGL(const std::string _name) override;
+	virtual void ResourceUnload() override;
 };
