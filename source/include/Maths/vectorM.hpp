@@ -129,8 +129,9 @@ public:
 		return elements[index];
 	}
 
-	T(&data())[M] {
-		return elements;
+	T(&data())[M]
+		{
+			return elements;
 		}
 
 		// Assignment

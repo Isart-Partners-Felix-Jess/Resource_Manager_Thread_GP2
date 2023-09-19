@@ -116,11 +116,12 @@ bool Shader::Link()
 		Log::ResetColor();
 	}
 	//UnloadResource(); // Maybe you delete in any case
+	isLoaded = true;
 	return success;
 }
 
 // Only to name the shader
-void Shader::LoadResource(const std::string _name) {
+void Shader::LoadResource(const std::string _name, bool isMultiThread) {
 	IResource::m_ResourcePath = _name;
 }
 

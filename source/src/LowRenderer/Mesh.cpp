@@ -1,5 +1,28 @@
 #include <Mesh.hpp>
 
+Mesh::Mesh(const std::vector<Vertex>& _tmpVertices, const std::vector<uint32_t>& _tmpIdxPos, const std::vector<uint32_t>& _tmpIdxUvs, const std::vector<uint32_t>& _tmpIdxNormals)
+{
+	// Build final VAO (Mesh)
+	size_t total_size = std::max({ _tmpIdxPos.size(), _tmpIdxUvs.size(), _tmpIdxNormals.size() });
+	std::vector<Vertex> vertices;
+	vertices.resize(total_size);
+	for (size_t i = 0; i < total_size; i++)
+	{
+		vertices[i].Position = _tmpVertices[_tmpIdxPos[i] - 1].Position;
+
+		if (!_tmpIdxUvs.empty())
+			vertices[i].Uv = _tmpVertices[_tmpIdxUvs[i] - 1].Uv;
+		else
+			vertices[i].Uv = { 0 };
+
+		if (!_tmpIdxNormals.empty())
+			vertices[i].Normal = _tmpVertices[_tmpIdxNormals[i] - 1].Normal;
+		else
+			vertices[i].Normal = { 0 };
+	}
+	this->SetVertices(vertices);
+}
+
 Mesh::~Mesh()
 {
 	m_Indices.clear();
@@ -9,12 +32,12 @@ Mesh::~Mesh()
 	glDeleteBuffers(1, &EBO);
 }
 
-void Mesh::Set_Vertices(const std::vector<Vertex>& _Vertices) {
-	m_Vertices = _Vertices;
+void Mesh::SetVertices(const std::vector<Vertex>& _vertices) {
+	m_Vertices = _vertices;
 }
 
-void Mesh::Set_Indices(const std::vector<unsigned int>& _Indices) {
-	m_Indices = _Indices;
+void Mesh::SetIndices(const std::vector<unsigned int>& _indices) {
+	m_Indices = _indices;
 }
 
 void Mesh::SetupMesh()

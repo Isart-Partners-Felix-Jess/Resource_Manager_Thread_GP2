@@ -2,20 +2,31 @@
 #include <thread>
 
 // Singleton
-std::atomic<ResourcesManager*> ResourcesManager::m_instance = nullptr;
-std::mutex ResourcesManager::m_mutex;
+std::atomic<ResourcesManager*> ResourcesManager::m_Instance = nullptr;
+std::mutex ResourcesManager::m_Mutex;
 std::unordered_map<std::string, IResource*> ResourcesManager::m_Resources;
-
-void ResourcesManager::LoadResource(IResource* _toLoad) {}
+ThreadPool ResourcesManager::m_ThreadPool;
 
 ResourcesManager::ResourcesManager() {
-	m_instance = this->GetInstance();
+	m_Instance = this->GetInstance();
 }
 
 ResourcesManager::~ResourcesManager()
 {
 	Destroy();
-	delete m_instance;
+	delete m_Instance;
+}
+
+bool ResourcesManager::isPoolDone()
+{
+	unsigned int totalDone = 0;
+	for (std::pair<std::string, IResource*> pair : m_Resources)
+		if (pair.second->isLoaded) totalDone++;
+
+	if (totalDone == m_Resources.size())
+		return true;
+	else
+		return false;
 }
 
 void ResourcesManager::Destroy()
@@ -34,11 +45,11 @@ void ResourcesManager::Destroy()
 
 ResourcesManager* ResourcesManager::GetInstance()
 {
-	ResourcesManager* instance = m_instance.load(std::memory_order::acquire);
+	ResourcesManager* instance = m_Instance.load(std::memory_order::acquire);
 	if (instance == nullptr)
 	{
-		std::lock_guard<std::mutex> lock(m_mutex);
-		instance = m_instance.load(std::memory_order::relaxed);
+		std::lock_guard<std::mutex> lock(m_Mutex);
+		instance = m_Instance.load(std::memory_order::relaxed);
 		if (instance == nullptr)
 			instance = new ResourcesManager();
 	}
@@ -47,27 +58,19 @@ ResourcesManager* ResourcesManager::GetInstance()
 
 void ResourcesManager::Delete(const std::string& _name)
 {
-	const char* name = _name.c_str();
 	auto it = m_Resources.find(_name);
 	if (it == m_Resources.end())
 	{
-		DEBUG_ERROR("Resource %s not found; Could not delete %s", name, name);
+		DEBUG_ERROR("Resource %s not found, could not be deleteted", _name);
 		return;
 	}
+
 	delete m_Resources.find(_name)->second;
 	m_Resources.erase(_name);
+
 	Log::SuccessColor();
-	DEBUG_LOG("Resource %s deleted successfully", name);
+	DEBUG_LOG("Resource %s deleted successfully", _name);
 	Log::ResetColor();
-}
-
-void IResource::LoadResourceThreadJoined(const std::string _name)
-{
-}
-
-std::thread IResource::LoadResourceStartThread(std::string _name)
-{
-	return std::thread([this, _name]() { LoadResource(_name); });
 }
 
 unsigned int IResource::GetResourceId() const

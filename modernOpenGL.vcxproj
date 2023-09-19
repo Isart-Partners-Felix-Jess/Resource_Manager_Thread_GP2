@@ -24,6 +24,7 @@
     <ProjectGuid>{69585308-4fd8-478d-9669-5e44d03ced1d}</ProjectGuid>
     <RootNamespace>modernOpenGL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>ResourcesManagerPegasus</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

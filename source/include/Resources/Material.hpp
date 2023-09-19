@@ -20,7 +20,7 @@ public:
 
 	Material();
 	Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny);
-	Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny) {};
+	Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny);
 
 	void AttachDiffuseMap(const Texture* _diffuseMap);
 	void AttachDiffuseMap(unsigned int _diffuseMapID);
@@ -32,8 +32,7 @@ public:
 
 private:
 	// Inherited from IResource
-	virtual void LoadResource(const std::string _name) override {};
-	virtual std::thread LoadResourceStartThread(const std::string _name) override { return std::thread{}; };
+	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override {};
 	virtual void LoadResourceThreadJoined(const std::string _name) override {};
 
 	virtual void UnloadResource() override {};

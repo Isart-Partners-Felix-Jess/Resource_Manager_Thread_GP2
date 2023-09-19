@@ -23,21 +23,20 @@ public:
 	void ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader);
 
 	virtual void LoadResourceThreadJoined(const std::string _name) override;
+
 private:
 	// Model data
 	std::string directory;
-	Mesh BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals);
-
-	std::vector<Vertex> temp_Vertices;
-	//temp index
-	std::vector<uint32_t> temp_idx_Positions;
-	std::vector<uint32_t> temp_idx_Uvs;
-	std::vector<uint32_t> temp_idx_Normals;
 	std::vector<uint32_t> indices;
+
+	// Tmp index
+	std::vector<Vertex> tmpVertices;
+	std::vector<uint32_t> tmpIdxPositions;
+	std::vector<uint32_t> tmpIdxUvs;
+	std::vector<uint32_t> tmpIdxNormals;
 
 	// Inherited from IResource
 	virtual void UnloadResource() override;
-	void LoadResource(const std::string path) override;
+	void LoadResource(const std::string path, bool isMultiThread = false) override;
 	void FileRead(const std::string path);
-	virtual std::thread LoadResourceStartThread(const std::string _name) override ;
 };

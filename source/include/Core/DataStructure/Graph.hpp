@@ -17,7 +17,7 @@ class Scene;
 struct Node
 {
 	Node* parent = nullptr;
-	std::vector<Node*> children;
+	std::vector<Node*> children{};
 	//Dirty Flag
 	bool changed = false;
 

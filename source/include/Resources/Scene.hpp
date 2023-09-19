@@ -12,6 +12,8 @@
 #include <Texture.hpp>
 #include <Material.hpp>
 
+#include <../Thread/ThreadPool.hpp>
+
 class Scene
 {
 public:
@@ -21,33 +23,25 @@ public:
 	std::vector<SpotLight> spotLights;
 
 	SceneGraph graph = SceneGraph(this);
-	std::vector<std::thread> threadPool;
 
-	bool monoThreaded = true;
+	bool isMultiThreaded = true;
 
-	Shader* shadlight;
-	Shader* shadlightCube;
+	Shader* shadlight = nullptr;
+	Shader* shadlightCube = nullptr;
 
 	std::vector<Model*> lightCubes;
 	Model* cube = nullptr;
 	Model* viking_room = nullptr;
 	Model* robot = nullptr;
 	Model* building = nullptr;
+	Model* horse = nullptr;
 
-	Scene(unsigned int _width, unsigned int _height) :
-		camera(_width, _height)
-	{
-		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	}
-	~Scene() {
-		Destroy();
-	}
+	Scene(unsigned int _width, unsigned int _height);
+	~Scene();
 
 	void Init();
 	void Update(const float& _deltaTime, const CameraInputs& _inputs);
-	void Draw() {
-		graph.Draw();
-	}
+	void Draw();
 	void Destroy();
 	void Restart();
 
@@ -57,6 +51,7 @@ private:
 	void InitModels();
 	void InitMaterials();
 	void InitShaders();
+
 	void UpdateLights(const float& _deltaTime);
 
 	void MaterialTest();

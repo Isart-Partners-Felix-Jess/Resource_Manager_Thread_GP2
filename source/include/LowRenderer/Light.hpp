@@ -18,7 +18,7 @@ struct Light
 
 struct PointLight
 {
-	Vectorf3 position;
+	Vectorf3 position{};
 	// Attenuation
 	float constant = 1.0f;
 	float linear = 0.09f;
@@ -35,7 +35,7 @@ private:
 
 struct DirectionalLight
 {
-	Vectorf3 direction;
+	Vectorf3 direction{};
 	Light light{};
 
 	void InitShader(Shader& _lightShader, unsigned int _number);
@@ -43,10 +43,10 @@ struct DirectionalLight
 
 struct SpotLight
 {
-	Vectorf3 direction;
-	float cutoffDeg;
-	float outerCutoffDeg;
-	PointLight point;
+	Vectorf3 direction{};
+	float cutoffDeg = 0.f;
+	float outerCutoffDeg = 0.f;
+	PointLight point{};
 
 	void InitShader(Shader& _lightShader, unsigned int _number);
 };

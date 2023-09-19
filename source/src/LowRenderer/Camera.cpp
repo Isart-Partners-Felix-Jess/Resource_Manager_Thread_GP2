@@ -125,8 +125,8 @@ void Camera::SetView()
 	Vectorf3 yC = zC.Cross_product(xC);
 
 	Matrix4x4 result{
-	{ xC.X(), xC.Y(), xC.Z(), -(xC.Dot(eye))},
-	{ yC.X(), yC.Y(), yC.Z(), -(yC.Dot(eye))},
+	{ xC.X(), xC.Y(), xC.Z(), -(xC.Dot(eye)) },
+	{ yC.X(), yC.Y(), yC.Z(), -(yC.Dot(eye)) },
 	{ zC.X(), zC.Y(), zC.Z(), -(zC.Dot(eye)) },
 	{ 0.f, 0.f, 0.f, 1.f }
 	};

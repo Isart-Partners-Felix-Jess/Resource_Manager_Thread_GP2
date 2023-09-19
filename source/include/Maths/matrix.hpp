@@ -264,8 +264,8 @@ public:
 		temp.GaussianAlgorithm();
 		// Extract last part
 		MatrixMN < T, M> result;
-		for (int i = 0; i < M; i++)
-			for (int j = 0; j < M; j++)
+		for (size_t i = 0; i < M; i++)
+			for (size_t j = 0; j < M; j++)
 				result[i][j] = temp[i][M + j];
 		return result;
 	}
@@ -304,13 +304,13 @@ public:
 #pragma endregion //GettersAndPrint
 
 #pragma region Operators
-	VectorM<T, N>& operator[](unsigned int index)
+	VectorM<T, N>& operator[](size_t index)
 	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return data[index];
 	}
 
-	const VectorM<T, N>& operator[](unsigned int index) const
+	const VectorM<T, N>& operator[](size_t index) const
 	{
 		assert(index < M && "Index must be inside vector range (inferior to its dimension)");
 		return data[index];
@@ -508,7 +508,7 @@ namespace matrix
 		{
 			ca = std::cos(angleinrad);
 			sa = std::sin(angleinrad);
-			T tolerance = 1e-5;
+			T tolerance = (T)1e-5;
 			if (abs(ca) <= tolerance)
 				ca = 0;
 			if (abs(sa) <= tolerance)
@@ -548,17 +548,17 @@ namespace matrix
 	MatrixMN<T, 3> Rotate3dAllAxis(VectorM<T, 3> angleXYZinrad)
 	{
 		MatrixMN<T, 3> rotationXYZ(true);
-		const T tolerance = 1e-5;
+		const T tolerance = (T)1e-5;
 
 		T cosA = 0; T sinA = 0; T cosB = 0; T sinB = 0; T cosC = 0; T sinC = 0;
 
 		if (angleXYZinrad[0])
 		{
 			cosA = (T)std::cos(angleXYZinrad[0]);
-			cosA = (std::abs(cosA) < tolerance) ? 0.0 : cosA;
+			cosA = (std::abs(cosA) < tolerance) ? (T)0.0 : cosA;
 
 			sinA = (T)std::sin(angleXYZinrad[0]);
-			sinA = (std::abs(sinA) < tolerance) ? 0.0 : sinA;
+			sinA = (std::abs(sinA) < tolerance) ? (T)0.0 : sinA;
 		}
 		else
 		{
@@ -568,10 +568,10 @@ namespace matrix
 		if (angleXYZinrad[1])
 		{
 			cosB = (T)std::cos(angleXYZinrad[1]);
-			cosB = (std::abs(cosB) < tolerance) ? 0.0 : cosB;
+			cosB = (std::abs(cosB) < tolerance) ? (T)0.0 : cosB;
 
 			sinB = (T)std::sin(angleXYZinrad[1]);
-			sinB = (std::abs(sinB) < tolerance) ? 0.0 : sinB;
+			sinB = (std::abs(sinB) < tolerance) ? (T)0.0 : sinB;
 		}
 		else
 		{
@@ -581,10 +581,10 @@ namespace matrix
 		if (angleXYZinrad[2])
 		{
 			cosC = (T)std::cos(angleXYZinrad[2]);
-			cosC = (std::abs(cosC) < tolerance) ? 0.0 : cosC;
+			cosC = (std::abs(cosC) < tolerance) ? (T)0.0 : cosC;
 
 			sinC = (T)std::sin(angleXYZinrad[2]);
-			sinC = (std::abs(sinC) < tolerance) ? 0.0 : sinC;
+			sinC = (std::abs(sinC) < tolerance) ? (T)0.0 : sinC;
 		}
 		else
 		{

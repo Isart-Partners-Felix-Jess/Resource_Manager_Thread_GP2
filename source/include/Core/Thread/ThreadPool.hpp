@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <thread>
 #include <array>
 #include <queue>
@@ -11,13 +10,13 @@
 class ThreadPool
 {
 public:
-	ThreadPool() 
+	ThreadPool()
 	{
 		for (int id = 0; id < poolSize; id++) // Launch workers
-			workers[id] = std::thread([this] { workerTask; });
+			workers[id] = std::thread([this]() { workerTask(); });
 	}
 
-	~ThreadPool() 
+	~ThreadPool()
 	{
 		std::unique_lock<std::mutex> lock(queueMtx);
 
@@ -28,29 +27,8 @@ public:
 			workers[id].join();
 	}
 
-	void workerTask()
-	{
-		while (true) 
-		{
-			std::function<void()> task;
-
-			std::unique_lock<std::mutex> lock(queueMtx);
-			// Wait until there is a task in the queue or the thread should stop
-			condition.wait(lock, [this] { return stop || !tasksQueue.empty(); });
-
-			if (stop && tasksQueue.empty())
-				return; // Exit the thread if it's time to stop
-
-			// Get the next task from the queue
-			task = std::move(tasksQueue.front());
-			tasksQueue.pop();
-
-			task();
-		}
-	}
-
 	template <class T>
-	void addToQueue(T&& func) 
+	void addToQueue(T&& func)
 	{
 		std::unique_lock<std::mutex> lock(queueMtx);
 		// Add the task to the queue
@@ -70,4 +48,25 @@ private:
 	std::condition_variable condition;
 
 	bool stop = false;
+
+	void workerTask()
+	{
+		while (true)
+		{
+			std::function<void()> task;
+
+			std::unique_lock<std::mutex> lock(queueMtx);
+			// Wait until there is a task in the queue or the thread should stop
+			condition.wait(lock, [this] { return stop || !tasksQueue.empty(); });
+
+			if (stop && tasksQueue.empty())
+				return; // Exit the thread if it's time to stop
+
+			// Get the next task from the queue
+			task = std::move(tasksQueue.front());
+			tasksQueue.pop();
+
+			task();
+		}
+	}
 };

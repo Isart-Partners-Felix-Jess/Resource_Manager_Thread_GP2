@@ -1,4 +1,4 @@
-#include<Model.hpp>
+#include <Model.hpp>
 #include <Material.hpp>
 #include <Shader.hpp>
 #include <Graph.hpp>
@@ -6,15 +6,14 @@
 
 static unsigned int s_ModelNumber = 0;
 
-void Model::LoadResource(const std::string _name)
+void Model::LoadResource(const std::string _name, bool isMultiThread)
 {
 	FileRead(_name);
 
-	Mesh* next_mesh = new Mesh;
-	*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
-	next_mesh->Set_Indices(indices);
-	next_mesh->SetupMesh();
-	meshes.push_back(next_mesh);
+	if (!isMultiThread)
+		LoadResourceThreadJoined(_name);
+
+	isLoaded = true;
 }
 
 void Model::FileRead(const std::string _name)
@@ -24,7 +23,7 @@ void Model::FileRead(const std::string _name)
 	std::filesystem::path path = "assets/meshes/";
 	path += _name + std::string(".obj");
 	file.open(path);
-	//If we want to have the full path
+	// If we want to have the full path
 	//m_ResourcePath = path.generic_string();
 	if (file.bad())
 	{
@@ -40,14 +39,13 @@ void Model::FileRead(const std::string _name)
 	}
 	if (file.is_open())
 	{
-
 		Log::SuccessColor();
 		DEBUG_LOG("Model File %s has been opened", _name.c_str());
 		Log::ResetColor();
 
-		//clear in case of double load
-		temp_Vertices.clear();
-		//load .obj
+		// Clear in case of double load
+		tmpVertices.clear();
+		// Load .obj
 		std::string line;
 		unsigned int vIdx = 0;
 		unsigned int vtIdx = 0;
@@ -70,40 +68,38 @@ void Model::FileRead(const std::string _name)
 				iss >> x >> y >> z;
 				if (type == "v") // Vertex position
 				{
-					if (vIdx < temp_Vertices.size())
-						temp_Vertices[vIdx].Position = Vectorf3{ x, y, z };
+					if (vIdx < tmpVertices.size())
+						tmpVertices[vIdx].Position = Vectorf3{ x, y, z };
 					else
-						temp_Vertices.push_back({ Vectorf3(x, y,z) });
+						tmpVertices.push_back({ Vectorf3(x, y,z) });
 					vIdx++;
 				}
 				else if (type[1] == 't') // Texture position
 				{
-					if (vtIdx < temp_Vertices.size())
-						temp_Vertices[vtIdx].Uv = Vectorf2(x, y);
+					if (vtIdx < tmpVertices.size())
+						tmpVertices[vtIdx].Uv = Vectorf2(x, y);
 					else
-						temp_Vertices.push_back({ {}, Vectorf2(x, y) });
+						tmpVertices.push_back({ {}, Vectorf2(x, y) });
 					vtIdx++;
 				}
-				else if (type[1] == 'n')// Normal position
+				else if (type[1] == 'n') // Normal position
 				{
-					if (vnIdx < temp_Vertices.size())
-						temp_Vertices[vnIdx].Normal = Vectorf3(x, y, z);
+					if (vnIdx < tmpVertices.size())
+						tmpVertices[vnIdx].Normal = Vectorf3(x, y, z);
 					else
-						temp_Vertices.push_back({ {},{}, Vectorf3(x, y, z) });
+						tmpVertices.push_back({ {},{}, Vectorf3(x, y, z) });
 					vnIdx++;
 				}
 			}
 			else if (type == "g"
 				&& line.find("default") != -1
-				&& !temp_Vertices.empty()) // group
+				&& !tmpVertices.empty()) // Group
 			{
-				Mesh* next_mesh = new Mesh;
-				*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
-				next_mesh->Set_Indices(indices);
-				next_mesh->SetupMesh();
+				Mesh* next_mesh = new Mesh(tmpVertices, tmpIdxPositions, tmpIdxUvs, tmpIdxNormals);
+				next_mesh->SetIndices(indices);
 				meshes.push_back(next_mesh);
 			}
-			else if (type == "f")// Face indices (assumes that model is an assembly of triangles only)
+			else if (type == "f") // Face indices (assumes that model is an assembly of triangles only)
 			{
 				unsigned int vertexIdx = 0;
 				do {
@@ -118,7 +114,7 @@ void Model::FileRead(const std::string _name)
 							break;
 						if (elementsToAdd == 3)
 						{
-							temp_idx_Positions.push_back(i);
+							tmpIdxPositions.push_back(i);
 							if (vertexIdx / 2) // NewTriangle
 							{
 								indices.push_back(faceIdx);
@@ -128,21 +124,19 @@ void Model::FileRead(const std::string _name)
 							vertexIdx++;
 						}
 						if (elementsToAdd == 2)
-							temp_idx_Uvs.push_back(i);
+							tmpIdxUvs.push_back(i);
 						if (elementsToAdd == 1)
-							temp_idx_Normals.push_back(i);
+							tmpIdxNormals.push_back(i);
 
 						if (iss.peek() == ' ')
-						{
 							break;
-						}
+
 						if (iss.peek() == '/')
 						{
 							iss.ignore();
 							if (iss.peek() == '/')
-							{
 								elementsToAdd--;
-							}
+
 							continue;
 						}
 					}
@@ -154,23 +148,22 @@ void Model::FileRead(const std::string _name)
 	}
 }
 
-std::thread Model::LoadResourceStartThread(const std::string _name)
-{
-	return std::thread([this, _name]() { FileRead(_name); });
-}
-
 void Model::LoadResourceThreadJoined(const std::string _name)
 {
-	Mesh* next_mesh = new Mesh;
-	*next_mesh = BuildMesh(temp_Vertices, temp_idx_Positions, temp_idx_Uvs, temp_idx_Normals);
-	next_mesh->Set_Indices(indices);
-	next_mesh->SetupMesh();
-	meshes.push_back(next_mesh);
+	if (meshes.empty())
+	{
+		Mesh* next_mesh = new Mesh(tmpVertices, tmpIdxPositions, tmpIdxUvs, tmpIdxNormals);
+		next_mesh->SetIndices(indices);
+		meshes.push_back(next_mesh);
+	}
 
-	temp_Vertices.clear();
-	temp_idx_Positions.clear();
-	temp_idx_Uvs.clear();
-	temp_idx_Normals.clear();
+	for (Mesh* mesh : meshes)
+		mesh->SetupMesh();
+
+	tmpVertices.clear();
+	tmpIdxPositions.clear();
+	tmpIdxUvs.clear();
+	tmpIdxNormals.clear();
 	indices.clear();
 }
 
@@ -213,23 +206,6 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 	_shader->SetMat4("model", model);
 	_shader->SetMat3("normalMatrix", _node->GetTransform().NormalMatrix());
 	_shader->SetMat4("MVP", MVP);
-}
-
-Mesh Model::BuildMesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals)
-{
-	Mesh result;
-	//Build final VAO (Mesh)
-	size_t total_size = std::max({ _temp_idx_Positions.size(), _temp_idx_Uvs.size(), _temp_idx_Normals.size() });
-	std::vector<Vertex> vertices;
-	vertices.resize(total_size);
-	for (size_t i = 0; i < total_size; i++)
-	{
-		vertices[i].Position = _temp_Vertices[_temp_idx_Positions[i] - 1].Position;
-		vertices[i].Uv = _temp_Vertices[_temp_idx_Uvs[i] - 1].Uv;
-		vertices[i].Normal = _temp_Vertices[_temp_idx_Normals[i] - 1].Normal;
-	}
-	result.Set_Vertices(vertices);
-	return result;
 }
 
 void Model::AddMaterial() {

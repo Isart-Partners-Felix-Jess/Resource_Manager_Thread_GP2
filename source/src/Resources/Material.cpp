@@ -25,6 +25,15 @@ Material::Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, flo
 	diffuse2DMap = 0;
 }
 
+Material::Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny)
+{
+	ambient = Vectorf3{ _ambientX,_ambientY, _ambientZ };
+	diffuse = Vectorf3{ _diffuseX,_diffuseY, _diffuseZ };
+	specular = Vectorf3{ _specularX,_specularY, _specularZ };
+	shininess = _shiny;
+	diffuse2DMap = 0;
+};
+
 void Material::AttachDiffuseMap(const Texture* _diffuseMap) {
 	diffuse2DMap = _diffuseMap->GetID();
 }

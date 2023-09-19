@@ -8,14 +8,24 @@
 
 #include <ImGui/imgui.h>
 
+Scene::Scene(unsigned int _width, unsigned int _height) : camera(_width, _height) {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+}
+
+Scene::~Scene() {
+	Destroy();
+}
+
 void Scene::Init()
 {
 	//InitComponents
-	if (!monoThreaded)
+	if (isMultiThreaded)
 		InitThread();
-	InitMaterials();
-
 	InitLights();
+
+	while (!ResourcesManager::isPoolDone()) {};
+
+	InitMaterials();
 	InitModels();
 	InitShaders();
 }
@@ -38,12 +48,15 @@ void Scene::Update(const float& _deltaTime, const CameraInputs& _inputs)
 	UpdateLights(_deltaTime);
 }
 
+void Scene::Draw() {
+	graph.Draw();
+}
+
 void Scene::Destroy()
 {
 	directionalLights.clear();
 	pointLights.clear();
 	spotLights.clear();
-	threadPool.clear();
 }
 
 void Scene::Restart()
@@ -52,26 +65,24 @@ void Scene::Restart()
 	ResourcesManager::Destroy();
 	graph.Destroy();
 
-	monoThreaded = !monoThreaded; //Change the option multi<->mono
+	isMultiThreaded = !isMultiThreaded; // Change the option multiThread<->monoThread
+	DEBUG_LOG("Multithread is %d", isMultiThreaded);
 	Scene::Init();
 }
 
 void Scene::InitThread()
 {
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Model>(std::string("viking_room")));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Texture>("viking_room.jpg"));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Model>(std::string("robot_operator")));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Texture>("robot/base.png"));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Texture>("robot/roughness.png"));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Model>(std::string("cube")));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Model>(std::string("objBuilding")));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91L.jpg"));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91Lb.jpg"));
-	threadPool.push_back(ResourcesManager::CreateResourceThread<Texture>("white.png"));
-
-
-	for (std::thread& t : threadPool)
-		t.join();
+	ResourcesManager::CreateResourceThread<Model>("Horse");
+	ResourcesManager::CreateResourceThread<Model>("viking_room");
+	ResourcesManager::CreateResourceThread<Texture>("viking_room.jpg");
+	ResourcesManager::CreateResourceThread<Model>("robot_operator");
+	ResourcesManager::CreateResourceThread<Texture>("robot/base.png");
+	ResourcesManager::CreateResourceThread<Texture>("robot/roughness.png");
+	ResourcesManager::CreateResourceThread<Model>("cube");
+	ResourcesManager::CreateResourceThread<Model>("objBuilding");
+	ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91L.jpg");
+	ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91Lb.jpg");
+	ResourcesManager::CreateResourceThread<Texture>("white.png");
 }
 
 void Scene::InitLights()
@@ -110,16 +121,16 @@ void Scene::UpdateLights(const float& _deltaTime)
 	pointLights[0].position = matrix::Rotate3D(_deltaTime, matrix::Axis::Y) * pointLights[0].position;
 
 	shadlight->Use();
-	shadlight->SetInt("DIRECTIONAL_LIGHT_NBR", directionalLights.size());
-	for (size_t i = 0; i < directionalLights.size(); i++)
+	shadlight->SetInt("DIRECTIONAL_LIGHT_NBR", (int)directionalLights.size());
+	for (unsigned int i = 0; i < directionalLights.size(); i++)
 		directionalLights[i].InitShader(*shadlight, i);
 
-	shadlight->SetInt("POINT_LIGHT_NBR", pointLights.size());
-	for (size_t i = 0; i < pointLights.size(); i++)
+	shadlight->SetInt("POINT_LIGHT_NBR", (int)pointLights.size());
+	for (unsigned int i = 0; i < pointLights.size(); i++)
 		pointLights[i].InitShader(*shadlight, i);
 
 	shadlight->SetInt("SPOT_LIGHT_NBR", (int)spotLights.size());
-	for (size_t i = 0; i < spotLights.size(); i++)
+	for (unsigned int i = 0; i < spotLights.size(); i++)
 		spotLights[i].InitShader(*shadlight, i);
 
 	shadlight->SetVec3("objectColor", 1.0f, 1.0f, 1.0f);
@@ -128,79 +139,51 @@ void Scene::UpdateLights(const float& _deltaTime)
 
 void Scene::InitModels()
 {
-	//building->AddMaterials(8);
-	//building->materials[1].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
-	//building->materials[2].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
-	//building->materials[2].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
-	//building->materials[3].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
-	//building->materials[3].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
-	//building->materials[5].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	//building->materials[5].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
-	//building->materials[6].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
-	//building->materials[6].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
-	//building->materials[7].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
-	//building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
-	//building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
-	//building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));
+	/*building->AddMaterials(8);
+	building->materials[1].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->materials[2].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XL.jpg"));
+	building->materials[2].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/slat41XLb.jpg"));
+	building->materials[3].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107M.jpg"));
+	building->materials[3].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/wndw107Mb.jpg"));
+	building->materials[5].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->materials[5].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/wndw038M.jpg"));
+	building->materials[6].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
+	building->materials[6].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
+	building->materials[7].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/ground009b.jpg"));
+	building->materials[7].AttachSpecularMap(ResourcesManager::GetResource<Texture>("objBuilding/ground009b.jpg"));
+	building->materials[8].AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010.jpg"));
+	building->materials[8].AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/germany010b.jpg"));*/
 
 	// Viking Room [0]
-	if (monoThreaded)
-		viking_room = ResourcesManager::CreateResource<Model>(std::string("viking_room"));
-	else
-	{
-		viking_room = ResourcesManager::CreateResourceThreadJoined<Model>(std::string("viking_room"));
-	}
+	viking_room = ResourcesManager::CreateResource<Model>("viking_room", isMultiThreaded);
 	graph.AddEntity(viking_room, nullptr, Transform({ -4.f,0.f,0.f }, { 90.f,90.f,0.f }, { 3.f,3.f,3.f }));
-	if (monoThreaded)
-		graph.entities[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg"));
-	else
-		graph.entities[0]->material.AttachDiffuseMap(ResourcesManager::CreateResourceThreadJoined<Texture>("viking_room.jpg"));
+
+	graph.entities[0]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("viking_room.jpg", isMultiThreaded));
 	graph.entities[0]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("viking_room.jpg"));
 
 	// Robot [1]
-	if (monoThreaded)
-		robot = ResourcesManager::CreateResource<Model>(std::string("robot_operator"));
-	else
-		robot = ResourcesManager::CreateResourceThreadJoined<Model>(std::string("robot_operator"));
+	robot = ResourcesManager::CreateResource<Model>("robot_operator", isMultiThreaded);
 	graph.AddEntity(robot, nullptr, Transform({}, { 0.f,90.f,0.f }));
-	if (monoThreaded)
-	{
-		graph.entities[1]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png"));
-		graph.entities[1]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png"));
-	}
-	else
-	{
-		graph.entities[1]->material.AttachDiffuseMap(ResourcesManager::CreateResourceThreadJoined<Texture>("robot/base.png"));
-		graph.entities[1]->material.AttachSpecularMap(ResourcesManager::CreateResourceThreadJoined<Texture>("robot/roughness.png"));
-	}
+
+	graph.entities[1]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("robot/base.png", isMultiThreaded));
+	graph.entities[1]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("robot/roughness.png", isMultiThreaded));
+
 	// Copper Box [2]
-	if (monoThreaded)
-		cube = ResourcesManager::CreateResource<Model>(std::string("cube"));
-	else
-		cube = ResourcesManager::CreateResourceThreadJoined<Model>(std::string("cube"));
+	cube = ResourcesManager::CreateResource<Model>("cube", isMultiThreaded);
 	graph.AddEntity(cube, nullptr, Transform({ 0.f,1.f,-0.5f }));
+
 	graph.entities[2]->material = material::copper;
 	graph.entities[2]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[2]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[2]->SetParent(graph.entities[1]);
 
 	// Building [3]
-	if (monoThreaded)
-		building = ResourcesManager::CreateResource<Model>(std::string("objBuilding"));
-	else
-		building = ResourcesManager::CreateResourceThreadJoined<Model>(std::string("objBuilding"));
+	building = ResourcesManager::CreateResource<Model>("objBuilding", isMultiThreaded);
 	graph.AddEntity(building, nullptr, Transform({ 5.f,0.f, 0.f }, {}, { 0.1f,0.2f, 0.3f }));
 
-	if (monoThreaded)
-	{
-		graph.entities[3]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg"));
-		graph.entities[3]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg"));
-	}
-	else
-	{
-		graph.entities[3]->material.AttachDiffuseMap(ResourcesManager::CreateResourceThreadJoined<Texture>("objBuilding/brck91L.jpg"));
-		graph.entities[3]->material.AttachSpecularMap(ResourcesManager::CreateResourceThreadJoined<Texture>("objBuilding/brck91Lb.jpg"));
-	}
+	graph.entities[3]->material.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91L.jpg", isMultiThreaded));
+	graph.entities[3]->material.AttachSpecularMap(ResourcesManager::CreateResource<Texture>("objBuilding/brck91Lb.jpg", isMultiThreaded));
+
 	// Orbit [4]
 	graph.AddEntity(nullptr, nullptr, Transform({ -7.f,0.f,0.f }));
 	graph.entities[4]->AddChild(graph.entities[1], true);
@@ -223,6 +206,16 @@ void Scene::InitModels()
 	graph.entities[7]->material = material::turquoise;
 	graph.entities[7]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[7]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+
+	// LOOK AT MY HORSE [8] MY HORSE IS broken :'(
+	//horse = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
+	//graph.AddEntity(horse, nullptr, Transform({ 0.f,1.f,-1.f }, { 0.f,90.f,0.f }));
+	//horse->shader = shadlightCube;
+	//graph.entities[8]->material = material::turquoise;
+	//graph.entities[8]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	//graph.entities[8]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+
+	// Do this last
 	graph.InitDefaultShader(*shadlight);
 }
 
@@ -238,17 +231,15 @@ void Scene::InitShaders()
 	shadlightCube->SetFragmentShader("assets/shaders/white.frag");
 	shadlightCube->SetVertexShader("assets/shaders/basic.vert");
 	shadlightCube->Link();
+
 	graph.InitDefaultShader(*shadlight);
 }
 
 void Scene::InitMaterials()
 {
-	if (monoThreaded)
-		material::none.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("white.png"));
-	else
-		material::none.AttachDiffuseMap(ResourcesManager::CreateResourceThreadJoined<Texture>("white.png"));
-
+	material::none.AttachDiffuseMap(ResourcesManager::CreateResource<Texture>("white.png", isMultiThreaded));
 	material::none.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+
 	for (unsigned int i = 0; i < 24; i++)
 	{
 		material::list[i].AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
@@ -260,11 +251,11 @@ void Scene::InitMaterials()
 void Scene::MaterialTest()
 {
 	Vectorf3 cubePositions[24];
-	for (int j = 0; j < 4; j++)
-		for (int i = 0; i < 6; i++)
+	for (size_t j = 0; j < 4; j++)
+		for (size_t i = 0; i < 6; i++)
 			cubePositions[j * 6 + i] = Vectorf3(2.f * i - +6, -2.f * j + 4, 0.0f);
 
-	for (unsigned int i = 0; i < 24; i++)
+	for (size_t i = 0; i < 24; i++)
 	{
 		float angle = 20.0f * i * static_cast<float>(M_PI_2) / 180;
 		Matrix3x3 rotation = matrix::Rotate3dAllAxis(Vectorf3{ angle, .3f * angle, .5f * angle });

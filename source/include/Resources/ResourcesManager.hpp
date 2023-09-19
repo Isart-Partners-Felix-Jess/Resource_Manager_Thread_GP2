@@ -1,27 +1,30 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <unordered_map>
 #include <mutex>
 #include <future>
 
 #include <Log.hpp>
+#include <../Thread/ThreadPool.hpp>
 
 class IResource
 {
 public:
 	virtual ~IResource() = default;
 
-	virtual void LoadResource(const std::string _name) = 0;
+	virtual void LoadResource(const std::string _name, bool isMultiThread = false) = 0;
 	virtual void UnloadResource() = 0;
 
-	virtual std::thread LoadResourceStartThread(const std::string _name);
-	virtual void LoadResourceThreadJoined(const std::string _name);
+	virtual void LoadResourceThreadJoined(const std::string _name) = 0;
 
 	unsigned int GetResourceId() const;
 
 	void SetResourcePath(const std::string& _path);
 	std::string GetResourcePath() const;
+
+	bool isLoaded = false;
 
 protected:
 	unsigned int m_ResourceId = -1;
@@ -31,9 +34,11 @@ protected:
 class ResourcesManager
 {
 private:
-	static std::atomic<ResourcesManager*> m_instance;
-	static std::mutex m_mutex;
+	static std::atomic<ResourcesManager*> m_Instance;
+	static std::mutex m_Mutex;
 	static std::unordered_map<std::string, IResource*> m_Resources;
+
+	static ThreadPool m_ThreadPool;
 
 	ResourcesManager();
 	~ResourcesManager();
@@ -43,48 +48,52 @@ public:
 
 	// Maybe try to make the parameter a path...
 	template<typename R>
-	static R* CreateResource(const std::string& _name) {
+	static R* CreateResource(const std::string& _name, bool isMultiThread = false)
+	{
 		IResource* createdResource = new R();
-		createdResource->SetResourcePath(_name);
-		createdResource->LoadResource(_name.c_str());
-		// Erase previous pointer if found
-		auto it = m_Resources.find(_name);
-		if (it != m_Resources.end())
-			delete it->second;
+		if (!isMultiThread) {
+			createdResource->SetResourcePath(_name);
+			createdResource->LoadResource(_name);
 
-		m_Resources.emplace(_name, createdResource);
-		DEBUG_LOG("Resource %s created, ID: %i", _name.c_str(), createdResource->GetResourceId());
-		return dynamic_cast<R*>(createdResource);
-	}
-	template<typename R>
-	static std::thread CreateResourceThread(const std::string& _name) {
-		IResource* createdResource = new R();
-		createdResource->SetResourcePath(_name);
-		std::thread creationThread = createdResource->LoadResourceStartThread(_name.c_str());
-		auto it = m_Resources.find(_name);
-		if (it != m_Resources.end())
-			delete it->second;
-		m_Resources.emplace(_name, createdResource);
-		return creationThread;
-	}
-	template<typename R>
-	static R* CreateResourceThreadJoined(const std::string& _name) {
-		
-		auto it = m_Resources.find(_name);
-		if (it == m_Resources.end())
-		{
-			DEBUG_WARNING("Resource %s not found", _name.c_str());
-			return nullptr;
+			// Erase previous pointer if found
+			auto it = m_Resources.find(_name);
+			if (it != m_Resources.end())
+				delete it->second;
+
+			m_Resources.emplace(_name, createdResource);
 		}
-		IResource* createdResource = it->second;
-		createdResource->LoadResourceThreadJoined(_name.c_str());
-
+		else
+		{
+			auto it = m_Resources.find(_name);
+			if (it == m_Resources.end())
+			{
+				DEBUG_WARNING("Resource %s not found", _name.c_str());
+				return nullptr;
+			}
+			createdResource = it->second;
+			createdResource->LoadResourceThreadJoined(_name);
+		}
 		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
-
 		return dynamic_cast<R*>(createdResource);
 	}
+
 	template<typename R>
-	static R* GetResource(const std::string& _name) {
+	static void CreateResourceThread(const std::string& _name)
+	{
+		IResource* createdResource = new R();
+		createdResource->SetResourcePath(_name);
+
+		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->LoadResource(_name, true); });
+
+		auto it = m_Resources.find(_name);
+		if (it != m_Resources.end())
+			delete it->second;
+		m_Resources.emplace(_name, createdResource);
+	}
+
+	template<typename R>
+	static R* GetResource(const std::string& _name)
+	{
 		auto it = m_Resources.find(_name);
 		if (it != m_Resources.end())
 		{
@@ -100,9 +109,8 @@ public:
 		}
 	}
 
+	static bool isPoolDone();
+
 	static void Destroy();
 	void Delete(const std::string& _name);
-
-private:
-	void LoadResource(IResource* _toLoad);
 };

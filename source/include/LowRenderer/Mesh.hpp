@@ -19,17 +19,18 @@ struct Vertex
 class Mesh
 {
 private:
-	unsigned int VAO, VBO, EBO;
+	unsigned int VAO = 0, VBO = 0, EBO = 0;
 	std::vector<Vertex> m_Vertices;
 	std::vector<unsigned int> m_Indices;
 	Matrix4x4 local = Matrix4x4(true);
 
 public:
-	~Mesh();
 	Mesh() {};
+	Mesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals);
+	~Mesh();
 
-	void Set_Vertices(const std::vector<Vertex>& _Vertices);
-	void Set_Indices(const std::vector<unsigned int>& _Indices);
+	void SetVertices(const std::vector<Vertex>& _Vertices);
+	void SetIndices(const std::vector<unsigned int>& _Indices);
 
 	void SetupMesh();
 	void Draw();

@@ -1,6 +1,7 @@
 #pragma once
 
 struct Node;
+
 class Component
 {
 protected:
