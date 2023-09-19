@@ -3,8 +3,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <iostream>
-
 #include <ImGui/imgui.h>
 #include <ImGui/imgui_impl_glfw.h>
 #include <ImGui/imgui_impl_opengl3.h>
@@ -12,7 +10,6 @@
 #include <Scene.hpp>
 #include <ResourcesManager.hpp>
 #include <Assertion.hpp>
-#include <Scene.hpp>
 
 class Application
 {
@@ -24,7 +21,6 @@ private:
 	float deltaTime = 0.f;
 	Scene scene;
 
-	//Cam part
 	CameraInputs inputs;
 	double mouseX = 0.0;
 	double mouseY = 0.0;
@@ -52,7 +48,8 @@ public:
 	void Destroy();
 	void Update();
 
-	//Not so useful function TBH, just use glClearColor
+	// Not a very useful function TBH, just use glClearColor
 	void ChangeColor(float _newcolor[4]);
+
 	void ShowImGuiControls();
 };

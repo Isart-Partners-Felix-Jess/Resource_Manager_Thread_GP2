@@ -15,7 +15,7 @@ Application::Application(int _width, int _height) : scene(_width, _height)
 	if (window == NULL)
 	{
 		glfwTerminate();
-		//Always assert I want the above  code to apply
+		// Always assert I want the above  code to apply
 		Assert(false, "Failed to create GLFW window");
 	}
 	glfwMakeContextCurrent(window);
@@ -34,7 +34,7 @@ void Application::Destroy()
 {
 	scene.Destroy();
 
-	//IMGUI Destroyed
+	// IMGUI Destroyed
 	ImGui_ImplGlfw_Shutdown();
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui::DestroyContext();

@@ -1,6 +1,9 @@
 #pragma once
 
 #include <Mesh.hpp>
+#include <IResource.hpp>
+
+#include <Material.hpp>
 
 class Scene;
 struct SceneNode;
@@ -19,12 +22,11 @@ public:
 	void AddMaterials(unsigned int _number);
 	void AddMaterial(Material _mat);
 	void ChangeMaterial(Material _mat, uint32_t idx);
+
 	void ProcessNode(SceneNode* _node, const Scene* _scene);
 	void ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader);
 
 	static void ResetCount();
-
-	virtual void LoadResourceThreaded(const std::string _name) override;
 
 private:
 	// Model data
@@ -38,7 +40,7 @@ private:
 	std::vector<uint32_t> tmpIdxNormals;
 
 	// Inherited from IResource
+	virtual void ReadResourceFile(const std::string path) override;
+	virtual void LoadResourceThreaded(const std::string _name) override;
 	virtual void UnloadResource() override;
-	void LoadResource(const std::string path, bool isMultiThread = false) override;
-	void FileRead(const std::string path);
 };

@@ -1,13 +1,5 @@
 #include <Scene.hpp>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#define _USE_MATH_DEFINES
-#include <math.h>
-
-#include <ImGui/imgui.h>
-
 Scene::Scene(unsigned int _width, unsigned int _height) : camera(_width, _height) {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 }
@@ -108,6 +100,7 @@ void Scene::InitLights()
 	spotLights[1].point.position = camera.eye + X_Offset;
 	spotLights[1].direction = camera.zCamera;
 }
+
 void Scene::UpdateLights(const float& _deltaTime)
 {
 	// "headlights" Spotlights

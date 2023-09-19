@@ -34,8 +34,10 @@ void PointLight::InitShaderKnownName(Shader& _lightShader, std::string _fullName
 void DirectionalLight::InitShader(Shader& _lightShader, unsigned int _number)
 {
 	std::string nbstr = "directionalLight[" + std::to_string(_number) + "].";
-	//light direction from the fragment towards the light source
+
+	// Light direction from the fragment towards the light source
 	Vectorf3 dirTowardSource = -(direction).Normalize();
+
 	light.InitShader(nbstr, _lightShader);
 	_lightShader.SetVec3(nbstr + "direction", dirTowardSource);
 }
@@ -43,13 +45,17 @@ void DirectionalLight::InitShader(Shader& _lightShader, unsigned int _number)
 void SpotLight::InitShader(Shader& _lightShader, unsigned int _number)
 {
 	std::string nbstr = "spotLight[" + std::to_string(_number) + "].";
-	//light direction from the fragment towards the light source
+
+	// Light direction from the fragment towards the light source
 	Vectorf3 dirTowardSource = -(direction).Normalize();
+
 	point.InitShader(_lightShader, nbstr);
 	_lightShader.SetVec3(nbstr + "direction", dirTowardSource);
+
 	float deg2Rad = static_cast<float>(M_PI) / 180.f;
 	float cutoffRad = cutoffDeg * deg2Rad;
 	_lightShader.SetFloat(nbstr + "cutoff", cos(cutoffRad));
+
 	float outerCutoffRad = outerCutoffDeg * deg2Rad;
 	_lightShader.SetFloat(nbstr + "outerCutoff", cos(outerCutoffRad));
 }

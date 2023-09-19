@@ -1,9 +1,10 @@
 #pragma once
 
-#include<matrix.hpp>
+#include <matrix.hpp>
 
 class Transform
 {
+private:
 	Matrix4x4 local = Matrix4x4(true);
 	Matrix4x4 global = Matrix4x4(true); // ModelMatrix
 	Matrix4x4 normalMatrix = Matrix4x4(true);

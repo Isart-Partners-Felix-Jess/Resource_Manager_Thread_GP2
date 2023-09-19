@@ -1,8 +1,5 @@
 #include <Shader.hpp>
 
-#include <fstream>
-#include <glad/glad.h>
-
 Shader::Shader()
 {
 	s_m_TotalShaderNumber++;

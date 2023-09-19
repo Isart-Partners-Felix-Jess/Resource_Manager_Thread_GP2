@@ -1,7 +1,9 @@
 #pragma once
 
-#include <ResourcesManager.hpp>
 #include <vectorM.hpp>
+
+#include <IResource.hpp>
+
 #include <Texture.hpp>
 #include <Shader.hpp>
 
@@ -34,6 +36,7 @@ private:
 	// Inherited from IResource
 	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override {};
 	virtual void LoadResourceThreaded(const std::string _name) override {};
+	virtual void ReadResourceFile(const std::string _name) override {};
 
 	virtual void UnloadResource() override {};
 };

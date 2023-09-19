@@ -1,7 +1,7 @@
 #include <Graph.hpp>
 
+#include <Model.hpp>
 #include <Scene.hpp>
-#include <Light.hpp>
 
 SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene) : material(material::none)
 {
@@ -106,7 +106,7 @@ void SceneNode::Draw()
 	// Here for all components
 	if (model)
 	{
-		Assert(shader, "No Shader for object \"%s.\"", name.c_str());
+		Assert(shader, std::string("No Shader for object " + name).c_str());
 		shader->Use();
 		material.InitShader(*shader);
 		model->ProcessNode(this, scene);

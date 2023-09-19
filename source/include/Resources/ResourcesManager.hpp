@@ -1,35 +1,12 @@
 #pragma once
 
-#include <iostream>
-#include <string>
 #include <unordered_map>
-#include <mutex>
-#include <future>
 
 #include <Log.hpp>
-#include <../Thread/ThreadPool.hpp>
+#include <Model.hpp>
 
-class IResource
-{
-public:
-	virtual ~IResource() = default;
-
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) = 0;
-	virtual void UnloadResource() = 0;
-
-	virtual void LoadResourceThreaded(const std::string _name) = 0;
-
-	unsigned int GetResourceId() const;
-
-	void SetResourcePath(const std::string& _path);
-	std::string GetResourcePath() const;
-
-	bool isLoaded = false;
-
-protected:
-	unsigned int m_ResourceId = 0;
-	std::string m_ResourcePath;
-};
+#include <ThreadPool.hpp>
+#include <IResource.hpp>
 
 class ResourcesManager
 {

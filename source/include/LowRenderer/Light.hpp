@@ -1,8 +1,8 @@
 #pragma once
 
-#include<vectorM.hpp>
+#include <vectorM.hpp>
 
-class Shader;
+#include <Shader.hpp>
 
 struct Light
 {
@@ -12,7 +12,7 @@ struct Light
 	float ambientStrength = 0.1f;	// Could go in last vector component,
 	float specularStrength = 0.5f;	// I'd rather separate for clarity
 
-	//Should go in Renderer
+	// Should go in Renderer
 	void InitShader(std::string _lightType, Shader& _lightShader);
 };
 
@@ -26,7 +26,7 @@ struct PointLight
 	Light light{};
 
 	void InitShader(Shader& _lightShader, unsigned int _number);
-	//ONLY To init a point light inside of another structlight (such as Spotlight)
+	// ONLY To init a point light inside of another structlight (such as Spotlight)
 	void InitShader(Shader& _lightShader, std::string _structType);
 
 private:
