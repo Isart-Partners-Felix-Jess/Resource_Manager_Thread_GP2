@@ -1,35 +1,12 @@
 #pragma once
 
-#include <iostream>
-#include <string>
 #include <unordered_map>
-#include <mutex>
-#include <future>
 
 #include <Log.hpp>
-#include <../Thread/ThreadPool.hpp>
+#include <Model.hpp>
 
-class IResource
-{
-public:
-	virtual ~IResource() = default;
-
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) = 0;
-	virtual void UnloadResource() = 0;
-
-	virtual void LoadResourceThreaded(const std::string _name) = 0;
-
-	unsigned int GetResourceId() const;
-
-	void SetResourcePath(const std::string& _path);
-	std::string GetResourcePath() const;
-
-	bool isLoaded = false;
-
-protected:
-	unsigned int m_ResourceId = 0;
-	std::string m_ResourcePath;
-};
+#include <ThreadPool.hpp>
+#include <IResource.hpp>
 
 class ResourcesManager
 {
@@ -53,7 +30,7 @@ public:
 		IResource* createdResource = new R();
 		if (!isMultiThread) {
 			createdResource->SetResourcePath(_name);
-			createdResource->LoadResource(_name);
+			createdResource->ResourceLoad(_name);
 
 			// Erase previous pointer if found
 			auto it = m_Resources.find(_name);
@@ -71,7 +48,7 @@ public:
 				return nullptr;
 			}
 			createdResource = it->second;
-			createdResource->LoadResourceThreaded(_name);
+			createdResource->ResourceLoadOpenGL(_name);
 		}
 		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
 		return dynamic_cast<R*>(createdResource);
@@ -83,7 +60,7 @@ public:
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
 
-		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->LoadResource(_name, true); },_name+" creation");
+		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->ResourceLoad(_name, true); },_name+" creation");
 
 		auto it = m_Resources.find(_name);
 		if (it != m_Resources.end())

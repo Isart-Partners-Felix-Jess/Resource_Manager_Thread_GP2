@@ -4,13 +4,11 @@
 #include <assertion.hpp>
 
 #include <Material.hpp>
-#include <Camera.hpp>
-
-#include <Model.hpp>
-#include <Shader.hpp>
 #include <Light.hpp>
 
-// Precompile
+#include <Camera.hpp>
+
+class Model;
 class Scene;
 
 // Generic one

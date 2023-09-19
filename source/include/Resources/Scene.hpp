@@ -1,18 +1,14 @@
 #pragma once
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include <Camera.hpp>
 #include <Light.hpp>
 
 #include <Graph.hpp>
-#include <Shader.hpp>
 
-#include <Model.hpp>
 #include <ResourcesManager.hpp>
-
-#include <Texture.hpp>
-#include <Material.hpp>
-
-#include <../Thread/ThreadPool.hpp>
 
 class Scene
 {

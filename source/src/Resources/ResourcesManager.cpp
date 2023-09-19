@@ -1,6 +1,4 @@
 #include <ResourcesManager.hpp>
-#include <Model.hpp>
-#include <thread>
 
 // Singleton
 std::atomic<ResourcesManager*> ResourcesManager::m_Instance = nullptr;
@@ -35,7 +33,7 @@ void ResourcesManager::Destroy()
 	Log::SuccessColor();
 	for (std::pair<std::string, IResource*> pair : m_Resources)
 	{
-		pair.second->UnloadResource();
+		pair.second->ResourceUnload();
 		delete pair.second;
 		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
 	}
@@ -74,22 +72,4 @@ void ResourcesManager::Delete(const std::string& _name)
 	Log::SuccessColor();
 	DEBUG_LOG("Resource %s deleted successfully", _name);
 	Log::ResetColor();
-}
-
-unsigned int IResource::GetResourceId() const
-{
-	if (m_ResourceId == static_cast<unsigned int>(-1))
-		DEBUG_WARNING("Could not find id for %s ", m_ResourcePath.c_str());
-	return m_ResourceId;
-}
-
-void IResource::SetResourcePath(const std::string& _path) {
-	m_ResourcePath = _path;
-}
-
-std::string IResource::GetResourcePath() const
-{
-	if (m_ResourcePath.empty())
-		DEBUG_WARNING("Could not find path for %i ", m_ResourceId);
-	return m_ResourcePath;
 }

@@ -1,22 +1,11 @@
 #include <Model.hpp>
-#include <Material.hpp>
-#include <Shader.hpp>
-#include <Graph.hpp>
+
 #include <Scene.hpp>
+#include <Graph.hpp>
 
 static unsigned int s_ModelNumber = 0;
 
-void Model::LoadResource(const std::string _name, bool isMultiThread)
-{
-	FileRead(_name);
-
-	if (!isMultiThread)
-		LoadResourceThreaded(_name);
-
-	isLoaded = true;
-}
-
-void Model::FileRead(const std::string _name)
+void Model::ResourceFileRead(const std::string _name)
 {
 	m_ResourceId = s_ModelNumber++;
 	std::ifstream file;
@@ -152,7 +141,7 @@ void Model::FileRead(const std::string _name)
 	}
 }
 
-void Model::LoadResourceThreaded(const std::string _name)
+void Model::ResourceLoadOpenGL(const std::string _name)
 {
 	if (meshes.empty())
 	{
@@ -186,7 +175,7 @@ void Model::Draw() {
 	Draw(*shader);
 }
 
-void Model::UnloadResource()
+void Model::ResourceUnload()
 {
 	for (Mesh* mesh : meshes)
 	{
@@ -202,7 +191,7 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene) {
 
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 {
-	Assert(_shader, "No Shader for Model nb%i.", m_ResourceId);
+	Assert(_shader, std::string("No Shader for Model nb" + m_ResourceId).c_str());
 	_shader->Use();
 	Matrix4x4 model = _node->GetTransform().ModelMatrix();
 	Matrix4x4 MVP = _scene->camera.viewProjection * model;

@@ -1,23 +1,18 @@
 #include <Texture.hpp>
 
-#include <stb/stb_image.h>
-#include <glad/glad.h>
-
-#include <Assertion.hpp>
-
 Texture::Texture(const char* _filepath) {
-	LoadResource(_filepath);
+	ResourceLoad(_filepath);
 };
 
 Texture::~Texture() {
-	UnloadResource();
+	ResourceUnload();
 };
 
 unsigned int Texture::GetID() const {
 	return m_ResourceId;
 }
 
-void Texture::LoadResource(const std::string _name, bool isMultiThread)
+void Texture::ResourceFileRead(const std::string _name)
 {
 	std::filesystem::path path = "assets/textures/";
 	path += _name;
@@ -26,17 +21,9 @@ void Texture::LoadResource(const std::string _name, bool isMultiThread)
 	stbi_set_flip_vertically_on_load(true);
 
 	data = stbi_load(path.string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
-	if (!isMultiThread)
-		LoadResourceThreaded(_name);
-
-	isLoaded = true;
 }
 
-void Texture::UnloadResource() {
-	glDeleteTextures(1, &m_ResourceId);
-}
-
-void Texture::LoadResourceThreaded(const std::string _name)
+void Texture::ResourceLoadOpenGL(const std::string _name)
 {
 	if (data)
 	{
@@ -66,4 +53,8 @@ void Texture::LoadResourceThreaded(const std::string _name)
 		DEBUG_WARNING("Failed to load Texture %s", _name.c_str());
 	}
 	stbi_image_free(data);
+}
+
+void Texture::ResourceUnload() {
+	glDeleteTextures(1, &m_ResourceId);
 }

@@ -1,11 +1,16 @@
 #pragma once
 
-#include <ResourcesManager.hpp>
+#include <IResource.hpp>
+
+#include <stb/stb_image.h>
+#include <glad/glad.h>
+
+#include <Assertion.hpp>
 
 class Texture : public IResource
 {
 private:
-	int m_Width = 0, m_Height = 0, m_Channels = 0;
+	int m_Width = -1, m_Height = -1, m_Channels = -1;
 	unsigned char* data = nullptr;
 
 public:
@@ -15,9 +20,9 @@ public:
 
 	unsigned int GetID() const;
 
-	// Inherited via IResource
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
-	virtual void UnloadResource() override;
+	void ResourceFileRead(const std::string _name);
 
-	void LoadResourceThreaded(const std::string _name) override;
+	// Inherited via IResource
+	void ResourceLoadOpenGL(const std::string _name) override;
+	virtual void ResourceUnload() override;
 };

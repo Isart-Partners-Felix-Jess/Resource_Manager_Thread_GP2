@@ -5,10 +5,6 @@
 #include <matrix.hpp>
 #include <vector>
 
-#include <Material.hpp>
-#include <Log.hpp>
-#include <Shader.hpp>
-
 struct Vertex
 {
 	Vectorf3 Position;
@@ -19,7 +15,7 @@ struct Vertex
 class Mesh
 {
 private:
-	unsigned int VAO = 0, VBO = 0, EBO = 0;
+	unsigned int VAO = -1, VBO = -1, EBO = -1;
 	std::vector<Vertex> m_Vertices;
 	std::vector<unsigned int> m_Indices;
 	Matrix4x4 local = Matrix4x4(true);

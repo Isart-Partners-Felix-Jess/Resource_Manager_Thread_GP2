@@ -1,7 +1,9 @@
 #pragma once
 
-#include <ResourcesManager.hpp>
 #include <vectorM.hpp>
+
+#include <IResource.hpp>
+
 #include <Texture.hpp>
 #include <Shader.hpp>
 
@@ -32,10 +34,11 @@ public:
 
 private:
 	// Inherited from IResource
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override {};
-	virtual void LoadResourceThreaded(const std::string _name) override {};
+	virtual void ResourceLoad(const std::string _name, bool isMultiThread = false) override {};
+	virtual void ResourceLoadOpenGL(const std::string _name) override {};
+	virtual void ResourceFileRead(const std::string _name) override {};
 
-	virtual void UnloadResource() override {};
+	virtual void ResourceUnload() override {};
 };
 
 namespace material

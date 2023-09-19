@@ -2,20 +2,24 @@
 
 #include <vector>
 #include <filesystem>
+#include <fstream>
 
-#include <ResourcesManager.hpp>
+#include <glad/glad.h>
+
 #include <matrix.hpp>
+
+#include <IResource.hpp>
 
 class Shader : public IResource
 {
 private:
 	inline static unsigned int s_m_TotalShaderNumber = 0;
-	unsigned int m_ShaderProgram = 0;
-	unsigned int m_VertexShader = 0;
-	unsigned int m_FragmentShader = 0;
+	unsigned int m_ShaderProgram = -1;
+	unsigned int m_VertexShader = -1;
+	unsigned int m_FragmentShader = -1;
 
-	std::string vertexShaderSource;
-	std::string fragmentShaderSource;
+	std::string vertexShaderSource = "";
+	std::string fragmentShaderSource = "";
 
 public:
 	// Creates an empty shader, are you sure you don't want to specify paths ?
@@ -37,13 +41,13 @@ public:
 	static void ResetCount();
 
 	// Inherited from IResource
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
-	virtual void UnloadResource() override;
+	virtual void ResourceLoad(const std::string _name, bool isMultiThread = false) override;
+	virtual void ResourceLoadOpenGL(const std::string _name) override {};
+	virtual void ResourceFileRead(const std::string _name) override {};
+	virtual void ResourceUnload() override;
 
 	void DeleteVertFrag();
 	void DeleteProgram();
-
-	virtual void LoadResourceThreaded(const std::string _name) override {};
 
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;
