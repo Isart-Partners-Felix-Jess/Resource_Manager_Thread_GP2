@@ -43,7 +43,7 @@ public:
 	void DeleteVertFrag();
 	void DeleteProgram();
 
-	virtual void LoadResourceThreadJoined(const std::string _name) override {};
+	virtual void LoadResourceThreaded(const std::string _name) override {};
 
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;

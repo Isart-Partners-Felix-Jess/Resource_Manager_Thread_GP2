@@ -62,7 +62,7 @@ void Scene::Destroy()
 void Scene::Restart()
 {
 	graph.Destroy();
-	Scene::Destroy(); 
+	Scene::Destroy();
 	ResourcesManager::Destroy();
 
 	isMultiThreaded = !isMultiThreaded; // Change the option multiThread<->monoThread
@@ -72,17 +72,17 @@ void Scene::Restart()
 
 void Scene::InitThread()
 {
-	ResourcesManager::CreateResourceThread<Model>("Horse");
-	ResourcesManager::CreateResourceThread<Model>("viking_room");
-	ResourcesManager::CreateResourceThread<Texture>("viking_room.jpg");
-	ResourcesManager::CreateResourceThread<Model>("robot_operator");
-	ResourcesManager::CreateResourceThread<Texture>("robot/base.png");
-	ResourcesManager::CreateResourceThread<Texture>("robot/roughness.png");
-	ResourcesManager::CreateResourceThread<Model>("cube");
-	ResourcesManager::CreateResourceThread<Model>("objBuilding");
-	ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91L.jpg");
-	ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91Lb.jpg");
-	ResourcesManager::CreateResourceThread<Texture>("white.png");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse");
+	ResourcesManager::CreateResourceThreaded<Model>("viking_room");
+	ResourcesManager::CreateResourceThreaded<Texture>("viking_room.jpg");
+	ResourcesManager::CreateResourceThreaded<Model>("robot_operator");
+	ResourcesManager::CreateResourceThreaded<Texture>("robot/base.png");
+	ResourcesManager::CreateResourceThreaded<Texture>("robot/roughness.png");
+	ResourcesManager::CreateResourceThreaded<Model>("cube");
+	ResourcesManager::CreateResourceThreaded<Model>("objBuilding");
+	ResourcesManager::CreateResourceThreaded<Texture>("objBuilding/brck91L.jpg");
+	ResourcesManager::CreateResourceThreaded<Texture>("objBuilding/brck91Lb.jpg");
+	ResourcesManager::CreateResourceThreaded<Texture>("white.png");
 }
 
 void Scene::InitLights()
@@ -207,13 +207,13 @@ void Scene::InitModels()
 	graph.entities[7]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[7]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 
-	// LOOK AT MY HORSE [8] MY HORSE IS broken :'(
-	//horse = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
-	//graph.AddEntity(horse, nullptr, Transform({ 0.f,1.f,-1.f }, { 0.f,90.f,0.f }));
-	//horse->shader = shadlightCube;
-	//graph.entities[8]->material = material::turquoise;
-	//graph.entities[8]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
-	//graph.entities[8]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+	// LOOK AT MY HORSE [8]
+	horse = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
+	graph.AddEntity(horse, nullptr, Transform({ 0.f,-1.f,10.f }, { 90.f,90.f,0.f }, { .3f, .3f, .3f }));
+	horse->shader = shadlightCube;
+	graph.entities[8]->material = material::gold;
+	graph.entities[8]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	graph.entities[8]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 
 	// Do this last
 	graph.InitDefaultShader(*shadlight);
