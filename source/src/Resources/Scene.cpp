@@ -72,17 +72,17 @@ void Scene::Restart()
 
 void Scene::InitThread()
 {
-	ResourcesManager::CreateResourceThread<Model>("Horse");
-	ResourcesManager::CreateResourceThread<Model>("viking_room");
-	ResourcesManager::CreateResourceThread<Texture>("viking_room.jpg");
-	ResourcesManager::CreateResourceThread<Model>("robot_operator");
-	ResourcesManager::CreateResourceThread<Texture>("robot/base.png");
-	ResourcesManager::CreateResourceThread<Texture>("robot/roughness.png");
-	ResourcesManager::CreateResourceThread<Model>("cube");
-	ResourcesManager::CreateResourceThread<Model>("objBuilding");
-	ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91L.jpg");
-	ResourcesManager::CreateResourceThread<Texture>("objBuilding/brck91Lb.jpg");
-	ResourcesManager::CreateResourceThread<Texture>("white.png");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse");
+	ResourcesManager::CreateResourceThreaded<Model>("viking_room");
+	ResourcesManager::CreateResourceThreaded<Texture>("viking_room.jpg");
+	ResourcesManager::CreateResourceThreaded<Model>("robot_operator");
+	ResourcesManager::CreateResourceThreaded<Texture>("robot/base.png");
+	ResourcesManager::CreateResourceThreaded<Texture>("robot/roughness.png");
+	ResourcesManager::CreateResourceThreaded<Model>("cube");
+	ResourcesManager::CreateResourceThreaded<Model>("objBuilding");
+	ResourcesManager::CreateResourceThreaded<Texture>("objBuilding/brck91L.jpg");
+	ResourcesManager::CreateResourceThreaded<Texture>("objBuilding/brck91Lb.jpg");
+	ResourcesManager::CreateResourceThreaded<Texture>("white.png");
 }
 
 void Scene::InitLights()

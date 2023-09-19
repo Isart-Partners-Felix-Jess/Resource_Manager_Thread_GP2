@@ -24,7 +24,7 @@ public:
 
 	static void ResetCount();
 
-	virtual void LoadResourceThreadJoined(const std::string _name) override;
+	virtual void LoadResourceThreaded(const std::string _name) override;
 
 private:
 	// Model data

@@ -19,5 +19,5 @@ public:
 	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
 	virtual void UnloadResource() override;
 
-	void LoadResourceThreadJoined(const std::string _name) override;
+	void LoadResourceThreaded(const std::string _name) override;
 };

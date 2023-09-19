@@ -17,7 +17,7 @@ public:
 	virtual void LoadResource(const std::string _name, bool isMultiThread = false) = 0;
 	virtual void UnloadResource() = 0;
 
-	virtual void LoadResourceThreadJoined(const std::string _name) = 0;
+	virtual void LoadResourceThreaded(const std::string _name) = 0;
 
 	unsigned int GetResourceId() const;
 
@@ -27,7 +27,7 @@ public:
 	bool isLoaded = false;
 
 protected:
-	unsigned int m_ResourceId = -1;
+	unsigned int m_ResourceId = 0;
 	std::string m_ResourcePath;
 };
 
@@ -71,14 +71,14 @@ public:
 				return nullptr;
 			}
 			createdResource = it->second;
-			createdResource->LoadResourceThreadJoined(_name);
+			createdResource->LoadResourceThreaded(_name);
 		}
 		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
 		return dynamic_cast<R*>(createdResource);
 	}
 
 	template<typename R>
-	static void CreateResourceThread(const std::string& _name)
+	static void CreateResourceThreaded(const std::string& _name)
 	{
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);

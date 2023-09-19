@@ -11,7 +11,7 @@ void Model::LoadResource(const std::string _name, bool isMultiThread)
 	FileRead(_name);
 
 	if (!isMultiThread)
-		LoadResourceThreadJoined(_name);
+		LoadResourceThreaded(_name);
 
 	isLoaded = true;
 }
@@ -152,7 +152,7 @@ void Model::FileRead(const std::string _name)
 	}
 }
 
-void Model::LoadResourceThreadJoined(const std::string _name)
+void Model::LoadResourceThreaded(const std::string _name)
 {
 	if (meshes.empty())
 	{

@@ -27,7 +27,7 @@ void Texture::LoadResource(const std::string _name, bool isMultiThread)
 
 	data = stbi_load(path.string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
 	if (!isMultiThread)
-		LoadResourceThreadJoined(_name);
+		LoadResourceThreaded(_name);
 
 	isLoaded = true;
 }
@@ -36,7 +36,7 @@ void Texture::UnloadResource() {
 	glDeleteTextures(1, &m_ResourceId);
 }
 
-void Texture::LoadResourceThreadJoined(const std::string _name)
+void Texture::LoadResourceThreaded(const std::string _name)
 {
 	if (data)
 	{
