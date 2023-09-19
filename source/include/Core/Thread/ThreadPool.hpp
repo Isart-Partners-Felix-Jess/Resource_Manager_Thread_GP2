@@ -6,7 +6,6 @@
 #include <functional>
 #include <mutex>
 #include <condition_variable>
-#include <chrono>
 
 class ThreadPool
 {
@@ -31,18 +30,12 @@ public:
 	template <class T>
 	void addToQueue(T&& func, const std::string& _name)
 	{
-		using namespace std::chrono;
-		uint64_t startT = duration_cast<microseconds>(system_clock::now().time_since_epoch()).count();
 		std::unique_lock<std::mutex> lock(queueMtx);
 		// Add the task to the queue
 		tasksQueue.emplace(std::forward<T>(func));
 		Log::Print("Task %s added to Queue.", _name.c_str());
 		// Notify workers that one new task is available
 		condition.notify_one();
-		uint64_t endT = duration_cast<microseconds>(system_clock::now().time_since_epoch()).count();
-		uint64_t duration = endT - startT;
-		
-		Log::Print("Time for task %s: %u |us.", _name.c_str(), duration);
 	}
 
 private:

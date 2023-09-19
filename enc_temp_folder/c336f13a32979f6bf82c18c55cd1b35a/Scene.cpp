@@ -28,7 +28,6 @@ void Scene::Init()
 	InitShaders();
 	InitLights();
 	
-	while (!ResourcesManager::isPoolDone()) {};
 
 	InitMaterials();
 	InitModels();
@@ -37,6 +36,7 @@ void Scene::Init()
 	uint64_t duration = endT - startT;
 
 	Log::Print("Time total for loading: %u |us.", duration);
+	while (!ResourcesManager::isPoolDone()) {};
 }
 
 void Scene::Update(const float& _deltaTime, const CameraInputs& _inputs)
