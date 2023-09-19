@@ -108,8 +108,9 @@ void Application::ProcessInput(GLFWwindow* _window)
 		m_ShowControls = !m_ShowControls;
 	}
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+	{
 		scene.Restart();
-
+	}
 	// LearnOpenGL
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 	{

@@ -60,7 +60,7 @@ public:
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
 
-		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->LoadResource(_name, true); });
+		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->LoadResource(_name, true); },_name+" creation");
 
 		auto it = m_Resources.find(_name);
 		if (it != m_Resources.end())
