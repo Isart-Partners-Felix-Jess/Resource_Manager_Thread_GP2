@@ -112,10 +112,17 @@ void Model::FileRead(const std::string _name)
 						iss >> i;
 						if (!i)
 							break;
+
+						if (elementsToAdd == 1)
+							tmpIdxNormals.push_back(i);
+
+						if (elementsToAdd == 2)
+							tmpIdxUvs.push_back(i);
+
 						if (elementsToAdd == 3)
 						{
 							tmpIdxPositions.push_back(i);
-							if (vertexIdx / 2) // NewTriangle
+							if (vertexIdx / 2) // New triangle
 							{
 								indices.push_back(faceIdx);
 								indices.push_back(faceIdx + vertexIdx - 1);
@@ -123,25 +130,22 @@ void Model::FileRead(const std::string _name)
 							}
 							vertexIdx++;
 						}
-						if (elementsToAdd == 2)
-							tmpIdxUvs.push_back(i);
-						if (elementsToAdd == 1)
-							tmpIdxNormals.push_back(i);
-
-						if (iss.peek() == ' ')
-							break;
 
 						if (iss.peek() == '/')
 						{
 							iss.ignore();
 							if (iss.peek() == '/')
+							{
+								iss.ignore();
 								elementsToAdd--;
-
-							continue;
+							}
 						}
+
+						if (iss.peek() == ' ')
+							break;
 					}
 				} while (iss);
-				faceIdx += vertexIdx; //triangle count
+				faceIdx += vertexIdx; // Triangle count
 			}
 		}
 		file.close();

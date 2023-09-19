@@ -54,17 +54,17 @@ bool Shader::SetVertexShader()
 {
 	int  success = 0; // false
 	const char* vertSrc = vertexShaderSource.c_str();
-		m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(m_VertexShader, 1, &vertSrc, NULL);
-		glCompileShader(m_VertexShader);
+	m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(m_VertexShader, 1, &vertSrc, NULL);
+	glCompileShader(m_VertexShader);
 
-		char infoLog[512];
-		glGetShaderiv(m_VertexShader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(m_VertexShader, 512, NULL, infoLog);
-			DEBUG_ERROR("SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog);
-		}
+	char infoLog[512];
+	glGetShaderiv(m_VertexShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(m_VertexShader, 512, NULL, infoLog);
+		DEBUG_ERROR("SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog);
+	}
 	return static_cast<bool>(success);
 }
 
@@ -84,7 +84,7 @@ bool Shader::ReadFragmentShader(std::filesystem::path const& _filename)
 	}
 	else if (file.is_open())
 	{
-		std::string fileContent((std::istreambuf_iterator<char>(file)),	std::istreambuf_iterator<char>());
+		std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 		fragmentShaderSource = fileContent;
 		success = true;
 	}// Safe if file isn't open

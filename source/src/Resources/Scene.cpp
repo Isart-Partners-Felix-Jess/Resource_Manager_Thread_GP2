@@ -62,7 +62,7 @@ void Scene::Destroy()
 void Scene::Restart()
 {
 	graph.Destroy();
-	Scene::Destroy(); 
+	Scene::Destroy();
 	ResourcesManager::Destroy();
 
 	isMultiThreaded = !isMultiThreaded; // Change the option multiThread<->monoThread
@@ -207,13 +207,13 @@ void Scene::InitModels()
 	graph.entities[7]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
 	graph.entities[7]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 
-	// LOOK AT MY HORSE [8] MY HORSE IS broken :'(
-	//horse = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
-	//graph.AddEntity(horse, nullptr, Transform({ 0.f,1.f,-1.f }, { 0.f,90.f,0.f }));
-	//horse->shader = shadlightCube;
-	//graph.entities[8]->material = material::turquoise;
-	//graph.entities[8]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
-	//graph.entities[8]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
+	// LOOK AT MY HORSE [8]
+	horse = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
+	graph.AddEntity(horse, nullptr, Transform({ 0.f,-1.f,10.f }, { 90.f,90.f,0.f }, { .3f, .3f, .3f }));
+	horse->shader = shadlightCube;
+	graph.entities[8]->material = material::gold;
+	graph.entities[8]->material.AttachDiffuseMap(ResourcesManager::GetResource<Texture>("white.png"));
+	graph.entities[8]->material.AttachSpecularMap(ResourcesManager::GetResource<Texture>("white.png"));
 
 	// Do this last
 	graph.InitDefaultShader(*shadlight);

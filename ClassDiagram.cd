@@ -98,7 +98,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Scene">
-    <Position X="11.5" Y="9" Width="4.5" />
+    <Position X="11.5" Y="8.25" Width="4.5" />
     <AssociationLine Name="graph" Type="SceneGraph">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.058" Y="0.05" />
@@ -265,6 +265,8 @@
         <Point X="8.771" Y="14.625" Type="JumpEnd" />
         <Point X="10.323" Y="14.625" Type="JumpStart" />
         <Point X="10.49" Y="14.625" Type="JumpEnd" />
+        <Point X="13.542" Y="14.625" Type="JumpStart" />
+        <Point X="13.708" Y="14.625" Type="JumpEnd" />
         <Point X="16.76" Y="14.625" Type="JumpStart" />
         <Point X="16.927" Y="14.625" Type="JumpEnd" />
         <Point X="17.75" Y="14.625" />
