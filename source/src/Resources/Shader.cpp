@@ -17,8 +17,7 @@ Shader::Shader(const char* _vertexPath, const char* _fragmentPath)
 	Link();
 }
 
-Shader::~Shader()
-{
+Shader::~Shader() {
 	UnloadResource();
 }
 
@@ -31,6 +30,7 @@ bool Shader::ReadVertexShader(std::filesystem::path const& _filename)
 	std::ifstream file;
 	file.open(_filename);
 	bool success = false;
+
 	if (file.bad())
 	{
 		DEBUG_ERROR("Shader file %s is BAD", _filename);
@@ -41,14 +41,15 @@ bool Shader::ReadVertexShader(std::filesystem::path const& _filename)
 	}
 	else if (file.is_open())
 	{
-		std::string fileContent((std::istreambuf_iterator<char>(file)),
-			std::istreambuf_iterator<char>());
+		std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 		vertexShaderSource = fileContent.c_str();
 		success = true;
 	} // Safe if file isn't open
+
 	file.close();
 	return success;
 }
+
 bool Shader::SetVertexShader()
 {
 	int  success = 0; // false
@@ -66,11 +67,13 @@ bool Shader::SetVertexShader()
 		}
 	return static_cast<bool>(success);
 }
+
 bool Shader::ReadFragmentShader(std::filesystem::path const& _filename)
 {
 	std::ifstream file;
 	file.open(_filename);
 	bool success = false;
+
 	if (file.bad())
 	{
 		DEBUG_ERROR("Shader #%i file %s is BAD", m_ShaderProgram, _filename);
@@ -81,21 +84,24 @@ bool Shader::ReadFragmentShader(std::filesystem::path const& _filename)
 	}
 	else if (file.is_open())
 	{
-		std::string fileContent((std::istreambuf_iterator<char>(file)),
-			std::istreambuf_iterator<char>());
+		std::string fileContent((std::istreambuf_iterator<char>(file)),	std::istreambuf_iterator<char>());
 		fragmentShaderSource = fileContent;
 		success = true;
 	}// Safe if file isn't open
+
 	file.close();
 	return success;
 }
+
 bool Shader::SetFragmentShader()
 {
 	int success = 0; // false
 	const char* fragSrc = fragmentShaderSource.c_str();
+
 	m_FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(m_FragmentShader, 1, &fragSrc, NULL);
 	glCompileShader(m_FragmentShader);
+
 	char infoLog[512];
 	glGetShaderiv(m_FragmentShader, GL_COMPILE_STATUS, &success);
 	if (!success)
@@ -105,12 +111,14 @@ bool Shader::SetFragmentShader()
 	}
 	return static_cast<bool>(success);
 }
+
 bool Shader::Link()
 {
 	m_ShaderProgram = glCreateProgram();
 	glAttachShader(m_ShaderProgram, m_VertexShader);
 	glAttachShader(m_ShaderProgram, m_FragmentShader);
 	glLinkProgram(m_ShaderProgram);
+
 	int success;
 	glGetProgramiv(m_ShaderProgram, GL_LINK_STATUS, &success);
 	char infoLog[512];

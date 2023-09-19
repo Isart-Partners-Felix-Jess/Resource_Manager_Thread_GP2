@@ -9,10 +9,10 @@
 class Shader : public IResource
 {
 private:
-	inline static unsigned int s_m_TotalShaderNumber;
-	unsigned int m_ShaderProgram;
-	unsigned int m_VertexShader;
-	unsigned int m_FragmentShader;
+	inline static unsigned int s_m_TotalShaderNumber = 0;
+	unsigned int m_ShaderProgram = 0;
+	unsigned int m_VertexShader = 0;
+	unsigned int m_FragmentShader = 0;
 
 	std::string vertexShaderSource;
 	std::string fragmentShaderSource;
@@ -36,6 +36,15 @@ public:
 	//Only when Destroying
 	static void ResetCount();
 
+	// Inherited from IResource
+	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
+	virtual void UnloadResource() override;
+
+	void DeleteVertFrag();
+	void DeleteProgram();
+
+	virtual void LoadResourceThreadJoined(const std::string _name) override {};
+
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;
 	void SetUint(const std::string& _name, unsigned int _value) const;
@@ -48,14 +57,4 @@ public:
 	void SetVec4(const std::string& _name, float _valueX, float _valueY, float _valueZ, float _valueW) const;
 	void SetMat3(const std::string& _name, Matrix3x3 _value) const;
 	void SetMat4(const std::string& _name, Matrix4x4 _value) const;
-
-	// Inherited from IResource
-	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
-	virtual void UnloadResource() override;
-
-	void DeleteVertFrag();
-	void DeleteProgram();
-
-	virtual std::thread LoadResourceStartThread(const std::string _name) override { return std::thread{}; };
-	virtual void LoadResourceThreadJoined(const std::string _name) override {};
 };

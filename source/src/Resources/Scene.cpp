@@ -21,8 +21,7 @@ void Scene::Init()
 	//InitComponents
 	if (isMultiThreaded)
 		InitThread();
-	InitShaders(); // TO CHECK
-
+	InitShaders();
 	InitLights();
 
 	while (!ResourcesManager::isPoolDone()) {};
