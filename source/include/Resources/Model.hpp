@@ -22,6 +22,8 @@ public:
 	void ProcessNode(SceneNode* _node, const Scene* _scene);
 	void ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader);
 
+	static void ResetCount();
+
 	virtual void LoadResourceThreadJoined(const std::string _name) override;
 
 private:

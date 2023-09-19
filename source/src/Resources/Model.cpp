@@ -186,7 +186,7 @@ void Model::UnloadResource()
 {
 	for (Mesh* mesh : meshes)
 	{
-		mesh->~Mesh();
+		mesh->Unload();
 		delete mesh;
 	}
 	//meshes.clear();
@@ -206,6 +206,11 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 	_shader->SetMat4("model", model);
 	_shader->SetMat3("normalMatrix", _node->GetTransform().NormalMatrix());
 	_shader->SetMat4("MVP", MVP);
+}
+
+void Model::ResetCount()
+{
+	s_ModelNumber = 0;
 }
 
 void Model::AddMaterial() {

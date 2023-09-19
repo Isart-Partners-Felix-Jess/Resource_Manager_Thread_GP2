@@ -32,6 +32,15 @@ Mesh::~Mesh()
 	glDeleteBuffers(1, &EBO);
 }
 
+void Mesh::Unload()
+{
+	m_Indices.clear();
+	m_Vertices.clear();
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+}
+
 void Mesh::SetVertices(const std::vector<Vertex>& _vertices) {
 	m_Vertices = _vertices;
 }

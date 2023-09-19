@@ -14,6 +14,9 @@ private:
 	unsigned int m_VertexShader;
 	unsigned int m_FragmentShader;
 
+	std::string vertexShaderSource;
+	std::string fragmentShaderSource;
+
 public:
 	// Creates an empty shader, are you sure you don't want to specify paths ?
 	Shader();
@@ -21,10 +24,17 @@ public:
 	~Shader();
 
 	uint32_t GetShaderProgram() const;
-	bool SetVertexShader(std::filesystem::path const& _filename);
-	bool SetFragmentShader(std::filesystem::path const& _filename);
+
+	bool ReadVertexShader(std::filesystem::path const& _filename);
+	bool SetVertexShader();
+	bool ReadFragmentShader(std::filesystem::path const& _filename);
+	bool SetFragmentShader();
+
 	bool Link();
 	void Use();
+
+	//Only when Destroying
+	static void ResetCount();
 
 	void SetBool(const std::string& _name, bool _value) const;
 	void SetInt(const std::string& _name, int _value) const;
@@ -42,5 +52,10 @@ public:
 	// Inherited from IResource
 	virtual void LoadResource(const std::string _name, bool isMultiThread = false) override;
 	virtual void UnloadResource() override;
+
+	void DeleteVertFrag();
+	void DeleteProgram();
+
+	virtual std::thread LoadResourceStartThread(const std::string _name) override { return std::thread{}; };
 	virtual void LoadResourceThreadJoined(const std::string _name) override {};
 };

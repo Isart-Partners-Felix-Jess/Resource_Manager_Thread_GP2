@@ -21,13 +21,14 @@ void Scene::Init()
 	//InitComponents
 	if (isMultiThreaded)
 		InitThread();
+	InitShaders(); // TO CHECK
+
 	InitLights();
 
 	while (!ResourcesManager::isPoolDone()) {};
 
 	InitMaterials();
 	InitModels();
-	InitShaders();
 }
 
 void Scene::Update(const float& _deltaTime, const CameraInputs& _inputs)
@@ -61,9 +62,9 @@ void Scene::Destroy()
 
 void Scene::Restart()
 {
-	Scene::Destroy();
-	ResourcesManager::Destroy();
 	graph.Destroy();
+	Scene::Destroy(); 
+	ResourcesManager::Destroy();
 
 	isMultiThreaded = !isMultiThreaded; // Change the option multiThread<->monoThread
 	DEBUG_LOG("Multithread is %d", isMultiThreaded);
@@ -224,15 +225,21 @@ void Scene::InitShaders()
 	shadlight = ResourcesManager::CreateResource<Shader>("shadlight");
 	shadlightCube = ResourcesManager::CreateResource<Shader>("shadlightCube");
 
-	shadlight->SetFragmentShader("assets/shaders/lighting.frag");
-	shadlight->SetVertexShader("assets/shaders/basic.vert");
+	shadlight->ReadFragmentShader("assets/shaders/lighting.frag");
+	shadlight->ReadVertexShader("assets/shaders/basic.vert");
+
+	shadlight->SetFragmentShader();
+	shadlight->SetVertexShader();
+
 	shadlight->Link();
 
-	shadlightCube->SetFragmentShader("assets/shaders/white.frag");
-	shadlightCube->SetVertexShader("assets/shaders/basic.vert");
-	shadlightCube->Link();
+	shadlightCube->ReadFragmentShader("assets/shaders/white.frag");
+	shadlightCube->ReadVertexShader("assets/shaders/basic.vert");
 
-	graph.InitDefaultShader(*shadlight);
+	shadlightCube->SetFragmentShader();
+	shadlightCube->SetVertexShader();
+
+	shadlightCube->Link();
 }
 
 void Scene::InitMaterials()

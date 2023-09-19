@@ -29,6 +29,8 @@ public:
 	Mesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals);
 	~Mesh();
 
+	void Unload();
+
 	void SetVertices(const std::vector<Vertex>& _Vertices);
 	void SetIndices(const std::vector<unsigned int>& _Indices);
 

@@ -1,4 +1,5 @@
 #include <ResourcesManager.hpp>
+#include <Model.hpp>
 #include <thread>
 
 // Singleton
@@ -39,6 +40,8 @@ void ResourcesManager::Destroy()
 		DEBUG_LOG("Resource %s deleted successfully", pair.first.c_str());
 	}
 	m_Resources.clear(); // Probably useless
+	Model::ResetCount();
+	Shader::ResetCount();
 	DEBUG_LOG("Resource manager cleared successfully");
 	Log::ResetColor();
 }
