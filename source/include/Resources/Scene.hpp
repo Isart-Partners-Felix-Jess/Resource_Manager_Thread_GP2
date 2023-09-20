@@ -16,6 +16,7 @@ enum ModelName
 	cube_m,
 	building_m,
 	horse_m,
+	big_blue_m,
 
 	size_model
 };
@@ -43,6 +44,7 @@ enum EntityName
 	orb2_e,
 	orb3_e,
 	horse_e,
+	big_blue_e,
 
 	size_entity
 };

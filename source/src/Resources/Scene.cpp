@@ -132,6 +132,9 @@ void Scene::InitThread()
 	ResourcesManager::CreateResourceThreaded<Model>("objBuilding");
 	ResourcesManager::CreateResourceThreaded<Texture>("objBuilding/brck91L.jpg");
 	ResourcesManager::CreateResourceThreaded<Texture>("objBuilding/brck91Lb.jpg");
+	//ResourcesManager::CreateResourceThreaded<Texture>("BigBlue/brck91Lb.jpg");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue");
+
 }
 
 void Scene::InitResources()
@@ -173,7 +176,10 @@ void Scene::InitResources()
 
 	// LOOK AT MY HORSE [8]
 	if (!models[horse_m])
-			models[horse_m] = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
+		models[horse_m] = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
+	// Big Blue [9]
+	if (!models[big_blue_m])
+		models[big_blue_m] = ResourcesManager::CreateResource<Model>("big_blue", isMultiThreaded);
 }
 
 void Scene::InitLights()
@@ -251,6 +257,8 @@ void Scene::InitGraph()
 	graph.AddEntity(nullptr, graph.entities[robot_e], Transform({ 0.f,1.f,-1.f }, {}, { 0.15f,0.15f,0.15f }));
 	// LOOK AT MY HORSE [8]
 	graph.AddEntity(nullptr, nullptr, Transform({ 0.f,-1.f,10.f }, { 90.f,90.f,0.f }, { .3f, .3f, .3f }));
+	// Big Blue [9]
+	graph.AddEntity(nullptr, nullptr, Transform({ 0.f, 0.1f,-40.f }, { 0.f, 0.f,0.f }, { .001f, .001f, .001f }));
 }
 
 void Scene::InitModels()
@@ -269,7 +277,7 @@ void Scene::InitModels()
 		graph.entities[viking_room_e]->material.AttachSpecularMap(textures[viking_room_t]);
 	}
 
-	// Robot [1]
+	// Robot [1]s
 	if (models[robot_m] && models[robot_m]->IsReadFinished())
 	{
 		models[robot_m]->ResourceLoadOpenGL("robot_operator");
@@ -350,6 +358,17 @@ void Scene::InitModels()
 		graph.entities[horse_e]->material = material::gold;
 		graph.entities[horse_e]->material.AttachDiffuseMap(textures[white_t]);
 		graph.entities[horse_e]->material.AttachSpecularMap(textures[white_t]);
+	}
+
+	// Big Blue [9]
+	if (models[big_blue_m] && models[big_blue_m]->IsReadFinished() && textures[white_t])
+	{
+		models[big_blue_m]->ResourceLoadOpenGL("big_blue");
+		graph.entities[big_blue_e]->model = models[big_blue_m];
+		models[big_blue_m]->shader = shadLightCube;
+		graph.entities[big_blue_e]->material = material::turquoise;
+		graph.entities[big_blue_e]->material.AttachDiffuseMap(textures[white_t]);
+		graph.entities[big_blue_e]->material.AttachSpecularMap(textures[white_t]);
 	}
 
 	// Do this last
