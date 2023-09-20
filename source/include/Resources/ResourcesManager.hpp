@@ -43,12 +43,8 @@ public:
 		{
 			auto it = s_m_resources.find(_name);
 			if (it == s_m_resources.end())
-			//{
-				//DEBUG_WARNING("Resource %s not found", _name.c_str());
 				return nullptr;
-			//}
 			createdResource = it->second;
-			//createdResource->ResourceLoadOpenGL(_name);
 		}
 		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
 		return dynamic_cast<R*>(createdResource);
