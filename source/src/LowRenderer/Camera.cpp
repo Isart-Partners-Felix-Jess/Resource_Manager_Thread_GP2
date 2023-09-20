@@ -19,7 +19,7 @@ Camera::Camera(unsigned int _width, unsigned int _height)
 	ComputeViewProjection();
 }
 
-void Camera::Update(float deltaTime, const CameraInputs& inputs)
+void Camera::Update(float _deltaTime, const CameraInputs& _inputs)
 {
 	if (viewChanged)
 		SetView();
@@ -30,29 +30,29 @@ void Camera::Update(float deltaTime, const CameraInputs& inputs)
 
 	viewChanged = false;
 	projChanged = false;
-	if (inputs.NoInputs())
+	if (_inputs.NoInputs())
 		return;
 	viewChanged = true;
 
-	if (inputs.deltaX)
-		Turn(inputs.deltaX * deltaTime * camRotationSpeed, matrix::Axis::Y);
-	if (inputs.deltaY)
-		Turn(-inputs.deltaY * deltaTime * camRotationSpeed, matrix::Axis::X);
+	if (_inputs.deltaX)
+		Turn(_inputs.deltaX * _deltaTime * camRotationSpeed, matrix::Axis::Y);
+	if (_inputs.deltaY)
+		Turn(-_inputs.deltaY * _deltaTime * camRotationSpeed, matrix::Axis::X);
 
-	if (inputs.moveForward)
-		Move(zCamera * deltaTime * camSpeed);
-	if (inputs.moveBackward)
-		Move(-zCamera * deltaTime * camSpeed);
+	if (_inputs.moveForward)
+		Move(zCamera * _deltaTime * camSpeed);
+	if (_inputs.moveBackward)
+		Move(-zCamera * _deltaTime * camSpeed);
 
-	if (inputs.moveLeft)
+	if (_inputs.moveLeft)
 	{
 		Vectorf3 right = up.Cross_product(zCamera).Normalize();
-		Move(right * deltaTime * camSpeed);
+		Move(right * _deltaTime * camSpeed);
 	}
-	if (inputs.moveRight)
+	if (_inputs.moveRight)
 	{
 		Vectorf3 left = -up.Cross_product(zCamera).Normalize();
-		Move(left * deltaTime * camSpeed);
+		Move(left * _deltaTime * camSpeed);
 	}
 }
 
@@ -96,12 +96,12 @@ void Camera::Turn(float _angle, matrix::Axis _axis)
 		eye = center - zCamera * orthoScale;
 }
 
-void Camera::Zoom(float yoffset)
+void Camera::Zoom(float _yoffset)
 {
 	if (perspective)
 	{
 		float degToRad = static_cast<float>(M_PI) / 180.f;
-		fovY -= yoffset * degToRad;
+		fovY -= _yoffset * degToRad;
 		if (fovY < (/*1.0f * */degToRad)) //1 degree, so lets skip that computation
 			fovY = /*1.0f * */degToRad;
 		if (fovY > 179.0f * degToRad)
@@ -110,7 +110,7 @@ void Camera::Zoom(float yoffset)
 	else
 	{
 		float zoomSpeed = 0.1f;
-		orthoScale -= zoomSpeed * yoffset;
+		orthoScale -= zoomSpeed * _yoffset;
 	}
 	projChanged = true;
 }
@@ -215,20 +215,20 @@ void Camera::ShowImGuiControls()
 	}
 }
 
-Matrix4x4 Camera::Frustum(float left, float right, float bottom, float top, float near, float far)
+Matrix4x4 Camera::Frustum(float _left, float _right, float _bottom, float _top, float _near, float _far)
 {
-	float iHorDist = 1.f / (right - left);
-	float iVerDist = 1.f / (top - bottom);
-	float iDepDist = 1.f / (near - far);
-	float dNear = 2.f * near;
+	float iHorDist = 1.f / (_right - _left);
+	float iVerDist = 1.f / (_top - _bottom);
+	float iDepDist = 1.f / (_near - _far);
+	float dNear = 2.f * _near;
 	return Matrix4x4{
-		{dNear * iHorDist,0.f,(right + left) * iHorDist,0.f},
-		{0.f,dNear * iVerDist,(top + bottom) * iVerDist,0.f},
-		{0.f,0.f, (far + near) * iDepDist, dNear * far * iDepDist},
+		{dNear * iHorDist,0.f,(_right + _left) * iHorDist,0.f},
+		{0.f,dNear * iVerDist,(_top + _bottom) * iVerDist,0.f},
+		{0.f,0.f, (_far + _near) * iDepDist, dNear * _far * iDepDist},
 		{0.f,0.f, -1.f, 0.f} };
 }
 
-Matrix4x4 Camera::Perspective(float fovY, float aspect, float near, float far)
+Matrix4x4 Camera::Perspective(float fovY, float aspect, float _near, float _far)
 {
 	float angle = static_cast<float>(M_PI_2) - fovY * 0.5f;
 	// Safe tan
@@ -236,26 +236,26 @@ Matrix4x4 Camera::Perspective(float fovY, float aspect, float near, float far)
 	// Very specific, I am afraid
 	if (angle != static_cast<float>(M_PI_2) && angle != -static_cast<float>(M_PI_2))
 		f = tan(angle);
-	float iDist = 1.f / (near - far);
+	float iDist = 1.f / (_near - _far);
 	return Matrix4x4{
 		{f / aspect,0.f,0.f					,0.f },
 		{		0.f,f  ,0.f					,0.f },
-		{		0.f,0.f,(far + near) * iDist,2.f * far * near * iDist},
+		{		0.f,0.f,(_far + _near) * iDist,2.f * _far * _near * iDist},
 		{		0.f,0.f,-1.f				,0.f }
 	};
 }
 
-Matrix4x4 Camera::Orthographic(float left, float right, float bottom, float top)
+Matrix4x4 Camera::Orthographic(float _left, float _right, float _bottom, float _top)
 {
-	float iHdist = 1.f / (right - left);
-	float iVdist = 1.f / (top - bottom);
+	float iHdist = 1.f / (_right - _left);
+	float iVdist = 1.f / (_top - _bottom);
 	float iZdist = 1.f / (zFar - zNear);
 
 	return Matrix4x4{
-		{  2 * iHdist	,0.f		,0.f		,-(right + left) * iHdist},
-		{		0.f		,2 * iVdist	,0.f		,-(top + bottom) * iVdist},
-		{		0.f		,0.f		,-2 * iZdist,-(zFar + zNear) * iZdist},
-		{		0.f		,0.f		,0.f  		,1.f					 }
+		{  2 * iHdist	,0.f		,0.f		,-(_right + _left) * iHdist},
+		{		0.f		,2 * iVdist	,0.f		,-(_top + _bottom) * iVdist},
+		{		0.f		,0.f		,-2 * iZdist,-(zFar  +  zNear) * iZdist},
+		{		0.f		,0.f		,0.f  		,1.f					   }
 	};
 }
 

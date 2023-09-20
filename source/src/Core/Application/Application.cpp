@@ -29,6 +29,10 @@ Application::Application(int _width, int _height) : scene(_width, _height)
 	SetupImGui(window);
 }
 
+Application::~Application() {
+	Destroy();
+};
+
 void Application::Destroy()
 {
 	scene.Destroy();
@@ -163,15 +167,15 @@ void Application::ProcessInput(GLFWwindow* _window)
 	// Cam end
 }
 
-void Application::Scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
-	s_MouseScrollOffset = (float)yoffset;
+void Application::Scroll_callback(GLFWwindow* _window, double _xoffset, double _yoffset) {
+	s_MouseScrollOffset = (float)_yoffset;
 }
 
 void Application::framebuffer_size_callback(GLFWwindow* _window, int _width, int _height) {
 	glViewport(0, 0, _width, _height);
 }
 
-void Application::SetupImGui(GLFWwindow* window)
+void Application::SetupImGui(GLFWwindow* _window)
 {
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
@@ -187,7 +191,7 @@ void Application::SetupImGui(GLFWwindow* window)
 	const char* const glslVersion = "#version 130";
 
 	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplGlfw_InitForOpenGL(_window, true);
 	ImGui_ImplOpenGL3_Init(glslVersion);
 }
 
@@ -199,7 +203,7 @@ void Application::StartImGuiFrame()
 	ImGui::NewFrame();
 }
 
-void Application::Render(GLFWwindow* window)
+void Application::Render(GLFWwindow* _window)
 {
 	ImGui::Render();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

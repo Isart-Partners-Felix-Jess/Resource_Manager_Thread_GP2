@@ -29,21 +29,19 @@ private:
 	static float s_MouseScrollOffset;
 
 	bool m_ShowControls = true;
-	void ProcessInput(GLFWwindow* window);
-	static void Scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+	void ProcessInput(GLFWwindow* _window);
+	static void Scroll_callback(GLFWwindow* _window, double _xoffset, double _yoffset);
 
-	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-	void SetupImGui(GLFWwindow* window);
+	static void framebuffer_size_callback(GLFWwindow* _window, int _width, int _height);
+	void SetupImGui(GLFWwindow* _window);
 	static void StartImGuiFrame();
-	void Render(GLFWwindow* window);
+	void Render(GLFWwindow* _window);
 	void ApplyChangeColor();
 
 public:
 	Application() : Application(800, 600) {};
 	Application(int _width, int _height);
-	~Application() {
-		Destroy();
-	};
+	~Application();
 
 	void Destroy();
 	void Update();

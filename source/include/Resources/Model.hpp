@@ -21,7 +21,7 @@ public:
 	void AddMaterial();
 	void AddMaterials(unsigned int _number);
 	void AddMaterial(Material _mat);
-	void ChangeMaterial(Material _mat, uint32_t idx);
+	void ChangeMaterial(Material _mat, uint32_t _idx);
 
 	void ProcessNode(SceneNode* _node, const Scene* _scene);
 	void ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader);
