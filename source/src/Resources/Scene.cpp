@@ -45,13 +45,18 @@ void Scene::Init()
 
 void Scene::InitContinue()
 {
-	if (!ResourcesManager::IsPoolDone())
+	if (m_globalInitDone)
+		return;
+	static int frames = 0;
+	if (++frames % 10)
+		return;
+	else if (!ResourcesManager::IsPoolDone())
 	{
 		InitResources();
 		InitMaterials();
 		InitModels();
 	}
-	else if (!m_globalInitDone)
+	else
 	{
 		//For the last Time
 		InitResources();
@@ -102,9 +107,11 @@ void Scene::Destroy()
 
 void Scene::Restart()
 {
-	graph.Destroy();
-	Scene::Destroy();
+	if (!m_globalInitDone)
+		return;
 	ResourcesManager::Destroy();
+	Scene::Destroy();
+	graph.Destroy();
 
 	isMultiThreaded = !isMultiThreaded; // Change the option multiThread<->monoThread
 
@@ -167,7 +174,7 @@ void Scene::InitResources()
 
 	// LOOK AT MY HORSE [8]
 	if (!models[horse_m])
-		models[horse_m] = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
+			models[horse_m] = ResourcesManager::CreateResource<Model>("Horse", isMultiThreaded);
 }
 
 void Scene::InitLights()
