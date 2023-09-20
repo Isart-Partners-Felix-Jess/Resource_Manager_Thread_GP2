@@ -21,14 +21,14 @@ private:
 	Matrix4x4 local = Matrix4x4(true);
 
 public:
-	Mesh() {};
-	Mesh(const std::vector<Vertex>& _temp_Vertices, const std::vector<uint32_t>& _temp_idx_Positions, const std::vector<uint32_t>& _temp_idx_Uvs, const std::vector<uint32_t>& _temp_idx_Normals);
+	Mesh() = default;
+	Mesh(const std::vector<Vertex>& _tmpVertices, const std::vector<uint32_t>& _tmpIdxPositions, const std::vector<uint32_t>& _tmpIdxUvs, const std::vector<uint32_t>& _tmpIdxNormals);
 	~Mesh();
 
 	void Unload();
 
-	void SetVertices(const std::vector<Vertex>& _Vertices);
-	void SetIndices(const std::vector<unsigned int>& _Indices);
+	void SetVertices(const std::vector<Vertex>& _vertices);
+	void SetIndices(const std::vector<unsigned int>& _indices);
 
 	void SetupMesh();
 	void Draw();
