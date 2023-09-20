@@ -53,11 +53,11 @@ void Application::Update()
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
+		ProcessInput(window);
 		scene.Update(deltaTime, inputs);
 		if (m_ShowControls)
 			ShowImGuiControls();
 		Render(window);
-		ProcessInput(window);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
 	}
