@@ -38,9 +38,9 @@ struct Camera
 	bool projChanged;
 	Matrix4x4 viewProjection;
 
-	Camera(unsigned int width, unsigned int height);
+	Camera(unsigned int _width, unsigned int _height);
 
-	void Update(float deltaTime, const CameraInputs& inputs);
+	void Update(float _deltaTime, const CameraInputs& _inputs);
 	void SetView();
 	void SetProjection();
 	void ComputeViewProjection();
@@ -49,12 +49,12 @@ struct Camera
 
 	void ShowImGuiControls();
 
-	void Zoom(float yoffset);
+	void Zoom(float _yoffset);
 
 private:
-	Matrix4x4 Frustum(float left, float right, float bottom, float top, float near, float far);
-	Matrix4x4 Perspective(float fovY, float aspect, float near, float far);
-	Matrix4x4 Orthographic(float left, float right, float bottom, float top);
+	Matrix4x4 Frustum(float _left, float _right, float _bottom, float _top, float _near, float _far);
+	Matrix4x4 Perspective(float _fovY, float _aspect, float _near, float _far);
+	Matrix4x4 Orthographic(float _left, float _right, float _bottom, float _top);
 
 	void Move(const Vectorf3& _velocity);
 	void Turn(float _angle, matrix::Axis _axis);

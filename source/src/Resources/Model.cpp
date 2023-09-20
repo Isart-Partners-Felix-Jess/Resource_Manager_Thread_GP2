@@ -218,6 +218,6 @@ void Model::AddMaterial(Material _mat) {
 	materials.push_back(_mat);
 }
 
-void Model::ChangeMaterial(Material _mat, uint32_t idx) {
-	materials[idx] = _mat;
+void Model::ChangeMaterial(Material _mat, uint32_t _idx) {
+	materials[_idx] = _mat;
 }

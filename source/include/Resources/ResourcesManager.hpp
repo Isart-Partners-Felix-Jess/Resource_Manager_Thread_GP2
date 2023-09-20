@@ -26,10 +26,10 @@ public:
 
 	// Maybe try to make the parameter a path...
 	template<typename R>
-	static R* CreateResource(const std::string& _name, bool isMultiThread)
+	static R* CreateResource(const std::string& _name, bool _isMultiThread)
 	{
 		IResource* createdResource = new R();
-		if (!isMultiThread)
+		if (!_isMultiThread)
 		{
 			createdResource->SetResourcePath(_name);
 			createdResource->ResourceFileRead(_name);

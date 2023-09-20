@@ -40,7 +40,7 @@ DEBUG_LOG(ERRORLogStream.str().c_str(), ##__VA_ARGS__)\
 Log::ResetColor();\
 }
 
-void FormatString(char* buffer, size_t bufferSize, const char* format, ...);
+void FormatString(char* _buffer, size_t _bufferSize, const char* _format, ...);
 
 class Log
 {
@@ -61,17 +61,17 @@ public:
 	void operator=(const Log&) = delete;
 
 	// Shortcut to get the instance
-	static void OpenFile(std::filesystem::path const& filename, bool _erase = false);
+	static void OpenFile(std::filesystem::path const& _filename, bool _erase = false);
 	// Shortcut to get the instance
-	static void Print(const char* format, ...);
+	static void Print(const char* _format, ...);
 	static void WarningColor();
 	static void ErrorColor();
 	static void ResetColor();
 	static void SuccessColor();
 
 private:
-	void InstanceOpenFile(std::filesystem::path const& filename, bool _erase = false);
-	void InstancePrint(const char* format, va_list args);
+	void InstanceOpenFile(std::filesystem::path const& _filename, bool _erase = false);
+	void InstancePrint(const char* _format, va_list _args);
 	void ChangeColor(unsigned char _handleWindowsId) const;
 	enum class Color : unsigned char
 	{
