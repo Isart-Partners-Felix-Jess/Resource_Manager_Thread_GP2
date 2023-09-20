@@ -25,8 +25,8 @@ Mesh::Mesh(const std::vector<Vertex>& _tmpVertices, const std::vector<uint32_t>&
 
 Mesh::~Mesh()
 {
-	m_Indices.clear();
-	m_Vertices.clear();
+	m_indices.clear();
+	m_vertices.clear();
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
@@ -34,19 +34,19 @@ Mesh::~Mesh()
 
 void Mesh::Unload()
 {
-	m_Indices.clear();
-	m_Vertices.clear();
+	m_indices.clear();
+	m_vertices.clear();
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
 }
 
 void Mesh::SetVertices(const std::vector<Vertex>& _vertices) {
-	m_Vertices = _vertices;
+	m_vertices = _vertices;
 }
 
 void Mesh::SetIndices(const std::vector<unsigned int>& _indices) {
-	m_Indices = _indices;
+	m_indices = _indices;
 }
 
 void Mesh::SetupMesh()
@@ -58,10 +58,10 @@ void Mesh::SetupMesh()
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(Vertex), &m_Vertices[0].Position[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, m_vertices.size() * sizeof(Vertex), &m_vertices[0].Position[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int), &m_Indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size() * sizeof(unsigned int), &m_indices[0], GL_STATIC_DRAW);
 
 	// Vertex positions
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
@@ -80,7 +80,7 @@ void Mesh::Draw()
 {
 	// Draw mesh
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, (GLsizei)m_Indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, (GLsizei)m_indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 	glActiveTexture(GL_TEXTURE0);
 }

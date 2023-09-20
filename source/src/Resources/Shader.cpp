@@ -3,7 +3,7 @@
 Shader::Shader()
 {
 	s_m_TotalShaderNumber++;
-	IResource::m_ResourceId = s_m_TotalShaderNumber;
+	IResource::m_resourceId = s_m_TotalShaderNumber;
 }
 
 // Initializing the static member variable
@@ -137,8 +137,8 @@ bool Shader::Link()
 }
 
 // Only to name the shader
-void Shader::ResourceLoad(const std::string _name, bool isMultiThread) {
-	IResource::m_ResourcePath = _name;
+void Shader::SetName(const std::string _name) {
+	m_resourcePath = _name;
 }
 
 void Shader::ResourceUnload()

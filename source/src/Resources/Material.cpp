@@ -1,9 +1,31 @@
 #include <Material.hpp>
 
 Material::Material() {
+	isRead = true;
 	*this = material::none;
 };
-
+//Material& Material::operator=(const Material& _other)
+//{
+//	if (this != &_other) 
+//	{
+//		isRead.store(_other.isRead.load());
+//		ambient = _other.ambient;
+//		diffuse = _other.diffuse;
+//		specular = _other.specular;
+//		shininess = _other.shininess;
+//		diffuse2DMap = 0;
+//	}
+//	return *this;
+//}
+//Material::Material(const Material& _other)
+//{
+//	isRead.store(_other.isRead.load());
+//	ambient = _other.ambient;
+//	diffuse = _other.diffuse;
+//	specular = _other.specular;
+//	shininess = _other.shininess;
+//	diffuse2DMap = 0;
+//}
 void Material::InitShader(Shader& _lightShader)
 {
 	_lightShader.SetVec3("material.ambient", ambient);
@@ -35,7 +57,7 @@ Material::Material(float _ambientX, float _ambientY, float _ambientZ, float _dif
 };
 
 void Material::AttachDiffuseMap(const Texture* _diffuseMap) {
-	diffuse2DMap = _diffuseMap->GetID();
+	diffuse2DMap = _diffuseMap->GetResourceId();
 }
 
 void Material::AttachDiffuseMap(unsigned int _diffuseMapID) {
@@ -47,7 +69,7 @@ void Material::DetachDiffuseMap() {
 }
 
 void Material::AttachSpecularMap(const Texture* _specularMap) {
-	specular2DMap = _specularMap->GetID();
+	specular2DMap = _specularMap->GetResourceId();
 }
 
 void Material::AttachSpecularMap(unsigned int _specularMapID) {

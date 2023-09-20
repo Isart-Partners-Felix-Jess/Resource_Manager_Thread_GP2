@@ -21,6 +21,9 @@ public:
 	void InitShader(Shader& _lightShader);
 
 	Material();
+	//Material(const Material& _other);
+	//Material& operator=(const Material& _other);
+
 	Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny);
 	Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny);
 
@@ -34,9 +37,8 @@ public:
 
 private:
 	// Inherited from IResource
-	virtual void ResourceLoad(const std::string _name, bool isMultiThread = false) override {};
-	virtual void ResourceLoadOpenGL(const std::string _name) override {};
-	virtual void ResourceFileRead(const std::string _name) override {};
+	virtual void ResourceLoadOpenGL(const std::string _name) override { isLoaded = true; };
+	virtual void ResourceFileRead(const std::string _name) override { isRead =true; };
 
 	virtual void ResourceUnload() override {};
 };

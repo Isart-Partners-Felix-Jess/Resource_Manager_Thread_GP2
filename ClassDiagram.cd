@@ -153,7 +153,7 @@
       <FileName>source\include\Resources\ResourcesManager.hpp</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="m_ThreadPool" />
+      <Field Name="s_m_threadPool" />
     </ShowAsAssociation>
   </Class>
   <Struct Name="Camera">

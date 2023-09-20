@@ -16,8 +16,8 @@ class Mesh
 {
 private:
 	unsigned int VAO = -1, VBO = -1, EBO = -1;
-	std::vector<Vertex> m_Vertices;
-	std::vector<unsigned int> m_Indices;
+	std::vector<Vertex> m_vertices;
+	std::vector<unsigned int> m_indices;
 	Matrix4x4 local = Matrix4x4(true);
 
 public:

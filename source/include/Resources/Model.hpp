@@ -28,19 +28,20 @@ public:
 
 	static void ResetCount();
 
+	// Inherited from IResource
+	virtual void ResourceFileRead(const std::string _path) override;
+	virtual void ResourceLoadOpenGL(const std::string _name) override;
+	virtual void ResourceUnload() override;
+
 private:
+	std::mutex m_meshMtx;
 	// Model data
-	std::string directory;
+	std::string m_directory;
 	std::vector<uint32_t> indices;
 
 	// Tmp index
-	std::vector<Vertex> tmpVertices;
-	std::vector<uint32_t> tmpIdxPositions;
-	std::vector<uint32_t> tmpIdxUvs;
-	std::vector<uint32_t> tmpIdxNormals;
-
-	// Inherited from IResource
-	virtual void ResourceFileRead(const std::string path) override;
-	virtual void ResourceLoadOpenGL(const std::string _name) override;
-	virtual void ResourceUnload() override;
+	std::vector<Vertex> m_tmpVertices;
+	std::vector<uint32_t> m_tmpIdxPositions;
+	std::vector<uint32_t> m_tmpIdxUvs;
+	std::vector<uint32_t> m_tmpIdxNormals;
 };

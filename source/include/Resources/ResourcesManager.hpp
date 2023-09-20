@@ -11,11 +11,12 @@
 class ResourcesManager
 {
 private:
-	static std::atomic<ResourcesManager*> m_Instance;
-	static std::mutex m_Mutex;
-	static std::unordered_map<std::string, IResource*> m_Resources;
+	static std::atomic<ResourcesManager*> s_m_instance;
+	static std::mutex s_m_mutex;
+	static std::unordered_map<std::string, IResource*> s_m_resources;
 
-	static ThreadPool m_ThreadPool;
+	static ThreadPool s_m_threadPool;
+	static bool s_m_isDeadPool;
 
 	ResourcesManager();
 	~ResourcesManager();
@@ -25,30 +26,31 @@ public:
 
 	// Maybe try to make the parameter a path...
 	template<typename R>
-	static R* CreateResource(const std::string& _name, bool isMultiThread = false)
+	static R* CreateResource(const std::string& _name, bool isMultiThread)
 	{
 		IResource* createdResource = new R();
-		if (!isMultiThread) {
+		if (!isMultiThread)
+		{
 			createdResource->SetResourcePath(_name);
-			createdResource->ResourceLoad(_name);
+			createdResource->ResourceFileRead(_name);
 
 			// Erase previous pointer if found
-			auto it = m_Resources.find(_name);
-			if (it != m_Resources.end())
+			auto it = s_m_resources.find(_name);
+			if (it != s_m_resources.end())
 				delete it->second;
 
-			m_Resources.emplace(_name, createdResource);
+			s_m_resources.emplace(_name, createdResource);
 		}
 		else
 		{
-			auto it = m_Resources.find(_name);
-			if (it == m_Resources.end())
-			{
-				DEBUG_WARNING("Resource %s not found", _name.c_str());
+			auto it = s_m_resources.find(_name);
+			if (it == s_m_resources.end())
+			//{
+				//DEBUG_WARNING("Resource %s not found", _name.c_str());
 				return nullptr;
-			}
+			//}
 			createdResource = it->second;
-			createdResource->ResourceLoadOpenGL(_name);
+			//createdResource->ResourceLoadOpenGL(_name);
 		}
 		DEBUG_LOG("Resource %s loaded, ID: %i", _name.c_str(), createdResource->GetResourceId());
 		return dynamic_cast<R*>(createdResource);
@@ -60,19 +62,20 @@ public:
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
 
-		m_ThreadPool.addToQueue([createdResource, _name]() { createdResource->ResourceLoad(_name, true); },_name+" creation");
+		s_m_threadPool.AddToQueue([createdResource, _name]() { createdResource->ResourceFileRead(_name); }, _name + " creation");
 
-		auto it = m_Resources.find(_name);
-		if (it != m_Resources.end())
+		auto it = s_m_resources.find(_name);
+		if (it != s_m_resources.end())
 			delete it->second;
-		m_Resources.emplace(_name, createdResource);
+		s_m_resources.emplace(_name, createdResource);
+		ResourcesManager::s_m_isDeadPool = false;
 	}
 
 	template<typename R>
 	static R* GetResource(const std::string& _name)
 	{
-		auto it = m_Resources.find(_name);
-		if (it != m_Resources.end())
+		auto it = s_m_resources.find(_name);
+		if (it != s_m_resources.end())
 		{
 			// Found the resource, return the raw pointer
 			DEBUG_LOG("Resource %s loaded", _name.c_str());
@@ -86,7 +89,7 @@ public:
 		}
 	}
 
-	static bool isPoolDone();
+	static bool IsPoolDone();
 
 	static void Destroy();
 	void Delete(const std::string& _name);

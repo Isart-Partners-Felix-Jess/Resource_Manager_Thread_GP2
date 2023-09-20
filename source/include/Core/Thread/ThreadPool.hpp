@@ -12,59 +12,59 @@ class ThreadPool
 public:
 	ThreadPool()
 	{
-		for (int id = 0; id < poolSize; id++) // Launch workers
-			workers[id] = std::thread([this]() { workerTask(); });
+		for (int id = 0; id < s_m_poolSize; id++) // Launch workers
+			m_workers[id] = std::thread([this]() { WorkerTask(); });
 	}
 
 	~ThreadPool()
 	{
-		std::unique_lock<std::mutex> lock(queueMtx);
+		std::unique_lock<std::mutex> lock(m_queueMtx);
 
-		stop = true; // Notify workers they have to stop
-		condition.notify_all();
+		m_stop = true; // Notify workers they have to stop
+		m_waitCondition.notify_all();
 
-		for (int id = 0; id < poolSize; id++) // Kill workers thread
-			workers[id].join();
+		for (int id = 0; id < s_m_poolSize; id++) // Kill workers thread
+			m_workers[id].join();
 	}
 
 	template <class T>
-	void addToQueue(T&& func, const std::string& _name)
+	void AddToQueue(T&& _func, const std::string& _name)
 	{
-		std::unique_lock<std::mutex> lock(queueMtx);
+		std::unique_lock<std::mutex> lock(m_queueMtx);
 		// Add the task to the queue
-		tasksQueue.emplace(std::forward<T>(func));
+		m_tasksQueue.emplace(std::forward<T>(_func));
 		Log::Print("Task %s added to Queue.", _name.c_str());
 		// Notify workers that one new task is available
-		condition.notify_one();
+		m_waitCondition.notify_one();
 	}
 
 private:
-	static const unsigned int poolSize = 8;
+	static const unsigned int s_m_poolSize = 8;
 
-	std::array<std::thread, poolSize> workers;
-	std::queue<std::function<void()>> tasksQueue;
+	std::array<std::thread, s_m_poolSize> m_workers;
+	std::queue<std::function<void()>> m_tasksQueue;
 
-	std::mutex queueMtx;
-	std::condition_variable condition;
+	std::mutex m_queueMtx;
+	std::condition_variable m_waitCondition;
 
-	bool stop = false;
+	bool m_stop = false;
 
-	void workerTask()
+	void WorkerTask()
 	{
 		while (true)
 		{
 			std::function<void()> task;
 
-			std::unique_lock<std::mutex> lock(queueMtx);
+			std::unique_lock<std::mutex> lock(m_queueMtx);
 			// Wait until there is a task in the queue or the thread should stop
-			condition.wait(lock, [this] { return stop || !tasksQueue.empty(); });
+			m_waitCondition.wait(lock, [this] { return m_stop || !m_tasksQueue.empty(); });
 
-			if (stop && tasksQueue.empty())
+			if (m_stop && m_tasksQueue.empty())
 				return; // Exit the thread if it's time to stop
 
 			// Get the next task from the queue
-			task = std::move(tasksQueue.front());
-			tasksQueue.pop();
+			task = std::move(m_tasksQueue.front());
+			m_tasksQueue.pop();
 
 			task();
 		}

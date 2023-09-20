@@ -29,6 +29,8 @@ public:
 
 	uint32_t GetShaderProgram() const;
 
+	void SetName(const std::string _name);
+
 	bool ReadVertexShader(std::filesystem::path const& _filename);
 	bool SetVertexShader();
 	bool ReadFragmentShader(std::filesystem::path const& _filename);
@@ -41,10 +43,9 @@ public:
 	static void ResetCount();
 
 	// Inherited from IResource
-	virtual void ResourceLoad(const std::string _name, bool isMultiThread = false) override;
-	virtual void ResourceLoadOpenGL(const std::string _name) override {};
-	virtual void ResourceFileRead(const std::string _name) override {};
-	virtual void ResourceUnload() override;
+	void ResourceLoadOpenGL(const std::string _name) override { isLoaded = true; };
+	void ResourceFileRead(const std::string _name) override { isRead = true; };
+	void ResourceUnload() override;
 
 	void DeleteVertFrag();
 	void DeleteProgram();

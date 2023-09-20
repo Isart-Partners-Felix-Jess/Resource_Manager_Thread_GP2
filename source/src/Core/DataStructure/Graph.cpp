@@ -11,7 +11,7 @@ SceneNode::SceneNode(SceneNode* _parent, const Scene* _scene) : material(materia
 		SetParent(_parent); // Set parent child as well
 	scene = _scene;
 	changed = true;
-	shader = scene->shadlight;
+	shader = scene->shadLight;
 }
 
 // Set parent child as well

@@ -22,7 +22,6 @@ Application::Application(int _width, int _height) : scene(_width, _height)
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
 	Log::Print("'S' + 'I' Keys to hide/show controls");
 
-	scene.Init();
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 	glEnable(GL_DEPTH_TEST);
@@ -51,7 +50,6 @@ void Application::Update()
 	{
 		glfwPollEvents();
 		StartImGuiFrame();
-		ProcessInput(window);
 		float currentFrame = static_cast<float>(glfwGetTime());
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
@@ -59,6 +57,7 @@ void Application::Update()
 		if (m_ShowControls)
 			ShowImGuiControls();
 		Render(window);
+		ProcessInput(window);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
 	}
