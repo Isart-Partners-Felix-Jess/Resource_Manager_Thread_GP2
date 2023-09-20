@@ -4,7 +4,7 @@
 #include <chrono>
 
 //Singleton
-Log* Log::instance = nullptr;
+Log* Log::m_instance = nullptr;
 
 void FormatString(char* _buffer, size_t _bufferSize, const char* _format, ...)
 {
@@ -16,15 +16,15 @@ void FormatString(char* _buffer, size_t _bufferSize, const char* _format, ...)
 
 Log* Log::GetInstance()
 {
-	if (instance == nullptr)
-		instance = new Log();
-	return instance;
+	if (m_instance == nullptr)
+		m_instance = new Log();
+	return m_instance;
 }
 
 void Log::DeleteInstance()
 {
 	// Useless to check: delete nullptr is safe
-	delete instance;
+	delete m_instance;
 }
 
 Log::~Log()
@@ -33,8 +33,8 @@ Log::~Log()
 	char buffer[26];
 	ctime_s(buffer, sizeof(buffer), &now);
 	GetInstance()->Print("End of log entry at %s", buffer);
-	if (m_Output.is_open())
-		m_Output.close();
+	if (m_output.is_open())
+		m_output.close();
 }
 
 void Log::OpenFile(std::filesystem::path const& _filename, bool _erase) {
@@ -44,10 +44,10 @@ void Log::OpenFile(std::filesystem::path const& _filename, bool _erase) {
 void Log::InstanceOpenFile(std::filesystem::path const& _filename, bool _erase)
 {
 	if (_erase)
-		m_Output.open(_filename, std::ios::out | std::ios::trunc);
+		m_output.open(_filename, std::ios::out | std::ios::trunc);
 	else
-		m_Output.open(_filename, std::ios::out | std::ios::app);
-	if (m_Output.is_open())
+		m_output.open(_filename, std::ios::out | std::ios::app);
+	if (m_output.is_open())
 	{
 		time_t now = time(0);
 		char buffer[26];
@@ -73,12 +73,12 @@ void Log::InstancePrint(const char* _format, va_list _args)
 	char buffer[bufferSize];
 	vsnprintf(buffer, bufferSize, _format, _args);
 	std::cout << std::string(buffer) << "\n";
-	m_Output << std::string(buffer) << "\n";
-	m_Output.flush();
+	m_output << std::string(buffer) << "\n";
+	m_output.flush();
 }
 
 void Log::ResetColor() { // Text in white (default)
-	SetConsoleTextAttribute(GetInstance()->handle, 15);
+	SetConsoleTextAttribute(GetInstance()->m_handle, 15);
 }
 
 void Log::SuccessColor() {
@@ -94,9 +94,9 @@ void Log::ErrorColor() {
 }
 
 void Log::ChangeColor(unsigned char _handleWindowsId) const {
-	SetConsoleTextAttribute(handle, _handleWindowsId);
+	SetConsoleTextAttribute(m_handle, _handleWindowsId);
 }
 
 void Log::ChangeColor(Color _handleWindowsId) const {
-	SetConsoleTextAttribute(handle, (WORD)_handleWindowsId);
+	SetConsoleTextAttribute(m_handle, (WORD)_handleWindowsId);
 }

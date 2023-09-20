@@ -1,9 +1,9 @@
 #include <Application.hpp>
 
 // Static declaration(s)
-float Application::s_MouseScrollOffset = 0.f;
+float Application::s_m_MouseScrollOffset = 0.f;
 
-Application::Application(int _width, int _height) : scene(_width, _height)
+Application::Application(int _width, int _height) : m_scene(_width, _height)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -11,22 +11,22 @@ Application::Application(int _width, int _height) : scene(_width, _height)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	window = glfwCreateWindow(_width, _height, "Threaded Resource Manager", NULL, NULL);
-	if (window == NULL)
+	m_window = glfwCreateWindow(_width, _height, "Threaded Resource Manager", NULL, NULL);
+	if (m_window == NULL)
 	{
 		glfwTerminate();
 		// Always assert I want the above  code to apply
 		Assert(false, "Failed to create GLFW window");
 	}
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(m_window);
 	Assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
 	Log::Print("'S' + 'I' Keys to hide/show controls");
 
 	glViewport(0, 0, _width, _height);
 	glClearColor(m_ClearColor[0], m_ClearColor[1], m_ClearColor[2], m_ClearColor[3]);
 	glEnable(GL_DEPTH_TEST);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	SetupImGui(window);
+	glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
+	SetupImGui(m_window);
 }
 
 Application::~Application() {
@@ -35,7 +35,7 @@ Application::~Application() {
 
 void Application::Destroy()
 {
-	scene.Destroy();
+	m_scene.Destroy();
 
 	// IMGUI Destroyed
 	ImGui_ImplGlfw_Shutdown();
@@ -43,27 +43,27 @@ void Application::Destroy()
 	ImGui::DestroyContext();
 
 	glDisable(GL_DEPTH_TEST);
-	glfwDestroyWindow(window);
+	glfwDestroyWindow(m_window);
 	glfwTerminate();
 }
 
 void Application::Update()
 {
 	float lastFrame = 0.f;
-	while (!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(m_window))
 	{
 		glfwPollEvents();
 		StartImGuiFrame();
 		float currentFrame = static_cast<float>(glfwGetTime());
-		deltaTime = currentFrame - lastFrame;
+		m_deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-		ProcessInput(window);
-		scene.Update(deltaTime, inputs);
+		ProcessInput(m_window);
+		m_scene.Update(m_deltaTime, m_inputs);
 		if (m_ShowControls)
 			ShowImGuiControls();
-		Render(window);
+		Render(m_window);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(m_window);
 	}
 }
 
@@ -91,7 +91,7 @@ void Application::ShowImGuiControls()
 				ApplyChangeColor();
 		}
 		if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen))
-			scene.camera.ShowImGuiControls();
+			m_scene.camera.ShowImGuiControls();
 	}
 	ImGui::End();
 }
@@ -110,19 +110,19 @@ void Application::ProcessInput(GLFWwindow* _window)
 		s_LastPressed = glfwGetTime();
 		m_ShowControls = !m_ShowControls;
 	}
-	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+	if (glfwGetKey(_window, GLFW_KEY_R) == GLFW_PRESS)
 	{
-		scene.Restart();
+		m_scene.Restart();
 	}
 	// LearnOpenGL
-	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	if (glfwGetKey(_window, GLFW_KEY_UP) == GLFW_PRESS)
 	{
 		mixValue += 0.001f; // Change this value accordingly (might be too slow or too fast based on system hardware)
 		if (mixValue >= 1.0f)
 			mixValue = 1.0f;
 	}
 
-	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	if (glfwGetKey(_window, GLFW_KEY_DOWN) == GLFW_PRESS)
 	{
 		mixValue -= 0.001f; // Change this value accordingly (might be too slow or too fast based on system hardware)
 		if (mixValue <= 0.0f)
@@ -132,43 +132,43 @@ void Application::ProcessInput(GLFWwindow* _window)
 	// Camera, should clean
 	{
 		double newMouseX, newMouseY;
-		glfwGetCursorPos(window, &newMouseX, &newMouseY);
-		mouseDeltaX = (float)(newMouseX - mouseX);
-		mouseDeltaY = (float)(newMouseY - mouseY);
-		mouseX = newMouseX;
-		mouseY = newMouseY;
+		glfwGetCursorPos(_window, &newMouseX, &newMouseY);
+		m_mouseDeltaX = (float)(newMouseX - m_mouseX);
+		m_mouseDeltaY = (float)(newMouseY - m_mouseY);
+		m_mouseX = newMouseX;
+		m_mouseY = newMouseY;
 	}
 
 	// Update camera
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+	if (glfwGetMouseButton(_window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 	{
-		inputs.deltaX = mouseDeltaX;
-		inputs.deltaY = mouseDeltaY;
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		m_inputs.deltaX = m_mouseDeltaX;
+		m_inputs.deltaY = m_mouseDeltaY;
+		glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	}
 	else
 	{
-		inputs.deltaX = 0.f;
-		inputs.deltaY = 0.f;
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		m_inputs.deltaX = 0.f;
+		m_inputs.deltaY = 0.f;
+		glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 
-	inputs.moveForward = glfwGetKey(window, GLFW_KEY_W);
-	inputs.moveBackward = glfwGetKey(window, GLFW_KEY_S);
-	inputs.moveRight = glfwGetKey(window, GLFW_KEY_D);
-	inputs.moveLeft = glfwGetKey(window, GLFW_KEY_A);
-	glfwSetScrollCallback(window, Scroll_callback);
+	m_inputs.moveForward = glfwGetKey(_window, GLFW_KEY_W);
+	m_inputs.moveBackward = glfwGetKey(_window, GLFW_KEY_S);
+	m_inputs.moveRight = glfwGetKey(_window, GLFW_KEY_D);
+	m_inputs.moveLeft = glfwGetKey(_window, GLFW_KEY_A);
+	glfwSetScrollCallback(_window, Scroll_callback);
 
-	if (s_MouseScrollOffset)
+	if (s_m_MouseScrollOffset)
 	{
-		scene.camera.Zoom(s_MouseScrollOffset);
-		s_MouseScrollOffset = 0.f;
+		m_scene.camera.Zoom(s_m_MouseScrollOffset);
+		s_m_MouseScrollOffset = 0.f;
 	}
 	// Cam end
 }
 
 void Application::Scroll_callback(GLFWwindow* _window, double _xoffset, double _yoffset) {
-	s_MouseScrollOffset = (float)_yoffset;
+	s_m_MouseScrollOffset = (float)_yoffset;
 }
 
 void Application::framebuffer_size_callback(GLFWwindow* _window, int _width, int _height) {
@@ -209,7 +209,7 @@ void Application::Render(GLFWwindow* _window)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-	scene.Draw();
+	m_scene.Draw();
 
 	GLFWwindow* ctxBackup = glfwGetCurrentContext();
 	ImGui::UpdatePlatformWindows();

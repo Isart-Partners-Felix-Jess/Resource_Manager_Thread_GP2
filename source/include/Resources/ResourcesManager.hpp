@@ -14,9 +14,7 @@ private:
 	static std::atomic<ResourcesManager*> s_m_instance;
 	static std::mutex s_m_mutex;
 	static std::unordered_map<std::string, IResource*> s_m_resources;
-
 	static ThreadPool s_m_threadPool;
-	static bool s_m_isDeadPool;
 
 	ResourcesManager();
 	~ResourcesManager();
@@ -68,7 +66,6 @@ public:
 		if (it != s_m_resources.end())
 			delete it->second;
 		s_m_resources.emplace(_name, createdResource);
-		ResourcesManager::s_m_isDeadPool = false;
 	}
 
 	template<typename R>

@@ -23,7 +23,7 @@ void SceneNode::SetParent(SceneNode* _parent, bool _keepGlobalPosition)
 	parent = _parent;
 	_parent->children.push_back(this);
 	if (_keepGlobalPosition)
-		transform.SetNewLocalFrom(_parent->transform.ModelMatrix());
+		m_transform.SetNewLocalFrom(_parent->m_transform.ModelMatrix());
 	else
 		changed = true;
 }
@@ -33,7 +33,7 @@ void SceneNode::AddChild(SceneNode* _child, bool _keepGlobalPosition)
 {
 	_child->SetParent(this, _keepGlobalPosition);
 	if (_keepGlobalPosition)
-		_child->transform.SetNewLocalFrom(this->transform.ModelMatrix());
+		_child->m_transform.SetNewLocalFrom(this->m_transform.ModelMatrix());
 	else
 		changed = true;
 	children.push_back(_child);
@@ -56,11 +56,11 @@ size_t SceneNode::GetChildNumber() {
 Transform& SceneNode::SetTransform()
 {
 	changed = true;
-	return transform;
+	return m_transform;
 }
 
 Transform SceneNode::GetTransform() {
-	return transform;
+	return m_transform;
 }
 
 SceneNode* SceneNode::GetParent() {
@@ -84,16 +84,16 @@ bool SceneNode::UpdateChildren()
 {
 	if (changed)
 	{
-		transform.ComputeAll(dynamic_cast<SceneNode*>(parent)->transform.ModelMatrix());
+		m_transform.ComputeAll(dynamic_cast<SceneNode*>(parent)->m_transform.ModelMatrix());
 		// Update Component
 		if (pointLight)
-			pointLight->position = transform.ModelMatrix() * pointLight->position;
+			pointLight->position = m_transform.ModelMatrix() * pointLight->position;
 		if (spotLight)
-			spotLight->point.position = transform.ModelMatrix() * spotLight->point.position;
+			spotLight->point.position = m_transform.ModelMatrix() * spotLight->point.position;
 		if (camera)
 		{
-			camera->eye *= transform.ModelMatrix();
-			camera->zCamera *= transform.ModelMatrix().Inversion().Transposed(); // NormalMatrix
+			camera->eye *= m_transform.ModelMatrix();
+			camera->zCamera *= m_transform.ModelMatrix().Inversion().Transposed(); // NormalMatrix
 			camera->ComputeViewProjection();
 		}
 	}

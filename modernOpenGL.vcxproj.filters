@@ -161,4 +161,7 @@
     <Library Include="third_party\libs\glfw3.lib" />
     <Library Include="third_party\libs\glfw3_mt.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
 </Project>
