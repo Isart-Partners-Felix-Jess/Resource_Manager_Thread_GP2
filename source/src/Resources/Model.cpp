@@ -86,7 +86,7 @@ void Model::ResourceFileRead(const std::string _name)
 			{
 				m_meshMtx.lock();
 				Mesh* next_mesh = new Mesh(m_tmpVertices, m_tmpIdxPositions, m_tmpIdxUvs, m_tmpIdxNormals);
-				next_mesh->SetIndices(indices);
+				next_mesh->SetIndices(m_indices);
 				meshes.push_back(next_mesh);
 				m_meshMtx.unlock();
 			}
@@ -115,9 +115,9 @@ void Model::ResourceFileRead(const std::string _name)
 							m_tmpIdxPositions.push_back(i);
 							if (vertexIdx / 2) // New triangle
 							{
-								indices.push_back(faceIdx);
-								indices.push_back(faceIdx + vertexIdx - 1);
-								indices.push_back(faceIdx + vertexIdx);
+								m_indices.push_back(faceIdx);
+								m_indices.push_back(faceIdx + vertexIdx - 1);
+								m_indices.push_back(faceIdx + vertexIdx);
 							}
 							vertexIdx++;
 						}
@@ -142,7 +142,7 @@ void Model::ResourceFileRead(const std::string _name)
 		}
 		file.close();
 	}
-	isRead = true;
+	m_isRead = true;
 }
 
 void Model::ResourceLoadOpenGL(const std::string _name)
@@ -150,7 +150,7 @@ void Model::ResourceLoadOpenGL(const std::string _name)
 	if (meshes.empty())
 	{
 		Mesh* next_mesh = new Mesh(m_tmpVertices, m_tmpIdxPositions, m_tmpIdxUvs, m_tmpIdxNormals);
-		next_mesh->SetIndices(indices);
+		next_mesh->SetIndices(m_indices);
 		meshes.push_back(next_mesh);
 	}
 
@@ -161,19 +161,14 @@ void Model::ResourceLoadOpenGL(const std::string _name)
 	m_tmpIdxPositions.clear();
 	m_tmpIdxUvs.clear();
 	m_tmpIdxNormals.clear();
-	indices.clear();
-	isLoaded = true;
+	m_indices.clear();
+	m_isLoaded = true;
 }
 
 void Model::Draw(Shader& _shader)
 {
-	uint32_t i = 0;
 	for (Mesh* mesh : meshes)
-	{
-		//if (i < materials.size())
-			//materials[i++].InitShader(_shader);
 		mesh->Draw();
-	}
 }
 
 void Model::Draw() {
@@ -187,7 +182,6 @@ void Model::ResourceUnload()
 		mesh->Unload();
 		delete mesh;
 	}
-	//meshes.clear();
 }
 
 void Model::ProcessNode(SceneNode* _node, const Scene* _scene) {
@@ -206,8 +200,7 @@ void Model::ProcessNode(SceneNode* _node, const Scene* _scene, Shader* _shader)
 	_shader->SetMat4("MVP", MVP);
 }
 
-void Model::ResetCount()
-{
+void Model::ResetCount() {
 	s_ModelNumber = 0;
 }
 

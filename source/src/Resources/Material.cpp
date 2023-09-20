@@ -1,31 +1,12 @@
 #include <Material.hpp>
 
-Material::Material() {
-	isRead = true;
+Material::Material() 
+{
+	m_isRead = true;
+	m_isLoaded = true;
 	*this = material::none;
 };
-//Material& Material::operator=(const Material& _other)
-//{
-//	if (this != &_other) 
-//	{
-//		isRead.store(_other.isRead.load());
-//		ambient = _other.ambient;
-//		diffuse = _other.diffuse;
-//		specular = _other.specular;
-//		shininess = _other.shininess;
-//		diffuse2DMap = 0;
-//	}
-//	return *this;
-//}
-//Material::Material(const Material& _other)
-//{
-//	isRead.store(_other.isRead.load());
-//	ambient = _other.ambient;
-//	diffuse = _other.diffuse;
-//	specular = _other.specular;
-//	shininess = _other.shininess;
-//	diffuse2DMap = 0;
-//}
+
 void Material::InitShader(Shader& _lightShader)
 {
 	_lightShader.SetVec3("material.ambient", ambient);

@@ -21,8 +21,6 @@ public:
 	void InitShader(Shader& _lightShader);
 
 	Material();
-	//Material(const Material& _other);
-	//Material& operator=(const Material& _other);
 
 	Material(Vectorf3 _ambient, Vectorf3 _diffuse, Vectorf3 _specular, float _shiny);
 	Material(float _ambientX, float _ambientY, float _ambientZ, float _diffuseX, float _diffuseY, float _diffuseZ, float _specularX, float _specularY, float _specularZ, float _shiny);
@@ -35,11 +33,9 @@ public:
 	void AttachSpecularMap(unsigned int _specularMapID);
 	void DetachSpecularMap();
 
-private:
 	// Inherited from IResource
-	virtual void ResourceLoadOpenGL(const std::string _name) override { isLoaded = true; };
-	virtual void ResourceFileRead(const std::string _name) override { isRead =true; };
-
+	virtual void ResourceLoadOpenGL(const std::string _name) override { m_isLoaded = true; };
+	virtual void ResourceFileRead(const std::string _name) override { m_isRead = true; };
 	virtual void ResourceUnload() override {};
 };
 

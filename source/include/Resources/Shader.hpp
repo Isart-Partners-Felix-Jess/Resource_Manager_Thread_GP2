@@ -13,18 +13,16 @@
 class Shader : public IResource
 {
 private:
-	inline static unsigned int s_m_TotalShaderNumber = 0;
-	unsigned int m_ShaderProgram = -1;
-	unsigned int m_VertexShader = -1;
-	unsigned int m_FragmentShader = -1;
+	inline static unsigned int s_m_totalShaderNumber = 0;
+	unsigned int m_shaderProgram = -1;
+	unsigned int m_vertexShader = -1;
+	unsigned int m_fragmentShader = -1;
 
-	std::string vertexShaderSource = "";
-	std::string fragmentShaderSource = "";
+	std::string m_vertexShaderSource = "";
+	std::string m_fragmentShaderSource = "";
 
 public:
-	// Creates an empty shader, are you sure you don't want to specify paths ?
 	Shader();
-	Shader(const char* _vertexPath, const char* _fragmentPath);
 	~Shader();
 
 	uint32_t GetShaderProgram() const;
@@ -43,8 +41,8 @@ public:
 	static void ResetCount();
 
 	// Inherited from IResource
-	void ResourceLoadOpenGL(const std::string _name) override { isLoaded = true; };
-	void ResourceFileRead(const std::string _name) override { isRead = true; };
+	void ResourceLoadOpenGL(const std::string _name) override { m_isLoaded = true; };
+	void ResourceFileRead(const std::string _name) override { m_isRead = true; };
 	void ResourceUnload() override;
 
 	void DeleteVertFrag();

@@ -8,16 +8,30 @@
 class IResource
 {
 public:
-	bool isRead = false;
-	bool isLoaded = false;
 	virtual ~IResource() = default;
+
+	void ResourceFileReadTimed(const std::string _name)
+	{
+		// TODO, placeholder
+		ResourceFileRead(_name);
+
+	}
 
 	// To be defined by a class
 	virtual void ResourceFileRead(const std::string _name) = 0;
 	virtual void ResourceLoadOpenGL(const std::string _name) = 0;
 	virtual void ResourceUnload() = 0;
 
-	inline unsigned int GetResourceId() const {
+	inline bool IsReadFinished() {
+		return (m_isRead && !m_isLoaded);
+	}
+
+	inline bool IsLoaded() {
+		return m_isLoaded;
+	}
+
+	inline unsigned int GetResourceId() const
+	{
 		if (m_resourceId == static_cast<unsigned int>(-1))
 			DEBUG_WARNING("Could not find id for %s ", m_resourcePath.c_str());
 		return m_resourceId;
@@ -35,6 +49,9 @@ public:
 	}
 
 protected:
+	bool m_isRead = false;
+	bool m_isLoaded = false;
+
 	unsigned int m_resourceId = -1;
 	std::string m_resourcePath = "";
 };

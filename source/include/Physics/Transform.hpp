@@ -5,9 +5,9 @@
 class Transform
 {
 private:
-	Matrix4x4 local = Matrix4x4(true);
-	Matrix4x4 global = Matrix4x4(true); // ModelMatrix
-	Matrix4x4 normalMatrix = Matrix4x4(true);
+	Matrix4x4 m_local = Matrix4x4(true);
+	Matrix4x4 m_global = Matrix4x4(true); // ModelMatrix
+	Matrix4x4 m_normalMatrix = Matrix4x4(true);
 
 public:
 	// Reminder to computeLocal if you change those

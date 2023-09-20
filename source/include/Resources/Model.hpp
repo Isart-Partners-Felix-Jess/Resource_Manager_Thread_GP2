@@ -37,7 +37,7 @@ private:
 	std::mutex m_meshMtx;
 	// Model data
 	std::string m_directory;
-	std::vector<uint32_t> indices;
+	std::vector<uint32_t> m_indices;
 
 	// Tmp index
 	std::vector<Vertex> m_tmpVertices;

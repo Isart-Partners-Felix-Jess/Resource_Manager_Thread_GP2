@@ -24,7 +24,7 @@ bool ResourcesManager::IsPoolDone()
 
 	unsigned int totalDone = 0;
 	for (std::pair<std::string, IResource*> pair : s_m_resources)
-		if (pair.second->isLoaded) totalDone++;
+		if (pair.second->IsLoaded()) totalDone++;
 
 	if (totalDone == s_m_resources.size())
 	{

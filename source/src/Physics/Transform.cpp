@@ -9,28 +9,28 @@ Transform::Transform(Vectorf3 _translation, Vectorf3 _rotationInDeg, Vectorf3 _s
 	rotation = _rotationInDeg;
 	scale = _scale;
 	ComputeLocal();
-	global = local;
+	m_global = m_local;
 }
 
 void Transform::ComputeLocal() {
-	local = matrix::MatrixTRS(translation, rotation * (M_PI / 180), scale);
+	m_local = matrix::MatrixTRS(translation, rotation * (M_PI / 180), scale);
 }
 
 void Transform::ComputeGlobal()
 {
-	global = matrix::MatrixTRS(translation, rotation * (M_PI / 180), scale);
-	normalMatrix = global.Inversion().Transposed();
+	m_global = matrix::MatrixTRS(translation, rotation * (M_PI / 180), scale);
+	m_normalMatrix = m_global.Inversion().Transposed();
 }
 
 Vectorf3 Transform::GetGlobalTranslation() {
-	return Vectorf3(global[4][0], global[4][1], global[4][2]);
+	return Vectorf3(m_global[4][0], m_global[4][1], m_global[4][2]);
 }
 
 Vectorf3 Transform::GetGlobalRotation()
 {
-	Vectorf3 xAxis = Vectorf3(global.Column(0)[0], global.Column(0)[1], global.Column(0)[2]);
-	Vectorf3 yAxis = Vectorf3(global.Column(1)[0], global.Column(1)[1], global.Column(1)[2]);
-	Vectorf3 zAxis = Vectorf3(global.Column(2)[0], global.Column(2)[1], global.Column(2)[2]);
+	Vectorf3 xAxis = Vectorf3(m_global.Column(0)[0], m_global.Column(0)[1], m_global.Column(0)[2]);
+	Vectorf3 yAxis = Vectorf3(m_global.Column(1)[0], m_global.Column(1)[1], m_global.Column(1)[2]);
+	Vectorf3 zAxis = Vectorf3(m_global.Column(2)[0], m_global.Column(2)[1], m_global.Column(2)[2]);
 
 	float xAngle = xAxis.GetAngleVector({ 1.f,0.f,0.f });
 	float yAngle = yAxis.GetAngleVector({ 0.f,1.f,0.f });
@@ -40,21 +40,21 @@ Vectorf3 Transform::GetGlobalRotation()
 }
 
 Vectorf3 Transform::GetGlobalScaling() {
-	return Vectorf3(global.Column(0).Magnitude(), global.Column(1).Magnitude(), global.Column(2).Magnitude());
+	return Vectorf3(m_global.Column(0).Magnitude(), m_global.Column(1).Magnitude(), m_global.Column(2).Magnitude());
 }
 
 Matrix4x4 Transform::ModelMatrix() {
-	return global;
+	return m_global;
 }
 
 Matrix4x4 Transform::NormalMatrix() {
-	return normalMatrix;
+	return m_normalMatrix;
 }
 
 void Transform::ComputeAll(Matrix4x4 _globalTransform) {
-	global = _globalTransform * local;
+	m_global = _globalTransform * m_local;
 }
 
 void Transform::SetNewLocalFrom(Matrix4x4 _globalTransform) {
-	local = global * _globalTransform.Inversion();
+	m_local = m_global * _globalTransform.Inversion();
 }

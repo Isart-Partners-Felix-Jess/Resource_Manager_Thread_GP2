@@ -10,7 +10,7 @@
 class Texture : public IResource
 {
 private:
-	int m_Width = -1, m_Height = -1, m_Channels = -1;
+	int m_width = -1, m_height = -1, m_channels = -1;
 	unsigned char* m_data = nullptr;
 
 public:

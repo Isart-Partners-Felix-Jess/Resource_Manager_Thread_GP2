@@ -250,13 +250,13 @@ void Scene::InitGraph()
 void Scene::InitModels()
 {
 	// Viking Room [0]
-	if (models[viking_room_m] && !models[viking_room_m]->isLoaded && models[viking_room_m]->isRead)
+	if (models[viking_room_m] && models[viking_room_m]->IsReadFinished())
 	{
 		models[viking_room_m]->ResourceLoadOpenGL("viking_room");
 		graph.entities[0]->model = models[viking_room_m];
 	}
 	// Set Viking Room texture
-	if (textures[viking_room_t] && !textures[viking_room_t]->isLoaded && textures[viking_room_t]->isRead)
+	if (textures[viking_room_t] && textures[viking_room_t]->IsReadFinished())
 	{
 		textures[viking_room_t]->ResourceLoadOpenGL("viking_room.jpg");
 		graph.entities[viking_room_e]->material.AttachDiffuseMap(textures[viking_room_t]);
@@ -264,26 +264,26 @@ void Scene::InitModels()
 	}
 
 	// Robot [1]
-	if (models[robot_m] && !models[robot_m]->isLoaded && models[robot_m]->isRead)
+	if (models[robot_m] && models[robot_m]->IsReadFinished())
 	{
 		models[robot_m]->ResourceLoadOpenGL("robot_operator");
 		graph.entities[robot_e]->model = models[robot_m];
 	}
 	// Set Robot texture
-	if (textures[robot_base_t] && !textures[robot_base_t]->isLoaded && textures[robot_base_t]->isRead)
+	if (textures[robot_base_t] && textures[robot_base_t]->IsReadFinished())
 	{
 		textures[robot_base_t]->ResourceLoadOpenGL("robot/base.png");
 		graph.entities[robot_e]->material.AttachDiffuseMap(textures[robot_base_t]);
 	}
 	// Set Robot lighting texture
-	if (textures[robot_roughness_t] && !textures[robot_roughness_t]->isLoaded && textures[robot_roughness_t]->isRead)
+	if (textures[robot_roughness_t] && textures[robot_roughness_t]->IsReadFinished())
 	{
 		textures[robot_roughness_t]->ResourceLoadOpenGL("robot/roughness.png");
 		graph.entities[robot_e]->material.AttachSpecularMap(textures[robot_roughness_t]);
 	}
 
 	// Copper Cube [2]
-	if (models[cube_m] && !models[cube_m]->isLoaded && models[cube_m]->isRead)
+	if (models[cube_m] && models[cube_m]->IsReadFinished())
 	{
 		models[cube_m]->ResourceLoadOpenGL("cube");
 		graph.entities[copper_cube_e]->model = graph.entities[orb1_e]->model = graph.entities[orb2_e]->model = graph.entities[orb3_e]->model = models[cube_m];
@@ -294,28 +294,28 @@ void Scene::InitModels()
 	}
 
 	// Building [3]
-	if (models[building_m] && !models[building_m]->isLoaded && models[building_m]->isRead)
+	if (models[building_m] && models[building_m]->IsReadFinished())
 	{
 		models[building_m]->ResourceLoadOpenGL("objBuilding");
 		graph.entities[building_e]->model = models[building_m];
 	}
 
 	// Bind texture to entity
-	if (textures[objBuilding_brck91L_t] && !textures[objBuilding_brck91L_t]->isLoaded && textures[objBuilding_brck91L_t]->isRead)
+	if (textures[objBuilding_brck91L_t] && textures[objBuilding_brck91L_t]->IsReadFinished())
 	{
 		textures[objBuilding_brck91L_t]->ResourceLoadOpenGL("objBuilding/brck91L.jpg");
 		graph.entities[building_e]->material.AttachDiffuseMap(textures[objBuilding_brck91L_t]);
 	}
 
 	// Bind texture to entity
-	if (textures[objBuilding_brck91Lb_t] && !textures[objBuilding_brck91Lb_t]->isLoaded && textures[objBuilding_brck91Lb_t]->isRead)
+	if (textures[objBuilding_brck91Lb_t] && textures[objBuilding_brck91Lb_t]->IsReadFinished())
 	{
 		textures[objBuilding_brck91Lb_t]->ResourceLoadOpenGL("objBuilding/brck91Lb.jpg");
 		graph.entities[building_e]->material.AttachSpecularMap(textures[objBuilding_brck91Lb_t]);
 	}
 
 	// Orbs
-	if (!m_orbInitDone && textures[white_t]->isLoaded)
+	if (!m_orbInitDone && textures[white_t])
 	{
 		// Orb1 [5]
 		graph.entities[orb1_e]->material = material::ruby;
@@ -336,7 +336,7 @@ void Scene::InitModels()
 	}
 
 	// LOOK AT MY HORSE [8]
-	if (models[horse_m] && !models[horse_m]->isLoaded && models[horse_m]->isRead && textures[white_t]->isLoaded)
+	if (models[horse_m] && models[horse_m]->IsReadFinished() && textures[white_t])
 	{
 		models[horse_m]->ResourceLoadOpenGL("Horse");
 		graph.entities[horse_e]->model = models[horse_m];
@@ -378,7 +378,7 @@ void Scene::InitMaterials()
 	if (m_materialsInitDone)
 		return;
 
-	if (textures[white_t]->isRead && !textures[white_t]->isLoaded)
+	if (textures[white_t]->IsReadFinished())
 		textures[white_t]->ResourceLoadOpenGL("white.png");
 
 	material::none.AttachDiffuseMap(textures[white_t]);

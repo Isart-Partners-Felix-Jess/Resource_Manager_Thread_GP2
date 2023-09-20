@@ -61,21 +61,12 @@ public:
 
 	Shader* shadLight = nullptr;
 	Shader* shadLightCube = nullptr;
-
 	
 	std::vector<Model*> models;
 	std::vector<Texture*> textures;
 
-	//for tests
+	// For tests
 	std::vector<Model*> lightCubes;
-	
-	//Model* cube = nullptr;
-	//Model* viking_room = nullptr;
-	//Model* robot = nullptr;
-	//Model* building = nullptr;
-	//Model* horse = nullptr;
-
-	//Texture* white = nullptr;
 
 	Scene(unsigned int _width, unsigned int _height);
 	~Scene();
