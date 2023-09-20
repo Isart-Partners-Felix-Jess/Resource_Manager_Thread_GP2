@@ -34,7 +34,6 @@ void Scene::Init()
 		InitResources();
 		InitMaterials();
 		InitModels();
-		//while (!ResourcesManager::IsPoolDone()) {};
 		m_endLoad = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 		m_durationLoad = m_endLoad - m_startLoad;
 		Log::Print("Time total for loading: %u ms.", m_durationLoad);

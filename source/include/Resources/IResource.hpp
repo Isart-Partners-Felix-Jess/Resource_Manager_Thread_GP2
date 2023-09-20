@@ -32,8 +32,8 @@ public:
 
 	inline unsigned int GetResourceId() const
 	{
-		if (m_resourceId == static_cast<unsigned int>(-1))
-			DEBUG_WARNING("Could not find id for %s ", m_resourcePath.c_str());
+		//if (m_resourceId == static_cast<unsigned int>(-1))
+		//	DEBUG_WARNING("Could not find id for %s ", m_resourcePath.c_str());
 		return m_resourceId;
 	}
 
