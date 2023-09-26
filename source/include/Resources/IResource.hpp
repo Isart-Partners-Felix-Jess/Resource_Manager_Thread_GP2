@@ -14,7 +14,7 @@ public:
 	{
 		auto start = std::chrono::system_clock::now();
 		ResourceFileRead(_name);
-		DEBUG_LOG("%s resource loadtime : %f", _name, 
+		DEBUG_LOG("%s resource loadtime : %f", _name.c_str(),
 			std::chrono::duration<double>(std::chrono::system_clock::now() - start).count());
 	}
 

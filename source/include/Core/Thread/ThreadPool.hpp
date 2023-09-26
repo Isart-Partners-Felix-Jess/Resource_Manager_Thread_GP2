@@ -41,7 +41,7 @@ public:
 private:
 	static const unsigned int s_m_poolSize = 20;
 
-	std::array<std::thread, s_m_poolSize> m_workers;
+	std::thread m_workers[s_m_poolSize];
 	std::queue<std::function<void()>> m_tasksQueue;
 
 	std::mutex m_queueMtx;
