@@ -18,7 +18,7 @@ private:
 	unsigned int m_VAO = -1, m_VBO = -1, m_EBO = -1;
 	std::vector<Vertex> m_vertices;
 	std::vector<unsigned int> m_indices;
-	Matrix4x4 local = Matrix4x4(true);
+	Matrix4x4 m_local = Matrix4x4(true);
 
 public:
 	Mesh() = default;

@@ -46,7 +46,7 @@ struct SceneNode : public Node
 protected:
 	SceneNode() : material(material::none) {}
 
-	Transform transform;
+	Transform m_transform;
 
 public:
 	SceneNode(SceneNode* _parent, const Scene* _scene);

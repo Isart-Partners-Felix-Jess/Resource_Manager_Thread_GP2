@@ -45,10 +45,10 @@ void FormatString(char* _buffer, size_t _bufferSize, const char* _format, ...);
 class Log
 {
 private:
-	std::ofstream m_Output;
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	std::ofstream m_output;
+	HANDLE m_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	// Singleton /!\ BE CAREFUL: IT IS NOT THREAD SAFE
-	static Log* instance;
+	static Log* m_instance;
 	Log() {};
 
 public:

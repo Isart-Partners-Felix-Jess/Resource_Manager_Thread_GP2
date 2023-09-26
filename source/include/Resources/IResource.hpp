@@ -12,9 +12,10 @@ public:
 
 	void ResourceFileReadTimed(const std::string _name)
 	{
-		// TODO, placeholder
+		auto start = std::chrono::system_clock::now();
 		ResourceFileRead(_name);
-
+		DEBUG_LOG("%s resource loadtime : %f", _name, 
+			std::chrono::duration<double>(std::chrono::system_clock::now() - start).count());
 	}
 
 	// To be defined by a class

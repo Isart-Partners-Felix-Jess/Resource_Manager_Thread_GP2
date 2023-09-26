@@ -5,7 +5,6 @@ std::atomic<ResourcesManager*> ResourcesManager::s_m_instance = nullptr;
 std::mutex ResourcesManager::s_m_mutex;
 std::unordered_map<std::string, IResource*> ResourcesManager::s_m_resources;
 ThreadPool ResourcesManager::s_m_threadPool;
-bool ResourcesManager::s_m_isDeadPool = false;
 
 ResourcesManager::ResourcesManager() {
 	s_m_instance = this->GetInstance();
@@ -27,10 +26,7 @@ bool ResourcesManager::IsPoolDone()
 		if (pair.second->IsLoaded()) totalDone++;
 
 	if (totalDone == s_m_resources.size())
-	{
-		s_m_isDeadPool = true;
 		return true;
-	}
 	else
 		return false;
 }

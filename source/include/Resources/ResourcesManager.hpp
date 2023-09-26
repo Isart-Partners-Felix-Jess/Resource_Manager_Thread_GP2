@@ -14,9 +14,7 @@ private:
 	static std::atomic<ResourcesManager*> s_m_instance;
 	static std::mutex s_m_mutex;
 	static std::unordered_map<std::string, IResource*> s_m_resources;
-
 	static ThreadPool s_m_threadPool;
-	static bool s_m_isDeadPool;
 
 	ResourcesManager();
 	~ResourcesManager();
@@ -32,7 +30,7 @@ public:
 		if (!_isMultiThread)
 		{
 			createdResource->SetResourcePath(_name);
-			createdResource->ResourceFileRead(_name);
+			createdResource->ResourceFileReadTimed(_name);
 
 			// Erase previous pointer if found
 			auto it = s_m_resources.find(_name);
@@ -58,13 +56,12 @@ public:
 		IResource* createdResource = new R();
 		createdResource->SetResourcePath(_name);
 
-		s_m_threadPool.AddToQueue([createdResource, _name]() { createdResource->ResourceFileRead(_name); }, _name + " creation");
+		s_m_threadPool.AddToQueue([createdResource, _name]() { createdResource->ResourceFileReadTimed(_name); }, _name + " creation");
 
 		auto it = s_m_resources.find(_name);
 		if (it != s_m_resources.end())
 			delete it->second;
 		s_m_resources.emplace(_name, createdResource);
-		ResourcesManager::s_m_isDeadPool = false;
 	}
 
 	template<typename R>
