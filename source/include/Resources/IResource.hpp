@@ -29,7 +29,9 @@ public:
 	inline bool IsLoaded() {
 		return m_isLoaded;
 	}
-
+	inline void BypassLoad() {
+		 m_isLoaded = true;
+	}
 	inline unsigned int GetResourceId() const
 	{
 		//if (m_resourceId == static_cast<unsigned int>(-1))

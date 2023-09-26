@@ -39,7 +39,7 @@ public:
 	}
 
 private:
-	static const unsigned int s_m_poolSize = 24;
+	static const unsigned int s_m_poolSize = 20;
 
 	std::array<std::thread, s_m_poolSize> m_workers;
 	std::queue<std::function<void()>> m_tasksQueue;

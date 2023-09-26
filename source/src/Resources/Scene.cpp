@@ -20,7 +20,7 @@ void Scene::Init()
 	m_globalInitDone = false;
 	m_materialsInitDone = false;
 	//InitComponents
-	models.resize(ModelName::size_model, nullptr);
+	models.resize(ModelName::size_model + 16, nullptr);
 	textures.resize(TextureName::size_texture, nullptr);
 
 	if (isMultiThreaded)
@@ -123,6 +123,7 @@ void Scene::InitThread()
 {
 	ResourcesManager::CreateResourceThreaded<Texture>("white.png");
 	ResourcesManager::CreateResourceThreaded<Model>("Horse");
+
 	ResourcesManager::CreateResourceThreaded<Model>("viking_room");
 	ResourcesManager::CreateResourceThreaded<Texture>("viking_room.jpg");
 	ResourcesManager::CreateResourceThreaded<Model>("robot_operator");
@@ -135,6 +136,22 @@ void Scene::InitThread()
 	//ResourcesManager::CreateResourceThreaded<Texture>("BigBlue/brck91Lb.jpg");
 	ResourcesManager::CreateResourceThreaded<Model>("big_blue");
 
+	ResourcesManager::CreateResourceThreaded<Model>("Horse2");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse3");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse4");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse5");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse6");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse7");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse8");
+	ResourcesManager::CreateResourceThreaded<Model>("Horse9");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue2");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue3");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue4");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue5");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue6");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue7");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue8");
+	ResourcesManager::CreateResourceThreaded<Model>("big_blue9");
 }
 
 void Scene::InitResources()
@@ -180,6 +197,16 @@ void Scene::InitResources()
 	// Big Blue [9]
 	if (!models[big_blue_m])
 		models[big_blue_m] = ResourcesManager::CreateResource<Model>("big_blue", isMultiThreaded);
+	for (int i = 2; i < 10; i++)
+		if (!models[i + 4])
+		{
+			std::string horse_nb = "Horse" + std::to_string(i);
+			models[i + 4] = ResourcesManager::CreateResource<Model>("Horse" + std::to_string(i), isMultiThreaded);
+		}
+	for (int i = 2; i < 10; i++)
+		if (!models[i + 12])
+			models[i + 12] = ResourcesManager::CreateResource<Model>("big_blue" + std::to_string(i), isMultiThreaded);
+
 }
 
 void Scene::InitLights()
@@ -371,6 +398,9 @@ void Scene::InitModels()
 		graph.entities[big_blue_e]->material.AttachSpecularMap(textures[white_t]);
 	}
 
+	for (int i = 6; i < 22; i++)
+		if (models[i] && models[i]->IsReadFinished())
+			models[i]->BypassLoad();
 	// Do this last
 	graph.InitDefaultShader(*shadLight);
 }
